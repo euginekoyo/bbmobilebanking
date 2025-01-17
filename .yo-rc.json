@@ -1,0 +1,33 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "bbMobileBankingAdmin",
+    "buildTool": "maven",
+    "cacheProvider": "ehcache",
+    "clientFramework": "react",
+    "clientTestFrameworks": [],
+    "clientTheme": "none",
+    "creationTimestamp": 1737104184007,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "enableHibernateCache": true,
+    "enableTranslation": true,
+    "entities": [],
+    "feignClient": null,
+    "jhipsterVersion": "8.8.0",
+    "jwtSecretKey": "YWI5OWUyNjQwMDQ3ODExMzIxYzNjZWY5MWM1ZGNkZWZkNTJhYWUwZDE2Y2MzMzA4MWRmNzg4MmRjMzQ0ZDEzNzNjZTFhNzM2ZGZlMzVjOTQxNzY5ZmZhYTY5OWQ4ZjU0ZjFkZjk3ZWI4MDkxNDI1MTc0ODg3NWFlMzNmMDA0NDI=",
+    "languages": ["en"],
+    "microfrontend": null,
+    "microfrontends": [],
+    "nativeLanguage": "en",
+    "packageName": "com.istl.app",
+    "prodDatabaseType": "postgresql",
+    "reactive": false,
+    "serverPort": null,
+    "serviceDiscoveryType": null,
+    "syncUserWithIdp": null,
+    "testFrameworks": [],
+    "withAdminUi": true
+  }
+}
