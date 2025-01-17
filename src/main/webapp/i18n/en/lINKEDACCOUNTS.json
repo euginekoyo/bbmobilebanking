@@ -1,0 +1,44 @@
+{
+  "bbMobileBankingAdminApp": {
+    "lINKEDACCOUNTS": {
+      "home": {
+        "title": "LINKEDACCOUNTS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new LINKEDACCOUNTS",
+        "createOrEditLabel": "Create or edit a LINKEDACCOUNTS",
+        "notFound": "No LINKEDACCOUNTS found"
+      },
+      "created": "A new LINKEDACCOUNTS is created with identifier {{ param }}",
+      "updated": "A LINKEDACCOUNTS is updated with identifier {{ param }}",
+      "deleted": "A LINKEDACCOUNTS is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete LINKEDACCOUNTS {{ id }}?"
+      },
+      "detail": {
+        "title": "LINKEDACCOUNTS"
+      },
+      "id": "ID",
+      "aCOUNTNAME": "A COUNTNAME",
+      "aCCOUNTCLASS": "A CCOUNTCLASS",
+      "aCCOUNTCURRENCY": "A CCOUNTCURRENCY",
+      "aCCOUNTNUMBER": "A CCOUNTNUMBER",
+      "cIF": "C IF",
+      "tIMELINKED": "T IMELINKED",
+      "pHONENUMBER": "P HONENUMBER",
+      "aPPROVEDON": "A PPROVEDON",
+      "aPPROVED": "A PPROVED",
+      "dECLINED": "D ECLINED",
+      "dECLINEDON": "D ECLINEDON",
+      "rEMARKS": "R EMARKS",
+      "lINKEDBY": "L INKEDBY",
+      "aPPROVEDBY": "A PPROVEDBY",
+      "lINKED": "L INKED",
+      "aCTIVE": "A CTIVE",
+      "dELINKEDBY": "D ELINKEDBY",
+      "dELINKEDON": "D ELINKEDON",
+      "dELINKED": "D ELINKED",
+      "aCCOUNTALIAS": "A CCOUNTALIAS",
+      "sHORTCUTS": "S HORTCUTS"
+    }
+  }
+}

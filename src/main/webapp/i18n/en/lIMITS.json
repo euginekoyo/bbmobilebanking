@@ -1,0 +1,38 @@
+{
+  "bbMobileBankingAdminApp": {
+    "lIMITS": {
+      "home": {
+        "title": "LIMITS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new LIMITS",
+        "createOrEditLabel": "Create or edit a LIMITS",
+        "notFound": "No LIMITS found"
+      },
+      "created": "A new LIMITS is created with identifier {{ param }}",
+      "updated": "A LIMITS is updated with identifier {{ param }}",
+      "deleted": "A LIMITS is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete LIMITS {{ id }}?"
+      },
+      "detail": {
+        "title": "LIMITS"
+      },
+      "id": "ID",
+      "tRANSACTIONTYPE": "T RANSACTIONTYPE",
+      "pROCODE": "P ROCODE",
+      "cHANNEL": "C HANNEL",
+      "tRANSACTIONLIMIT": "T RANSACTIONLIMIT",
+      "dAILYLIMIT": "D AILYLIMIT",
+      "rEGISTEREDBY": "R EGISTEREDBY",
+      "rEGISTEREDDATE": "R EGISTEREDDATE",
+      "aPPROVED": "A PPROVED",
+      "aPPROVEDBY": "A PPROVEDBY",
+      "aPPROVEDDATE": "A PPROVEDDATE",
+      "uPDATEDBY": "U PDATEDBY",
+      "uPDATEDDATE": "U PDATEDDATE",
+      "rEWORK": "R EWORK",
+      "rEWORKBY": "R EWORKBY",
+      "sESSIONID": "S ESSIONID"
+    }
+  }
+}

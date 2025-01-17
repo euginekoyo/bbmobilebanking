@@ -1,0 +1,32 @@
+{
+  "bbMobileBankingAdminApp": {
+    "cUSTOMERACCOUNT": {
+      "home": {
+        "title": "CUSTOMERACCOUNTS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new CUSTOMERACCOUNT",
+        "createOrEditLabel": "Create or edit a CUSTOMERACCOUNT",
+        "notFound": "No CUSTOMERACCOUNTS found"
+      },
+      "created": "A new CUSTOMERACCOUNT is created with identifier {{ param }}",
+      "updated": "A CUSTOMERACCOUNT is updated with identifier {{ param }}",
+      "deleted": "A CUSTOMERACCOUNT is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete CUSTOMERACCOUNT {{ id }}?"
+      },
+      "detail": {
+        "title": "CUSTOMERACCOUNT"
+      },
+      "id": "ID",
+      "cUSTOMERID": "C USTOMERID",
+      "aCCOUNTNUMBER": "A CCOUNTNUMBER",
+      "aCCOUNTCLASS": "A CCOUNTCLASS",
+      "cUSTOMERNUMBER": "C USTOMERNUMBER",
+      "cIF": "C IF",
+      "tIMELINKED": "T IMELINKED",
+      "bLOCKED": "B LOCKED",
+      "sTOPPED": "S TOPPED",
+      "dORMANT": "D ORMANT"
+    }
+  }
+}

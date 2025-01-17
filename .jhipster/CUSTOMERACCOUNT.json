@@ -1,0 +1,56 @@
+{
+  "annotations": {
+    "changelogDate": "20250117142858"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "cUSTOMERID",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "aCCOUNTNUMBER",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "11"
+    },
+    {
+      "fieldName": "aCCOUNTCLASS",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "cUSTOMERNUMBER",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "cIF",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "tIMELINKED",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "bLOCKED",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "sTOPPED",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "dORMANT",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "CUSTOMERACCOUNT",
+  "relationships": [],
+  "searchEngine": "no"
+}

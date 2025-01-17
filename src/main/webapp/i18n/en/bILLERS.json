@@ -1,0 +1,41 @@
+{
+  "bbMobileBankingAdminApp": {
+    "bILLERS": {
+      "home": {
+        "title": "BILLERS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new BILLERS",
+        "createOrEditLabel": "Create or edit a BILLERS",
+        "notFound": "No BILLERS found"
+      },
+      "created": "A new BILLERS is created with identifier {{ param }}",
+      "updated": "A BILLERS is updated with identifier {{ param }}",
+      "deleted": "A BILLERS is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete BILLERS {{ id }}?"
+      },
+      "detail": {
+        "title": "BILLERS"
+      },
+      "id": "ID",
+      "bILLERID": "B ILLERID",
+      "dESCRIPTION": "D ESCRIPTION",
+      "bILLERCOLLECTIONACCOUNT": "B ILLERCOLLECTIONACCOUNT",
+      "dATECREATED": "D ATECREATED",
+      "cREATEDBY": "C REATEDBY",
+      "aPPROVED": "A PPROVED",
+      "aPPROVEDBY": "A PPROVEDBY",
+      "aPPROVEDDATE": "A PPROVEDDATE",
+      "cHARGABLEPRODUCTID": "C HARGABLEPRODUCTID",
+      "nONCHARGABLEPRODUCTID": "N ONCHARGABLEPRODUCTID",
+      "uSDBILLERCOLLECTIONACCOUNT": "U SDBILLERCOLLECTIONACCOUNT",
+      "eNABLEDUPLICATECHECK": "E NABLEDUPLICATECHECK",
+      "rEMARKS": "R EMARKS",
+      "sESSIONID": "S ESSIONID",
+      "rEWORKBY": "R EWORKBY",
+      "sTATUS": "S TATUS",
+      "aCTIVE": "A CTIVE",
+      "rEWORK": "R EWORK"
+    }
+  }
+}

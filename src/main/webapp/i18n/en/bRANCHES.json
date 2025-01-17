@@ -1,0 +1,52 @@
+{
+  "bbMobileBankingAdminApp": {
+    "bRANCHES": {
+      "home": {
+        "title": "BRANCHES",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new BRANCHES",
+        "createOrEditLabel": "Create or edit a BRANCHES",
+        "notFound": "No BRANCHES found"
+      },
+      "created": "A new BRANCHES is created with identifier {{ param }}",
+      "updated": "A BRANCHES is updated with identifier {{ param }}",
+      "deleted": "A BRANCHES is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete BRANCHES {{ id }}?"
+      },
+      "detail": {
+        "title": "BRANCHES"
+      },
+      "id": "ID",
+      "bRANCHNAME": "B RANCHNAME",
+      "bRANCHCODE": "B RANCHCODE",
+      "aPPROVED": "A PPROVED",
+      "eMAIL": "E MAIL",
+      "aDDRESS": "A DDRESS",
+      "pHONE": "P HONE",
+      "lOCATION": "L OCATION",
+      "cONTACTPERSON": "C ONTACTPERSON",
+      "rEMARKS": "R EMARKS",
+      "cREATEDBY": "C REATEDBY",
+      "cREATEDON": "C REATEDON",
+      "aPPROVEDBY": "A PPROVEDBY",
+      "aPPROVEDON": "A PPROVEDON",
+      "cHECKERREMARKS": "C HECKERREMARKS",
+      "dELETEDBY": "D ELETEDBY",
+      "dELETEDON": "D ELETEDON",
+      "dELETEREMARKS": "D ELETEREMARKS",
+      "dELETED": "D ELETED",
+      "dECLINED": "D ECLINED",
+      "dECLINEDDON": "D ECLINEDDON",
+      "dECLINEDBY": "D ECLINEDBY",
+      "sESSIONID": "S ESSIONID",
+      "rEWORKED": "R EWORKED",
+      "rEWORKEDBY": "R EWORKEDBY",
+      "rEWORKEDON": "R EWORKEDON",
+      "dISTRICT": "D ISTRICT",
+      "rEGION": "R EGION",
+      "rEGIONNAME": "R EGIONNAME",
+      "rEPORTING": "R EPORTING"
+    }
+  }
+}

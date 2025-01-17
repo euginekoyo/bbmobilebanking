@@ -1,0 +1,28 @@
+{
+  "bbMobileBankingAdminApp": {
+    "mESSAGETEMPLATES": {
+      "home": {
+        "title": "MESSAGETEMPLATES",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new MESSAGETEMPLATES",
+        "createOrEditLabel": "Create or edit a MESSAGETEMPLATES",
+        "notFound": "No MESSAGETEMPLATES found"
+      },
+      "created": "A new MESSAGETEMPLATES is created with identifier {{ param }}",
+      "updated": "A MESSAGETEMPLATES is updated with identifier {{ param }}",
+      "deleted": "A MESSAGETEMPLATES is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete MESSAGETEMPLATES {{ id }}?"
+      },
+      "detail": {
+        "title": "MESSAGETEMPLATES"
+      },
+      "id": "ID",
+      "mESSAGETYPE": "M ESSAGETYPE",
+      "dESCRIPTION": "D ESCRIPTION",
+      "mESSAGEENGLISH": "M ESSAGEENGLISH",
+      "mESSAGESOMALI": "M ESSAGESOMALI",
+      "cREATEDON": "C REATEDON"
+    }
+  }
+}

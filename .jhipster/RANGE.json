@@ -1,0 +1,52 @@
+{
+  "annotations": {
+    "changelogDate": "20250117142904"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "rANGEFROM",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "rANGETO",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "aMOUNT",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "tXNTYPE",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "tXNCODE",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "cHARGEID",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "cHANNEL",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    }
+  ],
+  "name": "RANGE",
+  "relationships": [
+    {
+      "otherEntityName": "cHARGE",
+      "relationshipName": "cHARGEID",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

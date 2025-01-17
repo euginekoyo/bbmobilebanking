@@ -1,0 +1,29 @@
+{
+  "annotations": {
+    "changelogDate": "20250117142854"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "cHANNEL",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "15"
+    },
+    {
+      "fieldName": "dESCRIPTION",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "bIN",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "6"
+    }
+  ],
+  "name": "CHANNELS",
+  "relationships": [],
+  "searchEngine": "no"
+}

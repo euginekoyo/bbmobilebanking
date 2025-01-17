@@ -1,0 +1,26 @@
+{
+  "bbMobileBankingAdminApp": {
+    "cHANNELS": {
+      "home": {
+        "title": "CHANNELS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new CHANNELS",
+        "createOrEditLabel": "Create or edit a CHANNELS",
+        "notFound": "No CHANNELS found"
+      },
+      "created": "A new CHANNELS is created with identifier {{ param }}",
+      "updated": "A CHANNELS is updated with identifier {{ param }}",
+      "deleted": "A CHANNELS is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete CHANNELS {{ id }}?"
+      },
+      "detail": {
+        "title": "CHANNELS"
+      },
+      "id": "ID",
+      "cHANNEL": "C HANNEL",
+      "dESCRIPTION": "D ESCRIPTION",
+      "bIN": "B IN"
+    }
+  }
+}

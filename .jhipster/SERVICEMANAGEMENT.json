@@ -1,0 +1,90 @@
+{
+  "annotations": {
+    "changelogDate": "20250117142906"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "pROCESSINGCODE",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "aCTIVE",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "cREATEDBY",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "dATECREATED",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "aPPROVED",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "aPPROVEDBY",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "aPPROVEDDATE",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "aDAPTORTYPE",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "dESTINATION",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "tHIRDPARTYRESPONSE",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "tELCO",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "dESCRIPTION",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "rEMARKS",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sESSIONID",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "rEWORKBY",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    }
+  ],
+  "name": "SERVICEMANAGEMENT",
+  "relationships": [],
+  "searchEngine": "no"
+}

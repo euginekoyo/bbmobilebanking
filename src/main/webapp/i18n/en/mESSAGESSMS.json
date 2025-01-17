@@ -1,0 +1,48 @@
+{
+  "bbMobileBankingAdminApp": {
+    "mESSAGESSMS": {
+      "home": {
+        "title": "MESSAGESSMS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new MESSAGESSMS",
+        "createOrEditLabel": "Create or edit a MESSAGESSMS",
+        "notFound": "No MESSAGESSMS found"
+      },
+      "created": "A new MESSAGESSMS is created with identifier {{ param }}",
+      "updated": "A MESSAGESSMS is updated with identifier {{ param }}",
+      "deleted": "A MESSAGESSMS is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete MESSAGESSMS {{ id }}?"
+      },
+      "detail": {
+        "title": "MESSAGESSMS"
+      },
+      "id": "ID",
+      "tRNDATETIME": "T RNDATETIME",
+      "pHONENUMBER": "P HONENUMBER",
+      "tRANSACTIONNO": "T RANSACTIONNO",
+      "aCCOUNTNUMBER": "A CCOUNTNUMBER",
+      "mESSAGE": "M ESSAGE",
+      "cHANNEL": "C HANNEL",
+      "tRIALS": "T RIALS",
+      "pRIORITY": "P RIORITY",
+      "rESPONSECODE": "R ESPONSECODE",
+      "rESPONSEMSG": "R ESPONSEMSG",
+      "sENT": "S ENT",
+      "dELIVERED": "D ELIVERED",
+      "tXNTYPE": "T XNTYPE",
+      "eRROREXCEPTION": "E RROREXCEPTION",
+      "dATECREATED": "D ATECREATED",
+      "dATESENT": "D ATESENT",
+      "rTPSREQTIME": "R TPSREQTIME",
+      "fXGENERATED": "F XGENERATED",
+      "tAXPROCESSED": "T AXPROCESSED",
+      "bATCHNUMBER": "B ATCHNUMBER",
+      "bATCHNUMBERTAX": "B ATCHNUMBERTAX",
+      "rESPONSETIME": "R ESPONSETIME",
+      "pDUSEQID": "P DUSEQID",
+      "rEMARKS": "R EMARKS",
+      "rESENDBY": "R ESENDBY"
+    }
+  }
+}

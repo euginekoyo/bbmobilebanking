@@ -1,0 +1,133 @@
+{
+  "annotations": {
+    "changelogDate": "20250117142905"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "mOBILENUMBER",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "aCCOUNTNO",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "cURRENCY",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "cIF",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "rEQUESTTYPE",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "rEQUESTCHARGE",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "rEQUESTSTATUS",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "dATEREQUESTED",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "tRNREFNO",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "nOOFBOOKS",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nOOFLEAVES",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "aPPROVED",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "cHANNEL",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "10"
+    },
+    {
+      "fieldName": "aPPROVEDBY",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "aPPROVEDON",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "cHECKERREMARKS",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "200"
+    },
+    {
+      "fieldName": "rESPCODE",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "rESPDESCRIPTION",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "200"
+    },
+    {
+      "fieldName": "dATERESPONDED",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "cUSTOMERNAME",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "150"
+    },
+    {
+      "fieldName": "rEJECTED",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "rEJECTEDBY",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "rEJECTEDON",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "REQUESTS",
+  "relationships": [],
+  "searchEngine": "no"
+}

@@ -1,0 +1,46 @@
+{
+  "bbMobileBankingAdminApp": {
+    "rEQUESTS": {
+      "home": {
+        "title": "REQUESTS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new REQUESTS",
+        "createOrEditLabel": "Create or edit a REQUESTS",
+        "notFound": "No REQUESTS found"
+      },
+      "created": "A new REQUESTS is created with identifier {{ param }}",
+      "updated": "A REQUESTS is updated with identifier {{ param }}",
+      "deleted": "A REQUESTS is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete REQUESTS {{ id }}?"
+      },
+      "detail": {
+        "title": "REQUESTS"
+      },
+      "id": "ID",
+      "mOBILENUMBER": "M OBILENUMBER",
+      "aCCOUNTNO": "A CCOUNTNO",
+      "cURRENCY": "C URRENCY",
+      "cIF": "C IF",
+      "rEQUESTTYPE": "R EQUESTTYPE",
+      "rEQUESTCHARGE": "R EQUESTCHARGE",
+      "rEQUESTSTATUS": "R EQUESTSTATUS",
+      "dATEREQUESTED": "D ATEREQUESTED",
+      "tRNREFNO": "T RNREFNO",
+      "nOOFBOOKS": "N OOFBOOKS",
+      "nOOFLEAVES": "N OOFLEAVES",
+      "aPPROVED": "A PPROVED",
+      "cHANNEL": "C HANNEL",
+      "aPPROVEDBY": "A PPROVEDBY",
+      "aPPROVEDON": "A PPROVEDON",
+      "cHECKERREMARKS": "C HECKERREMARKS",
+      "rESPCODE": "R ESPCODE",
+      "rESPDESCRIPTION": "R ESPDESCRIPTION",
+      "dATERESPONDED": "D ATERESPONDED",
+      "cUSTOMERNAME": "C USTOMERNAME",
+      "rEJECTED": "R EJECTED",
+      "rEJECTEDBY": "R EJECTEDBY",
+      "rEJECTEDON": "R EJECTEDON"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "bbMobileBankingAdminApp": {
+    "cHARGE": {
+      "home": {
+        "title": "CHARGES",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new CHARGE",
+        "createOrEditLabel": "Create or edit a CHARGE",
+        "notFound": "No CHARGES found"
+      },
+      "created": "A new CHARGE is created with identifier {{ param }}",
+      "updated": "A CHARGE is updated with identifier {{ param }}",
+      "deleted": "A CHARGE is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete CHARGE {{ id }}?"
+      },
+      "detail": {
+        "title": "CHARGE"
+      },
+      "id": "ID",
+      "tXNTYPE": "T XNTYPE",
+      "fEEMODE": "F EEMODE",
+      "aMOUNT": "A MOUNT",
+      "dATECREATED": "D ATECREATED",
+      "cREATEDBY": "C REATEDBY",
+      "aPPROVED": "A PPROVED",
+      "aPPROVEDBY": "A PPROVEDBY",
+      "cHANNEL": "C HANNEL",
+      "tXNCODE": "T XNCODE",
+      "dESCRIPTION": "D ESCRIPTION",
+      "aPPROVEDDATE": "A PPROVEDDATE",
+      "cHARGERANGES": "C HARGERANGES",
+      "rANGE": "R ANGE"
+    }
+  }
+}

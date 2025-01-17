@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20250117142902"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "mESSAGETYPE",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "dESCRIPTION",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "200"
+    },
+    {
+      "fieldName": "mESSAGEENGLISH",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "4000"
+    },
+    {
+      "fieldName": "mESSAGESOMALI",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "4000"
+    },
+    {
+      "fieldName": "cREATEDON",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "MESSAGETEMPLATES",
+  "relationships": [],
+  "searchEngine": "no"
+}

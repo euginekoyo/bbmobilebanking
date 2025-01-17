@@ -7,7 +7,23 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
-        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+        "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+        "billers": "BILLERS",
+        "branches": "BRANCHES",
+        "channels": "CHANNELS",
+        "charge": "CHARGE",
+        "chargeranges": "CHARGERANGES",
+        "customer": "CUSTOMER",
+        "customeraccount": "CUSTOMERACCOUNT",
+        "limits": "LIMITS",
+        "linkedaccounts": "LINKEDACCOUNTS",
+        "messagessms": "MESSAGESSMS",
+        "messagetemplates": "MESSAGETEMPLATES",
+        "pinresethistory": "PINRESETHISTORY",
+        "range": "RANGE",
+        "requests": "REQUESTS",
+        "servicemanagement": "SERVICEMANAGEMENT",
+        "transactions": "TRANSACTIONS"
       },
       "account": {
         "main": "Account",

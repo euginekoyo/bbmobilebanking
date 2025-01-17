@@ -50,6 +50,24 @@ public class CacheConfiguration {
             createCache(cm, com.istl.app.domain.User.class.getName());
             createCache(cm, com.istl.app.domain.Authority.class.getName());
             createCache(cm, com.istl.app.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.istl.app.domain.BILLERS.class.getName());
+            createCache(cm, com.istl.app.domain.BRANCHES.class.getName());
+            createCache(cm, com.istl.app.domain.CHANNELS.class.getName());
+            createCache(cm, com.istl.app.domain.CHARGE.class.getName());
+            createCache(cm, com.istl.app.domain.CHARGERANGES.class.getName());
+            createCache(cm, com.istl.app.domain.CHARGERANGES.class.getName() + ".cHARGEIDS");
+            createCache(cm, com.istl.app.domain.CUSTOMER.class.getName());
+            createCache(cm, com.istl.app.domain.CUSTOMERACCOUNT.class.getName());
+            createCache(cm, com.istl.app.domain.LIMITS.class.getName());
+            createCache(cm, com.istl.app.domain.LINKEDACCOUNTS.class.getName());
+            createCache(cm, com.istl.app.domain.MESSAGESSMS.class.getName());
+            createCache(cm, com.istl.app.domain.MESSAGETEMPLATES.class.getName());
+            createCache(cm, com.istl.app.domain.PINRESETHISTORY.class.getName());
+            createCache(cm, com.istl.app.domain.RANGE.class.getName());
+            createCache(cm, com.istl.app.domain.RANGE.class.getName() + ".cHARGEIDS");
+            createCache(cm, com.istl.app.domain.REQUESTS.class.getName());
+            createCache(cm, com.istl.app.domain.SERVICEMANAGEMENT.class.getName());
+            createCache(cm, com.istl.app.domain.TRANSACTIONS.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

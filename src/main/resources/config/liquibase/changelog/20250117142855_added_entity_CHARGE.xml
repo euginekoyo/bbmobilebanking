@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity CHARGE.
+    -->
+    <changeSet id="20250117142855-1" author="jhipster">
+        <createTable tableName="charge">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="t_xntype" type="varchar(150)">
+                <constraints nullable="false" />
+            </column>
+            <column name="f_eemode" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="a_mount" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="d_atecreated" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="c_reatedby" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="a_pproved" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="a_pprovedby" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="c_hannel" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="t_xncode" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="d_escription" type="varchar(64)">
+                <constraints nullable="true" />
+            </column>
+            <column name="a_pproveddate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="chargeranges_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="range_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="charge" columnName="d_atecreated" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="charge" columnName="a_pproveddate" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20250117142855-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/charge.csv"
+                  separator=";"
+                  tableName="charge"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="t_xntype" type="string"/>
+            <column name="f_eemode" type="numeric"/>
+            <column name="a_mount" type="numeric"/>
+            <column name="d_atecreated" type="date"/>
+            <column name="c_reatedby" type="string"/>
+            <column name="a_pproved" type="string"/>
+            <column name="a_pprovedby" type="string"/>
+            <column name="c_hannel" type="string"/>
+            <column name="t_xncode" type="numeric"/>
+            <column name="d_escription" type="string"/>
+            <column name="a_pproveddate" type="date"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

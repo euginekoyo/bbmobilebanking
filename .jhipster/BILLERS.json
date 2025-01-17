@@ -1,0 +1,105 @@
+{
+  "annotations": {
+    "changelogDate": "20250117142852"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "bILLERID",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "dESCRIPTION",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "bILLERCOLLECTIONACCOUNT",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "dATECREATED",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "cREATEDBY",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "aPPROVED",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "aPPROVEDBY",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "aPPROVEDDATE",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "cHARGABLEPRODUCTID",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "25"
+    },
+    {
+      "fieldName": "nONCHARGABLEPRODUCTID",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "25"
+    },
+    {
+      "fieldName": "uSDBILLERCOLLECTIONACCOUNT",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "20"
+    },
+    {
+      "fieldName": "eNABLEDUPLICATECHECK",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "rEMARKS",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "250"
+    },
+    {
+      "fieldName": "sESSIONID",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "rEWORKBY",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "sTATUS",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "aCTIVE",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "rEWORK",
+      "fieldType": "Long"
+    }
+  ],
+  "name": "BILLERS",
+  "relationships": [],
+  "searchEngine": "no"
+}

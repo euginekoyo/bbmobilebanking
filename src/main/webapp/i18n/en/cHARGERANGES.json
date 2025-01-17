@@ -1,0 +1,37 @@
+{
+  "bbMobileBankingAdminApp": {
+    "cHARGERANGES": {
+      "home": {
+        "title": "CHARGERANGES",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new CHARGERANGES",
+        "createOrEditLabel": "Create or edit a CHARGERANGES",
+        "notFound": "No CHARGERANGES found"
+      },
+      "created": "A new CHARGERANGES is created with identifier {{ param }}",
+      "updated": "A CHARGERANGES is updated with identifier {{ param }}",
+      "deleted": "A CHARGERANGES is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete CHARGERANGES {{ id }}?"
+      },
+      "detail": {
+        "title": "CHARGERANGES"
+      },
+      "id": "ID",
+      "bILLERID": "B ILLERID",
+      "pROCESSINGCODE": "P ROCESSINGCODE",
+      "mAX": "M AX",
+      "mIN": "M IN",
+      "aMOUNT": "A MOUNT",
+      "cREATEDBY": "C REATEDBY",
+      "aPPROVEDBY": "A PPROVEDBY",
+      "cREATEDAT": "C REATEDAT",
+      "aPPROVEDON": "A PPROVEDON",
+      "aPPROVED": "A PPROVED",
+      "dECLINED": "D ECLINED",
+      "dECLINEDBY": "D ECLINEDBY",
+      "cHARGEID": "C HARGEID",
+      "cHARGEID": "C HARGEID"
+    }
+  }
+}
