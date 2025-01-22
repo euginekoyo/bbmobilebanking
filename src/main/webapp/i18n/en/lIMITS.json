@@ -1,38 +1,38 @@
 {
   "bbMobileBankingAdminApp": {
-    "lIMITS": {
+    "limits": {
       "home": {
-        "title": "LIMITS",
+        "title": "Limits",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new LIMITS",
-        "createOrEditLabel": "Create or edit a LIMITS",
-        "notFound": "No LIMITS found"
+        "createLabel": "Create a new Limits",
+        "createOrEditLabel": "Create or edit a Limits",
+        "notFound": "No Limits found"
       },
-      "created": "A new LIMITS is created with identifier {{ param }}",
-      "updated": "A LIMITS is updated with identifier {{ param }}",
-      "deleted": "A LIMITS is deleted with identifier {{ param }}",
+      "created": "A new Limits is created with identifier { param }",
+      "updated": "A Limits is updated with identifier { param }",
+      "deleted": "A Limits is deleted with identifier { param }",
       "delete": {
-        "question": "Are you sure you want to delete LIMITS {{ id }}?"
+        "question": "Are you sure you want to delete Limits { id }?"
       },
       "detail": {
-        "title": "LIMITS"
+        "title": "Limits"
       },
       "id": "ID",
-      "tRANSACTIONTYPE": "T RANSACTIONTYPE",
-      "pROCODE": "P ROCODE",
-      "cHANNEL": "C HANNEL",
-      "tRANSACTIONLIMIT": "T RANSACTIONLIMIT",
-      "dAILYLIMIT": "D AILYLIMIT",
-      "rEGISTEREDBY": "R EGISTEREDBY",
-      "rEGISTEREDDATE": "R EGISTEREDDATE",
-      "aPPROVED": "A PPROVED",
-      "aPPROVEDBY": "A PPROVEDBY",
-      "aPPROVEDDATE": "A PPROVEDDATE",
-      "uPDATEDBY": "U PDATEDBY",
-      "uPDATEDDATE": "U PDATEDDATE",
-      "rEWORK": "R EWORK",
-      "rEWORKBY": "R EWORKBY",
-      "sESSIONID": "S ESSIONID"
+      "transactiontype": "Transactiontype",
+      "procode": "Procode",
+      "channel": "Channel",
+      "transactionlimit": "Transactionlimit",
+      "dailylimit": "Dailylimit",
+      "registeredby": "Registeredby",
+      "registereddate": "Registereddate",
+      "approved": "Approved",
+      "approvedby": "Approvedby",
+      "approveddate": "Approveddate",
+      "updatedby": "Updatedby",
+      "updateddate": "Updateddate",
+      "rework": "Rework",
+      "reworkby": "Reworkby",
+      "sessionid": "Sessionid"
     }
   }
 }

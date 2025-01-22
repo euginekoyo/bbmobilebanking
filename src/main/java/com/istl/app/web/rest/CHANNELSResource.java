@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.CHANNELS;
-import com.istl.app.repository.CHANNELSRepository;
+import com.istl.app.domain.Channels;
+import com.istl.app.repository.ChannelsRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,163 +20,163 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.CHANNELS}.
+ * REST controller for managing {@link com.istl.app.domain.Channels}.
  */
 @RestController
 @RequestMapping("/api/channels")
 @Transactional
-public class CHANNELSResource {
+public class ChannelsResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CHANNELSResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ChannelsResource.class);
 
-    private static final String ENTITY_NAME = "cHANNELS";
+    private static final String ENTITY_NAME = "channels";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final CHANNELSRepository cHANNELSRepository;
+    private final ChannelsRepository channelsRepository;
 
-    public CHANNELSResource(CHANNELSRepository cHANNELSRepository) {
-        this.cHANNELSRepository = cHANNELSRepository;
+    public ChannelsResource(ChannelsRepository channelsRepository) {
+        this.channelsRepository = channelsRepository;
     }
 
     /**
-     * {@code POST  /channels} : Create a new cHANNELS.
+     * {@code POST  /channels} : Create a new channels.
      *
-     * @param cHANNELS the cHANNELS to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new cHANNELS, or with status {@code 400 (Bad Request)} if the cHANNELS has already an ID.
+     * @param channels the channels to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new channels, or with status {@code 400 (Bad Request)} if the channels has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<CHANNELS> createCHANNELS(@Valid @RequestBody CHANNELS cHANNELS) throws URISyntaxException {
-        LOG.debug("REST request to save CHANNELS : {}", cHANNELS);
-        if (cHANNELS.getId() != null) {
-            throw new BadRequestAlertException("A new cHANNELS cannot already have an ID", ENTITY_NAME, "idexists");
+    public ResponseEntity<Channels> createChannels(@Valid @RequestBody Channels channels) throws URISyntaxException {
+        LOG.debug("REST request to save Channels : {}", channels);
+        if (channels.getId() != null) {
+            throw new BadRequestAlertException("A new channels cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        cHANNELS = cHANNELSRepository.save(cHANNELS);
-        return ResponseEntity.created(new URI("/api/channels/" + cHANNELS.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, cHANNELS.getId().toString()))
-            .body(cHANNELS);
+        channels = channelsRepository.save(channels);
+        return ResponseEntity.created(new URI("/api/channels/" + channels.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, channels.getId().toString()))
+            .body(channels);
     }
 
     /**
-     * {@code PUT  /channels/:id} : Updates an existing cHANNELS.
+     * {@code PUT  /channels/:id} : Updates an existing channels.
      *
-     * @param id the id of the cHANNELS to save.
-     * @param cHANNELS the cHANNELS to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated cHANNELS,
-     * or with status {@code 400 (Bad Request)} if the cHANNELS is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the cHANNELS couldn't be updated.
+     * @param id the id of the channels to save.
+     * @param channels the channels to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated channels,
+     * or with status {@code 400 (Bad Request)} if the channels is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the channels couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<CHANNELS> updateCHANNELS(
+    public ResponseEntity<Channels> updateChannels(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody CHANNELS cHANNELS
+        @Valid @RequestBody Channels channels
     ) throws URISyntaxException {
-        LOG.debug("REST request to update CHANNELS : {}, {}", id, cHANNELS);
-        if (cHANNELS.getId() == null) {
+        LOG.debug("REST request to update Channels : {}, {}", id, channels);
+        if (channels.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, cHANNELS.getId())) {
+        if (!Objects.equals(id, channels.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!cHANNELSRepository.existsById(id)) {
+        if (!channelsRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        cHANNELS = cHANNELSRepository.save(cHANNELS);
+        channels = channelsRepository.save(channels);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, cHANNELS.getId().toString()))
-            .body(cHANNELS);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, channels.getId().toString()))
+            .body(channels);
     }
 
     /**
-     * {@code PATCH  /channels/:id} : Partial updates given fields of an existing cHANNELS, field will ignore if it is null
+     * {@code PATCH  /channels/:id} : Partial updates given fields of an existing channels, field will ignore if it is null
      *
-     * @param id the id of the cHANNELS to save.
-     * @param cHANNELS the cHANNELS to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated cHANNELS,
-     * or with status {@code 400 (Bad Request)} if the cHANNELS is not valid,
-     * or with status {@code 404 (Not Found)} if the cHANNELS is not found,
-     * or with status {@code 500 (Internal Server Error)} if the cHANNELS couldn't be updated.
+     * @param id the id of the channels to save.
+     * @param channels the channels to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated channels,
+     * or with status {@code 400 (Bad Request)} if the channels is not valid,
+     * or with status {@code 404 (Not Found)} if the channels is not found,
+     * or with status {@code 500 (Internal Server Error)} if the channels couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<CHANNELS> partialUpdateCHANNELS(
+    public ResponseEntity<Channels> partialUpdateChannels(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody CHANNELS cHANNELS
+        @NotNull @RequestBody Channels channels
     ) throws URISyntaxException {
-        LOG.debug("REST request to partial update CHANNELS partially : {}, {}", id, cHANNELS);
-        if (cHANNELS.getId() == null) {
+        LOG.debug("REST request to partial update Channels partially : {}, {}", id, channels);
+        if (channels.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, cHANNELS.getId())) {
+        if (!Objects.equals(id, channels.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!cHANNELSRepository.existsById(id)) {
+        if (!channelsRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<CHANNELS> result = cHANNELSRepository
-            .findById(cHANNELS.getId())
-            .map(existingCHANNELS -> {
-                if (cHANNELS.getcHANNEL() != null) {
-                    existingCHANNELS.setcHANNEL(cHANNELS.getcHANNEL());
+        Optional<Channels> result = channelsRepository
+            .findById(channels.getId())
+            .map(existingChannels -> {
+                if (channels.getChannel() != null) {
+                    existingChannels.setChannel(channels.getChannel());
                 }
-                if (cHANNELS.getdESCRIPTION() != null) {
-                    existingCHANNELS.setdESCRIPTION(cHANNELS.getdESCRIPTION());
+                if (channels.getDescription() != null) {
+                    existingChannels.setDescription(channels.getDescription());
                 }
-                if (cHANNELS.getbIN() != null) {
-                    existingCHANNELS.setbIN(cHANNELS.getbIN());
+                if (channels.getBin() != null) {
+                    existingChannels.setBin(channels.getBin());
                 }
 
-                return existingCHANNELS;
+                return existingChannels;
             })
-            .map(cHANNELSRepository::save);
+            .map(channelsRepository::save);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, cHANNELS.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, channels.getId().toString())
         );
     }
 
     /**
-     * {@code GET  /channels} : get all the cHANNELS.
+     * {@code GET  /channels} : get all the channels.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of cHANNELS in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of channels in body.
      */
     @GetMapping("")
-    public List<CHANNELS> getAllCHANNELS() {
-        LOG.debug("REST request to get all CHANNELS");
-        return cHANNELSRepository.findAll();
+    public List<Channels> getAllChannels() {
+        LOG.debug("REST request to get all Channels");
+        return channelsRepository.findAll();
     }
 
     /**
-     * {@code GET  /channels/:id} : get the "id" cHANNELS.
+     * {@code GET  /channels/:id} : get the "id" channels.
      *
-     * @param id the id of the cHANNELS to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the cHANNELS, or with status {@code 404 (Not Found)}.
+     * @param id the id of the channels to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the channels, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<CHANNELS> getCHANNELS(@PathVariable("id") Long id) {
-        LOG.debug("REST request to get CHANNELS : {}", id);
-        Optional<CHANNELS> cHANNELS = cHANNELSRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(cHANNELS);
+    public ResponseEntity<Channels> getChannels(@PathVariable("id") Long id) {
+        LOG.debug("REST request to get Channels : {}", id);
+        Optional<Channels> channels = channelsRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(channels);
     }
 
     /**
-     * {@code DELETE  /channels/:id} : delete the "id" cHANNELS.
+     * {@code DELETE  /channels/:id} : delete the "id" channels.
      *
-     * @param id the id of the cHANNELS to delete.
+     * @param id the id of the channels to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCHANNELS(@PathVariable("id") Long id) {
-        LOG.debug("REST request to delete CHANNELS : {}", id);
-        cHANNELSRepository.deleteById(id);
+    public ResponseEntity<Void> deleteChannels(@PathVariable("id") Long id) {
+        LOG.debug("REST request to delete Channels : {}", id);
+        channelsRepository.deleteById(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();

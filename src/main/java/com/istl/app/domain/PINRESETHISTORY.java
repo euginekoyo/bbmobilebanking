@@ -7,13 +7,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A PINRESETHISTORY.
+ * A PinResetHistory.
  */
 @Entity
-@Table(name = "pinresethistory")
+@Table(name = "pin_reset_history")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class PINRESETHISTORY implements Serializable {
+public class PinResetHistory implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,44 +24,44 @@ public class PINRESETHISTORY implements Serializable {
     private Long id;
 
     @Size(max = 20)
-    @Column(name = "p_honenumber", length = 20)
-    private String pHONENUMBER;
+    @Column(name = "phonenumber", length = 20)
+    private String phonenumber;
 
     @Size(max = 150)
-    @Column(name = "c_ustomername", length = 150)
-    private String cUSTOMERNAME;
+    @Column(name = "customername", length = 150)
+    private String customername;
 
     @Size(max = 50)
-    @Column(name = "p_inblockedon", length = 50)
-    private String pINBLOCKEDON;
+    @Column(name = "pinblockedon", length = 50)
+    private String pinblockedon;
 
     @Size(max = 200)
-    @Column(name = "p_inblockremarks", length = 200)
-    private String pINBLOCKREMARKS;
+    @Column(name = "pinblockremarks", length = 200)
+    private String pinblockremarks;
 
     @Size(max = 50)
-    @Column(name = "p_inresetby", length = 50)
-    private String pINRESETBY;
+    @Column(name = "pinresetby", length = 50)
+    private String pinresetby;
 
     @Size(max = 50)
-    @Column(name = "p_inreseton", length = 50)
-    private String pINRESETON;
+    @Column(name = "pinreseton", length = 50)
+    private String pinreseton;
 
     @Size(max = 50)
-    @Column(name = "p_inresetapprovedby", length = 50)
-    private String pINRESETAPPROVEDBY;
+    @Column(name = "pinresetapprovedby", length = 50)
+    private String pinresetapprovedby;
 
     @Size(max = 50)
-    @Column(name = "p_inresetapprovedon", length = 50)
-    private String pINRESETAPPROVEDON;
+    @Column(name = "pinresetapprovedon", length = 50)
+    private String pinresetapprovedon;
 
     @Size(max = 200)
-    @Column(name = "p_inresetremarks", length = 200)
-    private String pINRESETREMARKS;
+    @Column(name = "pinresetremarks", length = 200)
+    private String pinresetremarks;
 
     @Size(max = 20)
-    @Column(name = "b_ranchcode", length = 20)
-    private String bRANCHCODE;
+    @Column(name = "branchcode", length = 20)
+    private String branchcode;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -69,7 +69,7 @@ public class PINRESETHISTORY implements Serializable {
         return this.id;
     }
 
-    public PINRESETHISTORY id(Long id) {
+    public PinResetHistory id(Long id) {
         this.setId(id);
         return this;
     }
@@ -78,134 +78,134 @@ public class PINRESETHISTORY implements Serializable {
         this.id = id;
     }
 
-    public String getpHONENUMBER() {
-        return this.pHONENUMBER;
+    public String getPhonenumber() {
+        return this.phonenumber;
     }
 
-    public PINRESETHISTORY pHONENUMBER(String pHONENUMBER) {
-        this.setpHONENUMBER(pHONENUMBER);
+    public PinResetHistory phonenumber(String phonenumber) {
+        this.setPhonenumber(phonenumber);
         return this;
     }
 
-    public void setpHONENUMBER(String pHONENUMBER) {
-        this.pHONENUMBER = pHONENUMBER;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
-    public String getcUSTOMERNAME() {
-        return this.cUSTOMERNAME;
+    public String getCustomername() {
+        return this.customername;
     }
 
-    public PINRESETHISTORY cUSTOMERNAME(String cUSTOMERNAME) {
-        this.setcUSTOMERNAME(cUSTOMERNAME);
+    public PinResetHistory customername(String customername) {
+        this.setCustomername(customername);
         return this;
     }
 
-    public void setcUSTOMERNAME(String cUSTOMERNAME) {
-        this.cUSTOMERNAME = cUSTOMERNAME;
+    public void setCustomername(String customername) {
+        this.customername = customername;
     }
 
-    public String getpINBLOCKEDON() {
-        return this.pINBLOCKEDON;
+    public String getPinblockedon() {
+        return this.pinblockedon;
     }
 
-    public PINRESETHISTORY pINBLOCKEDON(String pINBLOCKEDON) {
-        this.setpINBLOCKEDON(pINBLOCKEDON);
+    public PinResetHistory pinblockedon(String pinblockedon) {
+        this.setPinblockedon(pinblockedon);
         return this;
     }
 
-    public void setpINBLOCKEDON(String pINBLOCKEDON) {
-        this.pINBLOCKEDON = pINBLOCKEDON;
+    public void setPinblockedon(String pinblockedon) {
+        this.pinblockedon = pinblockedon;
     }
 
-    public String getpINBLOCKREMARKS() {
-        return this.pINBLOCKREMARKS;
+    public String getPinblockremarks() {
+        return this.pinblockremarks;
     }
 
-    public PINRESETHISTORY pINBLOCKREMARKS(String pINBLOCKREMARKS) {
-        this.setpINBLOCKREMARKS(pINBLOCKREMARKS);
+    public PinResetHistory pinblockremarks(String pinblockremarks) {
+        this.setPinblockremarks(pinblockremarks);
         return this;
     }
 
-    public void setpINBLOCKREMARKS(String pINBLOCKREMARKS) {
-        this.pINBLOCKREMARKS = pINBLOCKREMARKS;
+    public void setPinblockremarks(String pinblockremarks) {
+        this.pinblockremarks = pinblockremarks;
     }
 
-    public String getpINRESETBY() {
-        return this.pINRESETBY;
+    public String getPinresetby() {
+        return this.pinresetby;
     }
 
-    public PINRESETHISTORY pINRESETBY(String pINRESETBY) {
-        this.setpINRESETBY(pINRESETBY);
+    public PinResetHistory pinresetby(String pinresetby) {
+        this.setPinresetby(pinresetby);
         return this;
     }
 
-    public void setpINRESETBY(String pINRESETBY) {
-        this.pINRESETBY = pINRESETBY;
+    public void setPinresetby(String pinresetby) {
+        this.pinresetby = pinresetby;
     }
 
-    public String getpINRESETON() {
-        return this.pINRESETON;
+    public String getPinreseton() {
+        return this.pinreseton;
     }
 
-    public PINRESETHISTORY pINRESETON(String pINRESETON) {
-        this.setpINRESETON(pINRESETON);
+    public PinResetHistory pinreseton(String pinreseton) {
+        this.setPinreseton(pinreseton);
         return this;
     }
 
-    public void setpINRESETON(String pINRESETON) {
-        this.pINRESETON = pINRESETON;
+    public void setPinreseton(String pinreseton) {
+        this.pinreseton = pinreseton;
     }
 
-    public String getpINRESETAPPROVEDBY() {
-        return this.pINRESETAPPROVEDBY;
+    public String getPinresetapprovedby() {
+        return this.pinresetapprovedby;
     }
 
-    public PINRESETHISTORY pINRESETAPPROVEDBY(String pINRESETAPPROVEDBY) {
-        this.setpINRESETAPPROVEDBY(pINRESETAPPROVEDBY);
+    public PinResetHistory pinresetapprovedby(String pinresetapprovedby) {
+        this.setPinresetapprovedby(pinresetapprovedby);
         return this;
     }
 
-    public void setpINRESETAPPROVEDBY(String pINRESETAPPROVEDBY) {
-        this.pINRESETAPPROVEDBY = pINRESETAPPROVEDBY;
+    public void setPinresetapprovedby(String pinresetapprovedby) {
+        this.pinresetapprovedby = pinresetapprovedby;
     }
 
-    public String getpINRESETAPPROVEDON() {
-        return this.pINRESETAPPROVEDON;
+    public String getPinresetapprovedon() {
+        return this.pinresetapprovedon;
     }
 
-    public PINRESETHISTORY pINRESETAPPROVEDON(String pINRESETAPPROVEDON) {
-        this.setpINRESETAPPROVEDON(pINRESETAPPROVEDON);
+    public PinResetHistory pinresetapprovedon(String pinresetapprovedon) {
+        this.setPinresetapprovedon(pinresetapprovedon);
         return this;
     }
 
-    public void setpINRESETAPPROVEDON(String pINRESETAPPROVEDON) {
-        this.pINRESETAPPROVEDON = pINRESETAPPROVEDON;
+    public void setPinresetapprovedon(String pinresetapprovedon) {
+        this.pinresetapprovedon = pinresetapprovedon;
     }
 
-    public String getpINRESETREMARKS() {
-        return this.pINRESETREMARKS;
+    public String getPinresetremarks() {
+        return this.pinresetremarks;
     }
 
-    public PINRESETHISTORY pINRESETREMARKS(String pINRESETREMARKS) {
-        this.setpINRESETREMARKS(pINRESETREMARKS);
+    public PinResetHistory pinresetremarks(String pinresetremarks) {
+        this.setPinresetremarks(pinresetremarks);
         return this;
     }
 
-    public void setpINRESETREMARKS(String pINRESETREMARKS) {
-        this.pINRESETREMARKS = pINRESETREMARKS;
+    public void setPinresetremarks(String pinresetremarks) {
+        this.pinresetremarks = pinresetremarks;
     }
 
-    public String getbRANCHCODE() {
-        return this.bRANCHCODE;
+    public String getBranchcode() {
+        return this.branchcode;
     }
 
-    public PINRESETHISTORY bRANCHCODE(String bRANCHCODE) {
-        this.setbRANCHCODE(bRANCHCODE);
+    public PinResetHistory branchcode(String branchcode) {
+        this.setBranchcode(branchcode);
         return this;
     }
 
-    public void setbRANCHCODE(String bRANCHCODE) {
-        this.bRANCHCODE = bRANCHCODE;
+    public void setBranchcode(String branchcode) {
+        this.branchcode = branchcode;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -215,10 +215,10 @@ public class PINRESETHISTORY implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof PINRESETHISTORY)) {
+        if (!(o instanceof PinResetHistory)) {
             return false;
         }
-        return getId() != null && getId().equals(((PINRESETHISTORY) o).getId());
+        return getId() != null && getId().equals(((PinResetHistory) o).getId());
     }
 
     @Override
@@ -230,18 +230,18 @@ public class PINRESETHISTORY implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "PINRESETHISTORY{" +
+        return "PinResetHistory{" +
             "id=" + getId() +
-            ", pHONENUMBER='" + getpHONENUMBER() + "'" +
-            ", cUSTOMERNAME='" + getcUSTOMERNAME() + "'" +
-            ", pINBLOCKEDON='" + getpINBLOCKEDON() + "'" +
-            ", pINBLOCKREMARKS='" + getpINBLOCKREMARKS() + "'" +
-            ", pINRESETBY='" + getpINRESETBY() + "'" +
-            ", pINRESETON='" + getpINRESETON() + "'" +
-            ", pINRESETAPPROVEDBY='" + getpINRESETAPPROVEDBY() + "'" +
-            ", pINRESETAPPROVEDON='" + getpINRESETAPPROVEDON() + "'" +
-            ", pINRESETREMARKS='" + getpINRESETREMARKS() + "'" +
-            ", bRANCHCODE='" + getbRANCHCODE() + "'" +
+            ", phonenumber='" + getPhonenumber() + "'" +
+            ", customername='" + getCustomername() + "'" +
+            ", pinblockedon='" + getPinblockedon() + "'" +
+            ", pinblockremarks='" + getPinblockremarks() + "'" +
+            ", pinresetby='" + getPinresetby() + "'" +
+            ", pinreseton='" + getPinreseton() + "'" +
+            ", pinresetapprovedby='" + getPinresetapprovedby() + "'" +
+            ", pinresetapprovedon='" + getPinresetapprovedon() + "'" +
+            ", pinresetremarks='" + getPinresetremarks() + "'" +
+            ", branchcode='" + getBranchcode() + "'" +
             "}";
     }
 }

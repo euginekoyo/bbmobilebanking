@@ -1,12 +1,12 @@
 package com.istl.app.repository;
 
-import com.istl.app.domain.SERVICEMANAGEMENT;
+import com.istl.app.domain.ServiceManagement;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 /**
- * Spring Data JPA repository for the SERVICEMANAGEMENT entity.
+ * Spring Data JPA repository for the ServiceManagement entity.
  */
 @SuppressWarnings("unused")
 @Repository
-public interface SERVICEMANAGEMENTRepository extends JpaRepository<SERVICEMANAGEMENT, Long> {}
+public interface ServiceManagementRepository extends JpaRepository<ServiceManagement, Long> {}

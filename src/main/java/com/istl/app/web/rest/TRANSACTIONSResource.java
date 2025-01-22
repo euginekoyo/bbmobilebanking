@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.TRANSACTIONS;
-import com.istl.app.repository.TRANSACTIONSRepository;
+import com.istl.app.domain.Transactions;
+import com.istl.app.repository.TransactionsRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,316 +20,316 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.TRANSACTIONS}.
+ * REST controller for managing {@link com.istl.app.domain.Transactions}.
  */
 @RestController
 @RequestMapping("/api/transactions")
 @Transactional
-public class TRANSACTIONSResource {
+public class TransactionsResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TRANSACTIONSResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TransactionsResource.class);
 
-    private static final String ENTITY_NAME = "tRANSACTIONS";
+    private static final String ENTITY_NAME = "transactions";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final TRANSACTIONSRepository tRANSACTIONSRepository;
+    private final TransactionsRepository transactionsRepository;
 
-    public TRANSACTIONSResource(TRANSACTIONSRepository tRANSACTIONSRepository) {
-        this.tRANSACTIONSRepository = tRANSACTIONSRepository;
+    public TransactionsResource(TransactionsRepository transactionsRepository) {
+        this.transactionsRepository = transactionsRepository;
     }
 
     /**
-     * {@code POST  /transactions} : Create a new tRANSACTIONS.
+     * {@code POST  /transactions} : Create a new transactions.
      *
-     * @param tRANSACTIONS the tRANSACTIONS to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new tRANSACTIONS, or with status {@code 400 (Bad Request)} if the tRANSACTIONS has already an ID.
+     * @param transactions the transactions to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new transactions, or with status {@code 400 (Bad Request)} if the transactions has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<TRANSACTIONS> createTRANSACTIONS(@Valid @RequestBody TRANSACTIONS tRANSACTIONS) throws URISyntaxException {
-        LOG.debug("REST request to save TRANSACTIONS : {}", tRANSACTIONS);
-        if (tRANSACTIONS.getId() != null) {
-            throw new BadRequestAlertException("A new tRANSACTIONS cannot already have an ID", ENTITY_NAME, "idexists");
+    public ResponseEntity<Transactions> createTransactions(@Valid @RequestBody Transactions transactions) throws URISyntaxException {
+        LOG.debug("REST request to save Transactions : {}", transactions);
+        if (transactions.getId() != null) {
+            throw new BadRequestAlertException("A new transactions cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        tRANSACTIONS = tRANSACTIONSRepository.save(tRANSACTIONS);
-        return ResponseEntity.created(new URI("/api/transactions/" + tRANSACTIONS.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, tRANSACTIONS.getId().toString()))
-            .body(tRANSACTIONS);
+        transactions = transactionsRepository.save(transactions);
+        return ResponseEntity.created(new URI("/api/transactions/" + transactions.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, transactions.getId().toString()))
+            .body(transactions);
     }
 
     /**
-     * {@code PUT  /transactions/:id} : Updates an existing tRANSACTIONS.
+     * {@code PUT  /transactions/:id} : Updates an existing transactions.
      *
-     * @param id the id of the tRANSACTIONS to save.
-     * @param tRANSACTIONS the tRANSACTIONS to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated tRANSACTIONS,
-     * or with status {@code 400 (Bad Request)} if the tRANSACTIONS is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the tRANSACTIONS couldn't be updated.
+     * @param id the id of the transactions to save.
+     * @param transactions the transactions to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated transactions,
+     * or with status {@code 400 (Bad Request)} if the transactions is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the transactions couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<TRANSACTIONS> updateTRANSACTIONS(
+    public ResponseEntity<Transactions> updateTransactions(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody TRANSACTIONS tRANSACTIONS
+        @Valid @RequestBody Transactions transactions
     ) throws URISyntaxException {
-        LOG.debug("REST request to update TRANSACTIONS : {}, {}", id, tRANSACTIONS);
-        if (tRANSACTIONS.getId() == null) {
+        LOG.debug("REST request to update Transactions : {}, {}", id, transactions);
+        if (transactions.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, tRANSACTIONS.getId())) {
+        if (!Objects.equals(id, transactions.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!tRANSACTIONSRepository.existsById(id)) {
+        if (!transactionsRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        tRANSACTIONS = tRANSACTIONSRepository.save(tRANSACTIONS);
+        transactions = transactionsRepository.save(transactions);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, tRANSACTIONS.getId().toString()))
-            .body(tRANSACTIONS);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, transactions.getId().toString()))
+            .body(transactions);
     }
 
     /**
-     * {@code PATCH  /transactions/:id} : Partial updates given fields of an existing tRANSACTIONS, field will ignore if it is null
+     * {@code PATCH  /transactions/:id} : Partial updates given fields of an existing transactions, field will ignore if it is null
      *
-     * @param id the id of the tRANSACTIONS to save.
-     * @param tRANSACTIONS the tRANSACTIONS to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated tRANSACTIONS,
-     * or with status {@code 400 (Bad Request)} if the tRANSACTIONS is not valid,
-     * or with status {@code 404 (Not Found)} if the tRANSACTIONS is not found,
-     * or with status {@code 500 (Internal Server Error)} if the tRANSACTIONS couldn't be updated.
+     * @param id the id of the transactions to save.
+     * @param transactions the transactions to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated transactions,
+     * or with status {@code 400 (Bad Request)} if the transactions is not valid,
+     * or with status {@code 404 (Not Found)} if the transactions is not found,
+     * or with status {@code 500 (Internal Server Error)} if the transactions couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<TRANSACTIONS> partialUpdateTRANSACTIONS(
+    public ResponseEntity<Transactions> partialUpdateTransactions(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody TRANSACTIONS tRANSACTIONS
+        @NotNull @RequestBody Transactions transactions
     ) throws URISyntaxException {
-        LOG.debug("REST request to partial update TRANSACTIONS partially : {}, {}", id, tRANSACTIONS);
-        if (tRANSACTIONS.getId() == null) {
+        LOG.debug("REST request to partial update Transactions partially : {}, {}", id, transactions);
+        if (transactions.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, tRANSACTIONS.getId())) {
+        if (!Objects.equals(id, transactions.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!tRANSACTIONSRepository.existsById(id)) {
+        if (!transactionsRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<TRANSACTIONS> result = tRANSACTIONSRepository
-            .findById(tRANSACTIONS.getId())
-            .map(existingTRANSACTIONS -> {
-                if (tRANSACTIONS.getpROCESSED() != null) {
-                    existingTRANSACTIONS.setpROCESSED(tRANSACTIONS.getpROCESSED());
+        Optional<Transactions> result = transactionsRepository
+            .findById(transactions.getId())
+            .map(existingTransactions -> {
+                if (transactions.getProcessed() != null) {
+                    existingTransactions.setProcessed(transactions.getProcessed());
                 }
-                if (tRANSACTIONS.getiNCOMINGBITMAP() != null) {
-                    existingTRANSACTIONS.setiNCOMINGBITMAP(tRANSACTIONS.getiNCOMINGBITMAP());
+                if (transactions.getIncomingbitmap() != null) {
+                    existingTransactions.setIncomingbitmap(transactions.getIncomingbitmap());
                 }
-                if (tRANSACTIONS.getoUTGOINGBITMAP() != null) {
-                    existingTRANSACTIONS.setoUTGOINGBITMAP(tRANSACTIONS.getoUTGOINGBITMAP());
+                if (transactions.getOutgoingbitmap() != null) {
+                    existingTransactions.setOutgoingbitmap(transactions.getOutgoingbitmap());
                 }
-                if (tRANSACTIONS.getiNMESSAGE() != null) {
-                    existingTRANSACTIONS.setiNMESSAGE(tRANSACTIONS.getiNMESSAGE());
+                if (transactions.getInmessage() != null) {
+                    existingTransactions.setInmessage(transactions.getInmessage());
                 }
-                if (tRANSACTIONS.getmESSAGETOCBS() != null) {
-                    existingTRANSACTIONS.setmESSAGETOCBS(tRANSACTIONS.getmESSAGETOCBS());
+                if (transactions.getMessagetocbs() != null) {
+                    existingTransactions.setMessagetocbs(transactions.getMessagetocbs());
                 }
-                if (tRANSACTIONS.getmESSAGEFROMCBS() != null) {
-                    existingTRANSACTIONS.setmESSAGEFROMCBS(tRANSACTIONS.getmESSAGEFROMCBS());
+                if (transactions.getMessagefromcbs() != null) {
+                    existingTransactions.setMessagefromcbs(transactions.getMessagefromcbs());
                 }
-                if (tRANSACTIONS.getcBSPROCESS() != null) {
-                    existingTRANSACTIONS.setcBSPROCESS(tRANSACTIONS.getcBSPROCESS());
+                if (transactions.getCbsprocess() != null) {
+                    existingTransactions.setCbsprocess(transactions.getCbsprocess());
                 }
-                if (tRANSACTIONS.getcBSONLINE() != null) {
-                    existingTRANSACTIONS.setcBSONLINE(tRANSACTIONS.getcBSONLINE());
+                if (transactions.getCbsonline() != null) {
+                    existingTransactions.setCbsonline(transactions.getCbsonline());
                 }
-                if (tRANSACTIONS.getcBSRESPONSE() != null) {
-                    existingTRANSACTIONS.setcBSRESPONSE(tRANSACTIONS.getcBSRESPONSE());
+                if (transactions.getCbsresponse() != null) {
+                    existingTransactions.setCbsresponse(transactions.getCbsresponse());
                 }
-                if (tRANSACTIONS.getrESPONSEMESSAGE() != null) {
-                    existingTRANSACTIONS.setrESPONSEMESSAGE(tRANSACTIONS.getrESPONSEMESSAGE());
+                if (transactions.getResponsemessage() != null) {
+                    existingTransactions.setResponsemessage(transactions.getResponsemessage());
                 }
-                if (tRANSACTIONS.getrESPONSESENT() != null) {
-                    existingTRANSACTIONS.setrESPONSESENT(tRANSACTIONS.getrESPONSESENT());
+                if (transactions.getResponsesent() != null) {
+                    existingTransactions.setResponsesent(transactions.getResponsesent());
                 }
-                if (tRANSACTIONS.getcHANNEL() != null) {
-                    existingTRANSACTIONS.setcHANNEL(tRANSACTIONS.getcHANNEL());
+                if (transactions.getChannel() != null) {
+                    existingTransactions.setChannel(transactions.getChannel());
                 }
-                if (tRANSACTIONS.getoRIGINALDATA() != null) {
-                    existingTRANSACTIONS.setoRIGINALDATA(tRANSACTIONS.getoRIGINALDATA());
+                if (transactions.getOriginaldata() != null) {
+                    existingTransactions.setOriginaldata(transactions.getOriginaldata());
                 }
-                if (tRANSACTIONS.getfIELD39RESP() != null) {
-                    existingTRANSACTIONS.setfIELD39RESP(tRANSACTIONS.getfIELD39RESP());
+                if (transactions.getField39resp() != null) {
+                    existingTransactions.setField39resp(transactions.getField39resp());
                 }
-                if (tRANSACTIONS.getnARRATION() != null) {
-                    existingTRANSACTIONS.setnARRATION(tRANSACTIONS.getnARRATION());
+                if (transactions.getNarration() != null) {
+                    existingTransactions.setNarration(transactions.getNarration());
                 }
-                if (tRANSACTIONS.getaUTHORISED() != null) {
-                    existingTRANSACTIONS.setaUTHORISED(tRANSACTIONS.getaUTHORISED());
+                if (transactions.getAuthorised() != null) {
+                    existingTransactions.setAuthorised(transactions.getAuthorised());
                 }
-                if (tRANSACTIONS.getbRANCHCODE() != null) {
-                    existingTRANSACTIONS.setbRANCHCODE(tRANSACTIONS.getbRANCHCODE());
+                if (transactions.getBranchcode() != null) {
+                    existingTransactions.setBranchcode(transactions.getBranchcode());
                 }
-                if (tRANSACTIONS.getfIELD39ORIGINAL() != null) {
-                    existingTRANSACTIONS.setfIELD39ORIGINAL(tRANSACTIONS.getfIELD39ORIGINAL());
+                if (transactions.getField39original() != null) {
+                    existingTransactions.setField39original(transactions.getField39original());
                 }
-                if (tRANSACTIONS.getmESSAGECLASS() != null) {
-                    existingTRANSACTIONS.setmESSAGECLASS(tRANSACTIONS.getmESSAGECLASS());
+                if (transactions.getMessageclass() != null) {
+                    existingTransactions.setMessageclass(transactions.getMessageclass());
                 }
-                if (tRANSACTIONS.gettXNCODE() != null) {
-                    existingTRANSACTIONS.settXNCODE(tRANSACTIONS.gettXNCODE());
+                if (transactions.getTxncode() != null) {
+                    existingTransactions.setTxncode(transactions.getTxncode());
                 }
-                if (tRANSACTIONS.getcURRCODE() != null) {
-                    existingTRANSACTIONS.setcURRCODE(tRANSACTIONS.getcURRCODE());
+                if (transactions.getCurrcode() != null) {
+                    existingTransactions.setCurrcode(transactions.getCurrcode());
                 }
-                if (tRANSACTIONS.getdEVICE() != null) {
-                    existingTRANSACTIONS.setdEVICE(tRANSACTIONS.getdEVICE());
+                if (transactions.getDevice() != null) {
+                    existingTransactions.setDevice(transactions.getDevice());
                 }
-                if (tRANSACTIONS.getbRANCH2() != null) {
-                    existingTRANSACTIONS.setbRANCH2(tRANSACTIONS.getbRANCH2());
+                if (transactions.getBranch2() != null) {
+                    existingTransactions.setBranch2(transactions.getBranch2());
                 }
-                if (tRANSACTIONS.getLongERBRANCH() != null) {
-                    existingTRANSACTIONS.setLongERBRANCH(tRANSACTIONS.getLongERBRANCH());
+                if (transactions.getLongerbranch() != null) {
+                    existingTransactions.setLongerbranch(transactions.getLongerbranch());
                 }
-                if (tRANSACTIONS.getdATEX() != null) {
-                    existingTRANSACTIONS.setdATEX(tRANSACTIONS.getdATEX());
+                if (transactions.getDatex() != null) {
+                    existingTransactions.setDatex(transactions.getDatex());
                 }
-                if (tRANSACTIONS.gettIMEX() != null) {
-                    existingTRANSACTIONS.settIMEX(tRANSACTIONS.gettIMEX());
+                if (transactions.getTimex() != null) {
+                    existingTransactions.setTimex(transactions.getTimex());
                 }
-                if (tRANSACTIONS.getpOSTED() != null) {
-                    existingTRANSACTIONS.setpOSTED(tRANSACTIONS.getpOSTED());
+                if (transactions.getPosted() != null) {
+                    existingTransactions.setPosted(transactions.getPosted());
                 }
-                if (tRANSACTIONS.getaTTEMPTS() != null) {
-                    existingTRANSACTIONS.setaTTEMPTS(tRANSACTIONS.getaTTEMPTS());
+                if (transactions.getAttempts() != null) {
+                    existingTransactions.setAttempts(transactions.getAttempts());
                 }
-                if (tRANSACTIONS.getoRIGINALDATA2() != null) {
-                    existingTRANSACTIONS.setoRIGINALDATA2(tRANSACTIONS.getoRIGINALDATA2());
+                if (transactions.getOriginaldata2() != null) {
+                    existingTransactions.setOriginaldata2(transactions.getOriginaldata2());
                 }
-                if (tRANSACTIONS.getcOMMISSION() != null) {
-                    existingTRANSACTIONS.setcOMMISSION(tRANSACTIONS.getcOMMISSION());
+                if (transactions.getCommission() != null) {
+                    existingTransactions.setCommission(transactions.getCommission());
                 }
-                if (tRANSACTIONS.getrESPONSECREATED() != null) {
-                    existingTRANSACTIONS.setrESPONSECREATED(tRANSACTIONS.getrESPONSECREATED());
+                if (transactions.getResponsecreated() != null) {
+                    existingTransactions.setResponsecreated(transactions.getResponsecreated());
                 }
-                if (tRANSACTIONS.getoNLINE() != null) {
-                    existingTRANSACTIONS.setoNLINE(tRANSACTIONS.getoNLINE());
+                if (transactions.getOnline() != null) {
+                    existingTransactions.setOnline(transactions.getOnline());
                 }
-                if (tRANSACTIONS.getoRIGINALDATA3() != null) {
-                    existingTRANSACTIONS.setoRIGINALDATA3(tRANSACTIONS.getoRIGINALDATA3());
+                if (transactions.getOriginaldata3() != null) {
+                    existingTransactions.setOriginaldata3(transactions.getOriginaldata3());
                 }
-                if (tRANSACTIONS.gettOSWITCH() != null) {
-                    existingTRANSACTIONS.settOSWITCH(tRANSACTIONS.gettOSWITCH());
+                if (transactions.getToswitch() != null) {
+                    existingTransactions.setToswitch(transactions.getToswitch());
                 }
-                if (tRANSACTIONS.getfROMSWITCH() != null) {
-                    existingTRANSACTIONS.setfROMSWITCH(tRANSACTIONS.getfROMSWITCH());
+                if (transactions.getFromswitch() != null) {
+                    existingTransactions.setFromswitch(transactions.getFromswitch());
                 }
-                if (tRANSACTIONS.gettOCBS() != null) {
-                    existingTRANSACTIONS.settOCBS(tRANSACTIONS.gettOCBS());
+                if (transactions.getTocbs() != null) {
+                    existingTransactions.setTocbs(transactions.getTocbs());
                 }
-                if (tRANSACTIONS.getfROMCBS() != null) {
-                    existingTRANSACTIONS.setfROMCBS(tRANSACTIONS.getfROMCBS());
+                if (transactions.getFromcbs() != null) {
+                    existingTransactions.setFromcbs(transactions.getFromcbs());
                 }
-                if (tRANSACTIONS.getpOSTINGLEGS() != null) {
-                    existingTRANSACTIONS.setpOSTINGLEGS(tRANSACTIONS.getpOSTINGLEGS());
+                if (transactions.getPostinglegs() != null) {
+                    existingTransactions.setPostinglegs(transactions.getPostinglegs());
                 }
-                if (tRANSACTIONS.getcOMMISSIONTXNCODE() != null) {
-                    existingTRANSACTIONS.setcOMMISSIONTXNCODE(tRANSACTIONS.getcOMMISSIONTXNCODE());
+                if (transactions.getCommissiontxncode() != null) {
+                    existingTransactions.setCommissiontxncode(transactions.getCommissiontxncode());
                 }
-                if (tRANSACTIONS.gethOSTREF() != null) {
-                    existingTRANSACTIONS.sethOSTREF(tRANSACTIONS.gethOSTREF());
+                if (transactions.getHostref() != null) {
+                    existingTransactions.setHostref(transactions.getHostref());
                 }
-                if (tRANSACTIONS.getrEQUESTCREATED() != null) {
-                    existingTRANSACTIONS.setrEQUESTCREATED(tRANSACTIONS.getrEQUESTCREATED());
+                if (transactions.getRequestcreated() != null) {
+                    existingTransactions.setRequestcreated(transactions.getRequestcreated());
                 }
-                if (tRANSACTIONS.getrEQUESTMESSAGE() != null) {
-                    existingTRANSACTIONS.setrEQUESTMESSAGE(tRANSACTIONS.getrEQUESTMESSAGE());
+                if (transactions.getRequestmessage() != null) {
+                    existingTransactions.setRequestmessage(transactions.getRequestmessage());
                 }
-                if (tRANSACTIONS.getoUTGOINGBITMAPFLEX() != null) {
-                    existingTRANSACTIONS.setoUTGOINGBITMAPFLEX(tRANSACTIONS.getoUTGOINGBITMAPFLEX());
+                if (transactions.getOutgoingbitmapflex() != null) {
+                    existingTransactions.setOutgoingbitmapflex(transactions.getOutgoingbitmapflex());
                 }
-                if (tRANSACTIONS.getiNCOMINGBITMAPFLEX() != null) {
-                    existingTRANSACTIONS.setiNCOMINGBITMAPFLEX(tRANSACTIONS.getiNCOMINGBITMAPFLEX());
+                if (transactions.getIncomingbitmapflex() != null) {
+                    existingTransactions.setIncomingbitmapflex(transactions.getIncomingbitmapflex());
                 }
-                if (tRANSACTIONS.getrEQUESTSENT() != null) {
-                    existingTRANSACTIONS.setrEQUESTSENT(tRANSACTIONS.getrEQUESTSENT());
+                if (transactions.getRequestsent() != null) {
+                    existingTransactions.setRequestsent(transactions.getRequestsent());
                 }
-                if (tRANSACTIONS.getmINICBS() != null) {
-                    existingTRANSACTIONS.setmINICBS(tRANSACTIONS.getmINICBS());
+                if (transactions.getMinicbs() != null) {
+                    existingTransactions.setMinicbs(transactions.getMinicbs());
                 }
-                if (tRANSACTIONS.getrEVERSED() != null) {
-                    existingTRANSACTIONS.setrEVERSED(tRANSACTIONS.getrEVERSED());
+                if (transactions.getReversed() != null) {
+                    existingTransactions.setReversed(transactions.getReversed());
                 }
-                if (tRANSACTIONS.getoFFLINESENTTOHOST() != null) {
-                    existingTRANSACTIONS.setoFFLINESENTTOHOST(tRANSACTIONS.getoFFLINESENTTOHOST());
+                if (transactions.getOfflinesenttohost() != null) {
+                    existingTransactions.setOfflinesenttohost(transactions.getOfflinesenttohost());
                 }
-                if (tRANSACTIONS.getoFFLINERESPONSE() != null) {
-                    existingTRANSACTIONS.setoFFLINERESPONSE(tRANSACTIONS.getoFFLINERESPONSE());
+                if (transactions.getOfflineresponse() != null) {
+                    existingTransactions.setOfflineresponse(transactions.getOfflineresponse());
                 }
-                if (tRANSACTIONS.getsOURCELongERFACE() != null) {
-                    existingTRANSACTIONS.setsOURCELongERFACE(tRANSACTIONS.getsOURCELongERFACE());
+                if (transactions.getSourceLongerface() != null) {
+                    existingTransactions.setSourceLongerface(transactions.getSourceLongerface());
                 }
-                if (tRANSACTIONS.getmTIRRN() != null) {
-                    existingTRANSACTIONS.setmTIRRN(tRANSACTIONS.getmTIRRN());
+                if (transactions.getMtirrn() != null) {
+                    existingTransactions.setMtirrn(transactions.getMtirrn());
                 }
-                if (tRANSACTIONS.gethOSTRESPONSECODE() != null) {
-                    existingTRANSACTIONS.sethOSTRESPONSECODE(tRANSACTIONS.gethOSTRESPONSECODE());
+                if (transactions.getHostresponsecode() != null) {
+                    existingTransactions.setHostresponsecode(transactions.getHostresponsecode());
                 }
-                if (tRANSACTIONS.getfIELD48() != null) {
-                    existingTRANSACTIONS.setfIELD48(tRANSACTIONS.getfIELD48());
+                if (transactions.getField48() != null) {
+                    existingTransactions.setField48(transactions.getField48());
                 }
-                if (tRANSACTIONS.getsOURCE() != null) {
-                    existingTRANSACTIONS.setsOURCE(tRANSACTIONS.getsOURCE());
+                if (transactions.getSource() != null) {
+                    existingTransactions.setSource(transactions.getSource());
                 }
 
-                return existingTRANSACTIONS;
+                return existingTransactions;
             })
-            .map(tRANSACTIONSRepository::save);
+            .map(transactionsRepository::save);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, tRANSACTIONS.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, transactions.getId().toString())
         );
     }
 
     /**
-     * {@code GET  /transactions} : get all the tRANSACTIONS.
+     * {@code GET  /transactions} : get all the transactions.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of tRANSACTIONS in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of transactions in body.
      */
     @GetMapping("")
-    public List<TRANSACTIONS> getAllTRANSACTIONS() {
-        LOG.debug("REST request to get all TRANSACTIONS");
-        return tRANSACTIONSRepository.findAll();
+    public List<Transactions> getAllTransactions() {
+        LOG.debug("REST request to get all Transactions");
+        return transactionsRepository.findAll();
     }
 
     /**
-     * {@code GET  /transactions/:id} : get the "id" tRANSACTIONS.
+     * {@code GET  /transactions/:id} : get the "id" transactions.
      *
-     * @param id the id of the tRANSACTIONS to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the tRANSACTIONS, or with status {@code 404 (Not Found)}.
+     * @param id the id of the transactions to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the transactions, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<TRANSACTIONS> getTRANSACTIONS(@PathVariable("id") Long id) {
-        LOG.debug("REST request to get TRANSACTIONS : {}", id);
-        Optional<TRANSACTIONS> tRANSACTIONS = tRANSACTIONSRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(tRANSACTIONS);
+    public ResponseEntity<Transactions> getTransactions(@PathVariable("id") Long id) {
+        LOG.debug("REST request to get Transactions : {}", id);
+        Optional<Transactions> transactions = transactionsRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(transactions);
     }
 
     /**
-     * {@code DELETE  /transactions/:id} : delete the "id" tRANSACTIONS.
+     * {@code DELETE  /transactions/:id} : delete the "id" transactions.
      *
-     * @param id the id of the tRANSACTIONS to delete.
+     * @param id the id of the transactions to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTRANSACTIONS(@PathVariable("id") Long id) {
-        LOG.debug("REST request to delete TRANSACTIONS : {}", id);
-        tRANSACTIONSRepository.deleteById(id);
+    public ResponseEntity<Void> deleteTransactions(@PathVariable("id") Long id) {
+        LOG.debug("REST request to delete Transactions : {}", id);
+        transactionsRepository.deleteById(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();

@@ -3,6 +3,12 @@
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="floatType" value="float4" dbms="h2"/>
+    <property name="uuidType" value="uuid" dbms="h2"/>
+    <property name="datetimeType" value="datetime(6)" dbms="h2"/>
+    <property name="clobType" value="longvarchar" dbms="h2"/>
+    <property name="blobType" value="blob" dbms="h2"/>
     <property name="now" value="current_timestamp" dbms="postgresql"/>
     <property name="floatType" value="float4" dbms="postgresql"/>
     <property name="clobType" value="clob" dbms="postgresql"/>
@@ -11,24 +17,26 @@
     <property name="datetimeType" value="datetime" dbms="postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142852_added_entity_BILLERS.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142853_added_entity_BRANCHES.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142854_added_entity_CHANNELS.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142855_added_entity_CHARGE.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142856_added_entity_CHARGERANGES.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142857_added_entity_CUSTOMER.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142858_added_entity_CUSTOMERACCOUNT.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142859_added_entity_LIMITS.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142900_added_entity_LINKEDACCOUNTS.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142901_added_entity_MESSAGESSMS.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142902_added_entity_MESSAGETEMPLATES.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142903_added_entity_PINRESETHISTORY.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142904_added_entity_RANGE.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142905_added_entity_REQUESTS.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142906_added_entity_SERVICEMANAGEMENT.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20250117142907_added_entity_TRANSACTIONS.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121084337_added_entity_CBSTransactions.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121084338_added_entity_SPSIncomingTransactions.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121084339_added_entity_SPSOutgoingTransactions.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121084340_added_entity_SPSParticipatingCodes.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085649_added_entity_Billers.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085650_added_entity_Branches.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085651_added_entity_Channels.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085652_added_entity_Charge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085653_added_entity_ChargeRange.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085654_added_entity_Customer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085655_added_entity_CustomerAccount.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085656_added_entity_Limits.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085657_added_entity_MessagesSms.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085658_added_entity_MessageTemplate.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085659_added_entity_PinResetHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085700_added_entity_Range.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085701_added_entity_ServiceManagement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085702_added_entity_Transactions.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <include file="config/liquibase/changelog/20250117142855_added_entity_constraints_CHARGE.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20250121085652_added_entity_constraints_Charge.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

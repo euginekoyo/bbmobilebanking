@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Transactions.
+    -->
+    <changeSet id="20250121085702-1" author="jhipster">
+        <createTable tableName="transactions">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="processed" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="incomingbitmap" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="outgoingbitmap" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="inmessage" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="messagetocbs" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="messagefromcbs" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbsprocess" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbsonline" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="cbsresponse" type="varchar(500)">
+                <constraints nullable="true" />
+            </column>
+            <column name="responsemessage" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="responsesent" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="channel" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="originaldata" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="field_39_resp" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="narration" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="authorised" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="branchcode" type="varchar(30)">
+                <constraints nullable="true" />
+            </column>
+            <column name="field_39_original" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="messageclass" type="varchar(10)">
+                <constraints nullable="true" />
+            </column>
+            <column name="txncode" type="varchar(10)">
+                <constraints nullable="true" />
+            </column>
+            <column name="currcode" type="varchar(5)">
+                <constraints nullable="true" />
+            </column>
+            <column name="device" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="branch_2" type="varchar(30)">
+                <constraints nullable="true" />
+            </column>
+            <column name="longerbranch" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="datex" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="timex" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="posted" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="attempts" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="originaldata_2" type="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+            <column name="commission" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="responsecreated" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="online" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="originaldata_3" type="varchar(100)">
+                <constraints nullable="true" />
+            </column>
+            <column name="toswitch" type="varchar(15)">
+                <constraints nullable="true" />
+            </column>
+            <column name="fromswitch" type="varchar(15)">
+                <constraints nullable="true" />
+            </column>
+            <column name="tocbs" type="varchar(15)">
+                <constraints nullable="true" />
+            </column>
+            <column name="fromcbs" type="varchar(15)">
+                <constraints nullable="true" />
+            </column>
+            <column name="postinglegs" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="commissiontxncode" type="varchar(10)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hostref" type="varchar(30)">
+                <constraints nullable="true" />
+            </column>
+            <column name="requestcreated" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="requestmessage" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="outgoingbitmapflex" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="incomingbitmapflex" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="requestsent" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="minicbs" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="reversed" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="offlinesenttohost" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="offlineresponse" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="source_longerface" type="varchar(40)">
+                <constraints nullable="true" />
+            </column>
+            <column name="mtirrn" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="hostresponsecode" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="field_48" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <column name="source" type="varchar(150)">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="transactions" columnName="datex" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20250121085702-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/transactions.csv"
+                  separator=";"
+                  tableName="transactions"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="processed" type="numeric"/>
+            <column name="incomingbitmap" type="string"/>
+            <column name="outgoingbitmap" type="string"/>
+            <column name="inmessage" type="string"/>
+            <column name="messagetocbs" type="string"/>
+            <column name="messagefromcbs" type="string"/>
+            <column name="cbsprocess" type="numeric"/>
+            <column name="cbsonline" type="numeric"/>
+            <column name="cbsresponse" type="string"/>
+            <column name="responsemessage" type="string"/>
+            <column name="responsesent" type="numeric"/>
+            <column name="channel" type="string"/>
+            <column name="originaldata" type="string"/>
+            <column name="field_39_resp" type="string"/>
+            <column name="narration" type="string"/>
+            <column name="authorised" type="numeric"/>
+            <column name="branchcode" type="string"/>
+            <column name="field_39_original" type="string"/>
+            <column name="messageclass" type="string"/>
+            <column name="txncode" type="string"/>
+            <column name="currcode" type="string"/>
+            <column name="device" type="string"/>
+            <column name="branch_2" type="string"/>
+            <column name="longerbranch" type="numeric"/>
+            <column name="datex" type="date"/>
+            <column name="timex" type="string"/>
+            <column name="posted" type="numeric"/>
+            <column name="attempts" type="numeric"/>
+            <column name="originaldata_2" type="string"/>
+            <column name="commission" type="numeric"/>
+            <column name="responsecreated" type="numeric"/>
+            <column name="online" type="numeric"/>
+            <column name="originaldata_3" type="string"/>
+            <column name="toswitch" type="string"/>
+            <column name="fromswitch" type="string"/>
+            <column name="tocbs" type="string"/>
+            <column name="fromcbs" type="string"/>
+            <column name="postinglegs" type="numeric"/>
+            <column name="commissiontxncode" type="string"/>
+            <column name="hostref" type="string"/>
+            <column name="requestcreated" type="numeric"/>
+            <column name="requestmessage" type="string"/>
+            <column name="outgoingbitmapflex" type="string"/>
+            <column name="incomingbitmapflex" type="string"/>
+            <column name="requestsent" type="numeric"/>
+            <column name="minicbs" type="numeric"/>
+            <column name="reversed" type="numeric"/>
+            <column name="offlinesenttohost" type="numeric"/>
+            <column name="offlineresponse" type="string"/>
+            <column name="source_longerface" type="string"/>
+            <column name="mtirrn" type="string"/>
+            <column name="hostresponsecode" type="string"/>
+            <column name="field_48" type="string"/>
+            <column name="source" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

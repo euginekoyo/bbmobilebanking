@@ -1,145 +1,145 @@
 {
   "annotations": {
-    "changelogDate": "20250117142901"
+    "changelogDate": "20250121085657"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "tRNDATETIME",
+      "fieldName": "trndatetime",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "pHONENUMBER",
+      "fieldName": "phonenumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "tRANSACTIONNO",
+      "fieldName": "transactionno",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "aCCOUNTNUMBER",
+      "fieldName": "accountnumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "mESSAGE",
+      "fieldName": "message",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "2000"
     },
     {
-      "fieldName": "cHANNEL",
+      "fieldName": "channel",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "tRIALS",
+      "fieldName": "trials",
       "fieldType": "Long"
     },
     {
-      "fieldName": "pRIORITY",
+      "fieldName": "priority",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rESPONSECODE",
+      "fieldName": "responsecode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4"
     },
     {
-      "fieldName": "rESPONSEMSG",
+      "fieldName": "responsemsg",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "sENT",
+      "fieldName": "sent",
       "fieldType": "Long"
     },
     {
-      "fieldName": "dELIVERED",
+      "fieldName": "delivered",
       "fieldType": "Long"
     },
     {
-      "fieldName": "tXNTYPE",
+      "fieldName": "txntype",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "eRROREXCEPTION",
+      "fieldName": "errorexception",
       "fieldType": "Long"
     },
     {
-      "fieldName": "dATECREATED",
+      "fieldName": "datecreated",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "dATESENT",
+      "fieldName": "datesent",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "7"
     },
     {
-      "fieldName": "rTPSREQTIME",
+      "fieldName": "rtpsreqtime",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "fXGENERATED",
+      "fieldName": "fxgenerated",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "tAXPROCESSED",
+      "fieldName": "taxprocessed",
       "fieldType": "Long"
     },
     {
-      "fieldName": "bATCHNUMBER",
+      "fieldName": "batchnumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "bATCHNUMBERTAX",
+      "fieldName": "batchnumbertax",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "rESPONSETIME",
+      "fieldName": "responsetime",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "pDUSEQID",
+      "fieldName": "pduseqid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "rEMARKS",
+      "fieldName": "remarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "300"
     },
     {
-      "fieldName": "rESENDBY",
+      "fieldName": "resendby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     }
   ],
-  "name": "MESSAGESSMS",
+  "name": "MessagesSms",
   "relationships": [],
   "searchEngine": "no"
 }

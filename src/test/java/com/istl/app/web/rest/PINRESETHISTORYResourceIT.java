@@ -1,6 +1,6 @@
 package com.istl.app.web.rest;
 
-import static com.istl.app.domain.PINRESETHISTORYAsserts.*;
+import static com.istl.app.domain.PinResetHistoryAsserts.*;
 import static com.istl.app.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.PINRESETHISTORY;
-import com.istl.app.repository.PINRESETHISTORYRepository;
+import com.istl.app.domain.PinResetHistory;
+import com.istl.app.repository.PinResetHistoryRepository;
 import jakarta.persistence.EntityManager;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -25,44 +25,44 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Integration tests for the {@link PINRESETHISTORYResource} REST controller.
+ * Integration tests for the {@link PinResetHistoryResource} REST controller.
  */
 @IntegrationTest
 @AutoConfigureMockMvc
 @WithMockUser
-class PINRESETHISTORYResourceIT {
+class PinResetHistoryResourceIT {
 
-    private static final String DEFAULT_P_HONENUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_P_HONENUMBER = "BBBBBBBBBB";
+    private static final String DEFAULT_PHONENUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_PHONENUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_C_USTOMERNAME = "AAAAAAAAAA";
-    private static final String UPDATED_C_USTOMERNAME = "BBBBBBBBBB";
+    private static final String DEFAULT_CUSTOMERNAME = "AAAAAAAAAA";
+    private static final String UPDATED_CUSTOMERNAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INBLOCKEDON = "AAAAAAAAAA";
-    private static final String UPDATED_P_INBLOCKEDON = "BBBBBBBBBB";
+    private static final String DEFAULT_PINBLOCKEDON = "AAAAAAAAAA";
+    private static final String UPDATED_PINBLOCKEDON = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INBLOCKREMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_P_INBLOCKREMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_PINBLOCKREMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_PINBLOCKREMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INRESETBY = "AAAAAAAAAA";
-    private static final String UPDATED_P_INRESETBY = "BBBBBBBBBB";
+    private static final String DEFAULT_PINRESETBY = "AAAAAAAAAA";
+    private static final String UPDATED_PINRESETBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INRESETON = "AAAAAAAAAA";
-    private static final String UPDATED_P_INRESETON = "BBBBBBBBBB";
+    private static final String DEFAULT_PINRESETON = "AAAAAAAAAA";
+    private static final String UPDATED_PINRESETON = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INRESETAPPROVEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_P_INRESETAPPROVEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_PINRESETAPPROVEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_PINRESETAPPROVEDBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INRESETAPPROVEDON = "AAAAAAAAAA";
-    private static final String UPDATED_P_INRESETAPPROVEDON = "BBBBBBBBBB";
+    private static final String DEFAULT_PINRESETAPPROVEDON = "AAAAAAAAAA";
+    private static final String UPDATED_PINRESETAPPROVEDON = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INRESETREMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_P_INRESETREMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_PINRESETREMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_PINRESETREMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_B_RANCHCODE = "AAAAAAAAAA";
-    private static final String UPDATED_B_RANCHCODE = "BBBBBBBBBB";
+    private static final String DEFAULT_BRANCHCODE = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCHCODE = "BBBBBBBBBB";
 
-    private static final String ENTITY_API_URL = "/api/pinresethistories";
+    private static final String ENTITY_API_URL = "/api/pin-reset-histories";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
     private static Random random = new Random();
@@ -72,17 +72,17 @@ class PINRESETHISTORYResourceIT {
     private ObjectMapper om;
 
     @Autowired
-    private PINRESETHISTORYRepository pINRESETHISTORYRepository;
+    private PinResetHistoryRepository pinResetHistoryRepository;
 
     @Autowired
     private EntityManager em;
 
     @Autowired
-    private MockMvc restPINRESETHISTORYMockMvc;
+    private MockMvc restPinResetHistoryMockMvc;
 
-    private PINRESETHISTORY pINRESETHISTORY;
+    private PinResetHistory pinResetHistory;
 
-    private PINRESETHISTORY insertedPINRESETHISTORY;
+    private PinResetHistory insertedPinResetHistory;
 
     /**
      * Create an entity for this test.
@@ -90,18 +90,18 @@ class PINRESETHISTORYResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static PINRESETHISTORY createEntity() {
-        return new PINRESETHISTORY()
-            .pHONENUMBER(DEFAULT_P_HONENUMBER)
-            .cUSTOMERNAME(DEFAULT_C_USTOMERNAME)
-            .pINBLOCKEDON(DEFAULT_P_INBLOCKEDON)
-            .pINBLOCKREMARKS(DEFAULT_P_INBLOCKREMARKS)
-            .pINRESETBY(DEFAULT_P_INRESETBY)
-            .pINRESETON(DEFAULT_P_INRESETON)
-            .pINRESETAPPROVEDBY(DEFAULT_P_INRESETAPPROVEDBY)
-            .pINRESETAPPROVEDON(DEFAULT_P_INRESETAPPROVEDON)
-            .pINRESETREMARKS(DEFAULT_P_INRESETREMARKS)
-            .bRANCHCODE(DEFAULT_B_RANCHCODE);
+    public static PinResetHistory createEntity() {
+        return new PinResetHistory()
+            .phonenumber(DEFAULT_PHONENUMBER)
+            .customername(DEFAULT_CUSTOMERNAME)
+            .pinblockedon(DEFAULT_PINBLOCKEDON)
+            .pinblockremarks(DEFAULT_PINBLOCKREMARKS)
+            .pinresetby(DEFAULT_PINRESETBY)
+            .pinreseton(DEFAULT_PINRESETON)
+            .pinresetapprovedby(DEFAULT_PINRESETAPPROVEDBY)
+            .pinresetapprovedon(DEFAULT_PINRESETAPPROVEDON)
+            .pinresetremarks(DEFAULT_PINRESETREMARKS)
+            .branchcode(DEFAULT_BRANCHCODE);
     }
 
     /**
@@ -110,357 +110,358 @@ class PINRESETHISTORYResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static PINRESETHISTORY createUpdatedEntity() {
-        return new PINRESETHISTORY()
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .cUSTOMERNAME(UPDATED_C_USTOMERNAME)
-            .pINBLOCKEDON(UPDATED_P_INBLOCKEDON)
-            .pINBLOCKREMARKS(UPDATED_P_INBLOCKREMARKS)
-            .pINRESETBY(UPDATED_P_INRESETBY)
-            .pINRESETON(UPDATED_P_INRESETON)
-            .pINRESETAPPROVEDBY(UPDATED_P_INRESETAPPROVEDBY)
-            .pINRESETAPPROVEDON(UPDATED_P_INRESETAPPROVEDON)
-            .pINRESETREMARKS(UPDATED_P_INRESETREMARKS)
-            .bRANCHCODE(UPDATED_B_RANCHCODE);
+    public static PinResetHistory createUpdatedEntity() {
+        return new PinResetHistory()
+            .phonenumber(UPDATED_PHONENUMBER)
+            .customername(UPDATED_CUSTOMERNAME)
+            .pinblockedon(UPDATED_PINBLOCKEDON)
+            .pinblockremarks(UPDATED_PINBLOCKREMARKS)
+            .pinresetby(UPDATED_PINRESETBY)
+            .pinreseton(UPDATED_PINRESETON)
+            .pinresetapprovedby(UPDATED_PINRESETAPPROVEDBY)
+            .pinresetapprovedon(UPDATED_PINRESETAPPROVEDON)
+            .pinresetremarks(UPDATED_PINRESETREMARKS)
+            .branchcode(UPDATED_BRANCHCODE);
     }
 
     @BeforeEach
     public void initTest() {
-        pINRESETHISTORY = createEntity();
+        pinResetHistory = createEntity();
     }
 
     @AfterEach
     public void cleanup() {
-        if (insertedPINRESETHISTORY != null) {
-            pINRESETHISTORYRepository.delete(insertedPINRESETHISTORY);
-            insertedPINRESETHISTORY = null;
+        if (insertedPinResetHistory != null) {
+            pinResetHistoryRepository.delete(insertedPinResetHistory);
+            insertedPinResetHistory = null;
         }
     }
 
     @Test
     @Transactional
-    void createPINRESETHISTORY() throws Exception {
+    void createPinResetHistory() throws Exception {
         long databaseSizeBeforeCreate = getRepositoryCount();
-        // Create the PINRESETHISTORY
-        var returnedPINRESETHISTORY = om.readValue(
-            restPINRESETHISTORYMockMvc
-                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(pINRESETHISTORY)))
+        // Create the PinResetHistory
+        var returnedPinResetHistory = om.readValue(
+            restPinResetHistoryMockMvc
+                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(pinResetHistory)))
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            PINRESETHISTORY.class
+            PinResetHistory.class
         );
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
         assertIncrementedRepositoryCount(databaseSizeBeforeCreate);
-        assertPINRESETHISTORYUpdatableFieldsEquals(returnedPINRESETHISTORY, getPersistedPINRESETHISTORY(returnedPINRESETHISTORY));
+        assertPinResetHistoryUpdatableFieldsEquals(returnedPinResetHistory, getPersistedPinResetHistory(returnedPinResetHistory));
 
-        insertedPINRESETHISTORY = returnedPINRESETHISTORY;
+        insertedPinResetHistory = returnedPinResetHistory;
     }
 
     @Test
     @Transactional
-    void createPINRESETHISTORYWithExistingId() throws Exception {
-        // Create the PINRESETHISTORY with an existing ID
-        pINRESETHISTORY.setId(1L);
+    void createPinResetHistoryWithExistingId() throws Exception {
+        // Create the PinResetHistory with an existing ID
+        pinResetHistory.setId(1L);
 
         long databaseSizeBeforeCreate = getRepositoryCount();
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restPINRESETHISTORYMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(pINRESETHISTORY)))
+        restPinResetHistoryMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(pinResetHistory)))
             .andExpect(status().isBadRequest());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
         assertSameRepositoryCount(databaseSizeBeforeCreate);
     }
 
     @Test
     @Transactional
-    void getAllPINRESETHISTORIES() throws Exception {
+    void getAllPinResetHistories() throws Exception {
         // Initialize the database
-        insertedPINRESETHISTORY = pINRESETHISTORYRepository.saveAndFlush(pINRESETHISTORY);
+        insertedPinResetHistory = pinResetHistoryRepository.saveAndFlush(pinResetHistory);
 
-        // Get all the pINRESETHISTORYList
-        restPINRESETHISTORYMockMvc
+        // Get all the pinResetHistoryList
+        restPinResetHistoryMockMvc
             .perform(get(ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(pINRESETHISTORY.getId().intValue())))
-            .andExpect(jsonPath("$.[*].pHONENUMBER").value(hasItem(DEFAULT_P_HONENUMBER)))
-            .andExpect(jsonPath("$.[*].cUSTOMERNAME").value(hasItem(DEFAULT_C_USTOMERNAME)))
-            .andExpect(jsonPath("$.[*].pINBLOCKEDON").value(hasItem(DEFAULT_P_INBLOCKEDON)))
-            .andExpect(jsonPath("$.[*].pINBLOCKREMARKS").value(hasItem(DEFAULT_P_INBLOCKREMARKS)))
-            .andExpect(jsonPath("$.[*].pINRESETBY").value(hasItem(DEFAULT_P_INRESETBY)))
-            .andExpect(jsonPath("$.[*].pINRESETON").value(hasItem(DEFAULT_P_INRESETON)))
-            .andExpect(jsonPath("$.[*].pINRESETAPPROVEDBY").value(hasItem(DEFAULT_P_INRESETAPPROVEDBY)))
-            .andExpect(jsonPath("$.[*].pINRESETAPPROVEDON").value(hasItem(DEFAULT_P_INRESETAPPROVEDON)))
-            .andExpect(jsonPath("$.[*].pINRESETREMARKS").value(hasItem(DEFAULT_P_INRESETREMARKS)))
-            .andExpect(jsonPath("$.[*].bRANCHCODE").value(hasItem(DEFAULT_B_RANCHCODE)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(pinResetHistory.getId().intValue())))
+            .andExpect(jsonPath("$.[*].phonenumber").value(hasItem(DEFAULT_PHONENUMBER)))
+            .andExpect(jsonPath("$.[*].customername").value(hasItem(DEFAULT_CUSTOMERNAME)))
+            .andExpect(jsonPath("$.[*].pinblockedon").value(hasItem(DEFAULT_PINBLOCKEDON)))
+            .andExpect(jsonPath("$.[*].pinblockremarks").value(hasItem(DEFAULT_PINBLOCKREMARKS)))
+            .andExpect(jsonPath("$.[*].pinresetby").value(hasItem(DEFAULT_PINRESETBY)))
+            .andExpect(jsonPath("$.[*].pinreseton").value(hasItem(DEFAULT_PINRESETON)))
+            .andExpect(jsonPath("$.[*].pinresetapprovedby").value(hasItem(DEFAULT_PINRESETAPPROVEDBY)))
+            .andExpect(jsonPath("$.[*].pinresetapprovedon").value(hasItem(DEFAULT_PINRESETAPPROVEDON)))
+            .andExpect(jsonPath("$.[*].pinresetremarks").value(hasItem(DEFAULT_PINRESETREMARKS)))
+            .andExpect(jsonPath("$.[*].branchcode").value(hasItem(DEFAULT_BRANCHCODE)));
     }
 
     @Test
     @Transactional
-    void getPINRESETHISTORY() throws Exception {
+    void getPinResetHistory() throws Exception {
         // Initialize the database
-        insertedPINRESETHISTORY = pINRESETHISTORYRepository.saveAndFlush(pINRESETHISTORY);
+        insertedPinResetHistory = pinResetHistoryRepository.saveAndFlush(pinResetHistory);
 
-        // Get the pINRESETHISTORY
-        restPINRESETHISTORYMockMvc
-            .perform(get(ENTITY_API_URL_ID, pINRESETHISTORY.getId()))
+        // Get the pinResetHistory
+        restPinResetHistoryMockMvc
+            .perform(get(ENTITY_API_URL_ID, pinResetHistory.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(pINRESETHISTORY.getId().intValue()))
-            .andExpect(jsonPath("$.pHONENUMBER").value(DEFAULT_P_HONENUMBER))
-            .andExpect(jsonPath("$.cUSTOMERNAME").value(DEFAULT_C_USTOMERNAME))
-            .andExpect(jsonPath("$.pINBLOCKEDON").value(DEFAULT_P_INBLOCKEDON))
-            .andExpect(jsonPath("$.pINBLOCKREMARKS").value(DEFAULT_P_INBLOCKREMARKS))
-            .andExpect(jsonPath("$.pINRESETBY").value(DEFAULT_P_INRESETBY))
-            .andExpect(jsonPath("$.pINRESETON").value(DEFAULT_P_INRESETON))
-            .andExpect(jsonPath("$.pINRESETAPPROVEDBY").value(DEFAULT_P_INRESETAPPROVEDBY))
-            .andExpect(jsonPath("$.pINRESETAPPROVEDON").value(DEFAULT_P_INRESETAPPROVEDON))
-            .andExpect(jsonPath("$.pINRESETREMARKS").value(DEFAULT_P_INRESETREMARKS))
-            .andExpect(jsonPath("$.bRANCHCODE").value(DEFAULT_B_RANCHCODE));
+            .andExpect(jsonPath("$.id").value(pinResetHistory.getId().intValue()))
+            .andExpect(jsonPath("$.phonenumber").value(DEFAULT_PHONENUMBER))
+            .andExpect(jsonPath("$.customername").value(DEFAULT_CUSTOMERNAME))
+            .andExpect(jsonPath("$.pinblockedon").value(DEFAULT_PINBLOCKEDON))
+            .andExpect(jsonPath("$.pinblockremarks").value(DEFAULT_PINBLOCKREMARKS))
+            .andExpect(jsonPath("$.pinresetby").value(DEFAULT_PINRESETBY))
+            .andExpect(jsonPath("$.pinreseton").value(DEFAULT_PINRESETON))
+            .andExpect(jsonPath("$.pinresetapprovedby").value(DEFAULT_PINRESETAPPROVEDBY))
+            .andExpect(jsonPath("$.pinresetapprovedon").value(DEFAULT_PINRESETAPPROVEDON))
+            .andExpect(jsonPath("$.pinresetremarks").value(DEFAULT_PINRESETREMARKS))
+            .andExpect(jsonPath("$.branchcode").value(DEFAULT_BRANCHCODE));
     }
 
     @Test
     @Transactional
-    void getNonExistingPINRESETHISTORY() throws Exception {
-        // Get the pINRESETHISTORY
-        restPINRESETHISTORYMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+    void getNonExistingPinResetHistory() throws Exception {
+        // Get the pinResetHistory
+        restPinResetHistoryMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
     @Transactional
-    void putExistingPINRESETHISTORY() throws Exception {
+    void putExistingPinResetHistory() throws Exception {
         // Initialize the database
-        insertedPINRESETHISTORY = pINRESETHISTORYRepository.saveAndFlush(pINRESETHISTORY);
+        insertedPinResetHistory = pinResetHistoryRepository.saveAndFlush(pinResetHistory);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the pINRESETHISTORY
-        PINRESETHISTORY updatedPINRESETHISTORY = pINRESETHISTORYRepository.findById(pINRESETHISTORY.getId()).orElseThrow();
-        // Disconnect from session so that the updates on updatedPINRESETHISTORY are not directly saved in db
-        em.detach(updatedPINRESETHISTORY);
-        updatedPINRESETHISTORY
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .cUSTOMERNAME(UPDATED_C_USTOMERNAME)
-            .pINBLOCKEDON(UPDATED_P_INBLOCKEDON)
-            .pINBLOCKREMARKS(UPDATED_P_INBLOCKREMARKS)
-            .pINRESETBY(UPDATED_P_INRESETBY)
-            .pINRESETON(UPDATED_P_INRESETON)
-            .pINRESETAPPROVEDBY(UPDATED_P_INRESETAPPROVEDBY)
-            .pINRESETAPPROVEDON(UPDATED_P_INRESETAPPROVEDON)
-            .pINRESETREMARKS(UPDATED_P_INRESETREMARKS)
-            .bRANCHCODE(UPDATED_B_RANCHCODE);
+        // Update the pinResetHistory
+        PinResetHistory updatedPinResetHistory = pinResetHistoryRepository.findById(pinResetHistory.getId()).orElseThrow();
+        // Disconnect from session so that the updates on updatedPinResetHistory are not directly saved in db
+        em.detach(updatedPinResetHistory);
+        updatedPinResetHistory
+            .phonenumber(UPDATED_PHONENUMBER)
+            .customername(UPDATED_CUSTOMERNAME)
+            .pinblockedon(UPDATED_PINBLOCKEDON)
+            .pinblockremarks(UPDATED_PINBLOCKREMARKS)
+            .pinresetby(UPDATED_PINRESETBY)
+            .pinreseton(UPDATED_PINRESETON)
+            .pinresetapprovedby(UPDATED_PINRESETAPPROVEDBY)
+            .pinresetapprovedon(UPDATED_PINRESETAPPROVEDON)
+            .pinresetremarks(UPDATED_PINRESETREMARKS)
+            .branchcode(UPDATED_BRANCHCODE);
 
-        restPINRESETHISTORYMockMvc
+        restPinResetHistoryMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, updatedPINRESETHISTORY.getId())
+                put(ENTITY_API_URL_ID, updatedPinResetHistory.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(updatedPINRESETHISTORY))
+                    .content(om.writeValueAsBytes(updatedPinResetHistory))
             )
             .andExpect(status().isOk());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertPersistedPINRESETHISTORYToMatchAllProperties(updatedPINRESETHISTORY);
+        assertPersistedPinResetHistoryToMatchAllProperties(updatedPinResetHistory);
     }
 
     @Test
     @Transactional
-    void putNonExistingPINRESETHISTORY() throws Exception {
+    void putNonExistingPinResetHistory() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        pINRESETHISTORY.setId(longCount.incrementAndGet());
+        pinResetHistory.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restPINRESETHISTORYMockMvc
+        restPinResetHistoryMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, pINRESETHISTORY.getId())
+                put(ENTITY_API_URL_ID, pinResetHistory.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(pINRESETHISTORY))
+                    .content(om.writeValueAsBytes(pinResetHistory))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithIdMismatchPINRESETHISTORY() throws Exception {
+    void putWithIdMismatchPinResetHistory() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        pINRESETHISTORY.setId(longCount.incrementAndGet());
+        pinResetHistory.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restPINRESETHISTORYMockMvc
+        restPinResetHistoryMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(pINRESETHISTORY))
+                    .content(om.writeValueAsBytes(pinResetHistory))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithMissingIdPathParamPINRESETHISTORY() throws Exception {
+    void putWithMissingIdPathParamPinResetHistory() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        pINRESETHISTORY.setId(longCount.incrementAndGet());
+        pinResetHistory.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restPINRESETHISTORYMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(pINRESETHISTORY)))
+        restPinResetHistoryMockMvc
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(pinResetHistory)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void partialUpdatePINRESETHISTORYWithPatch() throws Exception {
+    void partialUpdatePinResetHistoryWithPatch() throws Exception {
         // Initialize the database
-        insertedPINRESETHISTORY = pINRESETHISTORYRepository.saveAndFlush(pINRESETHISTORY);
+        insertedPinResetHistory = pinResetHistoryRepository.saveAndFlush(pinResetHistory);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the pINRESETHISTORY using partial update
-        PINRESETHISTORY partialUpdatedPINRESETHISTORY = new PINRESETHISTORY();
-        partialUpdatedPINRESETHISTORY.setId(pINRESETHISTORY.getId());
+        // Update the pinResetHistory using partial update
+        PinResetHistory partialUpdatedPinResetHistory = new PinResetHistory();
+        partialUpdatedPinResetHistory.setId(pinResetHistory.getId());
 
-        partialUpdatedPINRESETHISTORY
-            .cUSTOMERNAME(UPDATED_C_USTOMERNAME)
-            .pINBLOCKREMARKS(UPDATED_P_INBLOCKREMARKS)
-            .pINRESETBY(UPDATED_P_INRESETBY)
-            .pINRESETREMARKS(UPDATED_P_INRESETREMARKS);
+        partialUpdatedPinResetHistory
+            .pinblockedon(UPDATED_PINBLOCKEDON)
+            .pinblockremarks(UPDATED_PINBLOCKREMARKS)
+            .pinresetapprovedby(UPDATED_PINRESETAPPROVEDBY)
+            .pinresetapprovedon(UPDATED_PINRESETAPPROVEDON)
+            .pinresetremarks(UPDATED_PINRESETREMARKS);
 
-        restPINRESETHISTORYMockMvc
+        restPinResetHistoryMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedPINRESETHISTORY.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedPinResetHistory.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedPINRESETHISTORY))
+                    .content(om.writeValueAsBytes(partialUpdatedPinResetHistory))
             )
             .andExpect(status().isOk());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertPINRESETHISTORYUpdatableFieldsEquals(
-            createUpdateProxyForBean(partialUpdatedPINRESETHISTORY, pINRESETHISTORY),
-            getPersistedPINRESETHISTORY(pINRESETHISTORY)
+        assertPinResetHistoryUpdatableFieldsEquals(
+            createUpdateProxyForBean(partialUpdatedPinResetHistory, pinResetHistory),
+            getPersistedPinResetHistory(pinResetHistory)
         );
     }
 
     @Test
     @Transactional
-    void fullUpdatePINRESETHISTORYWithPatch() throws Exception {
+    void fullUpdatePinResetHistoryWithPatch() throws Exception {
         // Initialize the database
-        insertedPINRESETHISTORY = pINRESETHISTORYRepository.saveAndFlush(pINRESETHISTORY);
+        insertedPinResetHistory = pinResetHistoryRepository.saveAndFlush(pinResetHistory);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the pINRESETHISTORY using partial update
-        PINRESETHISTORY partialUpdatedPINRESETHISTORY = new PINRESETHISTORY();
-        partialUpdatedPINRESETHISTORY.setId(pINRESETHISTORY.getId());
+        // Update the pinResetHistory using partial update
+        PinResetHistory partialUpdatedPinResetHistory = new PinResetHistory();
+        partialUpdatedPinResetHistory.setId(pinResetHistory.getId());
 
-        partialUpdatedPINRESETHISTORY
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .cUSTOMERNAME(UPDATED_C_USTOMERNAME)
-            .pINBLOCKEDON(UPDATED_P_INBLOCKEDON)
-            .pINBLOCKREMARKS(UPDATED_P_INBLOCKREMARKS)
-            .pINRESETBY(UPDATED_P_INRESETBY)
-            .pINRESETON(UPDATED_P_INRESETON)
-            .pINRESETAPPROVEDBY(UPDATED_P_INRESETAPPROVEDBY)
-            .pINRESETAPPROVEDON(UPDATED_P_INRESETAPPROVEDON)
-            .pINRESETREMARKS(UPDATED_P_INRESETREMARKS)
-            .bRANCHCODE(UPDATED_B_RANCHCODE);
+        partialUpdatedPinResetHistory
+            .phonenumber(UPDATED_PHONENUMBER)
+            .customername(UPDATED_CUSTOMERNAME)
+            .pinblockedon(UPDATED_PINBLOCKEDON)
+            .pinblockremarks(UPDATED_PINBLOCKREMARKS)
+            .pinresetby(UPDATED_PINRESETBY)
+            .pinreseton(UPDATED_PINRESETON)
+            .pinresetapprovedby(UPDATED_PINRESETAPPROVEDBY)
+            .pinresetapprovedon(UPDATED_PINRESETAPPROVEDON)
+            .pinresetremarks(UPDATED_PINRESETREMARKS)
+            .branchcode(UPDATED_BRANCHCODE);
 
-        restPINRESETHISTORYMockMvc
+        restPinResetHistoryMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedPINRESETHISTORY.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedPinResetHistory.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedPINRESETHISTORY))
+                    .content(om.writeValueAsBytes(partialUpdatedPinResetHistory))
             )
             .andExpect(status().isOk());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertPINRESETHISTORYUpdatableFieldsEquals(
-            partialUpdatedPINRESETHISTORY,
-            getPersistedPINRESETHISTORY(partialUpdatedPINRESETHISTORY)
+        assertPinResetHistoryUpdatableFieldsEquals(
+            partialUpdatedPinResetHistory,
+            getPersistedPinResetHistory(partialUpdatedPinResetHistory)
         );
     }
 
     @Test
     @Transactional
-    void patchNonExistingPINRESETHISTORY() throws Exception {
+    void patchNonExistingPinResetHistory() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        pINRESETHISTORY.setId(longCount.incrementAndGet());
+        pinResetHistory.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restPINRESETHISTORYMockMvc
+        restPinResetHistoryMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, pINRESETHISTORY.getId())
+                patch(ENTITY_API_URL_ID, pinResetHistory.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(pINRESETHISTORY))
+                    .content(om.writeValueAsBytes(pinResetHistory))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithIdMismatchPINRESETHISTORY() throws Exception {
+    void patchWithIdMismatchPinResetHistory() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        pINRESETHISTORY.setId(longCount.incrementAndGet());
+        pinResetHistory.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restPINRESETHISTORYMockMvc
+        restPinResetHistoryMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(pINRESETHISTORY))
+                    .content(om.writeValueAsBytes(pinResetHistory))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithMissingIdPathParamPINRESETHISTORY() throws Exception {
+    void patchWithMissingIdPathParamPinResetHistory() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        pINRESETHISTORY.setId(longCount.incrementAndGet());
+        pinResetHistory.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restPINRESETHISTORYMockMvc
-            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(pINRESETHISTORY)))
+        restPinResetHistoryMockMvc
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(pinResetHistory)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the PINRESETHISTORY in the database
+        // Validate the PinResetHistory in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void deletePINRESETHISTORY() throws Exception {
+    void deletePinResetHistory() throws Exception {
         // Initialize the database
-        insertedPINRESETHISTORY = pINRESETHISTORYRepository.saveAndFlush(pINRESETHISTORY);
+        insertedPinResetHistory = pinResetHistoryRepository.saveAndFlush(pinResetHistory);
 
         long databaseSizeBeforeDelete = getRepositoryCount();
 
-        // Delete the pINRESETHISTORY
-        restPINRESETHISTORYMockMvc
-            .perform(delete(ENTITY_API_URL_ID, pINRESETHISTORY.getId()).accept(MediaType.APPLICATION_JSON))
+        // Delete the pinResetHistory
+        restPinResetHistoryMockMvc
+            .perform(delete(ENTITY_API_URL_ID, pinResetHistory.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
@@ -468,7 +469,7 @@ class PINRESETHISTORYResourceIT {
     }
 
     protected long getRepositoryCount() {
-        return pINRESETHISTORYRepository.count();
+        return pinResetHistoryRepository.count();
     }
 
     protected void assertIncrementedRepositoryCount(long countBefore) {
@@ -483,15 +484,15 @@ class PINRESETHISTORYResourceIT {
         assertThat(countBefore).isEqualTo(getRepositoryCount());
     }
 
-    protected PINRESETHISTORY getPersistedPINRESETHISTORY(PINRESETHISTORY pINRESETHISTORY) {
-        return pINRESETHISTORYRepository.findById(pINRESETHISTORY.getId()).orElseThrow();
+    protected PinResetHistory getPersistedPinResetHistory(PinResetHistory pinResetHistory) {
+        return pinResetHistoryRepository.findById(pinResetHistory.getId()).orElseThrow();
     }
 
-    protected void assertPersistedPINRESETHISTORYToMatchAllProperties(PINRESETHISTORY expectedPINRESETHISTORY) {
-        assertPINRESETHISTORYAllPropertiesEquals(expectedPINRESETHISTORY, getPersistedPINRESETHISTORY(expectedPINRESETHISTORY));
+    protected void assertPersistedPinResetHistoryToMatchAllProperties(PinResetHistory expectedPinResetHistory) {
+        assertPinResetHistoryAllPropertiesEquals(expectedPinResetHistory, getPersistedPinResetHistory(expectedPinResetHistory));
     }
 
-    protected void assertPersistedPINRESETHISTORYToMatchUpdatableProperties(PINRESETHISTORY expectedPINRESETHISTORY) {
-        assertPINRESETHISTORYAllUpdatablePropertiesEquals(expectedPINRESETHISTORY, getPersistedPINRESETHISTORY(expectedPINRESETHISTORY));
+    protected void assertPersistedPinResetHistoryToMatchUpdatableProperties(PinResetHistory expectedPinResetHistory) {
+        assertPinResetHistoryAllUpdatablePropertiesEquals(expectedPinResetHistory, getPersistedPinResetHistory(expectedPinResetHistory));
     }
 }

@@ -4,68 +4,68 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class LIMITSTestSamples {
+public class LimitsTestSamples {
 
     private static final Random random = new Random();
     private static final AtomicLong longCount = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
-    public static LIMITS getLIMITSSample1() {
-        return new LIMITS()
+    public static Limits getLimitsSample1() {
+        return new Limits()
             .id(1L)
-            .tRANSACTIONTYPE("tRANSACTIONTYPE1")
-            .pROCODE("pROCODE1")
-            .cHANNEL("cHANNEL1")
-            .tRANSACTIONLIMIT(1L)
-            .dAILYLIMIT(1L)
-            .rEGISTEREDBY("rEGISTEREDBY1")
-            .rEGISTEREDDATE("rEGISTEREDDATE1")
-            .aPPROVED("aPPROVED1")
-            .aPPROVEDBY("aPPROVEDBY1")
-            .aPPROVEDDATE("aPPROVEDDATE1")
-            .uPDATEDBY("uPDATEDBY1")
-            .uPDATEDDATE("uPDATEDDATE1")
-            .rEWORK(1L)
-            .rEWORKBY("rEWORKBY1")
-            .sESSIONID("sESSIONID1");
+            .transactiontype("transactiontype1")
+            .procode("procode1")
+            .channel("channel1")
+            .transactionlimit(1L)
+            .dailylimit(1L)
+            .registeredby("registeredby1")
+            .registereddate("registereddate1")
+            .approved("approved1")
+            .approvedby("approvedby1")
+            .approveddate("approveddate1")
+            .updatedby("updatedby1")
+            .updateddate("updateddate1")
+            .rework(1L)
+            .reworkby("reworkby1")
+            .sessionid("sessionid1");
     }
 
-    public static LIMITS getLIMITSSample2() {
-        return new LIMITS()
+    public static Limits getLimitsSample2() {
+        return new Limits()
             .id(2L)
-            .tRANSACTIONTYPE("tRANSACTIONTYPE2")
-            .pROCODE("pROCODE2")
-            .cHANNEL("cHANNEL2")
-            .tRANSACTIONLIMIT(2L)
-            .dAILYLIMIT(2L)
-            .rEGISTEREDBY("rEGISTEREDBY2")
-            .rEGISTEREDDATE("rEGISTEREDDATE2")
-            .aPPROVED("aPPROVED2")
-            .aPPROVEDBY("aPPROVEDBY2")
-            .aPPROVEDDATE("aPPROVEDDATE2")
-            .uPDATEDBY("uPDATEDBY2")
-            .uPDATEDDATE("uPDATEDDATE2")
-            .rEWORK(2L)
-            .rEWORKBY("rEWORKBY2")
-            .sESSIONID("sESSIONID2");
+            .transactiontype("transactiontype2")
+            .procode("procode2")
+            .channel("channel2")
+            .transactionlimit(2L)
+            .dailylimit(2L)
+            .registeredby("registeredby2")
+            .registereddate("registereddate2")
+            .approved("approved2")
+            .approvedby("approvedby2")
+            .approveddate("approveddate2")
+            .updatedby("updatedby2")
+            .updateddate("updateddate2")
+            .rework(2L)
+            .reworkby("reworkby2")
+            .sessionid("sessionid2");
     }
 
-    public static LIMITS getLIMITSRandomSampleGenerator() {
-        return new LIMITS()
+    public static Limits getLimitsRandomSampleGenerator() {
+        return new Limits()
             .id(longCount.incrementAndGet())
-            .tRANSACTIONTYPE(UUID.randomUUID().toString())
-            .pROCODE(UUID.randomUUID().toString())
-            .cHANNEL(UUID.randomUUID().toString())
-            .tRANSACTIONLIMIT(longCount.incrementAndGet())
-            .dAILYLIMIT(longCount.incrementAndGet())
-            .rEGISTEREDBY(UUID.randomUUID().toString())
-            .rEGISTEREDDATE(UUID.randomUUID().toString())
-            .aPPROVED(UUID.randomUUID().toString())
-            .aPPROVEDBY(UUID.randomUUID().toString())
-            .aPPROVEDDATE(UUID.randomUUID().toString())
-            .uPDATEDBY(UUID.randomUUID().toString())
-            .uPDATEDDATE(UUID.randomUUID().toString())
-            .rEWORK(longCount.incrementAndGet())
-            .rEWORKBY(UUID.randomUUID().toString())
-            .sESSIONID(UUID.randomUUID().toString());
+            .transactiontype(UUID.randomUUID().toString())
+            .procode(UUID.randomUUID().toString())
+            .channel(UUID.randomUUID().toString())
+            .transactionlimit(longCount.incrementAndGet())
+            .dailylimit(longCount.incrementAndGet())
+            .registeredby(UUID.randomUUID().toString())
+            .registereddate(UUID.randomUUID().toString())
+            .approved(UUID.randomUUID().toString())
+            .approvedby(UUID.randomUUID().toString())
+            .approveddate(UUID.randomUUID().toString())
+            .updatedby(UUID.randomUUID().toString())
+            .updateddate(UUID.randomUUID().toString())
+            .rework(longCount.incrementAndGet())
+            .reworkby(UUID.randomUUID().toString())
+            .sessionid(UUID.randomUUID().toString());
     }
 }

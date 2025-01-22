@@ -1,24 +1,24 @@
 package com.istl.app.domain;
 
-import static com.istl.app.domain.TRANSACTIONSTestSamples.*;
+import static com.istl.app.domain.TransactionsTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.istl.app.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
 
-class TRANSACTIONSTest {
+class TransactionsTest {
 
     @Test
     void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(TRANSACTIONS.class);
-        TRANSACTIONS tRANSACTIONS1 = getTRANSACTIONSSample1();
-        TRANSACTIONS tRANSACTIONS2 = new TRANSACTIONS();
-        assertThat(tRANSACTIONS1).isNotEqualTo(tRANSACTIONS2);
+        TestUtil.equalsVerifier(Transactions.class);
+        Transactions transactions1 = getTransactionsSample1();
+        Transactions transactions2 = new Transactions();
+        assertThat(transactions1).isNotEqualTo(transactions2);
 
-        tRANSACTIONS2.setId(tRANSACTIONS1.getId());
-        assertThat(tRANSACTIONS1).isEqualTo(tRANSACTIONS2);
+        transactions2.setId(transactions1.getId());
+        assertThat(transactions1).isEqualTo(transactions2);
 
-        tRANSACTIONS2 = getTRANSACTIONSSample2();
-        assertThat(tRANSACTIONS1).isNotEqualTo(tRANSACTIONS2);
+        transactions2 = getTransactionsSample2();
+        assertThat(transactions1).isNotEqualTo(transactions2);
     }
 }

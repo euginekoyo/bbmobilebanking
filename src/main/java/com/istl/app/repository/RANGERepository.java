@@ -1,12 +1,12 @@
 package com.istl.app.repository;
 
-import com.istl.app.domain.RANGE;
+import com.istl.app.domain.Range;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 /**
- * Spring Data JPA repository for the RANGE entity.
+ * Spring Data JPA repository for the Range entity.
  */
 @SuppressWarnings("unused")
 @Repository
-public interface RANGERepository extends JpaRepository<RANGE, Long> {}
+public interface RangeRepository extends JpaRepository<Range, Long> {}

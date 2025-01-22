@@ -9,13 +9,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A CHARGE.
+ * A Charge.
  */
 @Entity
 @Table(name = "charge")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class CHARGE implements Serializable {
+public class Charge implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,51 +27,51 @@ public class CHARGE implements Serializable {
 
     @NotNull
     @Size(max = 150)
-    @Column(name = "t_xntype", length = 150, nullable = false)
-    private String tXNTYPE;
+    @Column(name = "txntype", length = 150, nullable = false)
+    private String txntype;
 
-    @Column(name = "f_eemode")
-    private Long fEEMODE;
+    @Column(name = "feemode")
+    private Long feemode;
 
-    @Column(name = "a_mount")
-    private Long aMOUNT;
+    @Column(name = "amount")
+    private Long amount;
 
-    @Column(name = "d_atecreated")
-    private Instant dATECREATED;
-
-    @Size(max = 150)
-    @Column(name = "c_reatedby", length = 150)
-    private String cREATEDBY;
+    @Column(name = "datecreated")
+    private Instant datecreated;
 
     @Size(max = 150)
-    @Column(name = "a_pproved", length = 150)
-    private String aPPROVED;
+    @Column(name = "createdby", length = 150)
+    private String createdby;
 
     @Size(max = 150)
-    @Column(name = "a_pprovedby", length = 150)
-    private String aPPROVEDBY;
+    @Column(name = "approved", length = 150)
+    private String approved;
 
     @Size(max = 150)
-    @Column(name = "c_hannel", length = 150)
-    private String cHANNEL;
+    @Column(name = "approvedby", length = 150)
+    private String approvedby;
 
-    @Column(name = "t_xncode")
-    private Long tXNCODE;
+    @Size(max = 150)
+    @Column(name = "channel", length = 150)
+    private String channel;
+
+    @Column(name = "txncode")
+    private Long txncode;
 
     @Size(max = 64)
-    @Column(name = "d_escription", length = 64)
-    private String dESCRIPTION;
+    @Column(name = "description", length = 64)
+    private String description;
 
-    @Column(name = "a_pproveddate")
-    private Instant aPPROVEDDATE;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "cHARGEIDS" }, allowSetters = true)
-    private CHARGERANGES cHARGERANGES;
+    @Column(name = "approveddate")
+    private Instant approveddate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = { "cHARGEIDS" }, allowSetters = true)
-    private RANGE rANGE;
+    @JsonIgnoreProperties(value = { "chargeids" }, allowSetters = true)
+    private ChargeRange chargeRange;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = { "chargeids" }, allowSetters = true)
+    private Range range;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -79,7 +79,7 @@ public class CHARGE implements Serializable {
         return this.id;
     }
 
-    public CHARGE id(Long id) {
+    public Charge id(Long id) {
         this.setId(id);
         return this;
     }
@@ -88,172 +88,172 @@ public class CHARGE implements Serializable {
         this.id = id;
     }
 
-    public String gettXNTYPE() {
-        return this.tXNTYPE;
+    public String getTxntype() {
+        return this.txntype;
     }
 
-    public CHARGE tXNTYPE(String tXNTYPE) {
-        this.settXNTYPE(tXNTYPE);
+    public Charge txntype(String txntype) {
+        this.setTxntype(txntype);
         return this;
     }
 
-    public void settXNTYPE(String tXNTYPE) {
-        this.tXNTYPE = tXNTYPE;
+    public void setTxntype(String txntype) {
+        this.txntype = txntype;
     }
 
-    public Long getfEEMODE() {
-        return this.fEEMODE;
+    public Long getFeemode() {
+        return this.feemode;
     }
 
-    public CHARGE fEEMODE(Long fEEMODE) {
-        this.setfEEMODE(fEEMODE);
+    public Charge feemode(Long feemode) {
+        this.setFeemode(feemode);
         return this;
     }
 
-    public void setfEEMODE(Long fEEMODE) {
-        this.fEEMODE = fEEMODE;
+    public void setFeemode(Long feemode) {
+        this.feemode = feemode;
     }
 
-    public Long getaMOUNT() {
-        return this.aMOUNT;
+    public Long getAmount() {
+        return this.amount;
     }
 
-    public CHARGE aMOUNT(Long aMOUNT) {
-        this.setaMOUNT(aMOUNT);
+    public Charge amount(Long amount) {
+        this.setAmount(amount);
         return this;
     }
 
-    public void setaMOUNT(Long aMOUNT) {
-        this.aMOUNT = aMOUNT;
+    public void setAmount(Long amount) {
+        this.amount = amount;
     }
 
-    public Instant getdATECREATED() {
-        return this.dATECREATED;
+    public Instant getDatecreated() {
+        return this.datecreated;
     }
 
-    public CHARGE dATECREATED(Instant dATECREATED) {
-        this.setdATECREATED(dATECREATED);
+    public Charge datecreated(Instant datecreated) {
+        this.setDatecreated(datecreated);
         return this;
     }
 
-    public void setdATECREATED(Instant dATECREATED) {
-        this.dATECREATED = dATECREATED;
+    public void setDatecreated(Instant datecreated) {
+        this.datecreated = datecreated;
     }
 
-    public String getcREATEDBY() {
-        return this.cREATEDBY;
+    public String getCreatedby() {
+        return this.createdby;
     }
 
-    public CHARGE cREATEDBY(String cREATEDBY) {
-        this.setcREATEDBY(cREATEDBY);
+    public Charge createdby(String createdby) {
+        this.setCreatedby(createdby);
         return this;
     }
 
-    public void setcREATEDBY(String cREATEDBY) {
-        this.cREATEDBY = cREATEDBY;
+    public void setCreatedby(String createdby) {
+        this.createdby = createdby;
     }
 
-    public String getaPPROVED() {
-        return this.aPPROVED;
+    public String getApproved() {
+        return this.approved;
     }
 
-    public CHARGE aPPROVED(String aPPROVED) {
-        this.setaPPROVED(aPPROVED);
+    public Charge approved(String approved) {
+        this.setApproved(approved);
         return this;
     }
 
-    public void setaPPROVED(String aPPROVED) {
-        this.aPPROVED = aPPROVED;
+    public void setApproved(String approved) {
+        this.approved = approved;
     }
 
-    public String getaPPROVEDBY() {
-        return this.aPPROVEDBY;
+    public String getApprovedby() {
+        return this.approvedby;
     }
 
-    public CHARGE aPPROVEDBY(String aPPROVEDBY) {
-        this.setaPPROVEDBY(aPPROVEDBY);
+    public Charge approvedby(String approvedby) {
+        this.setApprovedby(approvedby);
         return this;
     }
 
-    public void setaPPROVEDBY(String aPPROVEDBY) {
-        this.aPPROVEDBY = aPPROVEDBY;
+    public void setApprovedby(String approvedby) {
+        this.approvedby = approvedby;
     }
 
-    public String getcHANNEL() {
-        return this.cHANNEL;
+    public String getChannel() {
+        return this.channel;
     }
 
-    public CHARGE cHANNEL(String cHANNEL) {
-        this.setcHANNEL(cHANNEL);
+    public Charge channel(String channel) {
+        this.setChannel(channel);
         return this;
     }
 
-    public void setcHANNEL(String cHANNEL) {
-        this.cHANNEL = cHANNEL;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
-    public Long gettXNCODE() {
-        return this.tXNCODE;
+    public Long getTxncode() {
+        return this.txncode;
     }
 
-    public CHARGE tXNCODE(Long tXNCODE) {
-        this.settXNCODE(tXNCODE);
+    public Charge txncode(Long txncode) {
+        this.setTxncode(txncode);
         return this;
     }
 
-    public void settXNCODE(Long tXNCODE) {
-        this.tXNCODE = tXNCODE;
+    public void setTxncode(Long txncode) {
+        this.txncode = txncode;
     }
 
-    public String getdESCRIPTION() {
-        return this.dESCRIPTION;
+    public String getDescription() {
+        return this.description;
     }
 
-    public CHARGE dESCRIPTION(String dESCRIPTION) {
-        this.setdESCRIPTION(dESCRIPTION);
+    public Charge description(String description) {
+        this.setDescription(description);
         return this;
     }
 
-    public void setdESCRIPTION(String dESCRIPTION) {
-        this.dESCRIPTION = dESCRIPTION;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Instant getaPPROVEDDATE() {
-        return this.aPPROVEDDATE;
+    public Instant getApproveddate() {
+        return this.approveddate;
     }
 
-    public CHARGE aPPROVEDDATE(Instant aPPROVEDDATE) {
-        this.setaPPROVEDDATE(aPPROVEDDATE);
+    public Charge approveddate(Instant approveddate) {
+        this.setApproveddate(approveddate);
         return this;
     }
 
-    public void setaPPROVEDDATE(Instant aPPROVEDDATE) {
-        this.aPPROVEDDATE = aPPROVEDDATE;
+    public void setApproveddate(Instant approveddate) {
+        this.approveddate = approveddate;
     }
 
-    public CHARGERANGES getCHARGERANGES() {
-        return this.cHARGERANGES;
+    public ChargeRange getChargeRange() {
+        return this.chargeRange;
     }
 
-    public void setCHARGERANGES(CHARGERANGES cHARGERANGES) {
-        this.cHARGERANGES = cHARGERANGES;
+    public void setChargeRange(ChargeRange chargeRange) {
+        this.chargeRange = chargeRange;
     }
 
-    public CHARGE cHARGERANGES(CHARGERANGES cHARGERANGES) {
-        this.setCHARGERANGES(cHARGERANGES);
+    public Charge chargeRange(ChargeRange chargeRange) {
+        this.setChargeRange(chargeRange);
         return this;
     }
 
-    public RANGE getRANGE() {
-        return this.rANGE;
+    public Range getRange() {
+        return this.range;
     }
 
-    public void setRANGE(RANGE rANGE) {
-        this.rANGE = rANGE;
+    public void setRange(Range range) {
+        this.range = range;
     }
 
-    public CHARGE rANGE(RANGE rANGE) {
-        this.setRANGE(rANGE);
+    public Charge range(Range range) {
+        this.setRange(range);
         return this;
     }
 
@@ -264,10 +264,10 @@ public class CHARGE implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof CHARGE)) {
+        if (!(o instanceof Charge)) {
             return false;
         }
-        return getId() != null && getId().equals(((CHARGE) o).getId());
+        return getId() != null && getId().equals(((Charge) o).getId());
     }
 
     @Override
@@ -279,19 +279,19 @@ public class CHARGE implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "CHARGE{" +
+        return "Charge{" +
             "id=" + getId() +
-            ", tXNTYPE='" + gettXNTYPE() + "'" +
-            ", fEEMODE=" + getfEEMODE() +
-            ", aMOUNT=" + getaMOUNT() +
-            ", dATECREATED='" + getdATECREATED() + "'" +
-            ", cREATEDBY='" + getcREATEDBY() + "'" +
-            ", aPPROVED='" + getaPPROVED() + "'" +
-            ", aPPROVEDBY='" + getaPPROVEDBY() + "'" +
-            ", cHANNEL='" + getcHANNEL() + "'" +
-            ", tXNCODE=" + gettXNCODE() +
-            ", dESCRIPTION='" + getdESCRIPTION() + "'" +
-            ", aPPROVEDDATE='" + getaPPROVEDDATE() + "'" +
+            ", txntype='" + getTxntype() + "'" +
+            ", feemode=" + getFeemode() +
+            ", amount=" + getAmount() +
+            ", datecreated='" + getDatecreated() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", approved='" + getApproved() + "'" +
+            ", approvedby='" + getApprovedby() + "'" +
+            ", channel='" + getChannel() + "'" +
+            ", txncode=" + getTxncode() +
+            ", description='" + getDescription() + "'" +
+            ", approveddate='" + getApproveddate() + "'" +
             "}";
     }
 }

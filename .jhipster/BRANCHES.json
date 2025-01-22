@@ -1,169 +1,169 @@
 {
   "annotations": {
-    "changelogDate": "20250117142853"
+    "changelogDate": "20250121085650"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "bRANCHNAME",
+      "fieldName": "branchname",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "bRANCHCODE",
+      "fieldName": "branchcode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "3"
     },
     {
-      "fieldName": "aPPROVED",
+      "fieldName": "approved",
       "fieldType": "Long"
     },
     {
-      "fieldName": "eMAIL",
+      "fieldName": "email",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "aDDRESS",
+      "fieldName": "address",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "pHONE",
+      "fieldName": "phone",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "12"
     },
     {
-      "fieldName": "lOCATION",
+      "fieldName": "location",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "cONTACTPERSON",
+      "fieldName": "contactperson",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "rEMARKS",
+      "fieldName": "remarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "2000"
     },
     {
-      "fieldName": "cREATEDBY",
+      "fieldName": "createdby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "cREATEDON",
+      "fieldName": "createdon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "aPPROVEDBY",
+      "fieldName": "approvedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "aPPROVEDON",
+      "fieldName": "approvedon",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "7"
     },
     {
-      "fieldName": "cHECKERREMARKS",
+      "fieldName": "checkerremarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "dELETEDBY",
+      "fieldName": "deletedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "dELETEDON",
+      "fieldName": "deletedon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "dELETEREMARKS",
+      "fieldName": "deleteremarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "dELETED",
+      "fieldName": "deleted",
       "fieldType": "Long"
     },
     {
-      "fieldName": "dECLINED",
+      "fieldName": "declined",
       "fieldType": "Long"
     },
     {
-      "fieldName": "dECLINEDDON",
+      "fieldName": "declineddon",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "7"
     },
     {
-      "fieldName": "dECLINEDBY",
+      "fieldName": "declinedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "sESSIONID",
+      "fieldName": "sessionid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "rEWORKED",
+      "fieldName": "reworked",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rEWORKEDBY",
+      "fieldName": "reworkedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "rEWORKEDON",
+      "fieldName": "reworkedon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "dISTRICT",
+      "fieldName": "district",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "rEGION",
+      "fieldName": "region",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "rEGIONNAME",
+      "fieldName": "regionname",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "rEPORTING",
+      "fieldName": "reporting",
       "fieldType": "Long"
     }
   ],
-  "name": "BRANCHES",
+  "name": "Branches",
   "relationships": [],
   "searchEngine": "no"
 }

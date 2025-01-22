@@ -1,12 +1,12 @@
 package com.istl.app.repository;
 
-import com.istl.app.domain.TRANSACTIONS;
+import com.istl.app.domain.Transactions;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 /**
- * Spring Data JPA repository for the TRANSACTIONS entity.
+ * Spring Data JPA repository for the Transactions entity.
  */
 @SuppressWarnings("unused")
 @Repository
-public interface TRANSACTIONSRepository extends JpaRepository<TRANSACTIONS, Long> {}
+public interface TransactionsRepository extends JpaRepository<Transactions, Long> {}

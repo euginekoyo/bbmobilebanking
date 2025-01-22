@@ -1,6 +1,6 @@
 package com.istl.app.web.rest;
 
-import static com.istl.app.domain.BILLERSAsserts.*;
+import static com.istl.app.domain.BillersAsserts.*;
 import static com.istl.app.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.BILLERS;
-import com.istl.app.repository.BILLERSRepository;
+import com.istl.app.domain.Billers;
+import com.istl.app.repository.BillersRepository;
 import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -27,66 +27,66 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Integration tests for the {@link BILLERSResource} REST controller.
+ * Integration tests for the {@link BillersResource} REST controller.
  */
 @IntegrationTest
 @AutoConfigureMockMvc
 @WithMockUser
-class BILLERSResourceIT {
+class BillersResourceIT {
 
-    private static final String DEFAULT_B_ILLERID = "AAAAAAAAAA";
-    private static final String UPDATED_B_ILLERID = "BBBBBBBBBB";
+    private static final String DEFAULT_BILLERID = "AAAAAAAAAA";
+    private static final String UPDATED_BILLERID = "BBBBBBBBBB";
 
-    private static final String DEFAULT_D_ESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_D_ESCRIPTION = "BBBBBBBBBB";
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_B_ILLERCOLLECTIONACCOUNT = "AAAAAAAAAA";
-    private static final String UPDATED_B_ILLERCOLLECTIONACCOUNT = "BBBBBBBBBB";
+    private static final String DEFAULT_BILLERCOLLECTIONACCOUNT = "AAAAAAAAAA";
+    private static final String UPDATED_BILLERCOLLECTIONACCOUNT = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_D_ATECREATED = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_D_ATECREATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_DATECREATED = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DATECREATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_C_REATEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_C_REATEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_CREATEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_CREATEDBY = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_A_PPROVED = 1L;
-    private static final Long UPDATED_A_PPROVED = 2L;
+    private static final Long DEFAULT_APPROVED = 1L;
+    private static final Long UPDATED_APPROVED = 2L;
 
-    private static final String DEFAULT_A_PPROVEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_A_PPROVEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_APPROVEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_APPROVEDBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_A_PPROVEDDATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_A_PPROVEDDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_APPROVEDDATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_APPROVEDDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_C_HARGABLEPRODUCTID = "AAAAAAAAAA";
-    private static final String UPDATED_C_HARGABLEPRODUCTID = "BBBBBBBBBB";
+    private static final String DEFAULT_CHARGABLEPRODUCTID = "AAAAAAAAAA";
+    private static final String UPDATED_CHARGABLEPRODUCTID = "BBBBBBBBBB";
 
-    private static final String DEFAULT_N_ONCHARGABLEPRODUCTID = "AAAAAAAAAA";
-    private static final String UPDATED_N_ONCHARGABLEPRODUCTID = "BBBBBBBBBB";
+    private static final String DEFAULT_NONCHARGABLEPRODUCTID = "AAAAAAAAAA";
+    private static final String UPDATED_NONCHARGABLEPRODUCTID = "BBBBBBBBBB";
 
-    private static final String DEFAULT_U_SDBILLERCOLLECTIONACCOUNT = "AAAAAAAAAA";
-    private static final String UPDATED_U_SDBILLERCOLLECTIONACCOUNT = "BBBBBBBBBB";
+    private static final String DEFAULT_USDBILLERCOLLECTIONACCOUNT = "AAAAAAAAAA";
+    private static final String UPDATED_USDBILLERCOLLECTIONACCOUNT = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_E_NABLEDUPLICATECHECK = 1L;
-    private static final Long UPDATED_E_NABLEDUPLICATECHECK = 2L;
+    private static final Long DEFAULT_ENABLEDUPLICATECHECK = 1L;
+    private static final Long UPDATED_ENABLEDUPLICATECHECK = 2L;
 
-    private static final String DEFAULT_R_EMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_R_EMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_REMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_REMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_S_ESSIONID = "AAAAAAAAAA";
-    private static final String UPDATED_S_ESSIONID = "BBBBBBBBBB";
+    private static final String DEFAULT_SESSIONID = "AAAAAAAAAA";
+    private static final String UPDATED_SESSIONID = "BBBBBBBBBB";
 
-    private static final String DEFAULT_R_EWORKBY = "AAAAAAAAAA";
-    private static final String UPDATED_R_EWORKBY = "BBBBBBBBBB";
+    private static final String DEFAULT_REWORKBY = "AAAAAAAAAA";
+    private static final String UPDATED_REWORKBY = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_S_TATUS = 1L;
-    private static final Long UPDATED_S_TATUS = 2L;
+    private static final Long DEFAULT_STATUS = 1L;
+    private static final Long UPDATED_STATUS = 2L;
 
-    private static final Long DEFAULT_A_CTIVE = 1L;
-    private static final Long UPDATED_A_CTIVE = 2L;
+    private static final Long DEFAULT_ACTIVE = 1L;
+    private static final Long UPDATED_ACTIVE = 2L;
 
-    private static final Long DEFAULT_R_EWORK = 1L;
-    private static final Long UPDATED_R_EWORK = 2L;
+    private static final Long DEFAULT_REWORK = 1L;
+    private static final Long UPDATED_REWORK = 2L;
 
     private static final String ENTITY_API_URL = "/api/billers";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -98,17 +98,17 @@ class BILLERSResourceIT {
     private ObjectMapper om;
 
     @Autowired
-    private BILLERSRepository bILLERSRepository;
+    private BillersRepository billersRepository;
 
     @Autowired
     private EntityManager em;
 
     @Autowired
-    private MockMvc restBILLERSMockMvc;
+    private MockMvc restBillersMockMvc;
 
-    private BILLERS bILLERS;
+    private Billers billers;
 
-    private BILLERS insertedBILLERS;
+    private Billers insertedBillers;
 
     /**
      * Create an entity for this test.
@@ -116,26 +116,26 @@ class BILLERSResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static BILLERS createEntity() {
-        return new BILLERS()
-            .bILLERID(DEFAULT_B_ILLERID)
-            .dESCRIPTION(DEFAULT_D_ESCRIPTION)
-            .bILLERCOLLECTIONACCOUNT(DEFAULT_B_ILLERCOLLECTIONACCOUNT)
-            .dATECREATED(DEFAULT_D_ATECREATED)
-            .cREATEDBY(DEFAULT_C_REATEDBY)
-            .aPPROVED(DEFAULT_A_PPROVED)
-            .aPPROVEDBY(DEFAULT_A_PPROVEDBY)
-            .aPPROVEDDATE(DEFAULT_A_PPROVEDDATE)
-            .cHARGABLEPRODUCTID(DEFAULT_C_HARGABLEPRODUCTID)
-            .nONCHARGABLEPRODUCTID(DEFAULT_N_ONCHARGABLEPRODUCTID)
-            .uSDBILLERCOLLECTIONACCOUNT(DEFAULT_U_SDBILLERCOLLECTIONACCOUNT)
-            .eNABLEDUPLICATECHECK(DEFAULT_E_NABLEDUPLICATECHECK)
-            .rEMARKS(DEFAULT_R_EMARKS)
-            .sESSIONID(DEFAULT_S_ESSIONID)
-            .rEWORKBY(DEFAULT_R_EWORKBY)
-            .sTATUS(DEFAULT_S_TATUS)
-            .aCTIVE(DEFAULT_A_CTIVE)
-            .rEWORK(DEFAULT_R_EWORK);
+    public static Billers createEntity() {
+        return new Billers()
+            .billerid(DEFAULT_BILLERID)
+            .description(DEFAULT_DESCRIPTION)
+            .billercollectionaccount(DEFAULT_BILLERCOLLECTIONACCOUNT)
+            .datecreated(DEFAULT_DATECREATED)
+            .createdby(DEFAULT_CREATEDBY)
+            .approved(DEFAULT_APPROVED)
+            .approvedby(DEFAULT_APPROVEDBY)
+            .approveddate(DEFAULT_APPROVEDDATE)
+            .chargableproductid(DEFAULT_CHARGABLEPRODUCTID)
+            .nonchargableproductid(DEFAULT_NONCHARGABLEPRODUCTID)
+            .usdbillercollectionaccount(DEFAULT_USDBILLERCOLLECTIONACCOUNT)
+            .enableduplicatecheck(DEFAULT_ENABLEDUPLICATECHECK)
+            .remarks(DEFAULT_REMARKS)
+            .sessionid(DEFAULT_SESSIONID)
+            .reworkby(DEFAULT_REWORKBY)
+            .status(DEFAULT_STATUS)
+            .active(DEFAULT_ACTIVE)
+            .rework(DEFAULT_REWORK);
     }
 
     /**
@@ -144,91 +144,91 @@ class BILLERSResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static BILLERS createUpdatedEntity() {
-        return new BILLERS()
-            .bILLERID(UPDATED_B_ILLERID)
-            .dESCRIPTION(UPDATED_D_ESCRIPTION)
-            .bILLERCOLLECTIONACCOUNT(UPDATED_B_ILLERCOLLECTIONACCOUNT)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE)
-            .cHARGABLEPRODUCTID(UPDATED_C_HARGABLEPRODUCTID)
-            .nONCHARGABLEPRODUCTID(UPDATED_N_ONCHARGABLEPRODUCTID)
-            .uSDBILLERCOLLECTIONACCOUNT(UPDATED_U_SDBILLERCOLLECTIONACCOUNT)
-            .eNABLEDUPLICATECHECK(UPDATED_E_NABLEDUPLICATECHECK)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .sESSIONID(UPDATED_S_ESSIONID)
-            .rEWORKBY(UPDATED_R_EWORKBY)
-            .sTATUS(UPDATED_S_TATUS)
-            .aCTIVE(UPDATED_A_CTIVE)
-            .rEWORK(UPDATED_R_EWORK);
+    public static Billers createUpdatedEntity() {
+        return new Billers()
+            .billerid(UPDATED_BILLERID)
+            .description(UPDATED_DESCRIPTION)
+            .billercollectionaccount(UPDATED_BILLERCOLLECTIONACCOUNT)
+            .datecreated(UPDATED_DATECREATED)
+            .createdby(UPDATED_CREATEDBY)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approveddate(UPDATED_APPROVEDDATE)
+            .chargableproductid(UPDATED_CHARGABLEPRODUCTID)
+            .nonchargableproductid(UPDATED_NONCHARGABLEPRODUCTID)
+            .usdbillercollectionaccount(UPDATED_USDBILLERCOLLECTIONACCOUNT)
+            .enableduplicatecheck(UPDATED_ENABLEDUPLICATECHECK)
+            .remarks(UPDATED_REMARKS)
+            .sessionid(UPDATED_SESSIONID)
+            .reworkby(UPDATED_REWORKBY)
+            .status(UPDATED_STATUS)
+            .active(UPDATED_ACTIVE)
+            .rework(UPDATED_REWORK);
     }
 
     @BeforeEach
     public void initTest() {
-        bILLERS = createEntity();
+        billers = createEntity();
     }
 
     @AfterEach
     public void cleanup() {
-        if (insertedBILLERS != null) {
-            bILLERSRepository.delete(insertedBILLERS);
-            insertedBILLERS = null;
+        if (insertedBillers != null) {
+            billersRepository.delete(insertedBillers);
+            insertedBillers = null;
         }
     }
 
     @Test
     @Transactional
-    void createBILLERS() throws Exception {
+    void createBillers() throws Exception {
         long databaseSizeBeforeCreate = getRepositoryCount();
-        // Create the BILLERS
-        var returnedBILLERS = om.readValue(
-            restBILLERSMockMvc
-                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bILLERS)))
+        // Create the Billers
+        var returnedBillers = om.readValue(
+            restBillersMockMvc
+                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(billers)))
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            BILLERS.class
+            Billers.class
         );
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
         assertIncrementedRepositoryCount(databaseSizeBeforeCreate);
-        assertBILLERSUpdatableFieldsEquals(returnedBILLERS, getPersistedBILLERS(returnedBILLERS));
+        assertBillersUpdatableFieldsEquals(returnedBillers, getPersistedBillers(returnedBillers));
 
-        insertedBILLERS = returnedBILLERS;
+        insertedBillers = returnedBillers;
     }
 
     @Test
     @Transactional
-    void createBILLERSWithExistingId() throws Exception {
-        // Create the BILLERS with an existing ID
-        bILLERS.setId(1L);
+    void createBillersWithExistingId() throws Exception {
+        // Create the Billers with an existing ID
+        billers.setId(1L);
 
         long databaseSizeBeforeCreate = getRepositoryCount();
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restBILLERSMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bILLERS)))
+        restBillersMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(billers)))
             .andExpect(status().isBadRequest());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
         assertSameRepositoryCount(databaseSizeBeforeCreate);
     }
 
     @Test
     @Transactional
-    void checkbILLERIDIsRequired() throws Exception {
+    void checkBilleridIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        bILLERS.setbILLERID(null);
+        billers.setBillerid(null);
 
-        // Create the BILLERS, which fails.
+        // Create the Billers, which fails.
 
-        restBILLERSMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bILLERS)))
+        restBillersMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(billers)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -236,15 +236,15 @@ class BILLERSResourceIT {
 
     @Test
     @Transactional
-    void checkdESCRIPTIONIsRequired() throws Exception {
+    void checkDescriptionIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        bILLERS.setdESCRIPTION(null);
+        billers.setDescription(null);
 
-        // Create the BILLERS, which fails.
+        // Create the Billers, which fails.
 
-        restBILLERSMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bILLERS)))
+        restBillersMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(billers)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -252,315 +252,313 @@ class BILLERSResourceIT {
 
     @Test
     @Transactional
-    void getAllBILLERS() throws Exception {
+    void getAllBillers() throws Exception {
         // Initialize the database
-        insertedBILLERS = bILLERSRepository.saveAndFlush(bILLERS);
+        insertedBillers = billersRepository.saveAndFlush(billers);
 
-        // Get all the bILLERSList
-        restBILLERSMockMvc
+        // Get all the billersList
+        restBillersMockMvc
             .perform(get(ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(bILLERS.getId().intValue())))
-            .andExpect(jsonPath("$.[*].bILLERID").value(hasItem(DEFAULT_B_ILLERID)))
-            .andExpect(jsonPath("$.[*].dESCRIPTION").value(hasItem(DEFAULT_D_ESCRIPTION)))
-            .andExpect(jsonPath("$.[*].bILLERCOLLECTIONACCOUNT").value(hasItem(DEFAULT_B_ILLERCOLLECTIONACCOUNT)))
-            .andExpect(jsonPath("$.[*].dATECREATED").value(hasItem(DEFAULT_D_ATECREATED.toString())))
-            .andExpect(jsonPath("$.[*].cREATEDBY").value(hasItem(DEFAULT_C_REATEDBY)))
-            .andExpect(jsonPath("$.[*].aPPROVED").value(hasItem(DEFAULT_A_PPROVED.intValue())))
-            .andExpect(jsonPath("$.[*].aPPROVEDBY").value(hasItem(DEFAULT_A_PPROVEDBY)))
-            .andExpect(jsonPath("$.[*].aPPROVEDDATE").value(hasItem(DEFAULT_A_PPROVEDDATE.toString())))
-            .andExpect(jsonPath("$.[*].cHARGABLEPRODUCTID").value(hasItem(DEFAULT_C_HARGABLEPRODUCTID)))
-            .andExpect(jsonPath("$.[*].nONCHARGABLEPRODUCTID").value(hasItem(DEFAULT_N_ONCHARGABLEPRODUCTID)))
-            .andExpect(jsonPath("$.[*].uSDBILLERCOLLECTIONACCOUNT").value(hasItem(DEFAULT_U_SDBILLERCOLLECTIONACCOUNT)))
-            .andExpect(jsonPath("$.[*].eNABLEDUPLICATECHECK").value(hasItem(DEFAULT_E_NABLEDUPLICATECHECK.intValue())))
-            .andExpect(jsonPath("$.[*].rEMARKS").value(hasItem(DEFAULT_R_EMARKS)))
-            .andExpect(jsonPath("$.[*].sESSIONID").value(hasItem(DEFAULT_S_ESSIONID)))
-            .andExpect(jsonPath("$.[*].rEWORKBY").value(hasItem(DEFAULT_R_EWORKBY)))
-            .andExpect(jsonPath("$.[*].sTATUS").value(hasItem(DEFAULT_S_TATUS.intValue())))
-            .andExpect(jsonPath("$.[*].aCTIVE").value(hasItem(DEFAULT_A_CTIVE.intValue())))
-            .andExpect(jsonPath("$.[*].rEWORK").value(hasItem(DEFAULT_R_EWORK.intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(billers.getId().intValue())))
+            .andExpect(jsonPath("$.[*].billerid").value(hasItem(DEFAULT_BILLERID)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].billercollectionaccount").value(hasItem(DEFAULT_BILLERCOLLECTIONACCOUNT)))
+            .andExpect(jsonPath("$.[*].datecreated").value(hasItem(DEFAULT_DATECREATED.toString())))
+            .andExpect(jsonPath("$.[*].createdby").value(hasItem(DEFAULT_CREATEDBY)))
+            .andExpect(jsonPath("$.[*].approved").value(hasItem(DEFAULT_APPROVED.intValue())))
+            .andExpect(jsonPath("$.[*].approvedby").value(hasItem(DEFAULT_APPROVEDBY)))
+            .andExpect(jsonPath("$.[*].approveddate").value(hasItem(DEFAULT_APPROVEDDATE.toString())))
+            .andExpect(jsonPath("$.[*].chargableproductid").value(hasItem(DEFAULT_CHARGABLEPRODUCTID)))
+            .andExpect(jsonPath("$.[*].nonchargableproductid").value(hasItem(DEFAULT_NONCHARGABLEPRODUCTID)))
+            .andExpect(jsonPath("$.[*].usdbillercollectionaccount").value(hasItem(DEFAULT_USDBILLERCOLLECTIONACCOUNT)))
+            .andExpect(jsonPath("$.[*].enableduplicatecheck").value(hasItem(DEFAULT_ENABLEDUPLICATECHECK.intValue())))
+            .andExpect(jsonPath("$.[*].remarks").value(hasItem(DEFAULT_REMARKS)))
+            .andExpect(jsonPath("$.[*].sessionid").value(hasItem(DEFAULT_SESSIONID)))
+            .andExpect(jsonPath("$.[*].reworkby").value(hasItem(DEFAULT_REWORKBY)))
+            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.intValue())))
+            .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE.intValue())))
+            .andExpect(jsonPath("$.[*].rework").value(hasItem(DEFAULT_REWORK.intValue())));
     }
 
     @Test
     @Transactional
-    void getBILLERS() throws Exception {
+    void getBillers() throws Exception {
         // Initialize the database
-        insertedBILLERS = bILLERSRepository.saveAndFlush(bILLERS);
+        insertedBillers = billersRepository.saveAndFlush(billers);
 
-        // Get the bILLERS
-        restBILLERSMockMvc
-            .perform(get(ENTITY_API_URL_ID, bILLERS.getId()))
+        // Get the billers
+        restBillersMockMvc
+            .perform(get(ENTITY_API_URL_ID, billers.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(bILLERS.getId().intValue()))
-            .andExpect(jsonPath("$.bILLERID").value(DEFAULT_B_ILLERID))
-            .andExpect(jsonPath("$.dESCRIPTION").value(DEFAULT_D_ESCRIPTION))
-            .andExpect(jsonPath("$.bILLERCOLLECTIONACCOUNT").value(DEFAULT_B_ILLERCOLLECTIONACCOUNT))
-            .andExpect(jsonPath("$.dATECREATED").value(DEFAULT_D_ATECREATED.toString()))
-            .andExpect(jsonPath("$.cREATEDBY").value(DEFAULT_C_REATEDBY))
-            .andExpect(jsonPath("$.aPPROVED").value(DEFAULT_A_PPROVED.intValue()))
-            .andExpect(jsonPath("$.aPPROVEDBY").value(DEFAULT_A_PPROVEDBY))
-            .andExpect(jsonPath("$.aPPROVEDDATE").value(DEFAULT_A_PPROVEDDATE.toString()))
-            .andExpect(jsonPath("$.cHARGABLEPRODUCTID").value(DEFAULT_C_HARGABLEPRODUCTID))
-            .andExpect(jsonPath("$.nONCHARGABLEPRODUCTID").value(DEFAULT_N_ONCHARGABLEPRODUCTID))
-            .andExpect(jsonPath("$.uSDBILLERCOLLECTIONACCOUNT").value(DEFAULT_U_SDBILLERCOLLECTIONACCOUNT))
-            .andExpect(jsonPath("$.eNABLEDUPLICATECHECK").value(DEFAULT_E_NABLEDUPLICATECHECK.intValue()))
-            .andExpect(jsonPath("$.rEMARKS").value(DEFAULT_R_EMARKS))
-            .andExpect(jsonPath("$.sESSIONID").value(DEFAULT_S_ESSIONID))
-            .andExpect(jsonPath("$.rEWORKBY").value(DEFAULT_R_EWORKBY))
-            .andExpect(jsonPath("$.sTATUS").value(DEFAULT_S_TATUS.intValue()))
-            .andExpect(jsonPath("$.aCTIVE").value(DEFAULT_A_CTIVE.intValue()))
-            .andExpect(jsonPath("$.rEWORK").value(DEFAULT_R_EWORK.intValue()));
+            .andExpect(jsonPath("$.id").value(billers.getId().intValue()))
+            .andExpect(jsonPath("$.billerid").value(DEFAULT_BILLERID))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.billercollectionaccount").value(DEFAULT_BILLERCOLLECTIONACCOUNT))
+            .andExpect(jsonPath("$.datecreated").value(DEFAULT_DATECREATED.toString()))
+            .andExpect(jsonPath("$.createdby").value(DEFAULT_CREATEDBY))
+            .andExpect(jsonPath("$.approved").value(DEFAULT_APPROVED.intValue()))
+            .andExpect(jsonPath("$.approvedby").value(DEFAULT_APPROVEDBY))
+            .andExpect(jsonPath("$.approveddate").value(DEFAULT_APPROVEDDATE.toString()))
+            .andExpect(jsonPath("$.chargableproductid").value(DEFAULT_CHARGABLEPRODUCTID))
+            .andExpect(jsonPath("$.nonchargableproductid").value(DEFAULT_NONCHARGABLEPRODUCTID))
+            .andExpect(jsonPath("$.usdbillercollectionaccount").value(DEFAULT_USDBILLERCOLLECTIONACCOUNT))
+            .andExpect(jsonPath("$.enableduplicatecheck").value(DEFAULT_ENABLEDUPLICATECHECK.intValue()))
+            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS))
+            .andExpect(jsonPath("$.sessionid").value(DEFAULT_SESSIONID))
+            .andExpect(jsonPath("$.reworkby").value(DEFAULT_REWORKBY))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.intValue()))
+            .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE.intValue()))
+            .andExpect(jsonPath("$.rework").value(DEFAULT_REWORK.intValue()));
     }
 
     @Test
     @Transactional
-    void getNonExistingBILLERS() throws Exception {
-        // Get the bILLERS
-        restBILLERSMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+    void getNonExistingBillers() throws Exception {
+        // Get the billers
+        restBillersMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
     @Transactional
-    void putExistingBILLERS() throws Exception {
+    void putExistingBillers() throws Exception {
         // Initialize the database
-        insertedBILLERS = bILLERSRepository.saveAndFlush(bILLERS);
+        insertedBillers = billersRepository.saveAndFlush(billers);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the bILLERS
-        BILLERS updatedBILLERS = bILLERSRepository.findById(bILLERS.getId()).orElseThrow();
-        // Disconnect from session so that the updates on updatedBILLERS are not directly saved in db
-        em.detach(updatedBILLERS);
-        updatedBILLERS
-            .bILLERID(UPDATED_B_ILLERID)
-            .dESCRIPTION(UPDATED_D_ESCRIPTION)
-            .bILLERCOLLECTIONACCOUNT(UPDATED_B_ILLERCOLLECTIONACCOUNT)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE)
-            .cHARGABLEPRODUCTID(UPDATED_C_HARGABLEPRODUCTID)
-            .nONCHARGABLEPRODUCTID(UPDATED_N_ONCHARGABLEPRODUCTID)
-            .uSDBILLERCOLLECTIONACCOUNT(UPDATED_U_SDBILLERCOLLECTIONACCOUNT)
-            .eNABLEDUPLICATECHECK(UPDATED_E_NABLEDUPLICATECHECK)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .sESSIONID(UPDATED_S_ESSIONID)
-            .rEWORKBY(UPDATED_R_EWORKBY)
-            .sTATUS(UPDATED_S_TATUS)
-            .aCTIVE(UPDATED_A_CTIVE)
-            .rEWORK(UPDATED_R_EWORK);
+        // Update the billers
+        Billers updatedBillers = billersRepository.findById(billers.getId()).orElseThrow();
+        // Disconnect from session so that the updates on updatedBillers are not directly saved in db
+        em.detach(updatedBillers);
+        updatedBillers
+            .billerid(UPDATED_BILLERID)
+            .description(UPDATED_DESCRIPTION)
+            .billercollectionaccount(UPDATED_BILLERCOLLECTIONACCOUNT)
+            .datecreated(UPDATED_DATECREATED)
+            .createdby(UPDATED_CREATEDBY)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approveddate(UPDATED_APPROVEDDATE)
+            .chargableproductid(UPDATED_CHARGABLEPRODUCTID)
+            .nonchargableproductid(UPDATED_NONCHARGABLEPRODUCTID)
+            .usdbillercollectionaccount(UPDATED_USDBILLERCOLLECTIONACCOUNT)
+            .enableduplicatecheck(UPDATED_ENABLEDUPLICATECHECK)
+            .remarks(UPDATED_REMARKS)
+            .sessionid(UPDATED_SESSIONID)
+            .reworkby(UPDATED_REWORKBY)
+            .status(UPDATED_STATUS)
+            .active(UPDATED_ACTIVE)
+            .rework(UPDATED_REWORK);
 
-        restBILLERSMockMvc
+        restBillersMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, updatedBILLERS.getId())
+                put(ENTITY_API_URL_ID, updatedBillers.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(updatedBILLERS))
+                    .content(om.writeValueAsBytes(updatedBillers))
             )
             .andExpect(status().isOk());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertPersistedBILLERSToMatchAllProperties(updatedBILLERS);
+        assertPersistedBillersToMatchAllProperties(updatedBillers);
     }
 
     @Test
     @Transactional
-    void putNonExistingBILLERS() throws Exception {
+    void putNonExistingBillers() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bILLERS.setId(longCount.incrementAndGet());
+        billers.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restBILLERSMockMvc
-            .perform(put(ENTITY_API_URL_ID, bILLERS.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bILLERS)))
+        restBillersMockMvc
+            .perform(put(ENTITY_API_URL_ID, billers.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(billers)))
             .andExpect(status().isBadRequest());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithIdMismatchBILLERS() throws Exception {
+    void putWithIdMismatchBillers() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bILLERS.setId(longCount.incrementAndGet());
+        billers.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restBILLERSMockMvc
+        restBillersMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(bILLERS))
+                    .content(om.writeValueAsBytes(billers))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithMissingIdPathParamBILLERS() throws Exception {
+    void putWithMissingIdPathParamBillers() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bILLERS.setId(longCount.incrementAndGet());
+        billers.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restBILLERSMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bILLERS)))
+        restBillersMockMvc
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(billers)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void partialUpdateBILLERSWithPatch() throws Exception {
+    void partialUpdateBillersWithPatch() throws Exception {
         // Initialize the database
-        insertedBILLERS = bILLERSRepository.saveAndFlush(bILLERS);
+        insertedBillers = billersRepository.saveAndFlush(billers);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the bILLERS using partial update
-        BILLERS partialUpdatedBILLERS = new BILLERS();
-        partialUpdatedBILLERS.setId(bILLERS.getId());
+        // Update the billers using partial update
+        Billers partialUpdatedBillers = new Billers();
+        partialUpdatedBillers.setId(billers.getId());
 
-        partialUpdatedBILLERS
-            .bILLERID(UPDATED_B_ILLERID)
-            .bILLERCOLLECTIONACCOUNT(UPDATED_B_ILLERCOLLECTIONACCOUNT)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE)
-            .nONCHARGABLEPRODUCTID(UPDATED_N_ONCHARGABLEPRODUCTID)
-            .uSDBILLERCOLLECTIONACCOUNT(UPDATED_U_SDBILLERCOLLECTIONACCOUNT)
-            .eNABLEDUPLICATECHECK(UPDATED_E_NABLEDUPLICATECHECK)
-            .rEWORKBY(UPDATED_R_EWORKBY)
-            .aCTIVE(UPDATED_A_CTIVE);
+        partialUpdatedBillers
+            .billercollectionaccount(UPDATED_BILLERCOLLECTIONACCOUNT)
+            .approveddate(UPDATED_APPROVEDDATE)
+            .chargableproductid(UPDATED_CHARGABLEPRODUCTID)
+            .usdbillercollectionaccount(UPDATED_USDBILLERCOLLECTIONACCOUNT)
+            .enableduplicatecheck(UPDATED_ENABLEDUPLICATECHECK)
+            .remarks(UPDATED_REMARKS)
+            .sessionid(UPDATED_SESSIONID)
+            .status(UPDATED_STATUS);
 
-        restBILLERSMockMvc
+        restBillersMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedBILLERS.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedBillers.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedBILLERS))
+                    .content(om.writeValueAsBytes(partialUpdatedBillers))
             )
             .andExpect(status().isOk());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertBILLERSUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedBILLERS, bILLERS), getPersistedBILLERS(bILLERS));
+        assertBillersUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedBillers, billers), getPersistedBillers(billers));
     }
 
     @Test
     @Transactional
-    void fullUpdateBILLERSWithPatch() throws Exception {
+    void fullUpdateBillersWithPatch() throws Exception {
         // Initialize the database
-        insertedBILLERS = bILLERSRepository.saveAndFlush(bILLERS);
+        insertedBillers = billersRepository.saveAndFlush(billers);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the bILLERS using partial update
-        BILLERS partialUpdatedBILLERS = new BILLERS();
-        partialUpdatedBILLERS.setId(bILLERS.getId());
+        // Update the billers using partial update
+        Billers partialUpdatedBillers = new Billers();
+        partialUpdatedBillers.setId(billers.getId());
 
-        partialUpdatedBILLERS
-            .bILLERID(UPDATED_B_ILLERID)
-            .dESCRIPTION(UPDATED_D_ESCRIPTION)
-            .bILLERCOLLECTIONACCOUNT(UPDATED_B_ILLERCOLLECTIONACCOUNT)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE)
-            .cHARGABLEPRODUCTID(UPDATED_C_HARGABLEPRODUCTID)
-            .nONCHARGABLEPRODUCTID(UPDATED_N_ONCHARGABLEPRODUCTID)
-            .uSDBILLERCOLLECTIONACCOUNT(UPDATED_U_SDBILLERCOLLECTIONACCOUNT)
-            .eNABLEDUPLICATECHECK(UPDATED_E_NABLEDUPLICATECHECK)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .sESSIONID(UPDATED_S_ESSIONID)
-            .rEWORKBY(UPDATED_R_EWORKBY)
-            .sTATUS(UPDATED_S_TATUS)
-            .aCTIVE(UPDATED_A_CTIVE)
-            .rEWORK(UPDATED_R_EWORK);
+        partialUpdatedBillers
+            .billerid(UPDATED_BILLERID)
+            .description(UPDATED_DESCRIPTION)
+            .billercollectionaccount(UPDATED_BILLERCOLLECTIONACCOUNT)
+            .datecreated(UPDATED_DATECREATED)
+            .createdby(UPDATED_CREATEDBY)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approveddate(UPDATED_APPROVEDDATE)
+            .chargableproductid(UPDATED_CHARGABLEPRODUCTID)
+            .nonchargableproductid(UPDATED_NONCHARGABLEPRODUCTID)
+            .usdbillercollectionaccount(UPDATED_USDBILLERCOLLECTIONACCOUNT)
+            .enableduplicatecheck(UPDATED_ENABLEDUPLICATECHECK)
+            .remarks(UPDATED_REMARKS)
+            .sessionid(UPDATED_SESSIONID)
+            .reworkby(UPDATED_REWORKBY)
+            .status(UPDATED_STATUS)
+            .active(UPDATED_ACTIVE)
+            .rework(UPDATED_REWORK);
 
-        restBILLERSMockMvc
+        restBillersMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedBILLERS.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedBillers.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedBILLERS))
+                    .content(om.writeValueAsBytes(partialUpdatedBillers))
             )
             .andExpect(status().isOk());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertBILLERSUpdatableFieldsEquals(partialUpdatedBILLERS, getPersistedBILLERS(partialUpdatedBILLERS));
+        assertBillersUpdatableFieldsEquals(partialUpdatedBillers, getPersistedBillers(partialUpdatedBillers));
     }
 
     @Test
     @Transactional
-    void patchNonExistingBILLERS() throws Exception {
+    void patchNonExistingBillers() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bILLERS.setId(longCount.incrementAndGet());
+        billers.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restBILLERSMockMvc
+        restBillersMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, bILLERS.getId()).contentType("application/merge-patch+json").content(om.writeValueAsBytes(bILLERS))
+                patch(ENTITY_API_URL_ID, billers.getId()).contentType("application/merge-patch+json").content(om.writeValueAsBytes(billers))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithIdMismatchBILLERS() throws Exception {
+    void patchWithIdMismatchBillers() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bILLERS.setId(longCount.incrementAndGet());
+        billers.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restBILLERSMockMvc
+        restBillersMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(bILLERS))
+                    .content(om.writeValueAsBytes(billers))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithMissingIdPathParamBILLERS() throws Exception {
+    void patchWithMissingIdPathParamBillers() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bILLERS.setId(longCount.incrementAndGet());
+        billers.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restBILLERSMockMvc
-            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(bILLERS)))
+        restBillersMockMvc
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(billers)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the BILLERS in the database
+        // Validate the Billers in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void deleteBILLERS() throws Exception {
+    void deleteBillers() throws Exception {
         // Initialize the database
-        insertedBILLERS = bILLERSRepository.saveAndFlush(bILLERS);
+        insertedBillers = billersRepository.saveAndFlush(billers);
 
         long databaseSizeBeforeDelete = getRepositoryCount();
 
-        // Delete the bILLERS
-        restBILLERSMockMvc
-            .perform(delete(ENTITY_API_URL_ID, bILLERS.getId()).accept(MediaType.APPLICATION_JSON))
+        // Delete the billers
+        restBillersMockMvc
+            .perform(delete(ENTITY_API_URL_ID, billers.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
@@ -568,7 +566,7 @@ class BILLERSResourceIT {
     }
 
     protected long getRepositoryCount() {
-        return bILLERSRepository.count();
+        return billersRepository.count();
     }
 
     protected void assertIncrementedRepositoryCount(long countBefore) {
@@ -583,15 +581,15 @@ class BILLERSResourceIT {
         assertThat(countBefore).isEqualTo(getRepositoryCount());
     }
 
-    protected BILLERS getPersistedBILLERS(BILLERS bILLERS) {
-        return bILLERSRepository.findById(bILLERS.getId()).orElseThrow();
+    protected Billers getPersistedBillers(Billers billers) {
+        return billersRepository.findById(billers.getId()).orElseThrow();
     }
 
-    protected void assertPersistedBILLERSToMatchAllProperties(BILLERS expectedBILLERS) {
-        assertBILLERSAllPropertiesEquals(expectedBILLERS, getPersistedBILLERS(expectedBILLERS));
+    protected void assertPersistedBillersToMatchAllProperties(Billers expectedBillers) {
+        assertBillersAllPropertiesEquals(expectedBillers, getPersistedBillers(expectedBillers));
     }
 
-    protected void assertPersistedBILLERSToMatchUpdatableProperties(BILLERS expectedBILLERS) {
-        assertBILLERSAllUpdatablePropertiesEquals(expectedBILLERS, getPersistedBILLERS(expectedBILLERS));
+    protected void assertPersistedBillersToMatchUpdatableProperties(Billers expectedBillers) {
+        assertBillersAllUpdatablePropertiesEquals(expectedBillers, getPersistedBillers(expectedBillers));
     }
 }

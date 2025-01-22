@@ -1,52 +1,52 @@
 {
   "bbMobileBankingAdminApp": {
-    "bRANCHES": {
+    "branches": {
       "home": {
-        "title": "BRANCHES",
+        "title": "Branches",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new BRANCHES",
-        "createOrEditLabel": "Create or edit a BRANCHES",
-        "notFound": "No BRANCHES found"
+        "createLabel": "Create a new Branches",
+        "createOrEditLabel": "Create or edit a Branches",
+        "notFound": "No Branches found"
       },
-      "created": "A new BRANCHES is created with identifier {{ param }}",
-      "updated": "A BRANCHES is updated with identifier {{ param }}",
-      "deleted": "A BRANCHES is deleted with identifier {{ param }}",
+      "created": "A new Branches is created with identifier { param }",
+      "updated": "A Branches is updated with identifier { param }",
+      "deleted": "A Branches is deleted with identifier { param }",
       "delete": {
-        "question": "Are you sure you want to delete BRANCHES {{ id }}?"
+        "question": "Are you sure you want to delete Branches { id }?"
       },
       "detail": {
-        "title": "BRANCHES"
+        "title": "Branches"
       },
       "id": "ID",
-      "bRANCHNAME": "B RANCHNAME",
-      "bRANCHCODE": "B RANCHCODE",
-      "aPPROVED": "A PPROVED",
-      "eMAIL": "E MAIL",
-      "aDDRESS": "A DDRESS",
-      "pHONE": "P HONE",
-      "lOCATION": "L OCATION",
-      "cONTACTPERSON": "C ONTACTPERSON",
-      "rEMARKS": "R EMARKS",
-      "cREATEDBY": "C REATEDBY",
-      "cREATEDON": "C REATEDON",
-      "aPPROVEDBY": "A PPROVEDBY",
-      "aPPROVEDON": "A PPROVEDON",
-      "cHECKERREMARKS": "C HECKERREMARKS",
-      "dELETEDBY": "D ELETEDBY",
-      "dELETEDON": "D ELETEDON",
-      "dELETEREMARKS": "D ELETEREMARKS",
-      "dELETED": "D ELETED",
-      "dECLINED": "D ECLINED",
-      "dECLINEDDON": "D ECLINEDDON",
-      "dECLINEDBY": "D ECLINEDBY",
-      "sESSIONID": "S ESSIONID",
-      "rEWORKED": "R EWORKED",
-      "rEWORKEDBY": "R EWORKEDBY",
-      "rEWORKEDON": "R EWORKEDON",
-      "dISTRICT": "D ISTRICT",
-      "rEGION": "R EGION",
-      "rEGIONNAME": "R EGIONNAME",
-      "rEPORTING": "R EPORTING"
+      "branchname": "Branchname",
+      "branchcode": "Branchcode",
+      "approved": "Approved",
+      "email": "Email",
+      "address": "Address",
+      "phone": "Phone",
+      "location": "Location",
+      "contactperson": "Contactperson",
+      "remarks": "Remarks",
+      "createdby": "Createdby",
+      "createdon": "Createdon",
+      "approvedby": "Approvedby",
+      "approvedon": "Approvedon",
+      "checkerremarks": "Checkerremarks",
+      "deletedby": "Deletedby",
+      "deletedon": "Deletedon",
+      "deleteremarks": "Deleteremarks",
+      "deleted": "Deleted",
+      "declined": "Declined",
+      "declineddon": "Declineddon",
+      "declinedby": "Declinedby",
+      "sessionid": "Sessionid",
+      "reworked": "Reworked",
+      "reworkedby": "Reworkedby",
+      "reworkedon": "Reworkedon",
+      "district": "District",
+      "region": "Region",
+      "regionname": "Regionname",
+      "reporting": "Reporting"
     }
   }
 }

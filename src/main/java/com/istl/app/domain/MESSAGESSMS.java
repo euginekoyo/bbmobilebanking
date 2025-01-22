@@ -8,13 +8,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A MESSAGESSMS.
+ * A MessagesSms.
  */
 @Entity
-@Table(name = "messagessms")
+@Table(name = "messages_sms")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class MESSAGESSMS implements Serializable {
+public class MessagesSms implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,97 +24,97 @@ public class MESSAGESSMS implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "t_rndatetime")
-    private Instant tRNDATETIME;
+    @Column(name = "trndatetime")
+    private Instant trndatetime;
 
     @Size(max = 50)
-    @Column(name = "p_honenumber", length = 50)
-    private String pHONENUMBER;
+    @Column(name = "phonenumber", length = 50)
+    private String phonenumber;
 
     @Size(max = 4000)
-    @Column(name = "t_ransactionno", length = 4000)
-    private String tRANSACTIONNO;
+    @Column(name = "transactionno", length = 4000)
+    private String transactionno;
 
     @Size(max = 50)
-    @Column(name = "a_ccountnumber", length = 50)
-    private String aCCOUNTNUMBER;
+    @Column(name = "accountnumber", length = 50)
+    private String accountnumber;
 
     @Size(max = 2000)
-    @Column(name = "m_essage", length = 2000)
-    private String mESSAGE;
+    @Column(name = "message", length = 2000)
+    private String message;
 
     @Size(max = 4000)
-    @Column(name = "c_hannel", length = 4000)
-    private String cHANNEL;
+    @Column(name = "channel", length = 4000)
+    private String channel;
 
-    @Column(name = "t_rials")
-    private Long tRIALS;
+    @Column(name = "trials")
+    private Long trials;
 
-    @Column(name = "p_riority")
-    private Long pRIORITY;
+    @Column(name = "priority")
+    private Long priority;
 
     @Size(max = 4)
-    @Column(name = "r_esponsecode", length = 4)
-    private String rESPONSECODE;
+    @Column(name = "responsecode", length = 4)
+    private String responsecode;
 
     @Size(max = 4000)
-    @Column(name = "r_esponsemsg", length = 4000)
-    private String rESPONSEMSG;
+    @Column(name = "responsemsg", length = 4000)
+    private String responsemsg;
 
-    @Column(name = "s_ent")
-    private Long sENT;
+    @Column(name = "sent")
+    private Long sent;
 
-    @Column(name = "d_elivered")
-    private Long dELIVERED;
+    @Column(name = "delivered")
+    private Long delivered;
 
     @Size(max = 200)
-    @Column(name = "t_xntype", length = 200)
-    private String tXNTYPE;
+    @Column(name = "txntype", length = 200)
+    private String txntype;
 
-    @Column(name = "e_rrorexception")
-    private Long eRROREXCEPTION;
+    @Column(name = "errorexception")
+    private Long errorexception;
 
-    @Column(name = "d_atecreated")
-    private Instant dATECREATED;
+    @Column(name = "datecreated")
+    private Instant datecreated;
 
     @Size(max = 7)
-    @Column(name = "d_atesent", length = 7)
-    private String dATESENT;
+    @Column(name = "datesent", length = 7)
+    private String datesent;
 
     @Size(max = 200)
-    @Column(name = "r_tpsreqtime", length = 200)
-    private String rTPSREQTIME;
+    @Column(name = "rtpsreqtime", length = 200)
+    private String rtpsreqtime;
 
     @Size(max = 20)
-    @Column(name = "f_xgenerated", length = 20)
-    private String fXGENERATED;
+    @Column(name = "fxgenerated", length = 20)
+    private String fxgenerated;
 
-    @Column(name = "t_axprocessed")
-    private Long tAXPROCESSED;
-
-    @Size(max = 200)
-    @Column(name = "b_atchnumber", length = 200)
-    private String bATCHNUMBER;
+    @Column(name = "taxprocessed")
+    private Long taxprocessed;
 
     @Size(max = 200)
-    @Column(name = "b_atchnumbertax", length = 200)
-    private String bATCHNUMBERTAX;
+    @Column(name = "batchnumber", length = 200)
+    private String batchnumber;
 
     @Size(max = 200)
-    @Column(name = "r_esponsetime", length = 200)
-    private String rESPONSETIME;
+    @Column(name = "batchnumbertax", length = 200)
+    private String batchnumbertax;
 
     @Size(max = 200)
-    @Column(name = "p_duseqid", length = 200)
-    private String pDUSEQID;
+    @Column(name = "responsetime", length = 200)
+    private String responsetime;
+
+    @Size(max = 200)
+    @Column(name = "pduseqid", length = 200)
+    private String pduseqid;
 
     @Size(max = 300)
-    @Column(name = "r_emarks", length = 300)
-    private String rEMARKS;
+    @Column(name = "remarks", length = 300)
+    private String remarks;
 
     @Size(max = 50)
-    @Column(name = "r_esendby", length = 50)
-    private String rESENDBY;
+    @Column(name = "resendby", length = 50)
+    private String resendby;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -122,7 +122,7 @@ public class MESSAGESSMS implements Serializable {
         return this.id;
     }
 
-    public MESSAGESSMS id(Long id) {
+    public MessagesSms id(Long id) {
         this.setId(id);
         return this;
     }
@@ -131,329 +131,329 @@ public class MESSAGESSMS implements Serializable {
         this.id = id;
     }
 
-    public Instant gettRNDATETIME() {
-        return this.tRNDATETIME;
+    public Instant getTrndatetime() {
+        return this.trndatetime;
     }
 
-    public MESSAGESSMS tRNDATETIME(Instant tRNDATETIME) {
-        this.settRNDATETIME(tRNDATETIME);
+    public MessagesSms trndatetime(Instant trndatetime) {
+        this.setTrndatetime(trndatetime);
         return this;
     }
 
-    public void settRNDATETIME(Instant tRNDATETIME) {
-        this.tRNDATETIME = tRNDATETIME;
+    public void setTrndatetime(Instant trndatetime) {
+        this.trndatetime = trndatetime;
     }
 
-    public String getpHONENUMBER() {
-        return this.pHONENUMBER;
+    public String getPhonenumber() {
+        return this.phonenumber;
     }
 
-    public MESSAGESSMS pHONENUMBER(String pHONENUMBER) {
-        this.setpHONENUMBER(pHONENUMBER);
+    public MessagesSms phonenumber(String phonenumber) {
+        this.setPhonenumber(phonenumber);
         return this;
     }
 
-    public void setpHONENUMBER(String pHONENUMBER) {
-        this.pHONENUMBER = pHONENUMBER;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
-    public String gettRANSACTIONNO() {
-        return this.tRANSACTIONNO;
+    public String getTransactionno() {
+        return this.transactionno;
     }
 
-    public MESSAGESSMS tRANSACTIONNO(String tRANSACTIONNO) {
-        this.settRANSACTIONNO(tRANSACTIONNO);
+    public MessagesSms transactionno(String transactionno) {
+        this.setTransactionno(transactionno);
         return this;
     }
 
-    public void settRANSACTIONNO(String tRANSACTIONNO) {
-        this.tRANSACTIONNO = tRANSACTIONNO;
+    public void setTransactionno(String transactionno) {
+        this.transactionno = transactionno;
     }
 
-    public String getaCCOUNTNUMBER() {
-        return this.aCCOUNTNUMBER;
+    public String getAccountnumber() {
+        return this.accountnumber;
     }
 
-    public MESSAGESSMS aCCOUNTNUMBER(String aCCOUNTNUMBER) {
-        this.setaCCOUNTNUMBER(aCCOUNTNUMBER);
+    public MessagesSms accountnumber(String accountnumber) {
+        this.setAccountnumber(accountnumber);
         return this;
     }
 
-    public void setaCCOUNTNUMBER(String aCCOUNTNUMBER) {
-        this.aCCOUNTNUMBER = aCCOUNTNUMBER;
+    public void setAccountnumber(String accountnumber) {
+        this.accountnumber = accountnumber;
     }
 
-    public String getmESSAGE() {
-        return this.mESSAGE;
+    public String getMessage() {
+        return this.message;
     }
 
-    public MESSAGESSMS mESSAGE(String mESSAGE) {
-        this.setmESSAGE(mESSAGE);
+    public MessagesSms message(String message) {
+        this.setMessage(message);
         return this;
     }
 
-    public void setmESSAGE(String mESSAGE) {
-        this.mESSAGE = mESSAGE;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getcHANNEL() {
-        return this.cHANNEL;
+    public String getChannel() {
+        return this.channel;
     }
 
-    public MESSAGESSMS cHANNEL(String cHANNEL) {
-        this.setcHANNEL(cHANNEL);
+    public MessagesSms channel(String channel) {
+        this.setChannel(channel);
         return this;
     }
 
-    public void setcHANNEL(String cHANNEL) {
-        this.cHANNEL = cHANNEL;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
-    public Long gettRIALS() {
-        return this.tRIALS;
+    public Long getTrials() {
+        return this.trials;
     }
 
-    public MESSAGESSMS tRIALS(Long tRIALS) {
-        this.settRIALS(tRIALS);
+    public MessagesSms trials(Long trials) {
+        this.setTrials(trials);
         return this;
     }
 
-    public void settRIALS(Long tRIALS) {
-        this.tRIALS = tRIALS;
+    public void setTrials(Long trials) {
+        this.trials = trials;
     }
 
-    public Long getpRIORITY() {
-        return this.pRIORITY;
+    public Long getPriority() {
+        return this.priority;
     }
 
-    public MESSAGESSMS pRIORITY(Long pRIORITY) {
-        this.setpRIORITY(pRIORITY);
+    public MessagesSms priority(Long priority) {
+        this.setPriority(priority);
         return this;
     }
 
-    public void setpRIORITY(Long pRIORITY) {
-        this.pRIORITY = pRIORITY;
+    public void setPriority(Long priority) {
+        this.priority = priority;
     }
 
-    public String getrESPONSECODE() {
-        return this.rESPONSECODE;
+    public String getResponsecode() {
+        return this.responsecode;
     }
 
-    public MESSAGESSMS rESPONSECODE(String rESPONSECODE) {
-        this.setrESPONSECODE(rESPONSECODE);
+    public MessagesSms responsecode(String responsecode) {
+        this.setResponsecode(responsecode);
         return this;
     }
 
-    public void setrESPONSECODE(String rESPONSECODE) {
-        this.rESPONSECODE = rESPONSECODE;
+    public void setResponsecode(String responsecode) {
+        this.responsecode = responsecode;
     }
 
-    public String getrESPONSEMSG() {
-        return this.rESPONSEMSG;
+    public String getResponsemsg() {
+        return this.responsemsg;
     }
 
-    public MESSAGESSMS rESPONSEMSG(String rESPONSEMSG) {
-        this.setrESPONSEMSG(rESPONSEMSG);
+    public MessagesSms responsemsg(String responsemsg) {
+        this.setResponsemsg(responsemsg);
         return this;
     }
 
-    public void setrESPONSEMSG(String rESPONSEMSG) {
-        this.rESPONSEMSG = rESPONSEMSG;
+    public void setResponsemsg(String responsemsg) {
+        this.responsemsg = responsemsg;
     }
 
-    public Long getsENT() {
-        return this.sENT;
+    public Long getSent() {
+        return this.sent;
     }
 
-    public MESSAGESSMS sENT(Long sENT) {
-        this.setsENT(sENT);
+    public MessagesSms sent(Long sent) {
+        this.setSent(sent);
         return this;
     }
 
-    public void setsENT(Long sENT) {
-        this.sENT = sENT;
+    public void setSent(Long sent) {
+        this.sent = sent;
     }
 
-    public Long getdELIVERED() {
-        return this.dELIVERED;
+    public Long getDelivered() {
+        return this.delivered;
     }
 
-    public MESSAGESSMS dELIVERED(Long dELIVERED) {
-        this.setdELIVERED(dELIVERED);
+    public MessagesSms delivered(Long delivered) {
+        this.setDelivered(delivered);
         return this;
     }
 
-    public void setdELIVERED(Long dELIVERED) {
-        this.dELIVERED = dELIVERED;
+    public void setDelivered(Long delivered) {
+        this.delivered = delivered;
     }
 
-    public String gettXNTYPE() {
-        return this.tXNTYPE;
+    public String getTxntype() {
+        return this.txntype;
     }
 
-    public MESSAGESSMS tXNTYPE(String tXNTYPE) {
-        this.settXNTYPE(tXNTYPE);
+    public MessagesSms txntype(String txntype) {
+        this.setTxntype(txntype);
         return this;
     }
 
-    public void settXNTYPE(String tXNTYPE) {
-        this.tXNTYPE = tXNTYPE;
+    public void setTxntype(String txntype) {
+        this.txntype = txntype;
     }
 
-    public Long geteRROREXCEPTION() {
-        return this.eRROREXCEPTION;
+    public Long getErrorexception() {
+        return this.errorexception;
     }
 
-    public MESSAGESSMS eRROREXCEPTION(Long eRROREXCEPTION) {
-        this.seteRROREXCEPTION(eRROREXCEPTION);
+    public MessagesSms errorexception(Long errorexception) {
+        this.setErrorexception(errorexception);
         return this;
     }
 
-    public void seteRROREXCEPTION(Long eRROREXCEPTION) {
-        this.eRROREXCEPTION = eRROREXCEPTION;
+    public void setErrorexception(Long errorexception) {
+        this.errorexception = errorexception;
     }
 
-    public Instant getdATECREATED() {
-        return this.dATECREATED;
+    public Instant getDatecreated() {
+        return this.datecreated;
     }
 
-    public MESSAGESSMS dATECREATED(Instant dATECREATED) {
-        this.setdATECREATED(dATECREATED);
+    public MessagesSms datecreated(Instant datecreated) {
+        this.setDatecreated(datecreated);
         return this;
     }
 
-    public void setdATECREATED(Instant dATECREATED) {
-        this.dATECREATED = dATECREATED;
+    public void setDatecreated(Instant datecreated) {
+        this.datecreated = datecreated;
     }
 
-    public String getdATESENT() {
-        return this.dATESENT;
+    public String getDatesent() {
+        return this.datesent;
     }
 
-    public MESSAGESSMS dATESENT(String dATESENT) {
-        this.setdATESENT(dATESENT);
+    public MessagesSms datesent(String datesent) {
+        this.setDatesent(datesent);
         return this;
     }
 
-    public void setdATESENT(String dATESENT) {
-        this.dATESENT = dATESENT;
+    public void setDatesent(String datesent) {
+        this.datesent = datesent;
     }
 
-    public String getrTPSREQTIME() {
-        return this.rTPSREQTIME;
+    public String getRtpsreqtime() {
+        return this.rtpsreqtime;
     }
 
-    public MESSAGESSMS rTPSREQTIME(String rTPSREQTIME) {
-        this.setrTPSREQTIME(rTPSREQTIME);
+    public MessagesSms rtpsreqtime(String rtpsreqtime) {
+        this.setRtpsreqtime(rtpsreqtime);
         return this;
     }
 
-    public void setrTPSREQTIME(String rTPSREQTIME) {
-        this.rTPSREQTIME = rTPSREQTIME;
+    public void setRtpsreqtime(String rtpsreqtime) {
+        this.rtpsreqtime = rtpsreqtime;
     }
 
-    public String getfXGENERATED() {
-        return this.fXGENERATED;
+    public String getFxgenerated() {
+        return this.fxgenerated;
     }
 
-    public MESSAGESSMS fXGENERATED(String fXGENERATED) {
-        this.setfXGENERATED(fXGENERATED);
+    public MessagesSms fxgenerated(String fxgenerated) {
+        this.setFxgenerated(fxgenerated);
         return this;
     }
 
-    public void setfXGENERATED(String fXGENERATED) {
-        this.fXGENERATED = fXGENERATED;
+    public void setFxgenerated(String fxgenerated) {
+        this.fxgenerated = fxgenerated;
     }
 
-    public Long gettAXPROCESSED() {
-        return this.tAXPROCESSED;
+    public Long getTaxprocessed() {
+        return this.taxprocessed;
     }
 
-    public MESSAGESSMS tAXPROCESSED(Long tAXPROCESSED) {
-        this.settAXPROCESSED(tAXPROCESSED);
+    public MessagesSms taxprocessed(Long taxprocessed) {
+        this.setTaxprocessed(taxprocessed);
         return this;
     }
 
-    public void settAXPROCESSED(Long tAXPROCESSED) {
-        this.tAXPROCESSED = tAXPROCESSED;
+    public void setTaxprocessed(Long taxprocessed) {
+        this.taxprocessed = taxprocessed;
     }
 
-    public String getbATCHNUMBER() {
-        return this.bATCHNUMBER;
+    public String getBatchnumber() {
+        return this.batchnumber;
     }
 
-    public MESSAGESSMS bATCHNUMBER(String bATCHNUMBER) {
-        this.setbATCHNUMBER(bATCHNUMBER);
+    public MessagesSms batchnumber(String batchnumber) {
+        this.setBatchnumber(batchnumber);
         return this;
     }
 
-    public void setbATCHNUMBER(String bATCHNUMBER) {
-        this.bATCHNUMBER = bATCHNUMBER;
+    public void setBatchnumber(String batchnumber) {
+        this.batchnumber = batchnumber;
     }
 
-    public String getbATCHNUMBERTAX() {
-        return this.bATCHNUMBERTAX;
+    public String getBatchnumbertax() {
+        return this.batchnumbertax;
     }
 
-    public MESSAGESSMS bATCHNUMBERTAX(String bATCHNUMBERTAX) {
-        this.setbATCHNUMBERTAX(bATCHNUMBERTAX);
+    public MessagesSms batchnumbertax(String batchnumbertax) {
+        this.setBatchnumbertax(batchnumbertax);
         return this;
     }
 
-    public void setbATCHNUMBERTAX(String bATCHNUMBERTAX) {
-        this.bATCHNUMBERTAX = bATCHNUMBERTAX;
+    public void setBatchnumbertax(String batchnumbertax) {
+        this.batchnumbertax = batchnumbertax;
     }
 
-    public String getrESPONSETIME() {
-        return this.rESPONSETIME;
+    public String getResponsetime() {
+        return this.responsetime;
     }
 
-    public MESSAGESSMS rESPONSETIME(String rESPONSETIME) {
-        this.setrESPONSETIME(rESPONSETIME);
+    public MessagesSms responsetime(String responsetime) {
+        this.setResponsetime(responsetime);
         return this;
     }
 
-    public void setrESPONSETIME(String rESPONSETIME) {
-        this.rESPONSETIME = rESPONSETIME;
+    public void setResponsetime(String responsetime) {
+        this.responsetime = responsetime;
     }
 
-    public String getpDUSEQID() {
-        return this.pDUSEQID;
+    public String getPduseqid() {
+        return this.pduseqid;
     }
 
-    public MESSAGESSMS pDUSEQID(String pDUSEQID) {
-        this.setpDUSEQID(pDUSEQID);
+    public MessagesSms pduseqid(String pduseqid) {
+        this.setPduseqid(pduseqid);
         return this;
     }
 
-    public void setpDUSEQID(String pDUSEQID) {
-        this.pDUSEQID = pDUSEQID;
+    public void setPduseqid(String pduseqid) {
+        this.pduseqid = pduseqid;
     }
 
-    public String getrEMARKS() {
-        return this.rEMARKS;
+    public String getRemarks() {
+        return this.remarks;
     }
 
-    public MESSAGESSMS rEMARKS(String rEMARKS) {
-        this.setrEMARKS(rEMARKS);
+    public MessagesSms remarks(String remarks) {
+        this.setRemarks(remarks);
         return this;
     }
 
-    public void setrEMARKS(String rEMARKS) {
-        this.rEMARKS = rEMARKS;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
-    public String getrESENDBY() {
-        return this.rESENDBY;
+    public String getResendby() {
+        return this.resendby;
     }
 
-    public MESSAGESSMS rESENDBY(String rESENDBY) {
-        this.setrESENDBY(rESENDBY);
+    public MessagesSms resendby(String resendby) {
+        this.setResendby(resendby);
         return this;
     }
 
-    public void setrESENDBY(String rESENDBY) {
-        this.rESENDBY = rESENDBY;
+    public void setResendby(String resendby) {
+        this.resendby = resendby;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -463,10 +463,10 @@ public class MESSAGESSMS implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof MESSAGESSMS)) {
+        if (!(o instanceof MessagesSms)) {
             return false;
         }
-        return getId() != null && getId().equals(((MESSAGESSMS) o).getId());
+        return getId() != null && getId().equals(((MessagesSms) o).getId());
     }
 
     @Override
@@ -478,33 +478,33 @@ public class MESSAGESSMS implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "MESSAGESSMS{" +
+        return "MessagesSms{" +
             "id=" + getId() +
-            ", tRNDATETIME='" + gettRNDATETIME() + "'" +
-            ", pHONENUMBER='" + getpHONENUMBER() + "'" +
-            ", tRANSACTIONNO='" + gettRANSACTIONNO() + "'" +
-            ", aCCOUNTNUMBER='" + getaCCOUNTNUMBER() + "'" +
-            ", mESSAGE='" + getmESSAGE() + "'" +
-            ", cHANNEL='" + getcHANNEL() + "'" +
-            ", tRIALS=" + gettRIALS() +
-            ", pRIORITY=" + getpRIORITY() +
-            ", rESPONSECODE='" + getrESPONSECODE() + "'" +
-            ", rESPONSEMSG='" + getrESPONSEMSG() + "'" +
-            ", sENT=" + getsENT() +
-            ", dELIVERED=" + getdELIVERED() +
-            ", tXNTYPE='" + gettXNTYPE() + "'" +
-            ", eRROREXCEPTION=" + geteRROREXCEPTION() +
-            ", dATECREATED='" + getdATECREATED() + "'" +
-            ", dATESENT='" + getdATESENT() + "'" +
-            ", rTPSREQTIME='" + getrTPSREQTIME() + "'" +
-            ", fXGENERATED='" + getfXGENERATED() + "'" +
-            ", tAXPROCESSED=" + gettAXPROCESSED() +
-            ", bATCHNUMBER='" + getbATCHNUMBER() + "'" +
-            ", bATCHNUMBERTAX='" + getbATCHNUMBERTAX() + "'" +
-            ", rESPONSETIME='" + getrESPONSETIME() + "'" +
-            ", pDUSEQID='" + getpDUSEQID() + "'" +
-            ", rEMARKS='" + getrEMARKS() + "'" +
-            ", rESENDBY='" + getrESENDBY() + "'" +
+            ", trndatetime='" + getTrndatetime() + "'" +
+            ", phonenumber='" + getPhonenumber() + "'" +
+            ", transactionno='" + getTransactionno() + "'" +
+            ", accountnumber='" + getAccountnumber() + "'" +
+            ", message='" + getMessage() + "'" +
+            ", channel='" + getChannel() + "'" +
+            ", trials=" + getTrials() +
+            ", priority=" + getPriority() +
+            ", responsecode='" + getResponsecode() + "'" +
+            ", responsemsg='" + getResponsemsg() + "'" +
+            ", sent=" + getSent() +
+            ", delivered=" + getDelivered() +
+            ", txntype='" + getTxntype() + "'" +
+            ", errorexception=" + getErrorexception() +
+            ", datecreated='" + getDatecreated() + "'" +
+            ", datesent='" + getDatesent() + "'" +
+            ", rtpsreqtime='" + getRtpsreqtime() + "'" +
+            ", fxgenerated='" + getFxgenerated() + "'" +
+            ", taxprocessed=" + getTaxprocessed() +
+            ", batchnumber='" + getBatchnumber() + "'" +
+            ", batchnumbertax='" + getBatchnumbertax() + "'" +
+            ", responsetime='" + getResponsetime() + "'" +
+            ", pduseqid='" + getPduseqid() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", resendby='" + getResendby() + "'" +
             "}";
     }
 }

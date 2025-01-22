@@ -1,27 +1,30 @@
 {
-  "annotations": {},
+  "annotations": {
+    "changelogDate": "20250121084340"
+  },
   "applications": "*",
   "entityTableName": "sps_participating_codes",
   "fields": [
     {
-      "fieldName": "bICCODE",
+      "fieldName": "biccode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "8"
     },
     {
-      "fieldName": "bICNAME",
+      "fieldName": "bicname",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "12"
     },
     {
-      "fieldName": "bICSTATUS",
+      "fieldName": "bicstatus",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "10"
     }
   ],
   "name": "SPSParticipatingCodes",
-  "relationships": []
+  "relationships": [],
+  "searchEngine": "no"
 }

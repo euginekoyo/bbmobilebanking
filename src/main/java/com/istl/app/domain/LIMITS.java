@@ -7,13 +7,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A LIMITS.
+ * A Limits.
  */
 @Entity
 @Table(name = "limits")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class LIMITS implements Serializable {
+public class Limits implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,68 +25,68 @@ public class LIMITS implements Serializable {
 
     @NotNull
     @Size(max = 50)
-    @Column(name = "t_ransactiontype", length = 50, nullable = false)
-    private String tRANSACTIONTYPE;
+    @Column(name = "transactiontype", length = 50, nullable = false)
+    private String transactiontype;
 
     @Size(max = 6)
-    @Column(name = "p_rocode", length = 6)
-    private String pROCODE;
+    @Column(name = "procode", length = 6)
+    private String procode;
 
     @Size(max = 30)
-    @Column(name = "c_hannel", length = 30)
-    private String cHANNEL;
+    @Column(name = "channel", length = 30)
+    private String channel;
 
     @NotNull
     @Min(value = 1L)
     @Max(value = 10L)
-    @Column(name = "t_ransactionlimit", nullable = false)
-    private Long tRANSACTIONLIMIT;
+    @Column(name = "transactionlimit", nullable = false)
+    private Long transactionlimit;
 
     @Min(value = 1L)
     @Max(value = 10L)
-    @Column(name = "d_ailylimit")
-    private Long dAILYLIMIT;
+    @Column(name = "dailylimit")
+    private Long dailylimit;
 
     @Size(max = 50)
-    @Column(name = "r_egisteredby", length = 50)
-    private String rEGISTEREDBY;
+    @Column(name = "registeredby", length = 50)
+    private String registeredby;
 
     @Size(max = 7)
-    @Column(name = "r_egistereddate", length = 7)
-    private String rEGISTEREDDATE;
+    @Column(name = "registereddate", length = 7)
+    private String registereddate;
 
     @Size(max = 2)
-    @Column(name = "a_pproved", length = 2)
-    private String aPPROVED;
+    @Column(name = "approved", length = 2)
+    private String approved;
 
     @Size(max = 50)
-    @Column(name = "a_pprovedby", length = 50)
-    private String aPPROVEDBY;
+    @Column(name = "approvedby", length = 50)
+    private String approvedby;
 
     @Size(max = 7)
-    @Column(name = "a_pproveddate", length = 7)
-    private String aPPROVEDDATE;
+    @Column(name = "approveddate", length = 7)
+    private String approveddate;
 
     @Size(max = 50)
-    @Column(name = "u_pdatedby", length = 50)
-    private String uPDATEDBY;
+    @Column(name = "updatedby", length = 50)
+    private String updatedby;
 
     @Size(max = 7)
-    @Column(name = "u_pdateddate", length = 7)
-    private String uPDATEDDATE;
+    @Column(name = "updateddate", length = 7)
+    private String updateddate;
 
     @Min(value = 1L)
     @Max(value = 10L)
-    @Column(name = "r_ework")
-    private Long rEWORK;
+    @Column(name = "rework")
+    private Long rework;
 
     @Size(max = 50)
-    @Column(name = "r_eworkby", length = 50)
-    private String rEWORKBY;
+    @Column(name = "reworkby", length = 50)
+    private String reworkby;
 
     @Size(max = 50)
-    @Column(name = "s_essionid", length = 50)
-    private String sESSIONID;
+    @Column(name = "sessionid", length = 50)
+    private String sessionid;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -94,7 +94,7 @@ public class LIMITS implements Serializable {
         return this.id;
     }
 
-    public LIMITS id(Long id) {
+    public Limits id(Long id) {
         this.setId(id);
         return this;
     }
@@ -103,199 +103,199 @@ public class LIMITS implements Serializable {
         this.id = id;
     }
 
-    public String gettRANSACTIONTYPE() {
-        return this.tRANSACTIONTYPE;
+    public String getTransactiontype() {
+        return this.transactiontype;
     }
 
-    public LIMITS tRANSACTIONTYPE(String tRANSACTIONTYPE) {
-        this.settRANSACTIONTYPE(tRANSACTIONTYPE);
+    public Limits transactiontype(String transactiontype) {
+        this.setTransactiontype(transactiontype);
         return this;
     }
 
-    public void settRANSACTIONTYPE(String tRANSACTIONTYPE) {
-        this.tRANSACTIONTYPE = tRANSACTIONTYPE;
+    public void setTransactiontype(String transactiontype) {
+        this.transactiontype = transactiontype;
     }
 
-    public String getpROCODE() {
-        return this.pROCODE;
+    public String getProcode() {
+        return this.procode;
     }
 
-    public LIMITS pROCODE(String pROCODE) {
-        this.setpROCODE(pROCODE);
+    public Limits procode(String procode) {
+        this.setProcode(procode);
         return this;
     }
 
-    public void setpROCODE(String pROCODE) {
-        this.pROCODE = pROCODE;
+    public void setProcode(String procode) {
+        this.procode = procode;
     }
 
-    public String getcHANNEL() {
-        return this.cHANNEL;
+    public String getChannel() {
+        return this.channel;
     }
 
-    public LIMITS cHANNEL(String cHANNEL) {
-        this.setcHANNEL(cHANNEL);
+    public Limits channel(String channel) {
+        this.setChannel(channel);
         return this;
     }
 
-    public void setcHANNEL(String cHANNEL) {
-        this.cHANNEL = cHANNEL;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
-    public Long gettRANSACTIONLIMIT() {
-        return this.tRANSACTIONLIMIT;
+    public Long getTransactionlimit() {
+        return this.transactionlimit;
     }
 
-    public LIMITS tRANSACTIONLIMIT(Long tRANSACTIONLIMIT) {
-        this.settRANSACTIONLIMIT(tRANSACTIONLIMIT);
+    public Limits transactionlimit(Long transactionlimit) {
+        this.setTransactionlimit(transactionlimit);
         return this;
     }
 
-    public void settRANSACTIONLIMIT(Long tRANSACTIONLIMIT) {
-        this.tRANSACTIONLIMIT = tRANSACTIONLIMIT;
+    public void setTransactionlimit(Long transactionlimit) {
+        this.transactionlimit = transactionlimit;
     }
 
-    public Long getdAILYLIMIT() {
-        return this.dAILYLIMIT;
+    public Long getDailylimit() {
+        return this.dailylimit;
     }
 
-    public LIMITS dAILYLIMIT(Long dAILYLIMIT) {
-        this.setdAILYLIMIT(dAILYLIMIT);
+    public Limits dailylimit(Long dailylimit) {
+        this.setDailylimit(dailylimit);
         return this;
     }
 
-    public void setdAILYLIMIT(Long dAILYLIMIT) {
-        this.dAILYLIMIT = dAILYLIMIT;
+    public void setDailylimit(Long dailylimit) {
+        this.dailylimit = dailylimit;
     }
 
-    public String getrEGISTEREDBY() {
-        return this.rEGISTEREDBY;
+    public String getRegisteredby() {
+        return this.registeredby;
     }
 
-    public LIMITS rEGISTEREDBY(String rEGISTEREDBY) {
-        this.setrEGISTEREDBY(rEGISTEREDBY);
+    public Limits registeredby(String registeredby) {
+        this.setRegisteredby(registeredby);
         return this;
     }
 
-    public void setrEGISTEREDBY(String rEGISTEREDBY) {
-        this.rEGISTEREDBY = rEGISTEREDBY;
+    public void setRegisteredby(String registeredby) {
+        this.registeredby = registeredby;
     }
 
-    public String getrEGISTEREDDATE() {
-        return this.rEGISTEREDDATE;
+    public String getRegistereddate() {
+        return this.registereddate;
     }
 
-    public LIMITS rEGISTEREDDATE(String rEGISTEREDDATE) {
-        this.setrEGISTEREDDATE(rEGISTEREDDATE);
+    public Limits registereddate(String registereddate) {
+        this.setRegistereddate(registereddate);
         return this;
     }
 
-    public void setrEGISTEREDDATE(String rEGISTEREDDATE) {
-        this.rEGISTEREDDATE = rEGISTEREDDATE;
+    public void setRegistereddate(String registereddate) {
+        this.registereddate = registereddate;
     }
 
-    public String getaPPROVED() {
-        return this.aPPROVED;
+    public String getApproved() {
+        return this.approved;
     }
 
-    public LIMITS aPPROVED(String aPPROVED) {
-        this.setaPPROVED(aPPROVED);
+    public Limits approved(String approved) {
+        this.setApproved(approved);
         return this;
     }
 
-    public void setaPPROVED(String aPPROVED) {
-        this.aPPROVED = aPPROVED;
+    public void setApproved(String approved) {
+        this.approved = approved;
     }
 
-    public String getaPPROVEDBY() {
-        return this.aPPROVEDBY;
+    public String getApprovedby() {
+        return this.approvedby;
     }
 
-    public LIMITS aPPROVEDBY(String aPPROVEDBY) {
-        this.setaPPROVEDBY(aPPROVEDBY);
+    public Limits approvedby(String approvedby) {
+        this.setApprovedby(approvedby);
         return this;
     }
 
-    public void setaPPROVEDBY(String aPPROVEDBY) {
-        this.aPPROVEDBY = aPPROVEDBY;
+    public void setApprovedby(String approvedby) {
+        this.approvedby = approvedby;
     }
 
-    public String getaPPROVEDDATE() {
-        return this.aPPROVEDDATE;
+    public String getApproveddate() {
+        return this.approveddate;
     }
 
-    public LIMITS aPPROVEDDATE(String aPPROVEDDATE) {
-        this.setaPPROVEDDATE(aPPROVEDDATE);
+    public Limits approveddate(String approveddate) {
+        this.setApproveddate(approveddate);
         return this;
     }
 
-    public void setaPPROVEDDATE(String aPPROVEDDATE) {
-        this.aPPROVEDDATE = aPPROVEDDATE;
+    public void setApproveddate(String approveddate) {
+        this.approveddate = approveddate;
     }
 
-    public String getuPDATEDBY() {
-        return this.uPDATEDBY;
+    public String getUpdatedby() {
+        return this.updatedby;
     }
 
-    public LIMITS uPDATEDBY(String uPDATEDBY) {
-        this.setuPDATEDBY(uPDATEDBY);
+    public Limits updatedby(String updatedby) {
+        this.setUpdatedby(updatedby);
         return this;
     }
 
-    public void setuPDATEDBY(String uPDATEDBY) {
-        this.uPDATEDBY = uPDATEDBY;
+    public void setUpdatedby(String updatedby) {
+        this.updatedby = updatedby;
     }
 
-    public String getuPDATEDDATE() {
-        return this.uPDATEDDATE;
+    public String getUpdateddate() {
+        return this.updateddate;
     }
 
-    public LIMITS uPDATEDDATE(String uPDATEDDATE) {
-        this.setuPDATEDDATE(uPDATEDDATE);
+    public Limits updateddate(String updateddate) {
+        this.setUpdateddate(updateddate);
         return this;
     }
 
-    public void setuPDATEDDATE(String uPDATEDDATE) {
-        this.uPDATEDDATE = uPDATEDDATE;
+    public void setUpdateddate(String updateddate) {
+        this.updateddate = updateddate;
     }
 
-    public Long getrEWORK() {
-        return this.rEWORK;
+    public Long getRework() {
+        return this.rework;
     }
 
-    public LIMITS rEWORK(Long rEWORK) {
-        this.setrEWORK(rEWORK);
+    public Limits rework(Long rework) {
+        this.setRework(rework);
         return this;
     }
 
-    public void setrEWORK(Long rEWORK) {
-        this.rEWORK = rEWORK;
+    public void setRework(Long rework) {
+        this.rework = rework;
     }
 
-    public String getrEWORKBY() {
-        return this.rEWORKBY;
+    public String getReworkby() {
+        return this.reworkby;
     }
 
-    public LIMITS rEWORKBY(String rEWORKBY) {
-        this.setrEWORKBY(rEWORKBY);
+    public Limits reworkby(String reworkby) {
+        this.setReworkby(reworkby);
         return this;
     }
 
-    public void setrEWORKBY(String rEWORKBY) {
-        this.rEWORKBY = rEWORKBY;
+    public void setReworkby(String reworkby) {
+        this.reworkby = reworkby;
     }
 
-    public String getsESSIONID() {
-        return this.sESSIONID;
+    public String getSessionid() {
+        return this.sessionid;
     }
 
-    public LIMITS sESSIONID(String sESSIONID) {
-        this.setsESSIONID(sESSIONID);
+    public Limits sessionid(String sessionid) {
+        this.setSessionid(sessionid);
         return this;
     }
 
-    public void setsESSIONID(String sESSIONID) {
-        this.sESSIONID = sESSIONID;
+    public void setSessionid(String sessionid) {
+        this.sessionid = sessionid;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -305,10 +305,10 @@ public class LIMITS implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof LIMITS)) {
+        if (!(o instanceof Limits)) {
             return false;
         }
-        return getId() != null && getId().equals(((LIMITS) o).getId());
+        return getId() != null && getId().equals(((Limits) o).getId());
     }
 
     @Override
@@ -320,23 +320,23 @@ public class LIMITS implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "LIMITS{" +
+        return "Limits{" +
             "id=" + getId() +
-            ", tRANSACTIONTYPE='" + gettRANSACTIONTYPE() + "'" +
-            ", pROCODE='" + getpROCODE() + "'" +
-            ", cHANNEL='" + getcHANNEL() + "'" +
-            ", tRANSACTIONLIMIT=" + gettRANSACTIONLIMIT() +
-            ", dAILYLIMIT=" + getdAILYLIMIT() +
-            ", rEGISTEREDBY='" + getrEGISTEREDBY() + "'" +
-            ", rEGISTEREDDATE='" + getrEGISTEREDDATE() + "'" +
-            ", aPPROVED='" + getaPPROVED() + "'" +
-            ", aPPROVEDBY='" + getaPPROVEDBY() + "'" +
-            ", aPPROVEDDATE='" + getaPPROVEDDATE() + "'" +
-            ", uPDATEDBY='" + getuPDATEDBY() + "'" +
-            ", uPDATEDDATE='" + getuPDATEDDATE() + "'" +
-            ", rEWORK=" + getrEWORK() +
-            ", rEWORKBY='" + getrEWORKBY() + "'" +
-            ", sESSIONID='" + getsESSIONID() + "'" +
+            ", transactiontype='" + getTransactiontype() + "'" +
+            ", procode='" + getProcode() + "'" +
+            ", channel='" + getChannel() + "'" +
+            ", transactionlimit=" + getTransactionlimit() +
+            ", dailylimit=" + getDailylimit() +
+            ", registeredby='" + getRegisteredby() + "'" +
+            ", registereddate='" + getRegistereddate() + "'" +
+            ", approved='" + getApproved() + "'" +
+            ", approvedby='" + getApprovedby() + "'" +
+            ", approveddate='" + getApproveddate() + "'" +
+            ", updatedby='" + getUpdatedby() + "'" +
+            ", updateddate='" + getUpdateddate() + "'" +
+            ", rework=" + getRework() +
+            ", reworkby='" + getReworkby() + "'" +
+            ", sessionid='" + getSessionid() + "'" +
             "}";
     }
 }

@@ -8,13 +8,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A SERVICEMANAGEMENT.
+ * A ServiceManagement.
  */
 @Entity
-@Table(name = "servicemanagement")
+@Table(name = "service_management")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class SERVICEMANAGEMENT implements Serializable {
+public class ServiceManagement implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,59 +25,59 @@ public class SERVICEMANAGEMENT implements Serializable {
     private Long id;
 
     @Size(max = 20)
-    @Column(name = "p_rocessingcode", length = 20)
-    private String pROCESSINGCODE;
+    @Column(name = "processingcode", length = 20)
+    private String processingcode;
 
     @Size(max = 20)
-    @Column(name = "a_ctive", length = 20)
-    private String aCTIVE;
+    @Column(name = "active", length = 20)
+    private String active;
 
     @Size(max = 100)
-    @Column(name = "c_reatedby", length = 100)
-    private String cREATEDBY;
+    @Column(name = "createdby", length = 100)
+    private String createdby;
 
-    @Column(name = "d_atecreated")
-    private Instant dATECREATED;
+    @Column(name = "datecreated")
+    private Instant datecreated;
 
-    @Column(name = "a_pproved")
-    private Long aPPROVED;
+    @Column(name = "approved")
+    private Long approved;
 
     @Size(max = 100)
-    @Column(name = "a_pprovedby", length = 100)
-    private String aPPROVEDBY;
+    @Column(name = "approvedby", length = 100)
+    private String approvedby;
 
-    @Column(name = "a_pproveddate")
-    private Instant aPPROVEDDATE;
-
-    @Size(max = 20)
-    @Column(name = "a_daptortype", length = 20)
-    private String aDAPTORTYPE;
+    @Column(name = "approveddate")
+    private Instant approveddate;
 
     @Size(max = 20)
-    @Column(name = "d_estination", length = 20)
-    private String dESTINATION;
-
-    @Column(name = "t_hirdpartyresponse")
-    private Double tHIRDPARTYRESPONSE;
+    @Column(name = "adaptortype", length = 20)
+    private String adaptortype;
 
     @Size(max = 20)
-    @Column(name = "t_elco", length = 20)
-    private String tELCO;
+    @Column(name = "destination", length = 20)
+    private String destination;
+
+    @Column(name = "thirdpartyresponse")
+    private Double thirdpartyresponse;
+
+    @Size(max = 20)
+    @Column(name = "telco", length = 20)
+    private String telco;
 
     @NotNull
-    @Column(name = "d_escription", nullable = false)
-    private String dESCRIPTION;
+    @Column(name = "description", nullable = false)
+    private String description;
 
-    @Column(name = "r_emarks")
-    private String rEMARKS;
-
-    @Size(max = 100)
-    @Column(name = "s_essionid", length = 100)
-    private String sESSIONID;
+    @Column(name = "remarks")
+    private String remarks;
 
     @Size(max = 100)
-    @Column(name = "r_eworkby", length = 100)
-    private String rEWORKBY;
+    @Column(name = "sessionid", length = 100)
+    private String sessionid;
+
+    @Size(max = 100)
+    @Column(name = "reworkby", length = 100)
+    private String reworkby;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -85,7 +85,7 @@ public class SERVICEMANAGEMENT implements Serializable {
         return this.id;
     }
 
-    public SERVICEMANAGEMENT id(Long id) {
+    public ServiceManagement id(Long id) {
         this.setId(id);
         return this;
     }
@@ -94,199 +94,199 @@ public class SERVICEMANAGEMENT implements Serializable {
         this.id = id;
     }
 
-    public String getpROCESSINGCODE() {
-        return this.pROCESSINGCODE;
+    public String getProcessingcode() {
+        return this.processingcode;
     }
 
-    public SERVICEMANAGEMENT pROCESSINGCODE(String pROCESSINGCODE) {
-        this.setpROCESSINGCODE(pROCESSINGCODE);
+    public ServiceManagement processingcode(String processingcode) {
+        this.setProcessingcode(processingcode);
         return this;
     }
 
-    public void setpROCESSINGCODE(String pROCESSINGCODE) {
-        this.pROCESSINGCODE = pROCESSINGCODE;
+    public void setProcessingcode(String processingcode) {
+        this.processingcode = processingcode;
     }
 
-    public String getaCTIVE() {
-        return this.aCTIVE;
+    public String getActive() {
+        return this.active;
     }
 
-    public SERVICEMANAGEMENT aCTIVE(String aCTIVE) {
-        this.setaCTIVE(aCTIVE);
+    public ServiceManagement active(String active) {
+        this.setActive(active);
         return this;
     }
 
-    public void setaCTIVE(String aCTIVE) {
-        this.aCTIVE = aCTIVE;
+    public void setActive(String active) {
+        this.active = active;
     }
 
-    public String getcREATEDBY() {
-        return this.cREATEDBY;
+    public String getCreatedby() {
+        return this.createdby;
     }
 
-    public SERVICEMANAGEMENT cREATEDBY(String cREATEDBY) {
-        this.setcREATEDBY(cREATEDBY);
+    public ServiceManagement createdby(String createdby) {
+        this.setCreatedby(createdby);
         return this;
     }
 
-    public void setcREATEDBY(String cREATEDBY) {
-        this.cREATEDBY = cREATEDBY;
+    public void setCreatedby(String createdby) {
+        this.createdby = createdby;
     }
 
-    public Instant getdATECREATED() {
-        return this.dATECREATED;
+    public Instant getDatecreated() {
+        return this.datecreated;
     }
 
-    public SERVICEMANAGEMENT dATECREATED(Instant dATECREATED) {
-        this.setdATECREATED(dATECREATED);
+    public ServiceManagement datecreated(Instant datecreated) {
+        this.setDatecreated(datecreated);
         return this;
     }
 
-    public void setdATECREATED(Instant dATECREATED) {
-        this.dATECREATED = dATECREATED;
+    public void setDatecreated(Instant datecreated) {
+        this.datecreated = datecreated;
     }
 
-    public Long getaPPROVED() {
-        return this.aPPROVED;
+    public Long getApproved() {
+        return this.approved;
     }
 
-    public SERVICEMANAGEMENT aPPROVED(Long aPPROVED) {
-        this.setaPPROVED(aPPROVED);
+    public ServiceManagement approved(Long approved) {
+        this.setApproved(approved);
         return this;
     }
 
-    public void setaPPROVED(Long aPPROVED) {
-        this.aPPROVED = aPPROVED;
+    public void setApproved(Long approved) {
+        this.approved = approved;
     }
 
-    public String getaPPROVEDBY() {
-        return this.aPPROVEDBY;
+    public String getApprovedby() {
+        return this.approvedby;
     }
 
-    public SERVICEMANAGEMENT aPPROVEDBY(String aPPROVEDBY) {
-        this.setaPPROVEDBY(aPPROVEDBY);
+    public ServiceManagement approvedby(String approvedby) {
+        this.setApprovedby(approvedby);
         return this;
     }
 
-    public void setaPPROVEDBY(String aPPROVEDBY) {
-        this.aPPROVEDBY = aPPROVEDBY;
+    public void setApprovedby(String approvedby) {
+        this.approvedby = approvedby;
     }
 
-    public Instant getaPPROVEDDATE() {
-        return this.aPPROVEDDATE;
+    public Instant getApproveddate() {
+        return this.approveddate;
     }
 
-    public SERVICEMANAGEMENT aPPROVEDDATE(Instant aPPROVEDDATE) {
-        this.setaPPROVEDDATE(aPPROVEDDATE);
+    public ServiceManagement approveddate(Instant approveddate) {
+        this.setApproveddate(approveddate);
         return this;
     }
 
-    public void setaPPROVEDDATE(Instant aPPROVEDDATE) {
-        this.aPPROVEDDATE = aPPROVEDDATE;
+    public void setApproveddate(Instant approveddate) {
+        this.approveddate = approveddate;
     }
 
-    public String getaDAPTORTYPE() {
-        return this.aDAPTORTYPE;
+    public String getAdaptortype() {
+        return this.adaptortype;
     }
 
-    public SERVICEMANAGEMENT aDAPTORTYPE(String aDAPTORTYPE) {
-        this.setaDAPTORTYPE(aDAPTORTYPE);
+    public ServiceManagement adaptortype(String adaptortype) {
+        this.setAdaptortype(adaptortype);
         return this;
     }
 
-    public void setaDAPTORTYPE(String aDAPTORTYPE) {
-        this.aDAPTORTYPE = aDAPTORTYPE;
+    public void setAdaptortype(String adaptortype) {
+        this.adaptortype = adaptortype;
     }
 
-    public String getdESTINATION() {
-        return this.dESTINATION;
+    public String getDestination() {
+        return this.destination;
     }
 
-    public SERVICEMANAGEMENT dESTINATION(String dESTINATION) {
-        this.setdESTINATION(dESTINATION);
+    public ServiceManagement destination(String destination) {
+        this.setDestination(destination);
         return this;
     }
 
-    public void setdESTINATION(String dESTINATION) {
-        this.dESTINATION = dESTINATION;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
-    public Double gettHIRDPARTYRESPONSE() {
-        return this.tHIRDPARTYRESPONSE;
+    public Double getThirdpartyresponse() {
+        return this.thirdpartyresponse;
     }
 
-    public SERVICEMANAGEMENT tHIRDPARTYRESPONSE(Double tHIRDPARTYRESPONSE) {
-        this.settHIRDPARTYRESPONSE(tHIRDPARTYRESPONSE);
+    public ServiceManagement thirdpartyresponse(Double thirdpartyresponse) {
+        this.setThirdpartyresponse(thirdpartyresponse);
         return this;
     }
 
-    public void settHIRDPARTYRESPONSE(Double tHIRDPARTYRESPONSE) {
-        this.tHIRDPARTYRESPONSE = tHIRDPARTYRESPONSE;
+    public void setThirdpartyresponse(Double thirdpartyresponse) {
+        this.thirdpartyresponse = thirdpartyresponse;
     }
 
-    public String gettELCO() {
-        return this.tELCO;
+    public String getTelco() {
+        return this.telco;
     }
 
-    public SERVICEMANAGEMENT tELCO(String tELCO) {
-        this.settELCO(tELCO);
+    public ServiceManagement telco(String telco) {
+        this.setTelco(telco);
         return this;
     }
 
-    public void settELCO(String tELCO) {
-        this.tELCO = tELCO;
+    public void setTelco(String telco) {
+        this.telco = telco;
     }
 
-    public String getdESCRIPTION() {
-        return this.dESCRIPTION;
+    public String getDescription() {
+        return this.description;
     }
 
-    public SERVICEMANAGEMENT dESCRIPTION(String dESCRIPTION) {
-        this.setdESCRIPTION(dESCRIPTION);
+    public ServiceManagement description(String description) {
+        this.setDescription(description);
         return this;
     }
 
-    public void setdESCRIPTION(String dESCRIPTION) {
-        this.dESCRIPTION = dESCRIPTION;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getrEMARKS() {
-        return this.rEMARKS;
+    public String getRemarks() {
+        return this.remarks;
     }
 
-    public SERVICEMANAGEMENT rEMARKS(String rEMARKS) {
-        this.setrEMARKS(rEMARKS);
+    public ServiceManagement remarks(String remarks) {
+        this.setRemarks(remarks);
         return this;
     }
 
-    public void setrEMARKS(String rEMARKS) {
-        this.rEMARKS = rEMARKS;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
-    public String getsESSIONID() {
-        return this.sESSIONID;
+    public String getSessionid() {
+        return this.sessionid;
     }
 
-    public SERVICEMANAGEMENT sESSIONID(String sESSIONID) {
-        this.setsESSIONID(sESSIONID);
+    public ServiceManagement sessionid(String sessionid) {
+        this.setSessionid(sessionid);
         return this;
     }
 
-    public void setsESSIONID(String sESSIONID) {
-        this.sESSIONID = sESSIONID;
+    public void setSessionid(String sessionid) {
+        this.sessionid = sessionid;
     }
 
-    public String getrEWORKBY() {
-        return this.rEWORKBY;
+    public String getReworkby() {
+        return this.reworkby;
     }
 
-    public SERVICEMANAGEMENT rEWORKBY(String rEWORKBY) {
-        this.setrEWORKBY(rEWORKBY);
+    public ServiceManagement reworkby(String reworkby) {
+        this.setReworkby(reworkby);
         return this;
     }
 
-    public void setrEWORKBY(String rEWORKBY) {
-        this.rEWORKBY = rEWORKBY;
+    public void setReworkby(String reworkby) {
+        this.reworkby = reworkby;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -296,10 +296,10 @@ public class SERVICEMANAGEMENT implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof SERVICEMANAGEMENT)) {
+        if (!(o instanceof ServiceManagement)) {
             return false;
         }
-        return getId() != null && getId().equals(((SERVICEMANAGEMENT) o).getId());
+        return getId() != null && getId().equals(((ServiceManagement) o).getId());
     }
 
     @Override
@@ -311,23 +311,23 @@ public class SERVICEMANAGEMENT implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "SERVICEMANAGEMENT{" +
+        return "ServiceManagement{" +
             "id=" + getId() +
-            ", pROCESSINGCODE='" + getpROCESSINGCODE() + "'" +
-            ", aCTIVE='" + getaCTIVE() + "'" +
-            ", cREATEDBY='" + getcREATEDBY() + "'" +
-            ", dATECREATED='" + getdATECREATED() + "'" +
-            ", aPPROVED=" + getaPPROVED() +
-            ", aPPROVEDBY='" + getaPPROVEDBY() + "'" +
-            ", aPPROVEDDATE='" + getaPPROVEDDATE() + "'" +
-            ", aDAPTORTYPE='" + getaDAPTORTYPE() + "'" +
-            ", dESTINATION='" + getdESTINATION() + "'" +
-            ", tHIRDPARTYRESPONSE=" + gettHIRDPARTYRESPONSE() +
-            ", tELCO='" + gettELCO() + "'" +
-            ", dESCRIPTION='" + getdESCRIPTION() + "'" +
-            ", rEMARKS='" + getrEMARKS() + "'" +
-            ", sESSIONID='" + getsESSIONID() + "'" +
-            ", rEWORKBY='" + getrEWORKBY() + "'" +
+            ", processingcode='" + getProcessingcode() + "'" +
+            ", active='" + getActive() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", datecreated='" + getDatecreated() + "'" +
+            ", approved=" + getApproved() +
+            ", approvedby='" + getApprovedby() + "'" +
+            ", approveddate='" + getApproveddate() + "'" +
+            ", adaptortype='" + getAdaptortype() + "'" +
+            ", destination='" + getDestination() + "'" +
+            ", thirdpartyresponse=" + getThirdpartyresponse() +
+            ", telco='" + getTelco() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", sessionid='" + getSessionid() + "'" +
+            ", reworkby='" + getReworkby() + "'" +
             "}";
     }
 }

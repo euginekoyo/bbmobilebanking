@@ -1,6 +1,6 @@
 package com.istl.app.web.rest;
 
-import static com.istl.app.domain.CUSTOMERAsserts.*;
+import static com.istl.app.domain.CustomerAsserts.*;
 import static com.istl.app.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.CUSTOMER;
-import com.istl.app.repository.CUSTOMERRepository;
+import com.istl.app.domain.Customer;
+import com.istl.app.repository.CustomerRepository;
 import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -27,339 +27,339 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Integration tests for the {@link CUSTOMERResource} REST controller.
+ * Integration tests for the {@link CustomerResource} REST controller.
  */
 @IntegrationTest
 @AutoConfigureMockMvc
 @WithMockUser
-class CUSTOMERResourceIT {
+class CustomerResourceIT {
 
-    private static final String DEFAULT_C_USTOMERNAME = "AAAAAAAAAA";
-    private static final String UPDATED_C_USTOMERNAME = "BBBBBBBBBB";
+    private static final String DEFAULT_CUSTOMERNAME = "AAAAAAAAAA";
+    private static final String UPDATED_CUSTOMERNAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_HONENUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_P_HONENUMBER = "BBBBBBBBBB";
+    private static final String DEFAULT_PHONENUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_PHONENUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_C_ARDNUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_C_ARDNUMBER = "BBBBBBBBBB";
+    private static final String DEFAULT_CARDNUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_CARDNUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_A_CCOUNTNUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_A_CCOUNTNUMBER = "BBBBBBBBBB";
+    private static final String DEFAULT_ACCOUNTNUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_ACCOUNTNUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_L_ANG = "AAAAAAAAAA";
-    private static final String UPDATED_L_ANG = "BBBBBBBBBB";
+    private static final String DEFAULT_LANG = "AAAAAAAAAA";
+    private static final String UPDATED_LANG = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_IN = "AAAAAAAAAA";
-    private static final String UPDATED_P_IN = "BBBBBBBBBB";
+    private static final String DEFAULT_PIN = "AAAAAAAAAA";
+    private static final String UPDATED_PIN = "BBBBBBBBBB";
 
-    private static final String DEFAULT_F_IRSTLOGIN = "A";
-    private static final String UPDATED_F_IRSTLOGIN = "B";
+    private static final String DEFAULT_FIRSTLOGIN = "A";
+    private static final String UPDATED_FIRSTLOGIN = "B";
 
-    private static final String DEFAULT_A_CTIVE = "A";
-    private static final String UPDATED_A_CTIVE = "B";
+    private static final String DEFAULT_ACTIVE = "A";
+    private static final String UPDATED_ACTIVE = "B";
 
-    private static final Long DEFAULT_R_EGISTERED = 1L;
-    private static final Long UPDATED_R_EGISTERED = 2L;
+    private static final Long DEFAULT_REGISTERED = 1L;
+    private static final Long UPDATED_REGISTERED = 2L;
 
-    private static final Long DEFAULT_C_STDELETE = 1L;
-    private static final Long UPDATED_C_STDELETE = 2L;
+    private static final Long DEFAULT_CSTDELETE = 1L;
+    private static final Long UPDATED_CSTDELETE = 2L;
 
-    private static final Instant DEFAULT_R_EGDATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_R_EGDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_REGDATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_REGDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Long DEFAULT_A_LERTENABLED = 1L;
-    private static final Long UPDATED_A_LERTENABLED = 2L;
+    private static final Long DEFAULT_ALERTENABLED = 1L;
+    private static final Long UPDATED_ALERTENABLED = 2L;
 
-    private static final String DEFAULT_R_EMARK = "AAAAAAAAAA";
-    private static final String UPDATED_R_EMARK = "BBBBBBBBBB";
+    private static final String DEFAULT_REMARK = "AAAAAAAAAA";
+    private static final String UPDATED_REMARK = "BBBBBBBBBB";
 
-    private static final String DEFAULT_I_MSI = "AAAAAAAAAA";
-    private static final String UPDATED_I_MSI = "BBBBBBBBBB";
+    private static final String DEFAULT_IMSI = "AAAAAAAAAA";
+    private static final String UPDATED_IMSI = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_ARTIALLYREGISTERED = "A";
-    private static final String UPDATED_P_ARTIALLYREGISTERED = "B";
+    private static final String DEFAULT_PARTIALLYREGISTERED = "A";
+    private static final String UPDATED_PARTIALLYREGISTERED = "B";
 
-    private static final Instant DEFAULT_P_ARTIALDATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_P_ARTIALDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_PARTIALDATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_PARTIALDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Instant DEFAULT_R_EGISTERDATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_R_EGISTERDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_REGISTERDATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_REGISTERDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Double DEFAULT_A_PPROVED = 1D;
-    private static final Double UPDATED_A_PPROVED = 2D;
+    private static final Double DEFAULT_APPROVED = 1D;
+    private static final Double UPDATED_APPROVED = 2D;
 
-    private static final String DEFAULT_A_PPROVEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_A_PPROVEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_APPROVEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_APPROVEDBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_A_PPROVEDDATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_A_PPROVEDDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_APPROVEDDATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_APPROVEDDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Double DEFAULT_D_ECLINED = 1D;
-    private static final Double UPDATED_D_ECLINED = 2D;
+    private static final Double DEFAULT_DECLINED = 1D;
+    private static final Double UPDATED_DECLINED = 2D;
 
-    private static final String DEFAULT_D_ECLINEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_D_ECLINEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_DECLINEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_DECLINEDBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_D_ECLINEDDATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_D_ECLINEDDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_DECLINEDDATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DECLINEDDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_C_HECKERREMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_C_HECKERREMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_CHECKERREMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_CHECKERREMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_OSTALADDRESS = "AAAAAAAAAA";
-    private static final String UPDATED_P_OSTALADDRESS = "BBBBBBBBBB";
+    private static final String DEFAULT_POSTALADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_POSTALADDRESS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_R_ESIDENCE = "AAAAAAAAAA";
-    private static final String UPDATED_R_ESIDENCE = "BBBBBBBBBB";
+    private static final String DEFAULT_RESIDENCE = "AAAAAAAAAA";
+    private static final String UPDATED_RESIDENCE = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_D_OB = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_D_OB = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_DOB = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DOB = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_C_REATEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_C_REATEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_CREATEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_CREATEDBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_E_MAILADDRESS = "AAAAAAAAAA";
-    private static final String UPDATED_E_MAILADDRESS = "BBBBBBBBBB";
+    private static final String DEFAULT_EMAILADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_EMAILADDRESS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_I_DENTIFICATIONID = "AAAAAAAAAA";
-    private static final String UPDATED_I_DENTIFICATIONID = "BBBBBBBBBB";
+    private static final String DEFAULT_IDENTIFICATIONID = "AAAAAAAAAA";
+    private static final String UPDATED_IDENTIFICATIONID = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_A_DDACCOUNT = 1D;
-    private static final Double UPDATED_A_DDACCOUNT = 2D;
+    private static final Double DEFAULT_ADDACCOUNT = 1D;
+    private static final Double UPDATED_ADDACCOUNT = 2D;
 
-    private static final String DEFAULT_A_CLINKINGINSTITUTION = "AAAAAAAAAA";
-    private static final String UPDATED_A_CLINKINGINSTITUTION = "BBBBBBBBBB";
+    private static final String DEFAULT_ACLINKINGINSTITUTION = "AAAAAAAAAA";
+    private static final String UPDATED_ACLINKINGINSTITUTION = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_D_EACTIVATED = 1D;
-    private static final Double UPDATED_D_EACTIVATED = 2D;
+    private static final Double DEFAULT_DEACTIVATED = 1D;
+    private static final Double UPDATED_DEACTIVATED = 2D;
 
-    private static final String DEFAULT_D_EACTIVATEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_D_EACTIVATEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_DEACTIVATEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_DEACTIVATEDBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_D_EACTIVATEDON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_D_EACTIVATEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_DEACTIVATEDON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DEACTIVATEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Double DEFAULT_P_HONENOCHANGED = 1D;
-    private static final Double UPDATED_P_HONENOCHANGED = 2D;
+    private static final Double DEFAULT_PHONENOCHANGED = 1D;
+    private static final Double UPDATED_PHONENOCHANGED = 2D;
 
-    private static final String DEFAULT_P_HONENOCHANGEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_P_HONENOCHANGEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_PHONENOCHANGEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_PHONENOCHANGEDBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_P_HONENOCHANGEDON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_P_HONENOCHANGEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_PHONENOCHANGEDON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_PHONENOCHANGEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_O_RIGINALPHONENO = "AAAAAAAAAA";
-    private static final String UPDATED_O_RIGINALPHONENO = "BBBBBBBBBB";
+    private static final String DEFAULT_ORIGINALPHONENO = "AAAAAAAAAA";
+    private static final String UPDATED_ORIGINALPHONENO = "BBBBBBBBBB";
 
-    private static final String DEFAULT_N_EWPHONENO = "AAAAAAAAAA";
-    private static final String UPDATED_N_EWPHONENO = "BBBBBBBBBB";
+    private static final String DEFAULT_NEWPHONENO = "AAAAAAAAAA";
+    private static final String UPDATED_NEWPHONENO = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_R_ESET = 1D;
-    private static final Double UPDATED_R_ESET = 2D;
+    private static final Double DEFAULT_RESET = 1D;
+    private static final Double UPDATED_RESET = 2D;
 
-    private static final String DEFAULT_R_ESETINGINSTITUTION = "AAAAAAAAAA";
-    private static final String UPDATED_R_ESETINGINSTITUTION = "BBBBBBBBBB";
+    private static final String DEFAULT_RESETINGINSTITUTION = "AAAAAAAAAA";
+    private static final String UPDATED_RESETINGINSTITUTION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INRESETREMARK = "AAAAAAAAAA";
-    private static final String UPDATED_P_INRESETREMARK = "BBBBBBBBBB";
+    private static final String DEFAULT_PINRESETREMARK = "AAAAAAAAAA";
+    private static final String UPDATED_PINRESETREMARK = "BBBBBBBBBB";
 
-    private static final String DEFAULT_R_ESETBY = "AAAAAAAAAA";
-    private static final String UPDATED_R_ESETBY = "BBBBBBBBBB";
+    private static final String DEFAULT_RESETBY = "AAAAAAAAAA";
+    private static final String UPDATED_RESETBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_R_ESETON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_R_ESETON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_RESETON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_RESETON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_U_NBLOCKINGINSTITUTION = "AAAAAAAAAA";
-    private static final String UPDATED_U_NBLOCKINGINSTITUTION = "BBBBBBBBBB";
+    private static final String DEFAULT_UNBLOCKINGINSTITUTION = "AAAAAAAAAA";
+    private static final String UPDATED_UNBLOCKINGINSTITUTION = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_P_INBLOCK = 1D;
-    private static final Double UPDATED_P_INBLOCK = 2D;
+    private static final Double DEFAULT_PINBLOCK = 1D;
+    private static final Double UPDATED_PINBLOCK = 2D;
 
-    private static final String DEFAULT_P_INBLOCKBY = "AAAAAAAAAA";
-    private static final String UPDATED_P_INBLOCKBY = "BBBBBBBBBB";
+    private static final String DEFAULT_PINBLOCKBY = "AAAAAAAAAA";
+    private static final String UPDATED_PINBLOCKBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INBLOCKREMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_P_INBLOCKREMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_PINBLOCKREMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_PINBLOCKREMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_B_LOCKINGINSTITUTION = "AAAAAAAAAA";
-    private static final String UPDATED_B_LOCKINGINSTITUTION = "BBBBBBBBBB";
+    private static final String DEFAULT_BLOCKINGINSTITUTION = "AAAAAAAAAA";
+    private static final String UPDATED_BLOCKINGINSTITUTION = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_P_INBLOCKON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_P_INBLOCKON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_PINBLOCKON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_PINBLOCKON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Instant DEFAULT_A_PPROVEDON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_A_PPROVEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_APPROVEDON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_APPROVEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_P_INUNBLOCKBY = "AAAAAAAAAA";
-    private static final String UPDATED_P_INUNBLOCKBY = "BBBBBBBBBB";
+    private static final String DEFAULT_PINUNBLOCKBY = "AAAAAAAAAA";
+    private static final String UPDATED_PINUNBLOCKBY = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_L_OGGEDIN = 1L;
-    private static final Long UPDATED_L_OGGEDIN = 2L;
+    private static final Long DEFAULT_LOGGEDIN = 1L;
+    private static final Long UPDATED_LOGGEDIN = 2L;
 
-    private static final String DEFAULT_T_RIALS = "AAAAAAAAAA";
-    private static final String UPDATED_T_RIALS = "BBBBBBBBBB";
+    private static final String DEFAULT_TRIALS = "AAAAAAAAAA";
+    private static final String UPDATED_TRIALS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_I_DTYPE = "AAAAAAAAAA";
-    private static final String UPDATED_I_DTYPE = "BBBBBBBBBB";
+    private static final String DEFAULT_IDTYPE = "AAAAAAAAAA";
+    private static final String UPDATED_IDTYPE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_I_DNUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_I_DNUMBER = "BBBBBBBBBB";
+    private static final String DEFAULT_IDNUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_IDNUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_G_ENDER = "A";
-    private static final String UPDATED_G_ENDER = "B";
+    private static final String DEFAULT_GENDER = "A";
+    private static final String UPDATED_GENDER = "B";
 
-    private static final String DEFAULT_C_IF = "AAAAAAAAAA";
-    private static final String UPDATED_C_IF = "BBBBBBBBBB";
+    private static final String DEFAULT_CIF = "AAAAAAAAAA";
+    private static final String UPDATED_CIF = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_D_ATEOFBIRTH = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_D_ATEOFBIRTH = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_DATEOFBIRTH = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DATEOFBIRTH = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_R_EMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_R_EMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_REMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_REMARKS = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_R_ESETIMSI = 1D;
-    private static final Double UPDATED_R_ESETIMSI = 2D;
+    private static final Double DEFAULT_RESETIMSI = 1D;
+    private static final Double UPDATED_RESETIMSI = 2D;
 
-    private static final String DEFAULT_I_MSIRESETBY = "AAAAAAAAAA";
-    private static final String UPDATED_I_MSIRESETBY = "BBBBBBBBBB";
+    private static final String DEFAULT_IMSIRESETBY = "AAAAAAAAAA";
+    private static final String UPDATED_IMSIRESETBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_F_IRSTNAME = "AAAAAAAAAA";
-    private static final String UPDATED_F_IRSTNAME = "BBBBBBBBBB";
+    private static final String DEFAULT_FIRSTNAME = "AAAAAAAAAA";
+    private static final String UPDATED_FIRSTNAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_S_ECONDNAME = "AAAAAAAAAA";
-    private static final String UPDATED_S_ECONDNAME = "BBBBBBBBBB";
+    private static final String DEFAULT_SECONDNAME = "AAAAAAAAAA";
+    private static final String UPDATED_SECONDNAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_L_ASTNAME = "AAAAAAAAAA";
-    private static final String UPDATED_L_ASTNAME = "BBBBBBBBBB";
+    private static final String DEFAULT_LASTNAME = "AAAAAAAAAA";
+    private static final String UPDATED_LASTNAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_INBLOCKTIME = "AAAAAAA";
-    private static final String UPDATED_P_INBLOCKTIME = "BBBBBBB";
+    private static final String DEFAULT_PINBLOCKTIME = "AAAAAAA";
+    private static final String UPDATED_PINBLOCKTIME = "BBBBBBB";
 
-    private static final String DEFAULT_C_USTOMERSTATUS = "AAAAAAAAAA";
-    private static final String UPDATED_C_USTOMERSTATUS = "BBBBBBBBBB";
+    private static final String DEFAULT_CUSTOMERSTATUS = "AAAAAAAAAA";
+    private static final String UPDATED_CUSTOMERSTATUS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_U_SERNAME = "AAAAAAAAAA";
-    private static final String UPDATED_U_SERNAME = "BBBBBBBBBB";
+    private static final String DEFAULT_USERNAME = "AAAAAAAAAA";
+    private static final String UPDATED_USERNAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_ASSWORD = "AAAAAAAAAA";
-    private static final String UPDATED_P_ASSWORD = "BBBBBBBBBB";
+    private static final String DEFAULT_PASSWORD = "AAAAAAAAAA";
+    private static final String UPDATED_PASSWORD = "BBBBBBBBBB";
 
-    private static final String DEFAULT_D_EVICEID = "AAAAAAAAAA";
-    private static final String UPDATED_D_EVICEID = "BBBBBBBBBB";
+    private static final String DEFAULT_DEVICEID = "AAAAAAAAAA";
+    private static final String UPDATED_DEVICEID = "BBBBBBBBBB";
 
-    private static final String DEFAULT_C_HANNEL = "AAAAAAAAAA";
-    private static final String UPDATED_C_HANNEL = "BBBBBBBBBB";
+    private static final String DEFAULT_CHANNEL = "AAAAAAAAAA";
+    private static final String UPDATED_CHANNEL = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_P_ASSRESET = 1D;
-    private static final Double UPDATED_P_ASSRESET = 2D;
+    private static final Double DEFAULT_PASSRESET = 1D;
+    private static final Double UPDATED_PASSRESET = 2D;
 
-    private static final String DEFAULT_P_ASSRESETBY = "AAAAAAAAAA";
-    private static final String UPDATED_P_ASSRESETBY = "BBBBBBBBBB";
+    private static final String DEFAULT_PASSRESETBY = "AAAAAAAAAA";
+    private static final String UPDATED_PASSRESETBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_P_ASSRESETON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_P_ASSRESETON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_PASSRESETON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_PASSRESETON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Double DEFAULT_P_ASSBLOCK = 1D;
-    private static final Double UPDATED_P_ASSBLOCK = 2D;
+    private static final Double DEFAULT_PASSBLOCK = 1D;
+    private static final Double UPDATED_PASSBLOCK = 2D;
 
-    private static final String DEFAULT_P_ASSBLOCKBY = "AAAAAAAAAA";
-    private static final String UPDATED_P_ASSBLOCKBY = "BBBBBBBBBB";
+    private static final String DEFAULT_PASSBLOCKBY = "AAAAAAAAAA";
+    private static final String UPDATED_PASSBLOCKBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_P_ASSBLOCKON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_P_ASSBLOCKON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_PASSBLOCKON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_PASSBLOCKON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Double DEFAULT_P_INMARKBLOCK = 1D;
-    private static final Double UPDATED_P_INMARKBLOCK = 2D;
+    private static final Double DEFAULT_PINMARKBLOCK = 1D;
+    private static final Double UPDATED_PINMARKBLOCK = 2D;
 
-    private static final Double DEFAULT_P_ASSMARKBLOCK = 1D;
-    private static final Double UPDATED_P_ASSMARKBLOCK = 2D;
+    private static final Double DEFAULT_PASSMARKBLOCK = 1D;
+    private static final Double UPDATED_PASSMARKBLOCK = 2D;
 
-    private static final String DEFAULT_P_ASSRESETREMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_P_ASSRESETREMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_PASSRESETREMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_PASSRESETREMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_ASSBLOCKREMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_P_ASSBLOCKREMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_PASSBLOCKREMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_PASSBLOCKREMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_ASSUNBLOCKBY = "AAAAAAAAAA";
-    private static final String UPDATED_P_ASSUNBLOCKBY = "BBBBBBBBBB";
+    private static final String DEFAULT_PASSUNBLOCKBY = "AAAAAAAAAA";
+    private static final String UPDATED_PASSUNBLOCKBY = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_P_ASSTRIALS = 1D;
-    private static final Double UPDATED_P_ASSTRIALS = 2D;
+    private static final Double DEFAULT_PASSTRIALS = 1D;
+    private static final Double UPDATED_PASSTRIALS = 2D;
 
-    private static final Long DEFAULT_A_PPACTIVE = 1L;
-    private static final Long UPDATED_A_PPACTIVE = 2L;
+    private static final Long DEFAULT_APPACTIVE = 1L;
+    private static final Long UPDATED_APPACTIVE = 2L;
 
-    private static final String DEFAULT_L_ASTLOGIN = "AAAAAAAAAA";
-    private static final String UPDATED_L_ASTLOGIN = "BBBBBBBBBB";
+    private static final String DEFAULT_LASTLOGIN = "AAAAAAAAAA";
+    private static final String UPDATED_LASTLOGIN = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_A_PPMARKEDDISABLE = 1D;
-    private static final Double UPDATED_A_PPMARKEDDISABLE = 2D;
+    private static final Double DEFAULT_APPMARKEDDISABLE = 1D;
+    private static final Double UPDATED_APPMARKEDDISABLE = 2D;
 
-    private static final String DEFAULT_D_ISABLEBY = "AAAAAAAAAA";
-    private static final String UPDATED_D_ISABLEBY = "BBBBBBBBBB";
+    private static final String DEFAULT_DISABLEBY = "AAAAAAAAAA";
+    private static final String UPDATED_DISABLEBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_A_PPROVEDISABLEBY = "AAAAAAAAAA";
-    private static final String UPDATED_A_PPROVEDISABLEBY = "BBBBBBBBBB";
+    private static final String DEFAULT_APPROVEDISABLEBY = "AAAAAAAAAA";
+    private static final String UPDATED_APPROVEDISABLEBY = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_A_PPMARKEDENABLE = 1D;
-    private static final Double UPDATED_A_PPMARKEDENABLE = 2D;
+    private static final Double DEFAULT_APPMARKEDENABLE = 1D;
+    private static final Double UPDATED_APPMARKEDENABLE = 2D;
 
-    private static final String DEFAULT_E_NABLEBY = "AAAAAAAAAA";
-    private static final String UPDATED_E_NABLEBY = "BBBBBBBBBB";
+    private static final String DEFAULT_ENABLEBY = "AAAAAAAAAA";
+    private static final String UPDATED_ENABLEBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_A_PPROVEDENABLEBY = "AAAAAAAAAA";
-    private static final String UPDATED_A_PPROVEDENABLEBY = "BBBBBBBBBB";
+    private static final String DEFAULT_APPROVEDENABLEBY = "AAAAAAAAAA";
+    private static final String UPDATED_APPROVEDENABLEBY = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_M_ARKEDDEACTIVATE = 1D;
-    private static final Double UPDATED_M_ARKEDDEACTIVATE = 2D;
+    private static final Double DEFAULT_MARKEDDEACTIVATE = 1D;
+    private static final Double UPDATED_MARKEDDEACTIVATE = 2D;
 
-    private static final String DEFAULT_A_PPFIRSTLOGIN = "AAAAA";
-    private static final String UPDATED_A_PPFIRSTLOGIN = "BBBBB";
+    private static final String DEFAULT_APPFIRSTLOGIN = "AAAAA";
+    private static final String UPDATED_APPFIRSTLOGIN = "BBBBB";
 
-    private static final Double DEFAULT_A_TMTRIALS = 1D;
-    private static final Double UPDATED_A_TMTRIALS = 2D;
+    private static final Double DEFAULT_ATMTRIALS = 1D;
+    private static final Double UPDATED_ATMTRIALS = 2D;
 
-    private static final String DEFAULT_S_HORCUTS = "AAAAAAAAAA";
-    private static final String UPDATED_S_HORCUTS = "BBBBBBBBBB";
+    private static final String DEFAULT_SHORCUTS = "AAAAAAAAAA";
+    private static final String UPDATED_SHORCUTS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_M_ARKEDACTIVATE = "AAAAAAAAAA";
-    private static final String UPDATED_M_ARKEDACTIVATE = "BBBBBBBBBB";
+    private static final String DEFAULT_MARKEDACTIVATE = "AAAAAAAAAA";
+    private static final String UPDATED_MARKEDACTIVATE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_T_OWN = "AAAAAAAAAA";
-    private static final String UPDATED_T_OWN = "BBBBBBBBBB";
+    private static final String DEFAULT_TOWN = "AAAAAAAAAA";
+    private static final String UPDATED_TOWN = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_A_PPROVEDDISABLEON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_A_PPROVEDDISABLEON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_APPROVEDDISABLEON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_APPROVEDDISABLEON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Instant DEFAULT_D_ISABLEDON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_D_ISABLEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_DISABLEDON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DISABLEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Instant DEFAULT_R_ESETAPPROVEON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_R_ESETAPPROVEON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_RESETAPPROVEON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_RESETAPPROVEON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_D_ELETEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_D_ELETEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_DELETEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_DELETEDBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_Q_UESTIONSASKED = "AAAAAAAAAA";
-    private static final String UPDATED_Q_UESTIONSASKED = "BBBBBBBBBB";
+    private static final String DEFAULT_QUESTIONSASKED = "AAAAAAAAAA";
+    private static final String UPDATED_QUESTIONSASKED = "BBBBBBBBBB";
 
-    private static final String DEFAULT_Q_UESTIONSTRIALS = "AAAAAAAAAA";
-    private static final String UPDATED_Q_UESTIONSTRIALS = "BBBBBBBBBB";
+    private static final String DEFAULT_QUESTIONSTRIALS = "AAAAAAAAAA";
+    private static final String UPDATED_QUESTIONSTRIALS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_Q_UESTIONSANSWERED = "AAAAAAAAAA";
-    private static final String UPDATED_Q_UESTIONSANSWERED = "BBBBBBBBBB";
+    private static final String DEFAULT_QUESTIONSANSWERED = "AAAAAAAAAA";
+    private static final String UPDATED_QUESTIONSANSWERED = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_V_ALIDOTP = 1D;
-    private static final Double UPDATED_V_ALIDOTP = 2D;
+    private static final Double DEFAULT_VALIDOTP = 1D;
+    private static final Double UPDATED_VALIDOTP = 2D;
 
-    private static final String DEFAULT_A_CTIVATEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_A_CTIVATEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_ACTIVATEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_ACTIVATEDBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_A_CTIVATEDON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_A_CTIVATEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_ACTIVATEDON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_ACTIVATEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_B_RANCHCODE = "AAAAAAAAAA";
-    private static final String UPDATED_B_RANCHCODE = "BBBBBBBBBB";
+    private static final String DEFAULT_BRANCHCODE = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCHCODE = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/customers";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -371,17 +371,17 @@ class CUSTOMERResourceIT {
     private ObjectMapper om;
 
     @Autowired
-    private CUSTOMERRepository cUSTOMERRepository;
+    private CustomerRepository customerRepository;
 
     @Autowired
     private EntityManager em;
 
     @Autowired
-    private MockMvc restCUSTOMERMockMvc;
+    private MockMvc restCustomerMockMvc;
 
-    private CUSTOMER cUSTOMER;
+    private Customer customer;
 
-    private CUSTOMER insertedCUSTOMER;
+    private Customer insertedCustomer;
 
     /**
      * Create an entity for this test.
@@ -389,117 +389,117 @@ class CUSTOMERResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CUSTOMER createEntity() {
-        return new CUSTOMER()
-            .cUSTOMERNAME(DEFAULT_C_USTOMERNAME)
-            .pHONENUMBER(DEFAULT_P_HONENUMBER)
-            .cARDNUMBER(DEFAULT_C_ARDNUMBER)
-            .aCCOUNTNUMBER(DEFAULT_A_CCOUNTNUMBER)
-            .lANG(DEFAULT_L_ANG)
-            .pIN(DEFAULT_P_IN)
-            .fIRSTLOGIN(DEFAULT_F_IRSTLOGIN)
-            .aCTIVE(DEFAULT_A_CTIVE)
-            .rEGISTERED(DEFAULT_R_EGISTERED)
-            .cSTDELETE(DEFAULT_C_STDELETE)
-            .rEGDATE(DEFAULT_R_EGDATE)
-            .aLERTENABLED(DEFAULT_A_LERTENABLED)
-            .rEMARK(DEFAULT_R_EMARK)
-            .iMSI(DEFAULT_I_MSI)
-            .pARTIALLYREGISTERED(DEFAULT_P_ARTIALLYREGISTERED)
-            .pARTIALDATE(DEFAULT_P_ARTIALDATE)
-            .rEGISTERDATE(DEFAULT_R_EGISTERDATE)
-            .aPPROVED(DEFAULT_A_PPROVED)
-            .aPPROVEDBY(DEFAULT_A_PPROVEDBY)
-            .aPPROVEDDATE(DEFAULT_A_PPROVEDDATE)
-            .dECLINED(DEFAULT_D_ECLINED)
-            .dECLINEDBY(DEFAULT_D_ECLINEDBY)
-            .dECLINEDDATE(DEFAULT_D_ECLINEDDATE)
-            .cHECKERREMARKS(DEFAULT_C_HECKERREMARKS)
-            .pOSTALADDRESS(DEFAULT_P_OSTALADDRESS)
-            .rESIDENCE(DEFAULT_R_ESIDENCE)
-            .dOB(DEFAULT_D_OB)
-            .cREATEDBY(DEFAULT_C_REATEDBY)
-            .eMAILADDRESS(DEFAULT_E_MAILADDRESS)
-            .iDENTIFICATIONID(DEFAULT_I_DENTIFICATIONID)
-            .aDDACCOUNT(DEFAULT_A_DDACCOUNT)
-            .aCLINKINGINSTITUTION(DEFAULT_A_CLINKINGINSTITUTION)
-            .dEACTIVATED(DEFAULT_D_EACTIVATED)
-            .dEACTIVATEDBY(DEFAULT_D_EACTIVATEDBY)
-            .dEACTIVATEDON(DEFAULT_D_EACTIVATEDON)
-            .pHONENOCHANGED(DEFAULT_P_HONENOCHANGED)
-            .pHONENOCHANGEDBY(DEFAULT_P_HONENOCHANGEDBY)
-            .pHONENOCHANGEDON(DEFAULT_P_HONENOCHANGEDON)
-            .oRIGINALPHONENO(DEFAULT_O_RIGINALPHONENO)
-            .nEWPHONENO(DEFAULT_N_EWPHONENO)
-            .rESET(DEFAULT_R_ESET)
-            .rESETINGINSTITUTION(DEFAULT_R_ESETINGINSTITUTION)
-            .pINRESETREMARK(DEFAULT_P_INRESETREMARK)
-            .rESETBY(DEFAULT_R_ESETBY)
-            .rESETON(DEFAULT_R_ESETON)
-            .uNBLOCKINGINSTITUTION(DEFAULT_U_NBLOCKINGINSTITUTION)
-            .pINBLOCK(DEFAULT_P_INBLOCK)
-            .pINBLOCKBY(DEFAULT_P_INBLOCKBY)
-            .pINBLOCKREMARKS(DEFAULT_P_INBLOCKREMARKS)
-            .bLOCKINGINSTITUTION(DEFAULT_B_LOCKINGINSTITUTION)
-            .pINBLOCKON(DEFAULT_P_INBLOCKON)
-            .aPPROVEDON(DEFAULT_A_PPROVEDON)
-            .pINUNBLOCKBY(DEFAULT_P_INUNBLOCKBY)
-            .lOGGEDIN(DEFAULT_L_OGGEDIN)
-            .tRIALS(DEFAULT_T_RIALS)
-            .iDTYPE(DEFAULT_I_DTYPE)
-            .iDNUMBER(DEFAULT_I_DNUMBER)
-            .gENDER(DEFAULT_G_ENDER)
-            .cIF(DEFAULT_C_IF)
-            .dATEOFBIRTH(DEFAULT_D_ATEOFBIRTH)
-            .rEMARKS(DEFAULT_R_EMARKS)
-            .rESETIMSI(DEFAULT_R_ESETIMSI)
-            .iMSIRESETBY(DEFAULT_I_MSIRESETBY)
-            .fIRSTNAME(DEFAULT_F_IRSTNAME)
-            .sECONDNAME(DEFAULT_S_ECONDNAME)
-            .lASTNAME(DEFAULT_L_ASTNAME)
-            .pINBLOCKTIME(DEFAULT_P_INBLOCKTIME)
-            .cUSTOMERSTATUS(DEFAULT_C_USTOMERSTATUS)
-            .uSERNAME(DEFAULT_U_SERNAME)
-            .pASSWORD(DEFAULT_P_ASSWORD)
-            .dEVICEID(DEFAULT_D_EVICEID)
-            .cHANNEL(DEFAULT_C_HANNEL)
-            .pASSRESET(DEFAULT_P_ASSRESET)
-            .pASSRESETBY(DEFAULT_P_ASSRESETBY)
-            .pASSRESETON(DEFAULT_P_ASSRESETON)
-            .pASSBLOCK(DEFAULT_P_ASSBLOCK)
-            .pASSBLOCKBY(DEFAULT_P_ASSBLOCKBY)
-            .pASSBLOCKON(DEFAULT_P_ASSBLOCKON)
-            .pINMARKBLOCK(DEFAULT_P_INMARKBLOCK)
-            .pASSMARKBLOCK(DEFAULT_P_ASSMARKBLOCK)
-            .pASSRESETREMARKS(DEFAULT_P_ASSRESETREMARKS)
-            .pASSBLOCKREMARKS(DEFAULT_P_ASSBLOCKREMARKS)
-            .pASSUNBLOCKBY(DEFAULT_P_ASSUNBLOCKBY)
-            .pASSTRIALS(DEFAULT_P_ASSTRIALS)
-            .aPPACTIVE(DEFAULT_A_PPACTIVE)
-            .lASTLOGIN(DEFAULT_L_ASTLOGIN)
-            .aPPMARKEDDISABLE(DEFAULT_A_PPMARKEDDISABLE)
-            .dISABLEBY(DEFAULT_D_ISABLEBY)
-            .aPPROVEDISABLEBY(DEFAULT_A_PPROVEDISABLEBY)
-            .aPPMARKEDENABLE(DEFAULT_A_PPMARKEDENABLE)
-            .eNABLEBY(DEFAULT_E_NABLEBY)
-            .aPPROVEDENABLEBY(DEFAULT_A_PPROVEDENABLEBY)
-            .mARKEDDEACTIVATE(DEFAULT_M_ARKEDDEACTIVATE)
-            .aPPFIRSTLOGIN(DEFAULT_A_PPFIRSTLOGIN)
-            .aTMTRIALS(DEFAULT_A_TMTRIALS)
-            .sHORCUTS(DEFAULT_S_HORCUTS)
-            .mARKEDACTIVATE(DEFAULT_M_ARKEDACTIVATE)
-            .tOWN(DEFAULT_T_OWN)
-            .aPPROVEDDISABLEON(DEFAULT_A_PPROVEDDISABLEON)
-            .dISABLEDON(DEFAULT_D_ISABLEDON)
-            .rESETAPPROVEON(DEFAULT_R_ESETAPPROVEON)
-            .dELETEDBY(DEFAULT_D_ELETEDBY)
-            .qUESTIONSASKED(DEFAULT_Q_UESTIONSASKED)
-            .qUESTIONSTRIALS(DEFAULT_Q_UESTIONSTRIALS)
-            .qUESTIONSANSWERED(DEFAULT_Q_UESTIONSANSWERED)
-            .vALIDOTP(DEFAULT_V_ALIDOTP)
-            .aCTIVATEDBY(DEFAULT_A_CTIVATEDBY)
-            .aCTIVATEDON(DEFAULT_A_CTIVATEDON)
-            .bRANCHCODE(DEFAULT_B_RANCHCODE);
+    public static Customer createEntity() {
+        return new Customer()
+            .customername(DEFAULT_CUSTOMERNAME)
+            .phonenumber(DEFAULT_PHONENUMBER)
+            .cardnumber(DEFAULT_CARDNUMBER)
+            .accountnumber(DEFAULT_ACCOUNTNUMBER)
+            .lang(DEFAULT_LANG)
+            .pin(DEFAULT_PIN)
+            .firstlogin(DEFAULT_FIRSTLOGIN)
+            .active(DEFAULT_ACTIVE)
+            .registered(DEFAULT_REGISTERED)
+            .cstdelete(DEFAULT_CSTDELETE)
+            .regdate(DEFAULT_REGDATE)
+            .alertenabled(DEFAULT_ALERTENABLED)
+            .remark(DEFAULT_REMARK)
+            .imsi(DEFAULT_IMSI)
+            .partiallyregistered(DEFAULT_PARTIALLYREGISTERED)
+            .partialdate(DEFAULT_PARTIALDATE)
+            .registerdate(DEFAULT_REGISTERDATE)
+            .approved(DEFAULT_APPROVED)
+            .approvedby(DEFAULT_APPROVEDBY)
+            .approveddate(DEFAULT_APPROVEDDATE)
+            .declined(DEFAULT_DECLINED)
+            .declinedby(DEFAULT_DECLINEDBY)
+            .declineddate(DEFAULT_DECLINEDDATE)
+            .checkerremarks(DEFAULT_CHECKERREMARKS)
+            .postaladdress(DEFAULT_POSTALADDRESS)
+            .residence(DEFAULT_RESIDENCE)
+            .dob(DEFAULT_DOB)
+            .createdby(DEFAULT_CREATEDBY)
+            .emailaddress(DEFAULT_EMAILADDRESS)
+            .identificationid(DEFAULT_IDENTIFICATIONID)
+            .addaccount(DEFAULT_ADDACCOUNT)
+            .aclinkinginstitution(DEFAULT_ACLINKINGINSTITUTION)
+            .deactivated(DEFAULT_DEACTIVATED)
+            .deactivatedby(DEFAULT_DEACTIVATEDBY)
+            .deactivatedon(DEFAULT_DEACTIVATEDON)
+            .phonenochanged(DEFAULT_PHONENOCHANGED)
+            .phonenochangedby(DEFAULT_PHONENOCHANGEDBY)
+            .phonenochangedon(DEFAULT_PHONENOCHANGEDON)
+            .originalphoneno(DEFAULT_ORIGINALPHONENO)
+            .newphoneno(DEFAULT_NEWPHONENO)
+            .reset(DEFAULT_RESET)
+            .resetinginstitution(DEFAULT_RESETINGINSTITUTION)
+            .pinresetremark(DEFAULT_PINRESETREMARK)
+            .resetby(DEFAULT_RESETBY)
+            .reseton(DEFAULT_RESETON)
+            .unblockinginstitution(DEFAULT_UNBLOCKINGINSTITUTION)
+            .pinblock(DEFAULT_PINBLOCK)
+            .pinblockby(DEFAULT_PINBLOCKBY)
+            .pinblockremarks(DEFAULT_PINBLOCKREMARKS)
+            .blockinginstitution(DEFAULT_BLOCKINGINSTITUTION)
+            .pinblockon(DEFAULT_PINBLOCKON)
+            .approvedon(DEFAULT_APPROVEDON)
+            .pinunblockby(DEFAULT_PINUNBLOCKBY)
+            .loggedin(DEFAULT_LOGGEDIN)
+            .trials(DEFAULT_TRIALS)
+            .idtype(DEFAULT_IDTYPE)
+            .idnumber(DEFAULT_IDNUMBER)
+            .gender(DEFAULT_GENDER)
+            .cif(DEFAULT_CIF)
+            .dateofbirth(DEFAULT_DATEOFBIRTH)
+            .remarks(DEFAULT_REMARKS)
+            .resetimsi(DEFAULT_RESETIMSI)
+            .imsiresetby(DEFAULT_IMSIRESETBY)
+            .firstname(DEFAULT_FIRSTNAME)
+            .secondname(DEFAULT_SECONDNAME)
+            .lastname(DEFAULT_LASTNAME)
+            .pinblocktime(DEFAULT_PINBLOCKTIME)
+            .customerstatus(DEFAULT_CUSTOMERSTATUS)
+            .username(DEFAULT_USERNAME)
+            .password(DEFAULT_PASSWORD)
+            .deviceid(DEFAULT_DEVICEID)
+            .channel(DEFAULT_CHANNEL)
+            .passreset(DEFAULT_PASSRESET)
+            .passresetby(DEFAULT_PASSRESETBY)
+            .passreseton(DEFAULT_PASSRESETON)
+            .passblock(DEFAULT_PASSBLOCK)
+            .passblockby(DEFAULT_PASSBLOCKBY)
+            .passblockon(DEFAULT_PASSBLOCKON)
+            .pinmarkblock(DEFAULT_PINMARKBLOCK)
+            .passmarkblock(DEFAULT_PASSMARKBLOCK)
+            .passresetremarks(DEFAULT_PASSRESETREMARKS)
+            .passblockremarks(DEFAULT_PASSBLOCKREMARKS)
+            .passunblockby(DEFAULT_PASSUNBLOCKBY)
+            .passtrials(DEFAULT_PASSTRIALS)
+            .appactive(DEFAULT_APPACTIVE)
+            .lastlogin(DEFAULT_LASTLOGIN)
+            .appmarkeddisable(DEFAULT_APPMARKEDDISABLE)
+            .disableby(DEFAULT_DISABLEBY)
+            .approvedisableby(DEFAULT_APPROVEDISABLEBY)
+            .appmarkedenable(DEFAULT_APPMARKEDENABLE)
+            .enableby(DEFAULT_ENABLEBY)
+            .approvedenableby(DEFAULT_APPROVEDENABLEBY)
+            .markeddeactivate(DEFAULT_MARKEDDEACTIVATE)
+            .appfirstlogin(DEFAULT_APPFIRSTLOGIN)
+            .atmtrials(DEFAULT_ATMTRIALS)
+            .shorcuts(DEFAULT_SHORCUTS)
+            .markedactivate(DEFAULT_MARKEDACTIVATE)
+            .town(DEFAULT_TOWN)
+            .approveddisableon(DEFAULT_APPROVEDDISABLEON)
+            .disabledon(DEFAULT_DISABLEDON)
+            .resetapproveon(DEFAULT_RESETAPPROVEON)
+            .deletedby(DEFAULT_DELETEDBY)
+            .questionsasked(DEFAULT_QUESTIONSASKED)
+            .questionstrials(DEFAULT_QUESTIONSTRIALS)
+            .questionsanswered(DEFAULT_QUESTIONSANSWERED)
+            .validotp(DEFAULT_VALIDOTP)
+            .activatedby(DEFAULT_ACTIVATEDBY)
+            .activatedon(DEFAULT_ACTIVATEDON)
+            .branchcode(DEFAULT_BRANCHCODE);
     }
 
     /**
@@ -508,182 +508,182 @@ class CUSTOMERResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CUSTOMER createUpdatedEntity() {
-        return new CUSTOMER()
-            .cUSTOMERNAME(UPDATED_C_USTOMERNAME)
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .cARDNUMBER(UPDATED_C_ARDNUMBER)
-            .aCCOUNTNUMBER(UPDATED_A_CCOUNTNUMBER)
-            .lANG(UPDATED_L_ANG)
-            .pIN(UPDATED_P_IN)
-            .fIRSTLOGIN(UPDATED_F_IRSTLOGIN)
-            .aCTIVE(UPDATED_A_CTIVE)
-            .rEGISTERED(UPDATED_R_EGISTERED)
-            .cSTDELETE(UPDATED_C_STDELETE)
-            .rEGDATE(UPDATED_R_EGDATE)
-            .aLERTENABLED(UPDATED_A_LERTENABLED)
-            .rEMARK(UPDATED_R_EMARK)
-            .iMSI(UPDATED_I_MSI)
-            .pARTIALLYREGISTERED(UPDATED_P_ARTIALLYREGISTERED)
-            .pARTIALDATE(UPDATED_P_ARTIALDATE)
-            .rEGISTERDATE(UPDATED_R_EGISTERDATE)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE)
-            .dECLINED(UPDATED_D_ECLINED)
-            .dECLINEDBY(UPDATED_D_ECLINEDBY)
-            .dECLINEDDATE(UPDATED_D_ECLINEDDATE)
-            .cHECKERREMARKS(UPDATED_C_HECKERREMARKS)
-            .pOSTALADDRESS(UPDATED_P_OSTALADDRESS)
-            .rESIDENCE(UPDATED_R_ESIDENCE)
-            .dOB(UPDATED_D_OB)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .eMAILADDRESS(UPDATED_E_MAILADDRESS)
-            .iDENTIFICATIONID(UPDATED_I_DENTIFICATIONID)
-            .aDDACCOUNT(UPDATED_A_DDACCOUNT)
-            .aCLINKINGINSTITUTION(UPDATED_A_CLINKINGINSTITUTION)
-            .dEACTIVATED(UPDATED_D_EACTIVATED)
-            .dEACTIVATEDBY(UPDATED_D_EACTIVATEDBY)
-            .dEACTIVATEDON(UPDATED_D_EACTIVATEDON)
-            .pHONENOCHANGED(UPDATED_P_HONENOCHANGED)
-            .pHONENOCHANGEDBY(UPDATED_P_HONENOCHANGEDBY)
-            .pHONENOCHANGEDON(UPDATED_P_HONENOCHANGEDON)
-            .oRIGINALPHONENO(UPDATED_O_RIGINALPHONENO)
-            .nEWPHONENO(UPDATED_N_EWPHONENO)
-            .rESET(UPDATED_R_ESET)
-            .rESETINGINSTITUTION(UPDATED_R_ESETINGINSTITUTION)
-            .pINRESETREMARK(UPDATED_P_INRESETREMARK)
-            .rESETBY(UPDATED_R_ESETBY)
-            .rESETON(UPDATED_R_ESETON)
-            .uNBLOCKINGINSTITUTION(UPDATED_U_NBLOCKINGINSTITUTION)
-            .pINBLOCK(UPDATED_P_INBLOCK)
-            .pINBLOCKBY(UPDATED_P_INBLOCKBY)
-            .pINBLOCKREMARKS(UPDATED_P_INBLOCKREMARKS)
-            .bLOCKINGINSTITUTION(UPDATED_B_LOCKINGINSTITUTION)
-            .pINBLOCKON(UPDATED_P_INBLOCKON)
-            .aPPROVEDON(UPDATED_A_PPROVEDON)
-            .pINUNBLOCKBY(UPDATED_P_INUNBLOCKBY)
-            .lOGGEDIN(UPDATED_L_OGGEDIN)
-            .tRIALS(UPDATED_T_RIALS)
-            .iDTYPE(UPDATED_I_DTYPE)
-            .iDNUMBER(UPDATED_I_DNUMBER)
-            .gENDER(UPDATED_G_ENDER)
-            .cIF(UPDATED_C_IF)
-            .dATEOFBIRTH(UPDATED_D_ATEOFBIRTH)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .rESETIMSI(UPDATED_R_ESETIMSI)
-            .iMSIRESETBY(UPDATED_I_MSIRESETBY)
-            .fIRSTNAME(UPDATED_F_IRSTNAME)
-            .sECONDNAME(UPDATED_S_ECONDNAME)
-            .lASTNAME(UPDATED_L_ASTNAME)
-            .pINBLOCKTIME(UPDATED_P_INBLOCKTIME)
-            .cUSTOMERSTATUS(UPDATED_C_USTOMERSTATUS)
-            .uSERNAME(UPDATED_U_SERNAME)
-            .pASSWORD(UPDATED_P_ASSWORD)
-            .dEVICEID(UPDATED_D_EVICEID)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .pASSRESET(UPDATED_P_ASSRESET)
-            .pASSRESETBY(UPDATED_P_ASSRESETBY)
-            .pASSRESETON(UPDATED_P_ASSRESETON)
-            .pASSBLOCK(UPDATED_P_ASSBLOCK)
-            .pASSBLOCKBY(UPDATED_P_ASSBLOCKBY)
-            .pASSBLOCKON(UPDATED_P_ASSBLOCKON)
-            .pINMARKBLOCK(UPDATED_P_INMARKBLOCK)
-            .pASSMARKBLOCK(UPDATED_P_ASSMARKBLOCK)
-            .pASSRESETREMARKS(UPDATED_P_ASSRESETREMARKS)
-            .pASSBLOCKREMARKS(UPDATED_P_ASSBLOCKREMARKS)
-            .pASSUNBLOCKBY(UPDATED_P_ASSUNBLOCKBY)
-            .pASSTRIALS(UPDATED_P_ASSTRIALS)
-            .aPPACTIVE(UPDATED_A_PPACTIVE)
-            .lASTLOGIN(UPDATED_L_ASTLOGIN)
-            .aPPMARKEDDISABLE(UPDATED_A_PPMARKEDDISABLE)
-            .dISABLEBY(UPDATED_D_ISABLEBY)
-            .aPPROVEDISABLEBY(UPDATED_A_PPROVEDISABLEBY)
-            .aPPMARKEDENABLE(UPDATED_A_PPMARKEDENABLE)
-            .eNABLEBY(UPDATED_E_NABLEBY)
-            .aPPROVEDENABLEBY(UPDATED_A_PPROVEDENABLEBY)
-            .mARKEDDEACTIVATE(UPDATED_M_ARKEDDEACTIVATE)
-            .aPPFIRSTLOGIN(UPDATED_A_PPFIRSTLOGIN)
-            .aTMTRIALS(UPDATED_A_TMTRIALS)
-            .sHORCUTS(UPDATED_S_HORCUTS)
-            .mARKEDACTIVATE(UPDATED_M_ARKEDACTIVATE)
-            .tOWN(UPDATED_T_OWN)
-            .aPPROVEDDISABLEON(UPDATED_A_PPROVEDDISABLEON)
-            .dISABLEDON(UPDATED_D_ISABLEDON)
-            .rESETAPPROVEON(UPDATED_R_ESETAPPROVEON)
-            .dELETEDBY(UPDATED_D_ELETEDBY)
-            .qUESTIONSASKED(UPDATED_Q_UESTIONSASKED)
-            .qUESTIONSTRIALS(UPDATED_Q_UESTIONSTRIALS)
-            .qUESTIONSANSWERED(UPDATED_Q_UESTIONSANSWERED)
-            .vALIDOTP(UPDATED_V_ALIDOTP)
-            .aCTIVATEDBY(UPDATED_A_CTIVATEDBY)
-            .aCTIVATEDON(UPDATED_A_CTIVATEDON)
-            .bRANCHCODE(UPDATED_B_RANCHCODE);
+    public static Customer createUpdatedEntity() {
+        return new Customer()
+            .customername(UPDATED_CUSTOMERNAME)
+            .phonenumber(UPDATED_PHONENUMBER)
+            .cardnumber(UPDATED_CARDNUMBER)
+            .accountnumber(UPDATED_ACCOUNTNUMBER)
+            .lang(UPDATED_LANG)
+            .pin(UPDATED_PIN)
+            .firstlogin(UPDATED_FIRSTLOGIN)
+            .active(UPDATED_ACTIVE)
+            .registered(UPDATED_REGISTERED)
+            .cstdelete(UPDATED_CSTDELETE)
+            .regdate(UPDATED_REGDATE)
+            .alertenabled(UPDATED_ALERTENABLED)
+            .remark(UPDATED_REMARK)
+            .imsi(UPDATED_IMSI)
+            .partiallyregistered(UPDATED_PARTIALLYREGISTERED)
+            .partialdate(UPDATED_PARTIALDATE)
+            .registerdate(UPDATED_REGISTERDATE)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approveddate(UPDATED_APPROVEDDATE)
+            .declined(UPDATED_DECLINED)
+            .declinedby(UPDATED_DECLINEDBY)
+            .declineddate(UPDATED_DECLINEDDATE)
+            .checkerremarks(UPDATED_CHECKERREMARKS)
+            .postaladdress(UPDATED_POSTALADDRESS)
+            .residence(UPDATED_RESIDENCE)
+            .dob(UPDATED_DOB)
+            .createdby(UPDATED_CREATEDBY)
+            .emailaddress(UPDATED_EMAILADDRESS)
+            .identificationid(UPDATED_IDENTIFICATIONID)
+            .addaccount(UPDATED_ADDACCOUNT)
+            .aclinkinginstitution(UPDATED_ACLINKINGINSTITUTION)
+            .deactivated(UPDATED_DEACTIVATED)
+            .deactivatedby(UPDATED_DEACTIVATEDBY)
+            .deactivatedon(UPDATED_DEACTIVATEDON)
+            .phonenochanged(UPDATED_PHONENOCHANGED)
+            .phonenochangedby(UPDATED_PHONENOCHANGEDBY)
+            .phonenochangedon(UPDATED_PHONENOCHANGEDON)
+            .originalphoneno(UPDATED_ORIGINALPHONENO)
+            .newphoneno(UPDATED_NEWPHONENO)
+            .reset(UPDATED_RESET)
+            .resetinginstitution(UPDATED_RESETINGINSTITUTION)
+            .pinresetremark(UPDATED_PINRESETREMARK)
+            .resetby(UPDATED_RESETBY)
+            .reseton(UPDATED_RESETON)
+            .unblockinginstitution(UPDATED_UNBLOCKINGINSTITUTION)
+            .pinblock(UPDATED_PINBLOCK)
+            .pinblockby(UPDATED_PINBLOCKBY)
+            .pinblockremarks(UPDATED_PINBLOCKREMARKS)
+            .blockinginstitution(UPDATED_BLOCKINGINSTITUTION)
+            .pinblockon(UPDATED_PINBLOCKON)
+            .approvedon(UPDATED_APPROVEDON)
+            .pinunblockby(UPDATED_PINUNBLOCKBY)
+            .loggedin(UPDATED_LOGGEDIN)
+            .trials(UPDATED_TRIALS)
+            .idtype(UPDATED_IDTYPE)
+            .idnumber(UPDATED_IDNUMBER)
+            .gender(UPDATED_GENDER)
+            .cif(UPDATED_CIF)
+            .dateofbirth(UPDATED_DATEOFBIRTH)
+            .remarks(UPDATED_REMARKS)
+            .resetimsi(UPDATED_RESETIMSI)
+            .imsiresetby(UPDATED_IMSIRESETBY)
+            .firstname(UPDATED_FIRSTNAME)
+            .secondname(UPDATED_SECONDNAME)
+            .lastname(UPDATED_LASTNAME)
+            .pinblocktime(UPDATED_PINBLOCKTIME)
+            .customerstatus(UPDATED_CUSTOMERSTATUS)
+            .username(UPDATED_USERNAME)
+            .password(UPDATED_PASSWORD)
+            .deviceid(UPDATED_DEVICEID)
+            .channel(UPDATED_CHANNEL)
+            .passreset(UPDATED_PASSRESET)
+            .passresetby(UPDATED_PASSRESETBY)
+            .passreseton(UPDATED_PASSRESETON)
+            .passblock(UPDATED_PASSBLOCK)
+            .passblockby(UPDATED_PASSBLOCKBY)
+            .passblockon(UPDATED_PASSBLOCKON)
+            .pinmarkblock(UPDATED_PINMARKBLOCK)
+            .passmarkblock(UPDATED_PASSMARKBLOCK)
+            .passresetremarks(UPDATED_PASSRESETREMARKS)
+            .passblockremarks(UPDATED_PASSBLOCKREMARKS)
+            .passunblockby(UPDATED_PASSUNBLOCKBY)
+            .passtrials(UPDATED_PASSTRIALS)
+            .appactive(UPDATED_APPACTIVE)
+            .lastlogin(UPDATED_LASTLOGIN)
+            .appmarkeddisable(UPDATED_APPMARKEDDISABLE)
+            .disableby(UPDATED_DISABLEBY)
+            .approvedisableby(UPDATED_APPROVEDISABLEBY)
+            .appmarkedenable(UPDATED_APPMARKEDENABLE)
+            .enableby(UPDATED_ENABLEBY)
+            .approvedenableby(UPDATED_APPROVEDENABLEBY)
+            .markeddeactivate(UPDATED_MARKEDDEACTIVATE)
+            .appfirstlogin(UPDATED_APPFIRSTLOGIN)
+            .atmtrials(UPDATED_ATMTRIALS)
+            .shorcuts(UPDATED_SHORCUTS)
+            .markedactivate(UPDATED_MARKEDACTIVATE)
+            .town(UPDATED_TOWN)
+            .approveddisableon(UPDATED_APPROVEDDISABLEON)
+            .disabledon(UPDATED_DISABLEDON)
+            .resetapproveon(UPDATED_RESETAPPROVEON)
+            .deletedby(UPDATED_DELETEDBY)
+            .questionsasked(UPDATED_QUESTIONSASKED)
+            .questionstrials(UPDATED_QUESTIONSTRIALS)
+            .questionsanswered(UPDATED_QUESTIONSANSWERED)
+            .validotp(UPDATED_VALIDOTP)
+            .activatedby(UPDATED_ACTIVATEDBY)
+            .activatedon(UPDATED_ACTIVATEDON)
+            .branchcode(UPDATED_BRANCHCODE);
     }
 
     @BeforeEach
     public void initTest() {
-        cUSTOMER = createEntity();
+        customer = createEntity();
     }
 
     @AfterEach
     public void cleanup() {
-        if (insertedCUSTOMER != null) {
-            cUSTOMERRepository.delete(insertedCUSTOMER);
-            insertedCUSTOMER = null;
+        if (insertedCustomer != null) {
+            customerRepository.delete(insertedCustomer);
+            insertedCustomer = null;
         }
     }
 
     @Test
     @Transactional
-    void createCUSTOMER() throws Exception {
+    void createCustomer() throws Exception {
         long databaseSizeBeforeCreate = getRepositoryCount();
-        // Create the CUSTOMER
-        var returnedCUSTOMER = om.readValue(
-            restCUSTOMERMockMvc
-                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cUSTOMER)))
+        // Create the Customer
+        var returnedCustomer = om.readValue(
+            restCustomerMockMvc
+                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(customer)))
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            CUSTOMER.class
+            Customer.class
         );
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
         assertIncrementedRepositoryCount(databaseSizeBeforeCreate);
-        assertCUSTOMERUpdatableFieldsEquals(returnedCUSTOMER, getPersistedCUSTOMER(returnedCUSTOMER));
+        assertCustomerUpdatableFieldsEquals(returnedCustomer, getPersistedCustomer(returnedCustomer));
 
-        insertedCUSTOMER = returnedCUSTOMER;
+        insertedCustomer = returnedCustomer;
     }
 
     @Test
     @Transactional
-    void createCUSTOMERWithExistingId() throws Exception {
-        // Create the CUSTOMER with an existing ID
-        cUSTOMER.setId(1L);
+    void createCustomerWithExistingId() throws Exception {
+        // Create the Customer with an existing ID
+        customer.setId(1L);
 
         long databaseSizeBeforeCreate = getRepositoryCount();
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restCUSTOMERMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cUSTOMER)))
+        restCustomerMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(customer)))
             .andExpect(status().isBadRequest());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
         assertSameRepositoryCount(databaseSizeBeforeCreate);
     }
 
     @Test
     @Transactional
-    void checkpHONENUMBERIsRequired() throws Exception {
+    void checkPhonenumberIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        cUSTOMER.setpHONENUMBER(null);
+        customer.setPhonenumber(null);
 
-        // Create the CUSTOMER, which fails.
+        // Create the Customer, which fails.
 
-        restCUSTOMERMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cUSTOMER)))
+        restCustomerMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(customer)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -691,15 +691,15 @@ class CUSTOMERResourceIT {
 
     @Test
     @Transactional
-    void checkaCCOUNTNUMBERIsRequired() throws Exception {
+    void checkAccountnumberIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        cUSTOMER.setaCCOUNTNUMBER(null);
+        customer.setAccountnumber(null);
 
-        // Create the CUSTOMER, which fails.
+        // Create the Customer, which fails.
 
-        restCUSTOMERMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cUSTOMER)))
+        restCustomerMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(customer)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -707,721 +707,733 @@ class CUSTOMERResourceIT {
 
     @Test
     @Transactional
-    void getAllCUSTOMERS() throws Exception {
+    void getAllCustomers() throws Exception {
         // Initialize the database
-        insertedCUSTOMER = cUSTOMERRepository.saveAndFlush(cUSTOMER);
+        insertedCustomer = customerRepository.saveAndFlush(customer);
 
-        // Get all the cUSTOMERList
-        restCUSTOMERMockMvc
+        // Get all the customerList
+        restCustomerMockMvc
             .perform(get(ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(cUSTOMER.getId().intValue())))
-            .andExpect(jsonPath("$.[*].cUSTOMERNAME").value(hasItem(DEFAULT_C_USTOMERNAME)))
-            .andExpect(jsonPath("$.[*].pHONENUMBER").value(hasItem(DEFAULT_P_HONENUMBER)))
-            .andExpect(jsonPath("$.[*].cARDNUMBER").value(hasItem(DEFAULT_C_ARDNUMBER)))
-            .andExpect(jsonPath("$.[*].aCCOUNTNUMBER").value(hasItem(DEFAULT_A_CCOUNTNUMBER)))
-            .andExpect(jsonPath("$.[*].lANG").value(hasItem(DEFAULT_L_ANG)))
-            .andExpect(jsonPath("$.[*].pIN").value(hasItem(DEFAULT_P_IN)))
-            .andExpect(jsonPath("$.[*].fIRSTLOGIN").value(hasItem(DEFAULT_F_IRSTLOGIN)))
-            .andExpect(jsonPath("$.[*].aCTIVE").value(hasItem(DEFAULT_A_CTIVE)))
-            .andExpect(jsonPath("$.[*].rEGISTERED").value(hasItem(DEFAULT_R_EGISTERED.intValue())))
-            .andExpect(jsonPath("$.[*].cSTDELETE").value(hasItem(DEFAULT_C_STDELETE.intValue())))
-            .andExpect(jsonPath("$.[*].rEGDATE").value(hasItem(DEFAULT_R_EGDATE.toString())))
-            .andExpect(jsonPath("$.[*].aLERTENABLED").value(hasItem(DEFAULT_A_LERTENABLED.intValue())))
-            .andExpect(jsonPath("$.[*].rEMARK").value(hasItem(DEFAULT_R_EMARK)))
-            .andExpect(jsonPath("$.[*].iMSI").value(hasItem(DEFAULT_I_MSI)))
-            .andExpect(jsonPath("$.[*].pARTIALLYREGISTERED").value(hasItem(DEFAULT_P_ARTIALLYREGISTERED)))
-            .andExpect(jsonPath("$.[*].pARTIALDATE").value(hasItem(DEFAULT_P_ARTIALDATE.toString())))
-            .andExpect(jsonPath("$.[*].rEGISTERDATE").value(hasItem(DEFAULT_R_EGISTERDATE.toString())))
-            .andExpect(jsonPath("$.[*].aPPROVED").value(hasItem(DEFAULT_A_PPROVED)))
-            .andExpect(jsonPath("$.[*].aPPROVEDBY").value(hasItem(DEFAULT_A_PPROVEDBY)))
-            .andExpect(jsonPath("$.[*].aPPROVEDDATE").value(hasItem(DEFAULT_A_PPROVEDDATE.toString())))
-            .andExpect(jsonPath("$.[*].dECLINED").value(hasItem(DEFAULT_D_ECLINED)))
-            .andExpect(jsonPath("$.[*].dECLINEDBY").value(hasItem(DEFAULT_D_ECLINEDBY)))
-            .andExpect(jsonPath("$.[*].dECLINEDDATE").value(hasItem(DEFAULT_D_ECLINEDDATE.toString())))
-            .andExpect(jsonPath("$.[*].cHECKERREMARKS").value(hasItem(DEFAULT_C_HECKERREMARKS)))
-            .andExpect(jsonPath("$.[*].pOSTALADDRESS").value(hasItem(DEFAULT_P_OSTALADDRESS)))
-            .andExpect(jsonPath("$.[*].rESIDENCE").value(hasItem(DEFAULT_R_ESIDENCE)))
-            .andExpect(jsonPath("$.[*].dOB").value(hasItem(DEFAULT_D_OB.toString())))
-            .andExpect(jsonPath("$.[*].cREATEDBY").value(hasItem(DEFAULT_C_REATEDBY)))
-            .andExpect(jsonPath("$.[*].eMAILADDRESS").value(hasItem(DEFAULT_E_MAILADDRESS)))
-            .andExpect(jsonPath("$.[*].iDENTIFICATIONID").value(hasItem(DEFAULT_I_DENTIFICATIONID)))
-            .andExpect(jsonPath("$.[*].aDDACCOUNT").value(hasItem(DEFAULT_A_DDACCOUNT)))
-            .andExpect(jsonPath("$.[*].aCLINKINGINSTITUTION").value(hasItem(DEFAULT_A_CLINKINGINSTITUTION)))
-            .andExpect(jsonPath("$.[*].dEACTIVATED").value(hasItem(DEFAULT_D_EACTIVATED)))
-            .andExpect(jsonPath("$.[*].dEACTIVATEDBY").value(hasItem(DEFAULT_D_EACTIVATEDBY)))
-            .andExpect(jsonPath("$.[*].dEACTIVATEDON").value(hasItem(DEFAULT_D_EACTIVATEDON.toString())))
-            .andExpect(jsonPath("$.[*].pHONENOCHANGED").value(hasItem(DEFAULT_P_HONENOCHANGED)))
-            .andExpect(jsonPath("$.[*].pHONENOCHANGEDBY").value(hasItem(DEFAULT_P_HONENOCHANGEDBY)))
-            .andExpect(jsonPath("$.[*].pHONENOCHANGEDON").value(hasItem(DEFAULT_P_HONENOCHANGEDON.toString())))
-            .andExpect(jsonPath("$.[*].oRIGINALPHONENO").value(hasItem(DEFAULT_O_RIGINALPHONENO)))
-            .andExpect(jsonPath("$.[*].nEWPHONENO").value(hasItem(DEFAULT_N_EWPHONENO)))
-            .andExpect(jsonPath("$.[*].rESET").value(hasItem(DEFAULT_R_ESET)))
-            .andExpect(jsonPath("$.[*].rESETINGINSTITUTION").value(hasItem(DEFAULT_R_ESETINGINSTITUTION)))
-            .andExpect(jsonPath("$.[*].pINRESETREMARK").value(hasItem(DEFAULT_P_INRESETREMARK)))
-            .andExpect(jsonPath("$.[*].rESETBY").value(hasItem(DEFAULT_R_ESETBY)))
-            .andExpect(jsonPath("$.[*].rESETON").value(hasItem(DEFAULT_R_ESETON.toString())))
-            .andExpect(jsonPath("$.[*].uNBLOCKINGINSTITUTION").value(hasItem(DEFAULT_U_NBLOCKINGINSTITUTION)))
-            .andExpect(jsonPath("$.[*].pINBLOCK").value(hasItem(DEFAULT_P_INBLOCK)))
-            .andExpect(jsonPath("$.[*].pINBLOCKBY").value(hasItem(DEFAULT_P_INBLOCKBY)))
-            .andExpect(jsonPath("$.[*].pINBLOCKREMARKS").value(hasItem(DEFAULT_P_INBLOCKREMARKS)))
-            .andExpect(jsonPath("$.[*].bLOCKINGINSTITUTION").value(hasItem(DEFAULT_B_LOCKINGINSTITUTION)))
-            .andExpect(jsonPath("$.[*].pINBLOCKON").value(hasItem(DEFAULT_P_INBLOCKON.toString())))
-            .andExpect(jsonPath("$.[*].aPPROVEDON").value(hasItem(DEFAULT_A_PPROVEDON.toString())))
-            .andExpect(jsonPath("$.[*].pINUNBLOCKBY").value(hasItem(DEFAULT_P_INUNBLOCKBY)))
-            .andExpect(jsonPath("$.[*].lOGGEDIN").value(hasItem(DEFAULT_L_OGGEDIN.intValue())))
-            .andExpect(jsonPath("$.[*].tRIALS").value(hasItem(DEFAULT_T_RIALS)))
-            .andExpect(jsonPath("$.[*].iDTYPE").value(hasItem(DEFAULT_I_DTYPE)))
-            .andExpect(jsonPath("$.[*].iDNUMBER").value(hasItem(DEFAULT_I_DNUMBER)))
-            .andExpect(jsonPath("$.[*].gENDER").value(hasItem(DEFAULT_G_ENDER)))
-            .andExpect(jsonPath("$.[*].cIF").value(hasItem(DEFAULT_C_IF)))
-            .andExpect(jsonPath("$.[*].dATEOFBIRTH").value(hasItem(DEFAULT_D_ATEOFBIRTH.toString())))
-            .andExpect(jsonPath("$.[*].rEMARKS").value(hasItem(DEFAULT_R_EMARKS)))
-            .andExpect(jsonPath("$.[*].rESETIMSI").value(hasItem(DEFAULT_R_ESETIMSI)))
-            .andExpect(jsonPath("$.[*].iMSIRESETBY").value(hasItem(DEFAULT_I_MSIRESETBY)))
-            .andExpect(jsonPath("$.[*].fIRSTNAME").value(hasItem(DEFAULT_F_IRSTNAME)))
-            .andExpect(jsonPath("$.[*].sECONDNAME").value(hasItem(DEFAULT_S_ECONDNAME)))
-            .andExpect(jsonPath("$.[*].lASTNAME").value(hasItem(DEFAULT_L_ASTNAME)))
-            .andExpect(jsonPath("$.[*].pINBLOCKTIME").value(hasItem(DEFAULT_P_INBLOCKTIME)))
-            .andExpect(jsonPath("$.[*].cUSTOMERSTATUS").value(hasItem(DEFAULT_C_USTOMERSTATUS)))
-            .andExpect(jsonPath("$.[*].uSERNAME").value(hasItem(DEFAULT_U_SERNAME)))
-            .andExpect(jsonPath("$.[*].pASSWORD").value(hasItem(DEFAULT_P_ASSWORD)))
-            .andExpect(jsonPath("$.[*].dEVICEID").value(hasItem(DEFAULT_D_EVICEID)))
-            .andExpect(jsonPath("$.[*].cHANNEL").value(hasItem(DEFAULT_C_HANNEL)))
-            .andExpect(jsonPath("$.[*].pASSRESET").value(hasItem(DEFAULT_P_ASSRESET)))
-            .andExpect(jsonPath("$.[*].pASSRESETBY").value(hasItem(DEFAULT_P_ASSRESETBY)))
-            .andExpect(jsonPath("$.[*].pASSRESETON").value(hasItem(DEFAULT_P_ASSRESETON.toString())))
-            .andExpect(jsonPath("$.[*].pASSBLOCK").value(hasItem(DEFAULT_P_ASSBLOCK)))
-            .andExpect(jsonPath("$.[*].pASSBLOCKBY").value(hasItem(DEFAULT_P_ASSBLOCKBY)))
-            .andExpect(jsonPath("$.[*].pASSBLOCKON").value(hasItem(DEFAULT_P_ASSBLOCKON.toString())))
-            .andExpect(jsonPath("$.[*].pINMARKBLOCK").value(hasItem(DEFAULT_P_INMARKBLOCK)))
-            .andExpect(jsonPath("$.[*].pASSMARKBLOCK").value(hasItem(DEFAULT_P_ASSMARKBLOCK)))
-            .andExpect(jsonPath("$.[*].pASSRESETREMARKS").value(hasItem(DEFAULT_P_ASSRESETREMARKS)))
-            .andExpect(jsonPath("$.[*].pASSBLOCKREMARKS").value(hasItem(DEFAULT_P_ASSBLOCKREMARKS)))
-            .andExpect(jsonPath("$.[*].pASSUNBLOCKBY").value(hasItem(DEFAULT_P_ASSUNBLOCKBY)))
-            .andExpect(jsonPath("$.[*].pASSTRIALS").value(hasItem(DEFAULT_P_ASSTRIALS)))
-            .andExpect(jsonPath("$.[*].aPPACTIVE").value(hasItem(DEFAULT_A_PPACTIVE.intValue())))
-            .andExpect(jsonPath("$.[*].lASTLOGIN").value(hasItem(DEFAULT_L_ASTLOGIN)))
-            .andExpect(jsonPath("$.[*].aPPMARKEDDISABLE").value(hasItem(DEFAULT_A_PPMARKEDDISABLE)))
-            .andExpect(jsonPath("$.[*].dISABLEBY").value(hasItem(DEFAULT_D_ISABLEBY)))
-            .andExpect(jsonPath("$.[*].aPPROVEDISABLEBY").value(hasItem(DEFAULT_A_PPROVEDISABLEBY)))
-            .andExpect(jsonPath("$.[*].aPPMARKEDENABLE").value(hasItem(DEFAULT_A_PPMARKEDENABLE)))
-            .andExpect(jsonPath("$.[*].eNABLEBY").value(hasItem(DEFAULT_E_NABLEBY)))
-            .andExpect(jsonPath("$.[*].aPPROVEDENABLEBY").value(hasItem(DEFAULT_A_PPROVEDENABLEBY)))
-            .andExpect(jsonPath("$.[*].mARKEDDEACTIVATE").value(hasItem(DEFAULT_M_ARKEDDEACTIVATE)))
-            .andExpect(jsonPath("$.[*].aPPFIRSTLOGIN").value(hasItem(DEFAULT_A_PPFIRSTLOGIN)))
-            .andExpect(jsonPath("$.[*].aTMTRIALS").value(hasItem(DEFAULT_A_TMTRIALS)))
-            .andExpect(jsonPath("$.[*].sHORCUTS").value(hasItem(DEFAULT_S_HORCUTS)))
-            .andExpect(jsonPath("$.[*].mARKEDACTIVATE").value(hasItem(DEFAULT_M_ARKEDACTIVATE)))
-            .andExpect(jsonPath("$.[*].tOWN").value(hasItem(DEFAULT_T_OWN)))
-            .andExpect(jsonPath("$.[*].aPPROVEDDISABLEON").value(hasItem(DEFAULT_A_PPROVEDDISABLEON.toString())))
-            .andExpect(jsonPath("$.[*].dISABLEDON").value(hasItem(DEFAULT_D_ISABLEDON.toString())))
-            .andExpect(jsonPath("$.[*].rESETAPPROVEON").value(hasItem(DEFAULT_R_ESETAPPROVEON.toString())))
-            .andExpect(jsonPath("$.[*].dELETEDBY").value(hasItem(DEFAULT_D_ELETEDBY)))
-            .andExpect(jsonPath("$.[*].qUESTIONSASKED").value(hasItem(DEFAULT_Q_UESTIONSASKED)))
-            .andExpect(jsonPath("$.[*].qUESTIONSTRIALS").value(hasItem(DEFAULT_Q_UESTIONSTRIALS)))
-            .andExpect(jsonPath("$.[*].qUESTIONSANSWERED").value(hasItem(DEFAULT_Q_UESTIONSANSWERED)))
-            .andExpect(jsonPath("$.[*].vALIDOTP").value(hasItem(DEFAULT_V_ALIDOTP)))
-            .andExpect(jsonPath("$.[*].aCTIVATEDBY").value(hasItem(DEFAULT_A_CTIVATEDBY)))
-            .andExpect(jsonPath("$.[*].aCTIVATEDON").value(hasItem(DEFAULT_A_CTIVATEDON.toString())))
-            .andExpect(jsonPath("$.[*].bRANCHCODE").value(hasItem(DEFAULT_B_RANCHCODE)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(customer.getId().intValue())))
+            .andExpect(jsonPath("$.[*].customername").value(hasItem(DEFAULT_CUSTOMERNAME)))
+            .andExpect(jsonPath("$.[*].phonenumber").value(hasItem(DEFAULT_PHONENUMBER)))
+            .andExpect(jsonPath("$.[*].cardnumber").value(hasItem(DEFAULT_CARDNUMBER)))
+            .andExpect(jsonPath("$.[*].accountnumber").value(hasItem(DEFAULT_ACCOUNTNUMBER)))
+            .andExpect(jsonPath("$.[*].lang").value(hasItem(DEFAULT_LANG)))
+            .andExpect(jsonPath("$.[*].pin").value(hasItem(DEFAULT_PIN)))
+            .andExpect(jsonPath("$.[*].firstlogin").value(hasItem(DEFAULT_FIRSTLOGIN)))
+            .andExpect(jsonPath("$.[*].active").value(hasItem(DEFAULT_ACTIVE)))
+            .andExpect(jsonPath("$.[*].registered").value(hasItem(DEFAULT_REGISTERED.intValue())))
+            .andExpect(jsonPath("$.[*].cstdelete").value(hasItem(DEFAULT_CSTDELETE.intValue())))
+            .andExpect(jsonPath("$.[*].regdate").value(hasItem(DEFAULT_REGDATE.toString())))
+            .andExpect(jsonPath("$.[*].alertenabled").value(hasItem(DEFAULT_ALERTENABLED.intValue())))
+            .andExpect(jsonPath("$.[*].remark").value(hasItem(DEFAULT_REMARK)))
+            .andExpect(jsonPath("$.[*].imsi").value(hasItem(DEFAULT_IMSI)))
+            .andExpect(jsonPath("$.[*].partiallyregistered").value(hasItem(DEFAULT_PARTIALLYREGISTERED)))
+            .andExpect(jsonPath("$.[*].partialdate").value(hasItem(DEFAULT_PARTIALDATE.toString())))
+            .andExpect(jsonPath("$.[*].registerdate").value(hasItem(DEFAULT_REGISTERDATE.toString())))
+            .andExpect(jsonPath("$.[*].approved").value(hasItem(DEFAULT_APPROVED)))
+            .andExpect(jsonPath("$.[*].approvedby").value(hasItem(DEFAULT_APPROVEDBY)))
+            .andExpect(jsonPath("$.[*].approveddate").value(hasItem(DEFAULT_APPROVEDDATE.toString())))
+            .andExpect(jsonPath("$.[*].declined").value(hasItem(DEFAULT_DECLINED)))
+            .andExpect(jsonPath("$.[*].declinedby").value(hasItem(DEFAULT_DECLINEDBY)))
+            .andExpect(jsonPath("$.[*].declineddate").value(hasItem(DEFAULT_DECLINEDDATE.toString())))
+            .andExpect(jsonPath("$.[*].checkerremarks").value(hasItem(DEFAULT_CHECKERREMARKS)))
+            .andExpect(jsonPath("$.[*].postaladdress").value(hasItem(DEFAULT_POSTALADDRESS)))
+            .andExpect(jsonPath("$.[*].residence").value(hasItem(DEFAULT_RESIDENCE)))
+            .andExpect(jsonPath("$.[*].dob").value(hasItem(DEFAULT_DOB.toString())))
+            .andExpect(jsonPath("$.[*].createdby").value(hasItem(DEFAULT_CREATEDBY)))
+            .andExpect(jsonPath("$.[*].emailaddress").value(hasItem(DEFAULT_EMAILADDRESS)))
+            .andExpect(jsonPath("$.[*].identificationid").value(hasItem(DEFAULT_IDENTIFICATIONID)))
+            .andExpect(jsonPath("$.[*].addaccount").value(hasItem(DEFAULT_ADDACCOUNT)))
+            .andExpect(jsonPath("$.[*].aclinkinginstitution").value(hasItem(DEFAULT_ACLINKINGINSTITUTION)))
+            .andExpect(jsonPath("$.[*].deactivated").value(hasItem(DEFAULT_DEACTIVATED)))
+            .andExpect(jsonPath("$.[*].deactivatedby").value(hasItem(DEFAULT_DEACTIVATEDBY)))
+            .andExpect(jsonPath("$.[*].deactivatedon").value(hasItem(DEFAULT_DEACTIVATEDON.toString())))
+            .andExpect(jsonPath("$.[*].phonenochanged").value(hasItem(DEFAULT_PHONENOCHANGED)))
+            .andExpect(jsonPath("$.[*].phonenochangedby").value(hasItem(DEFAULT_PHONENOCHANGEDBY)))
+            .andExpect(jsonPath("$.[*].phonenochangedon").value(hasItem(DEFAULT_PHONENOCHANGEDON.toString())))
+            .andExpect(jsonPath("$.[*].originalphoneno").value(hasItem(DEFAULT_ORIGINALPHONENO)))
+            .andExpect(jsonPath("$.[*].newphoneno").value(hasItem(DEFAULT_NEWPHONENO)))
+            .andExpect(jsonPath("$.[*].reset").value(hasItem(DEFAULT_RESET)))
+            .andExpect(jsonPath("$.[*].resetinginstitution").value(hasItem(DEFAULT_RESETINGINSTITUTION)))
+            .andExpect(jsonPath("$.[*].pinresetremark").value(hasItem(DEFAULT_PINRESETREMARK)))
+            .andExpect(jsonPath("$.[*].resetby").value(hasItem(DEFAULT_RESETBY)))
+            .andExpect(jsonPath("$.[*].reseton").value(hasItem(DEFAULT_RESETON.toString())))
+            .andExpect(jsonPath("$.[*].unblockinginstitution").value(hasItem(DEFAULT_UNBLOCKINGINSTITUTION)))
+            .andExpect(jsonPath("$.[*].pinblock").value(hasItem(DEFAULT_PINBLOCK)))
+            .andExpect(jsonPath("$.[*].pinblockby").value(hasItem(DEFAULT_PINBLOCKBY)))
+            .andExpect(jsonPath("$.[*].pinblockremarks").value(hasItem(DEFAULT_PINBLOCKREMARKS)))
+            .andExpect(jsonPath("$.[*].blockinginstitution").value(hasItem(DEFAULT_BLOCKINGINSTITUTION)))
+            .andExpect(jsonPath("$.[*].pinblockon").value(hasItem(DEFAULT_PINBLOCKON.toString())))
+            .andExpect(jsonPath("$.[*].approvedon").value(hasItem(DEFAULT_APPROVEDON.toString())))
+            .andExpect(jsonPath("$.[*].pinunblockby").value(hasItem(DEFAULT_PINUNBLOCKBY)))
+            .andExpect(jsonPath("$.[*].loggedin").value(hasItem(DEFAULT_LOGGEDIN.intValue())))
+            .andExpect(jsonPath("$.[*].trials").value(hasItem(DEFAULT_TRIALS)))
+            .andExpect(jsonPath("$.[*].idtype").value(hasItem(DEFAULT_IDTYPE)))
+            .andExpect(jsonPath("$.[*].idnumber").value(hasItem(DEFAULT_IDNUMBER)))
+            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER)))
+            .andExpect(jsonPath("$.[*].cif").value(hasItem(DEFAULT_CIF)))
+            .andExpect(jsonPath("$.[*].dateofbirth").value(hasItem(DEFAULT_DATEOFBIRTH.toString())))
+            .andExpect(jsonPath("$.[*].remarks").value(hasItem(DEFAULT_REMARKS)))
+            .andExpect(jsonPath("$.[*].resetimsi").value(hasItem(DEFAULT_RESETIMSI)))
+            .andExpect(jsonPath("$.[*].imsiresetby").value(hasItem(DEFAULT_IMSIRESETBY)))
+            .andExpect(jsonPath("$.[*].firstname").value(hasItem(DEFAULT_FIRSTNAME)))
+            .andExpect(jsonPath("$.[*].secondname").value(hasItem(DEFAULT_SECONDNAME)))
+            .andExpect(jsonPath("$.[*].lastname").value(hasItem(DEFAULT_LASTNAME)))
+            .andExpect(jsonPath("$.[*].pinblocktime").value(hasItem(DEFAULT_PINBLOCKTIME)))
+            .andExpect(jsonPath("$.[*].customerstatus").value(hasItem(DEFAULT_CUSTOMERSTATUS)))
+            .andExpect(jsonPath("$.[*].username").value(hasItem(DEFAULT_USERNAME)))
+            .andExpect(jsonPath("$.[*].password").value(hasItem(DEFAULT_PASSWORD)))
+            .andExpect(jsonPath("$.[*].deviceid").value(hasItem(DEFAULT_DEVICEID)))
+            .andExpect(jsonPath("$.[*].channel").value(hasItem(DEFAULT_CHANNEL)))
+            .andExpect(jsonPath("$.[*].passreset").value(hasItem(DEFAULT_PASSRESET)))
+            .andExpect(jsonPath("$.[*].passresetby").value(hasItem(DEFAULT_PASSRESETBY)))
+            .andExpect(jsonPath("$.[*].passreseton").value(hasItem(DEFAULT_PASSRESETON.toString())))
+            .andExpect(jsonPath("$.[*].passblock").value(hasItem(DEFAULT_PASSBLOCK)))
+            .andExpect(jsonPath("$.[*].passblockby").value(hasItem(DEFAULT_PASSBLOCKBY)))
+            .andExpect(jsonPath("$.[*].passblockon").value(hasItem(DEFAULT_PASSBLOCKON.toString())))
+            .andExpect(jsonPath("$.[*].pinmarkblock").value(hasItem(DEFAULT_PINMARKBLOCK)))
+            .andExpect(jsonPath("$.[*].passmarkblock").value(hasItem(DEFAULT_PASSMARKBLOCK)))
+            .andExpect(jsonPath("$.[*].passresetremarks").value(hasItem(DEFAULT_PASSRESETREMARKS)))
+            .andExpect(jsonPath("$.[*].passblockremarks").value(hasItem(DEFAULT_PASSBLOCKREMARKS)))
+            .andExpect(jsonPath("$.[*].passunblockby").value(hasItem(DEFAULT_PASSUNBLOCKBY)))
+            .andExpect(jsonPath("$.[*].passtrials").value(hasItem(DEFAULT_PASSTRIALS)))
+            .andExpect(jsonPath("$.[*].appactive").value(hasItem(DEFAULT_APPACTIVE.intValue())))
+            .andExpect(jsonPath("$.[*].lastlogin").value(hasItem(DEFAULT_LASTLOGIN)))
+            .andExpect(jsonPath("$.[*].appmarkeddisable").value(hasItem(DEFAULT_APPMARKEDDISABLE)))
+            .andExpect(jsonPath("$.[*].disableby").value(hasItem(DEFAULT_DISABLEBY)))
+            .andExpect(jsonPath("$.[*].approvedisableby").value(hasItem(DEFAULT_APPROVEDISABLEBY)))
+            .andExpect(jsonPath("$.[*].appmarkedenable").value(hasItem(DEFAULT_APPMARKEDENABLE)))
+            .andExpect(jsonPath("$.[*].enableby").value(hasItem(DEFAULT_ENABLEBY)))
+            .andExpect(jsonPath("$.[*].approvedenableby").value(hasItem(DEFAULT_APPROVEDENABLEBY)))
+            .andExpect(jsonPath("$.[*].markeddeactivate").value(hasItem(DEFAULT_MARKEDDEACTIVATE)))
+            .andExpect(jsonPath("$.[*].appfirstlogin").value(hasItem(DEFAULT_APPFIRSTLOGIN)))
+            .andExpect(jsonPath("$.[*].atmtrials").value(hasItem(DEFAULT_ATMTRIALS)))
+            .andExpect(jsonPath("$.[*].shorcuts").value(hasItem(DEFAULT_SHORCUTS)))
+            .andExpect(jsonPath("$.[*].markedactivate").value(hasItem(DEFAULT_MARKEDACTIVATE)))
+            .andExpect(jsonPath("$.[*].town").value(hasItem(DEFAULT_TOWN)))
+            .andExpect(jsonPath("$.[*].approveddisableon").value(hasItem(DEFAULT_APPROVEDDISABLEON.toString())))
+            .andExpect(jsonPath("$.[*].disabledon").value(hasItem(DEFAULT_DISABLEDON.toString())))
+            .andExpect(jsonPath("$.[*].resetapproveon").value(hasItem(DEFAULT_RESETAPPROVEON.toString())))
+            .andExpect(jsonPath("$.[*].deletedby").value(hasItem(DEFAULT_DELETEDBY)))
+            .andExpect(jsonPath("$.[*].questionsasked").value(hasItem(DEFAULT_QUESTIONSASKED)))
+            .andExpect(jsonPath("$.[*].questionstrials").value(hasItem(DEFAULT_QUESTIONSTRIALS)))
+            .andExpect(jsonPath("$.[*].questionsanswered").value(hasItem(DEFAULT_QUESTIONSANSWERED)))
+            .andExpect(jsonPath("$.[*].validotp").value(hasItem(DEFAULT_VALIDOTP)))
+            .andExpect(jsonPath("$.[*].activatedby").value(hasItem(DEFAULT_ACTIVATEDBY)))
+            .andExpect(jsonPath("$.[*].activatedon").value(hasItem(DEFAULT_ACTIVATEDON.toString())))
+            .andExpect(jsonPath("$.[*].branchcode").value(hasItem(DEFAULT_BRANCHCODE)));
     }
 
     @Test
     @Transactional
-    void getCUSTOMER() throws Exception {
+    void getCustomer() throws Exception {
         // Initialize the database
-        insertedCUSTOMER = cUSTOMERRepository.saveAndFlush(cUSTOMER);
+        insertedCustomer = customerRepository.saveAndFlush(customer);
 
-        // Get the cUSTOMER
-        restCUSTOMERMockMvc
-            .perform(get(ENTITY_API_URL_ID, cUSTOMER.getId()))
+        // Get the customer
+        restCustomerMockMvc
+            .perform(get(ENTITY_API_URL_ID, customer.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(cUSTOMER.getId().intValue()))
-            .andExpect(jsonPath("$.cUSTOMERNAME").value(DEFAULT_C_USTOMERNAME))
-            .andExpect(jsonPath("$.pHONENUMBER").value(DEFAULT_P_HONENUMBER))
-            .andExpect(jsonPath("$.cARDNUMBER").value(DEFAULT_C_ARDNUMBER))
-            .andExpect(jsonPath("$.aCCOUNTNUMBER").value(DEFAULT_A_CCOUNTNUMBER))
-            .andExpect(jsonPath("$.lANG").value(DEFAULT_L_ANG))
-            .andExpect(jsonPath("$.pIN").value(DEFAULT_P_IN))
-            .andExpect(jsonPath("$.fIRSTLOGIN").value(DEFAULT_F_IRSTLOGIN))
-            .andExpect(jsonPath("$.aCTIVE").value(DEFAULT_A_CTIVE))
-            .andExpect(jsonPath("$.rEGISTERED").value(DEFAULT_R_EGISTERED.intValue()))
-            .andExpect(jsonPath("$.cSTDELETE").value(DEFAULT_C_STDELETE.intValue()))
-            .andExpect(jsonPath("$.rEGDATE").value(DEFAULT_R_EGDATE.toString()))
-            .andExpect(jsonPath("$.aLERTENABLED").value(DEFAULT_A_LERTENABLED.intValue()))
-            .andExpect(jsonPath("$.rEMARK").value(DEFAULT_R_EMARK))
-            .andExpect(jsonPath("$.iMSI").value(DEFAULT_I_MSI))
-            .andExpect(jsonPath("$.pARTIALLYREGISTERED").value(DEFAULT_P_ARTIALLYREGISTERED))
-            .andExpect(jsonPath("$.pARTIALDATE").value(DEFAULT_P_ARTIALDATE.toString()))
-            .andExpect(jsonPath("$.rEGISTERDATE").value(DEFAULT_R_EGISTERDATE.toString()))
-            .andExpect(jsonPath("$.aPPROVED").value(DEFAULT_A_PPROVED))
-            .andExpect(jsonPath("$.aPPROVEDBY").value(DEFAULT_A_PPROVEDBY))
-            .andExpect(jsonPath("$.aPPROVEDDATE").value(DEFAULT_A_PPROVEDDATE.toString()))
-            .andExpect(jsonPath("$.dECLINED").value(DEFAULT_D_ECLINED))
-            .andExpect(jsonPath("$.dECLINEDBY").value(DEFAULT_D_ECLINEDBY))
-            .andExpect(jsonPath("$.dECLINEDDATE").value(DEFAULT_D_ECLINEDDATE.toString()))
-            .andExpect(jsonPath("$.cHECKERREMARKS").value(DEFAULT_C_HECKERREMARKS))
-            .andExpect(jsonPath("$.pOSTALADDRESS").value(DEFAULT_P_OSTALADDRESS))
-            .andExpect(jsonPath("$.rESIDENCE").value(DEFAULT_R_ESIDENCE))
-            .andExpect(jsonPath("$.dOB").value(DEFAULT_D_OB.toString()))
-            .andExpect(jsonPath("$.cREATEDBY").value(DEFAULT_C_REATEDBY))
-            .andExpect(jsonPath("$.eMAILADDRESS").value(DEFAULT_E_MAILADDRESS))
-            .andExpect(jsonPath("$.iDENTIFICATIONID").value(DEFAULT_I_DENTIFICATIONID))
-            .andExpect(jsonPath("$.aDDACCOUNT").value(DEFAULT_A_DDACCOUNT))
-            .andExpect(jsonPath("$.aCLINKINGINSTITUTION").value(DEFAULT_A_CLINKINGINSTITUTION))
-            .andExpect(jsonPath("$.dEACTIVATED").value(DEFAULT_D_EACTIVATED))
-            .andExpect(jsonPath("$.dEACTIVATEDBY").value(DEFAULT_D_EACTIVATEDBY))
-            .andExpect(jsonPath("$.dEACTIVATEDON").value(DEFAULT_D_EACTIVATEDON.toString()))
-            .andExpect(jsonPath("$.pHONENOCHANGED").value(DEFAULT_P_HONENOCHANGED))
-            .andExpect(jsonPath("$.pHONENOCHANGEDBY").value(DEFAULT_P_HONENOCHANGEDBY))
-            .andExpect(jsonPath("$.pHONENOCHANGEDON").value(DEFAULT_P_HONENOCHANGEDON.toString()))
-            .andExpect(jsonPath("$.oRIGINALPHONENO").value(DEFAULT_O_RIGINALPHONENO))
-            .andExpect(jsonPath("$.nEWPHONENO").value(DEFAULT_N_EWPHONENO))
-            .andExpect(jsonPath("$.rESET").value(DEFAULT_R_ESET))
-            .andExpect(jsonPath("$.rESETINGINSTITUTION").value(DEFAULT_R_ESETINGINSTITUTION))
-            .andExpect(jsonPath("$.pINRESETREMARK").value(DEFAULT_P_INRESETREMARK))
-            .andExpect(jsonPath("$.rESETBY").value(DEFAULT_R_ESETBY))
-            .andExpect(jsonPath("$.rESETON").value(DEFAULT_R_ESETON.toString()))
-            .andExpect(jsonPath("$.uNBLOCKINGINSTITUTION").value(DEFAULT_U_NBLOCKINGINSTITUTION))
-            .andExpect(jsonPath("$.pINBLOCK").value(DEFAULT_P_INBLOCK))
-            .andExpect(jsonPath("$.pINBLOCKBY").value(DEFAULT_P_INBLOCKBY))
-            .andExpect(jsonPath("$.pINBLOCKREMARKS").value(DEFAULT_P_INBLOCKREMARKS))
-            .andExpect(jsonPath("$.bLOCKINGINSTITUTION").value(DEFAULT_B_LOCKINGINSTITUTION))
-            .andExpect(jsonPath("$.pINBLOCKON").value(DEFAULT_P_INBLOCKON.toString()))
-            .andExpect(jsonPath("$.aPPROVEDON").value(DEFAULT_A_PPROVEDON.toString()))
-            .andExpect(jsonPath("$.pINUNBLOCKBY").value(DEFAULT_P_INUNBLOCKBY))
-            .andExpect(jsonPath("$.lOGGEDIN").value(DEFAULT_L_OGGEDIN.intValue()))
-            .andExpect(jsonPath("$.tRIALS").value(DEFAULT_T_RIALS))
-            .andExpect(jsonPath("$.iDTYPE").value(DEFAULT_I_DTYPE))
-            .andExpect(jsonPath("$.iDNUMBER").value(DEFAULT_I_DNUMBER))
-            .andExpect(jsonPath("$.gENDER").value(DEFAULT_G_ENDER))
-            .andExpect(jsonPath("$.cIF").value(DEFAULT_C_IF))
-            .andExpect(jsonPath("$.dATEOFBIRTH").value(DEFAULT_D_ATEOFBIRTH.toString()))
-            .andExpect(jsonPath("$.rEMARKS").value(DEFAULT_R_EMARKS))
-            .andExpect(jsonPath("$.rESETIMSI").value(DEFAULT_R_ESETIMSI))
-            .andExpect(jsonPath("$.iMSIRESETBY").value(DEFAULT_I_MSIRESETBY))
-            .andExpect(jsonPath("$.fIRSTNAME").value(DEFAULT_F_IRSTNAME))
-            .andExpect(jsonPath("$.sECONDNAME").value(DEFAULT_S_ECONDNAME))
-            .andExpect(jsonPath("$.lASTNAME").value(DEFAULT_L_ASTNAME))
-            .andExpect(jsonPath("$.pINBLOCKTIME").value(DEFAULT_P_INBLOCKTIME))
-            .andExpect(jsonPath("$.cUSTOMERSTATUS").value(DEFAULT_C_USTOMERSTATUS))
-            .andExpect(jsonPath("$.uSERNAME").value(DEFAULT_U_SERNAME))
-            .andExpect(jsonPath("$.pASSWORD").value(DEFAULT_P_ASSWORD))
-            .andExpect(jsonPath("$.dEVICEID").value(DEFAULT_D_EVICEID))
-            .andExpect(jsonPath("$.cHANNEL").value(DEFAULT_C_HANNEL))
-            .andExpect(jsonPath("$.pASSRESET").value(DEFAULT_P_ASSRESET))
-            .andExpect(jsonPath("$.pASSRESETBY").value(DEFAULT_P_ASSRESETBY))
-            .andExpect(jsonPath("$.pASSRESETON").value(DEFAULT_P_ASSRESETON.toString()))
-            .andExpect(jsonPath("$.pASSBLOCK").value(DEFAULT_P_ASSBLOCK))
-            .andExpect(jsonPath("$.pASSBLOCKBY").value(DEFAULT_P_ASSBLOCKBY))
-            .andExpect(jsonPath("$.pASSBLOCKON").value(DEFAULT_P_ASSBLOCKON.toString()))
-            .andExpect(jsonPath("$.pINMARKBLOCK").value(DEFAULT_P_INMARKBLOCK))
-            .andExpect(jsonPath("$.pASSMARKBLOCK").value(DEFAULT_P_ASSMARKBLOCK))
-            .andExpect(jsonPath("$.pASSRESETREMARKS").value(DEFAULT_P_ASSRESETREMARKS))
-            .andExpect(jsonPath("$.pASSBLOCKREMARKS").value(DEFAULT_P_ASSBLOCKREMARKS))
-            .andExpect(jsonPath("$.pASSUNBLOCKBY").value(DEFAULT_P_ASSUNBLOCKBY))
-            .andExpect(jsonPath("$.pASSTRIALS").value(DEFAULT_P_ASSTRIALS))
-            .andExpect(jsonPath("$.aPPACTIVE").value(DEFAULT_A_PPACTIVE.intValue()))
-            .andExpect(jsonPath("$.lASTLOGIN").value(DEFAULT_L_ASTLOGIN))
-            .andExpect(jsonPath("$.aPPMARKEDDISABLE").value(DEFAULT_A_PPMARKEDDISABLE))
-            .andExpect(jsonPath("$.dISABLEBY").value(DEFAULT_D_ISABLEBY))
-            .andExpect(jsonPath("$.aPPROVEDISABLEBY").value(DEFAULT_A_PPROVEDISABLEBY))
-            .andExpect(jsonPath("$.aPPMARKEDENABLE").value(DEFAULT_A_PPMARKEDENABLE))
-            .andExpect(jsonPath("$.eNABLEBY").value(DEFAULT_E_NABLEBY))
-            .andExpect(jsonPath("$.aPPROVEDENABLEBY").value(DEFAULT_A_PPROVEDENABLEBY))
-            .andExpect(jsonPath("$.mARKEDDEACTIVATE").value(DEFAULT_M_ARKEDDEACTIVATE))
-            .andExpect(jsonPath("$.aPPFIRSTLOGIN").value(DEFAULT_A_PPFIRSTLOGIN))
-            .andExpect(jsonPath("$.aTMTRIALS").value(DEFAULT_A_TMTRIALS))
-            .andExpect(jsonPath("$.sHORCUTS").value(DEFAULT_S_HORCUTS))
-            .andExpect(jsonPath("$.mARKEDACTIVATE").value(DEFAULT_M_ARKEDACTIVATE))
-            .andExpect(jsonPath("$.tOWN").value(DEFAULT_T_OWN))
-            .andExpect(jsonPath("$.aPPROVEDDISABLEON").value(DEFAULT_A_PPROVEDDISABLEON.toString()))
-            .andExpect(jsonPath("$.dISABLEDON").value(DEFAULT_D_ISABLEDON.toString()))
-            .andExpect(jsonPath("$.rESETAPPROVEON").value(DEFAULT_R_ESETAPPROVEON.toString()))
-            .andExpect(jsonPath("$.dELETEDBY").value(DEFAULT_D_ELETEDBY))
-            .andExpect(jsonPath("$.qUESTIONSASKED").value(DEFAULT_Q_UESTIONSASKED))
-            .andExpect(jsonPath("$.qUESTIONSTRIALS").value(DEFAULT_Q_UESTIONSTRIALS))
-            .andExpect(jsonPath("$.qUESTIONSANSWERED").value(DEFAULT_Q_UESTIONSANSWERED))
-            .andExpect(jsonPath("$.vALIDOTP").value(DEFAULT_V_ALIDOTP))
-            .andExpect(jsonPath("$.aCTIVATEDBY").value(DEFAULT_A_CTIVATEDBY))
-            .andExpect(jsonPath("$.aCTIVATEDON").value(DEFAULT_A_CTIVATEDON.toString()))
-            .andExpect(jsonPath("$.bRANCHCODE").value(DEFAULT_B_RANCHCODE));
+            .andExpect(jsonPath("$.id").value(customer.getId().intValue()))
+            .andExpect(jsonPath("$.customername").value(DEFAULT_CUSTOMERNAME))
+            .andExpect(jsonPath("$.phonenumber").value(DEFAULT_PHONENUMBER))
+            .andExpect(jsonPath("$.cardnumber").value(DEFAULT_CARDNUMBER))
+            .andExpect(jsonPath("$.accountnumber").value(DEFAULT_ACCOUNTNUMBER))
+            .andExpect(jsonPath("$.lang").value(DEFAULT_LANG))
+            .andExpect(jsonPath("$.pin").value(DEFAULT_PIN))
+            .andExpect(jsonPath("$.firstlogin").value(DEFAULT_FIRSTLOGIN))
+            .andExpect(jsonPath("$.active").value(DEFAULT_ACTIVE))
+            .andExpect(jsonPath("$.registered").value(DEFAULT_REGISTERED.intValue()))
+            .andExpect(jsonPath("$.cstdelete").value(DEFAULT_CSTDELETE.intValue()))
+            .andExpect(jsonPath("$.regdate").value(DEFAULT_REGDATE.toString()))
+            .andExpect(jsonPath("$.alertenabled").value(DEFAULT_ALERTENABLED.intValue()))
+            .andExpect(jsonPath("$.remark").value(DEFAULT_REMARK))
+            .andExpect(jsonPath("$.imsi").value(DEFAULT_IMSI))
+            .andExpect(jsonPath("$.partiallyregistered").value(DEFAULT_PARTIALLYREGISTERED))
+            .andExpect(jsonPath("$.partialdate").value(DEFAULT_PARTIALDATE.toString()))
+            .andExpect(jsonPath("$.registerdate").value(DEFAULT_REGISTERDATE.toString()))
+            .andExpect(jsonPath("$.approved").value(DEFAULT_APPROVED))
+            .andExpect(jsonPath("$.approvedby").value(DEFAULT_APPROVEDBY))
+            .andExpect(jsonPath("$.approveddate").value(DEFAULT_APPROVEDDATE.toString()))
+            .andExpect(jsonPath("$.declined").value(DEFAULT_DECLINED))
+            .andExpect(jsonPath("$.declinedby").value(DEFAULT_DECLINEDBY))
+            .andExpect(jsonPath("$.declineddate").value(DEFAULT_DECLINEDDATE.toString()))
+            .andExpect(jsonPath("$.checkerremarks").value(DEFAULT_CHECKERREMARKS))
+            .andExpect(jsonPath("$.postaladdress").value(DEFAULT_POSTALADDRESS))
+            .andExpect(jsonPath("$.residence").value(DEFAULT_RESIDENCE))
+            .andExpect(jsonPath("$.dob").value(DEFAULT_DOB.toString()))
+            .andExpect(jsonPath("$.createdby").value(DEFAULT_CREATEDBY))
+            .andExpect(jsonPath("$.emailaddress").value(DEFAULT_EMAILADDRESS))
+            .andExpect(jsonPath("$.identificationid").value(DEFAULT_IDENTIFICATIONID))
+            .andExpect(jsonPath("$.addaccount").value(DEFAULT_ADDACCOUNT))
+            .andExpect(jsonPath("$.aclinkinginstitution").value(DEFAULT_ACLINKINGINSTITUTION))
+            .andExpect(jsonPath("$.deactivated").value(DEFAULT_DEACTIVATED))
+            .andExpect(jsonPath("$.deactivatedby").value(DEFAULT_DEACTIVATEDBY))
+            .andExpect(jsonPath("$.deactivatedon").value(DEFAULT_DEACTIVATEDON.toString()))
+            .andExpect(jsonPath("$.phonenochanged").value(DEFAULT_PHONENOCHANGED))
+            .andExpect(jsonPath("$.phonenochangedby").value(DEFAULT_PHONENOCHANGEDBY))
+            .andExpect(jsonPath("$.phonenochangedon").value(DEFAULT_PHONENOCHANGEDON.toString()))
+            .andExpect(jsonPath("$.originalphoneno").value(DEFAULT_ORIGINALPHONENO))
+            .andExpect(jsonPath("$.newphoneno").value(DEFAULT_NEWPHONENO))
+            .andExpect(jsonPath("$.reset").value(DEFAULT_RESET))
+            .andExpect(jsonPath("$.resetinginstitution").value(DEFAULT_RESETINGINSTITUTION))
+            .andExpect(jsonPath("$.pinresetremark").value(DEFAULT_PINRESETREMARK))
+            .andExpect(jsonPath("$.resetby").value(DEFAULT_RESETBY))
+            .andExpect(jsonPath("$.reseton").value(DEFAULT_RESETON.toString()))
+            .andExpect(jsonPath("$.unblockinginstitution").value(DEFAULT_UNBLOCKINGINSTITUTION))
+            .andExpect(jsonPath("$.pinblock").value(DEFAULT_PINBLOCK))
+            .andExpect(jsonPath("$.pinblockby").value(DEFAULT_PINBLOCKBY))
+            .andExpect(jsonPath("$.pinblockremarks").value(DEFAULT_PINBLOCKREMARKS))
+            .andExpect(jsonPath("$.blockinginstitution").value(DEFAULT_BLOCKINGINSTITUTION))
+            .andExpect(jsonPath("$.pinblockon").value(DEFAULT_PINBLOCKON.toString()))
+            .andExpect(jsonPath("$.approvedon").value(DEFAULT_APPROVEDON.toString()))
+            .andExpect(jsonPath("$.pinunblockby").value(DEFAULT_PINUNBLOCKBY))
+            .andExpect(jsonPath("$.loggedin").value(DEFAULT_LOGGEDIN.intValue()))
+            .andExpect(jsonPath("$.trials").value(DEFAULT_TRIALS))
+            .andExpect(jsonPath("$.idtype").value(DEFAULT_IDTYPE))
+            .andExpect(jsonPath("$.idnumber").value(DEFAULT_IDNUMBER))
+            .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER))
+            .andExpect(jsonPath("$.cif").value(DEFAULT_CIF))
+            .andExpect(jsonPath("$.dateofbirth").value(DEFAULT_DATEOFBIRTH.toString()))
+            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS))
+            .andExpect(jsonPath("$.resetimsi").value(DEFAULT_RESETIMSI))
+            .andExpect(jsonPath("$.imsiresetby").value(DEFAULT_IMSIRESETBY))
+            .andExpect(jsonPath("$.firstname").value(DEFAULT_FIRSTNAME))
+            .andExpect(jsonPath("$.secondname").value(DEFAULT_SECONDNAME))
+            .andExpect(jsonPath("$.lastname").value(DEFAULT_LASTNAME))
+            .andExpect(jsonPath("$.pinblocktime").value(DEFAULT_PINBLOCKTIME))
+            .andExpect(jsonPath("$.customerstatus").value(DEFAULT_CUSTOMERSTATUS))
+            .andExpect(jsonPath("$.username").value(DEFAULT_USERNAME))
+            .andExpect(jsonPath("$.password").value(DEFAULT_PASSWORD))
+            .andExpect(jsonPath("$.deviceid").value(DEFAULT_DEVICEID))
+            .andExpect(jsonPath("$.channel").value(DEFAULT_CHANNEL))
+            .andExpect(jsonPath("$.passreset").value(DEFAULT_PASSRESET))
+            .andExpect(jsonPath("$.passresetby").value(DEFAULT_PASSRESETBY))
+            .andExpect(jsonPath("$.passreseton").value(DEFAULT_PASSRESETON.toString()))
+            .andExpect(jsonPath("$.passblock").value(DEFAULT_PASSBLOCK))
+            .andExpect(jsonPath("$.passblockby").value(DEFAULT_PASSBLOCKBY))
+            .andExpect(jsonPath("$.passblockon").value(DEFAULT_PASSBLOCKON.toString()))
+            .andExpect(jsonPath("$.pinmarkblock").value(DEFAULT_PINMARKBLOCK))
+            .andExpect(jsonPath("$.passmarkblock").value(DEFAULT_PASSMARKBLOCK))
+            .andExpect(jsonPath("$.passresetremarks").value(DEFAULT_PASSRESETREMARKS))
+            .andExpect(jsonPath("$.passblockremarks").value(DEFAULT_PASSBLOCKREMARKS))
+            .andExpect(jsonPath("$.passunblockby").value(DEFAULT_PASSUNBLOCKBY))
+            .andExpect(jsonPath("$.passtrials").value(DEFAULT_PASSTRIALS))
+            .andExpect(jsonPath("$.appactive").value(DEFAULT_APPACTIVE.intValue()))
+            .andExpect(jsonPath("$.lastlogin").value(DEFAULT_LASTLOGIN))
+            .andExpect(jsonPath("$.appmarkeddisable").value(DEFAULT_APPMARKEDDISABLE))
+            .andExpect(jsonPath("$.disableby").value(DEFAULT_DISABLEBY))
+            .andExpect(jsonPath("$.approvedisableby").value(DEFAULT_APPROVEDISABLEBY))
+            .andExpect(jsonPath("$.appmarkedenable").value(DEFAULT_APPMARKEDENABLE))
+            .andExpect(jsonPath("$.enableby").value(DEFAULT_ENABLEBY))
+            .andExpect(jsonPath("$.approvedenableby").value(DEFAULT_APPROVEDENABLEBY))
+            .andExpect(jsonPath("$.markeddeactivate").value(DEFAULT_MARKEDDEACTIVATE))
+            .andExpect(jsonPath("$.appfirstlogin").value(DEFAULT_APPFIRSTLOGIN))
+            .andExpect(jsonPath("$.atmtrials").value(DEFAULT_ATMTRIALS))
+            .andExpect(jsonPath("$.shorcuts").value(DEFAULT_SHORCUTS))
+            .andExpect(jsonPath("$.markedactivate").value(DEFAULT_MARKEDACTIVATE))
+            .andExpect(jsonPath("$.town").value(DEFAULT_TOWN))
+            .andExpect(jsonPath("$.approveddisableon").value(DEFAULT_APPROVEDDISABLEON.toString()))
+            .andExpect(jsonPath("$.disabledon").value(DEFAULT_DISABLEDON.toString()))
+            .andExpect(jsonPath("$.resetapproveon").value(DEFAULT_RESETAPPROVEON.toString()))
+            .andExpect(jsonPath("$.deletedby").value(DEFAULT_DELETEDBY))
+            .andExpect(jsonPath("$.questionsasked").value(DEFAULT_QUESTIONSASKED))
+            .andExpect(jsonPath("$.questionstrials").value(DEFAULT_QUESTIONSTRIALS))
+            .andExpect(jsonPath("$.questionsanswered").value(DEFAULT_QUESTIONSANSWERED))
+            .andExpect(jsonPath("$.validotp").value(DEFAULT_VALIDOTP))
+            .andExpect(jsonPath("$.activatedby").value(DEFAULT_ACTIVATEDBY))
+            .andExpect(jsonPath("$.activatedon").value(DEFAULT_ACTIVATEDON.toString()))
+            .andExpect(jsonPath("$.branchcode").value(DEFAULT_BRANCHCODE));
     }
 
     @Test
     @Transactional
-    void getNonExistingCUSTOMER() throws Exception {
-        // Get the cUSTOMER
-        restCUSTOMERMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+    void getNonExistingCustomer() throws Exception {
+        // Get the customer
+        restCustomerMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
     @Transactional
-    void putExistingCUSTOMER() throws Exception {
+    void putExistingCustomer() throws Exception {
         // Initialize the database
-        insertedCUSTOMER = cUSTOMERRepository.saveAndFlush(cUSTOMER);
+        insertedCustomer = customerRepository.saveAndFlush(customer);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the cUSTOMER
-        CUSTOMER updatedCUSTOMER = cUSTOMERRepository.findById(cUSTOMER.getId()).orElseThrow();
-        // Disconnect from session so that the updates on updatedCUSTOMER are not directly saved in db
-        em.detach(updatedCUSTOMER);
-        updatedCUSTOMER
-            .cUSTOMERNAME(UPDATED_C_USTOMERNAME)
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .cARDNUMBER(UPDATED_C_ARDNUMBER)
-            .aCCOUNTNUMBER(UPDATED_A_CCOUNTNUMBER)
-            .lANG(UPDATED_L_ANG)
-            .pIN(UPDATED_P_IN)
-            .fIRSTLOGIN(UPDATED_F_IRSTLOGIN)
-            .aCTIVE(UPDATED_A_CTIVE)
-            .rEGISTERED(UPDATED_R_EGISTERED)
-            .cSTDELETE(UPDATED_C_STDELETE)
-            .rEGDATE(UPDATED_R_EGDATE)
-            .aLERTENABLED(UPDATED_A_LERTENABLED)
-            .rEMARK(UPDATED_R_EMARK)
-            .iMSI(UPDATED_I_MSI)
-            .pARTIALLYREGISTERED(UPDATED_P_ARTIALLYREGISTERED)
-            .pARTIALDATE(UPDATED_P_ARTIALDATE)
-            .rEGISTERDATE(UPDATED_R_EGISTERDATE)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE)
-            .dECLINED(UPDATED_D_ECLINED)
-            .dECLINEDBY(UPDATED_D_ECLINEDBY)
-            .dECLINEDDATE(UPDATED_D_ECLINEDDATE)
-            .cHECKERREMARKS(UPDATED_C_HECKERREMARKS)
-            .pOSTALADDRESS(UPDATED_P_OSTALADDRESS)
-            .rESIDENCE(UPDATED_R_ESIDENCE)
-            .dOB(UPDATED_D_OB)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .eMAILADDRESS(UPDATED_E_MAILADDRESS)
-            .iDENTIFICATIONID(UPDATED_I_DENTIFICATIONID)
-            .aDDACCOUNT(UPDATED_A_DDACCOUNT)
-            .aCLINKINGINSTITUTION(UPDATED_A_CLINKINGINSTITUTION)
-            .dEACTIVATED(UPDATED_D_EACTIVATED)
-            .dEACTIVATEDBY(UPDATED_D_EACTIVATEDBY)
-            .dEACTIVATEDON(UPDATED_D_EACTIVATEDON)
-            .pHONENOCHANGED(UPDATED_P_HONENOCHANGED)
-            .pHONENOCHANGEDBY(UPDATED_P_HONENOCHANGEDBY)
-            .pHONENOCHANGEDON(UPDATED_P_HONENOCHANGEDON)
-            .oRIGINALPHONENO(UPDATED_O_RIGINALPHONENO)
-            .nEWPHONENO(UPDATED_N_EWPHONENO)
-            .rESET(UPDATED_R_ESET)
-            .rESETINGINSTITUTION(UPDATED_R_ESETINGINSTITUTION)
-            .pINRESETREMARK(UPDATED_P_INRESETREMARK)
-            .rESETBY(UPDATED_R_ESETBY)
-            .rESETON(UPDATED_R_ESETON)
-            .uNBLOCKINGINSTITUTION(UPDATED_U_NBLOCKINGINSTITUTION)
-            .pINBLOCK(UPDATED_P_INBLOCK)
-            .pINBLOCKBY(UPDATED_P_INBLOCKBY)
-            .pINBLOCKREMARKS(UPDATED_P_INBLOCKREMARKS)
-            .bLOCKINGINSTITUTION(UPDATED_B_LOCKINGINSTITUTION)
-            .pINBLOCKON(UPDATED_P_INBLOCKON)
-            .aPPROVEDON(UPDATED_A_PPROVEDON)
-            .pINUNBLOCKBY(UPDATED_P_INUNBLOCKBY)
-            .lOGGEDIN(UPDATED_L_OGGEDIN)
-            .tRIALS(UPDATED_T_RIALS)
-            .iDTYPE(UPDATED_I_DTYPE)
-            .iDNUMBER(UPDATED_I_DNUMBER)
-            .gENDER(UPDATED_G_ENDER)
-            .cIF(UPDATED_C_IF)
-            .dATEOFBIRTH(UPDATED_D_ATEOFBIRTH)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .rESETIMSI(UPDATED_R_ESETIMSI)
-            .iMSIRESETBY(UPDATED_I_MSIRESETBY)
-            .fIRSTNAME(UPDATED_F_IRSTNAME)
-            .sECONDNAME(UPDATED_S_ECONDNAME)
-            .lASTNAME(UPDATED_L_ASTNAME)
-            .pINBLOCKTIME(UPDATED_P_INBLOCKTIME)
-            .cUSTOMERSTATUS(UPDATED_C_USTOMERSTATUS)
-            .uSERNAME(UPDATED_U_SERNAME)
-            .pASSWORD(UPDATED_P_ASSWORD)
-            .dEVICEID(UPDATED_D_EVICEID)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .pASSRESET(UPDATED_P_ASSRESET)
-            .pASSRESETBY(UPDATED_P_ASSRESETBY)
-            .pASSRESETON(UPDATED_P_ASSRESETON)
-            .pASSBLOCK(UPDATED_P_ASSBLOCK)
-            .pASSBLOCKBY(UPDATED_P_ASSBLOCKBY)
-            .pASSBLOCKON(UPDATED_P_ASSBLOCKON)
-            .pINMARKBLOCK(UPDATED_P_INMARKBLOCK)
-            .pASSMARKBLOCK(UPDATED_P_ASSMARKBLOCK)
-            .pASSRESETREMARKS(UPDATED_P_ASSRESETREMARKS)
-            .pASSBLOCKREMARKS(UPDATED_P_ASSBLOCKREMARKS)
-            .pASSUNBLOCKBY(UPDATED_P_ASSUNBLOCKBY)
-            .pASSTRIALS(UPDATED_P_ASSTRIALS)
-            .aPPACTIVE(UPDATED_A_PPACTIVE)
-            .lASTLOGIN(UPDATED_L_ASTLOGIN)
-            .aPPMARKEDDISABLE(UPDATED_A_PPMARKEDDISABLE)
-            .dISABLEBY(UPDATED_D_ISABLEBY)
-            .aPPROVEDISABLEBY(UPDATED_A_PPROVEDISABLEBY)
-            .aPPMARKEDENABLE(UPDATED_A_PPMARKEDENABLE)
-            .eNABLEBY(UPDATED_E_NABLEBY)
-            .aPPROVEDENABLEBY(UPDATED_A_PPROVEDENABLEBY)
-            .mARKEDDEACTIVATE(UPDATED_M_ARKEDDEACTIVATE)
-            .aPPFIRSTLOGIN(UPDATED_A_PPFIRSTLOGIN)
-            .aTMTRIALS(UPDATED_A_TMTRIALS)
-            .sHORCUTS(UPDATED_S_HORCUTS)
-            .mARKEDACTIVATE(UPDATED_M_ARKEDACTIVATE)
-            .tOWN(UPDATED_T_OWN)
-            .aPPROVEDDISABLEON(UPDATED_A_PPROVEDDISABLEON)
-            .dISABLEDON(UPDATED_D_ISABLEDON)
-            .rESETAPPROVEON(UPDATED_R_ESETAPPROVEON)
-            .dELETEDBY(UPDATED_D_ELETEDBY)
-            .qUESTIONSASKED(UPDATED_Q_UESTIONSASKED)
-            .qUESTIONSTRIALS(UPDATED_Q_UESTIONSTRIALS)
-            .qUESTIONSANSWERED(UPDATED_Q_UESTIONSANSWERED)
-            .vALIDOTP(UPDATED_V_ALIDOTP)
-            .aCTIVATEDBY(UPDATED_A_CTIVATEDBY)
-            .aCTIVATEDON(UPDATED_A_CTIVATEDON)
-            .bRANCHCODE(UPDATED_B_RANCHCODE);
+        // Update the customer
+        Customer updatedCustomer = customerRepository.findById(customer.getId()).orElseThrow();
+        // Disconnect from session so that the updates on updatedCustomer are not directly saved in db
+        em.detach(updatedCustomer);
+        updatedCustomer
+            .customername(UPDATED_CUSTOMERNAME)
+            .phonenumber(UPDATED_PHONENUMBER)
+            .cardnumber(UPDATED_CARDNUMBER)
+            .accountnumber(UPDATED_ACCOUNTNUMBER)
+            .lang(UPDATED_LANG)
+            .pin(UPDATED_PIN)
+            .firstlogin(UPDATED_FIRSTLOGIN)
+            .active(UPDATED_ACTIVE)
+            .registered(UPDATED_REGISTERED)
+            .cstdelete(UPDATED_CSTDELETE)
+            .regdate(UPDATED_REGDATE)
+            .alertenabled(UPDATED_ALERTENABLED)
+            .remark(UPDATED_REMARK)
+            .imsi(UPDATED_IMSI)
+            .partiallyregistered(UPDATED_PARTIALLYREGISTERED)
+            .partialdate(UPDATED_PARTIALDATE)
+            .registerdate(UPDATED_REGISTERDATE)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approveddate(UPDATED_APPROVEDDATE)
+            .declined(UPDATED_DECLINED)
+            .declinedby(UPDATED_DECLINEDBY)
+            .declineddate(UPDATED_DECLINEDDATE)
+            .checkerremarks(UPDATED_CHECKERREMARKS)
+            .postaladdress(UPDATED_POSTALADDRESS)
+            .residence(UPDATED_RESIDENCE)
+            .dob(UPDATED_DOB)
+            .createdby(UPDATED_CREATEDBY)
+            .emailaddress(UPDATED_EMAILADDRESS)
+            .identificationid(UPDATED_IDENTIFICATIONID)
+            .addaccount(UPDATED_ADDACCOUNT)
+            .aclinkinginstitution(UPDATED_ACLINKINGINSTITUTION)
+            .deactivated(UPDATED_DEACTIVATED)
+            .deactivatedby(UPDATED_DEACTIVATEDBY)
+            .deactivatedon(UPDATED_DEACTIVATEDON)
+            .phonenochanged(UPDATED_PHONENOCHANGED)
+            .phonenochangedby(UPDATED_PHONENOCHANGEDBY)
+            .phonenochangedon(UPDATED_PHONENOCHANGEDON)
+            .originalphoneno(UPDATED_ORIGINALPHONENO)
+            .newphoneno(UPDATED_NEWPHONENO)
+            .reset(UPDATED_RESET)
+            .resetinginstitution(UPDATED_RESETINGINSTITUTION)
+            .pinresetremark(UPDATED_PINRESETREMARK)
+            .resetby(UPDATED_RESETBY)
+            .reseton(UPDATED_RESETON)
+            .unblockinginstitution(UPDATED_UNBLOCKINGINSTITUTION)
+            .pinblock(UPDATED_PINBLOCK)
+            .pinblockby(UPDATED_PINBLOCKBY)
+            .pinblockremarks(UPDATED_PINBLOCKREMARKS)
+            .blockinginstitution(UPDATED_BLOCKINGINSTITUTION)
+            .pinblockon(UPDATED_PINBLOCKON)
+            .approvedon(UPDATED_APPROVEDON)
+            .pinunblockby(UPDATED_PINUNBLOCKBY)
+            .loggedin(UPDATED_LOGGEDIN)
+            .trials(UPDATED_TRIALS)
+            .idtype(UPDATED_IDTYPE)
+            .idnumber(UPDATED_IDNUMBER)
+            .gender(UPDATED_GENDER)
+            .cif(UPDATED_CIF)
+            .dateofbirth(UPDATED_DATEOFBIRTH)
+            .remarks(UPDATED_REMARKS)
+            .resetimsi(UPDATED_RESETIMSI)
+            .imsiresetby(UPDATED_IMSIRESETBY)
+            .firstname(UPDATED_FIRSTNAME)
+            .secondname(UPDATED_SECONDNAME)
+            .lastname(UPDATED_LASTNAME)
+            .pinblocktime(UPDATED_PINBLOCKTIME)
+            .customerstatus(UPDATED_CUSTOMERSTATUS)
+            .username(UPDATED_USERNAME)
+            .password(UPDATED_PASSWORD)
+            .deviceid(UPDATED_DEVICEID)
+            .channel(UPDATED_CHANNEL)
+            .passreset(UPDATED_PASSRESET)
+            .passresetby(UPDATED_PASSRESETBY)
+            .passreseton(UPDATED_PASSRESETON)
+            .passblock(UPDATED_PASSBLOCK)
+            .passblockby(UPDATED_PASSBLOCKBY)
+            .passblockon(UPDATED_PASSBLOCKON)
+            .pinmarkblock(UPDATED_PINMARKBLOCK)
+            .passmarkblock(UPDATED_PASSMARKBLOCK)
+            .passresetremarks(UPDATED_PASSRESETREMARKS)
+            .passblockremarks(UPDATED_PASSBLOCKREMARKS)
+            .passunblockby(UPDATED_PASSUNBLOCKBY)
+            .passtrials(UPDATED_PASSTRIALS)
+            .appactive(UPDATED_APPACTIVE)
+            .lastlogin(UPDATED_LASTLOGIN)
+            .appmarkeddisable(UPDATED_APPMARKEDDISABLE)
+            .disableby(UPDATED_DISABLEBY)
+            .approvedisableby(UPDATED_APPROVEDISABLEBY)
+            .appmarkedenable(UPDATED_APPMARKEDENABLE)
+            .enableby(UPDATED_ENABLEBY)
+            .approvedenableby(UPDATED_APPROVEDENABLEBY)
+            .markeddeactivate(UPDATED_MARKEDDEACTIVATE)
+            .appfirstlogin(UPDATED_APPFIRSTLOGIN)
+            .atmtrials(UPDATED_ATMTRIALS)
+            .shorcuts(UPDATED_SHORCUTS)
+            .markedactivate(UPDATED_MARKEDACTIVATE)
+            .town(UPDATED_TOWN)
+            .approveddisableon(UPDATED_APPROVEDDISABLEON)
+            .disabledon(UPDATED_DISABLEDON)
+            .resetapproveon(UPDATED_RESETAPPROVEON)
+            .deletedby(UPDATED_DELETEDBY)
+            .questionsasked(UPDATED_QUESTIONSASKED)
+            .questionstrials(UPDATED_QUESTIONSTRIALS)
+            .questionsanswered(UPDATED_QUESTIONSANSWERED)
+            .validotp(UPDATED_VALIDOTP)
+            .activatedby(UPDATED_ACTIVATEDBY)
+            .activatedon(UPDATED_ACTIVATEDON)
+            .branchcode(UPDATED_BRANCHCODE);
 
-        restCUSTOMERMockMvc
+        restCustomerMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, updatedCUSTOMER.getId())
+                put(ENTITY_API_URL_ID, updatedCustomer.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(updatedCUSTOMER))
+                    .content(om.writeValueAsBytes(updatedCustomer))
             )
             .andExpect(status().isOk());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertPersistedCUSTOMERToMatchAllProperties(updatedCUSTOMER);
+        assertPersistedCustomerToMatchAllProperties(updatedCustomer);
     }
 
     @Test
     @Transactional
-    void putNonExistingCUSTOMER() throws Exception {
+    void putNonExistingCustomer() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cUSTOMER.setId(longCount.incrementAndGet());
+        customer.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restCUSTOMERMockMvc
+        restCustomerMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, cUSTOMER.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cUSTOMER))
+                put(ENTITY_API_URL_ID, customer.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(customer))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithIdMismatchCUSTOMER() throws Exception {
+    void putWithIdMismatchCustomer() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cUSTOMER.setId(longCount.incrementAndGet());
+        customer.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restCUSTOMERMockMvc
+        restCustomerMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(cUSTOMER))
+                    .content(om.writeValueAsBytes(customer))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithMissingIdPathParamCUSTOMER() throws Exception {
+    void putWithMissingIdPathParamCustomer() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cUSTOMER.setId(longCount.incrementAndGet());
+        customer.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restCUSTOMERMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cUSTOMER)))
+        restCustomerMockMvc
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(customer)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void partialUpdateCUSTOMERWithPatch() throws Exception {
+    void partialUpdateCustomerWithPatch() throws Exception {
         // Initialize the database
-        insertedCUSTOMER = cUSTOMERRepository.saveAndFlush(cUSTOMER);
+        insertedCustomer = customerRepository.saveAndFlush(customer);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the cUSTOMER using partial update
-        CUSTOMER partialUpdatedCUSTOMER = new CUSTOMER();
-        partialUpdatedCUSTOMER.setId(cUSTOMER.getId());
+        // Update the customer using partial update
+        Customer partialUpdatedCustomer = new Customer();
+        partialUpdatedCustomer.setId(customer.getId());
 
-        partialUpdatedCUSTOMER
-            .cUSTOMERNAME(UPDATED_C_USTOMERNAME)
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .pARTIALLYREGISTERED(UPDATED_P_ARTIALLYREGISTERED)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE)
-            .dECLINEDBY(UPDATED_D_ECLINEDBY)
-            .cHECKERREMARKS(UPDATED_C_HECKERREMARKS)
-            .pOSTALADDRESS(UPDATED_P_OSTALADDRESS)
-            .rESIDENCE(UPDATED_R_ESIDENCE)
-            .eMAILADDRESS(UPDATED_E_MAILADDRESS)
-            .aDDACCOUNT(UPDATED_A_DDACCOUNT)
-            .dEACTIVATEDBY(UPDATED_D_EACTIVATEDBY)
-            .dEACTIVATEDON(UPDATED_D_EACTIVATEDON)
-            .pHONENOCHANGED(UPDATED_P_HONENOCHANGED)
-            .pHONENOCHANGEDBY(UPDATED_P_HONENOCHANGEDBY)
-            .nEWPHONENO(UPDATED_N_EWPHONENO)
-            .rESETBY(UPDATED_R_ESETBY)
-            .rESETON(UPDATED_R_ESETON)
-            .uNBLOCKINGINSTITUTION(UPDATED_U_NBLOCKINGINSTITUTION)
-            .pINBLOCK(UPDATED_P_INBLOCK)
-            .pINBLOCKBY(UPDATED_P_INBLOCKBY)
-            .bLOCKINGINSTITUTION(UPDATED_B_LOCKINGINSTITUTION)
-            .tRIALS(UPDATED_T_RIALS)
-            .cIF(UPDATED_C_IF)
-            .rESETIMSI(UPDATED_R_ESETIMSI)
-            .fIRSTNAME(UPDATED_F_IRSTNAME)
-            .lASTNAME(UPDATED_L_ASTNAME)
-            .pINBLOCKTIME(UPDATED_P_INBLOCKTIME)
-            .cUSTOMERSTATUS(UPDATED_C_USTOMERSTATUS)
-            .uSERNAME(UPDATED_U_SERNAME)
-            .pASSRESET(UPDATED_P_ASSRESET)
-            .pASSRESETBY(UPDATED_P_ASSRESETBY)
-            .pASSRESETON(UPDATED_P_ASSRESETON)
-            .pASSBLOCKON(UPDATED_P_ASSBLOCKON)
-            .pASSUNBLOCKBY(UPDATED_P_ASSUNBLOCKBY)
-            .pASSTRIALS(UPDATED_P_ASSTRIALS)
-            .aPPMARKEDDISABLE(UPDATED_A_PPMARKEDDISABLE)
-            .aPPROVEDISABLEBY(UPDATED_A_PPROVEDISABLEBY)
-            .aPPMARKEDENABLE(UPDATED_A_PPMARKEDENABLE)
-            .eNABLEBY(UPDATED_E_NABLEBY)
-            .aPPROVEDENABLEBY(UPDATED_A_PPROVEDENABLEBY)
-            .aPPFIRSTLOGIN(UPDATED_A_PPFIRSTLOGIN)
-            .aTMTRIALS(UPDATED_A_TMTRIALS)
-            .rESETAPPROVEON(UPDATED_R_ESETAPPROVEON)
-            .qUESTIONSASKED(UPDATED_Q_UESTIONSASKED)
-            .vALIDOTP(UPDATED_V_ALIDOTP)
-            .aCTIVATEDON(UPDATED_A_CTIVATEDON)
-            .bRANCHCODE(UPDATED_B_RANCHCODE);
+        partialUpdatedCustomer
+            .customername(UPDATED_CUSTOMERNAME)
+            .phonenumber(UPDATED_PHONENUMBER)
+            .cardnumber(UPDATED_CARDNUMBER)
+            .active(UPDATED_ACTIVE)
+            .registered(UPDATED_REGISTERED)
+            .cstdelete(UPDATED_CSTDELETE)
+            .remark(UPDATED_REMARK)
+            .imsi(UPDATED_IMSI)
+            .partiallyregistered(UPDATED_PARTIALLYREGISTERED)
+            .partialdate(UPDATED_PARTIALDATE)
+            .approvedby(UPDATED_APPROVEDBY)
+            .declined(UPDATED_DECLINED)
+            .declinedby(UPDATED_DECLINEDBY)
+            .declineddate(UPDATED_DECLINEDDATE)
+            .postaladdress(UPDATED_POSTALADDRESS)
+            .dob(UPDATED_DOB)
+            .createdby(UPDATED_CREATEDBY)
+            .emailaddress(UPDATED_EMAILADDRESS)
+            .addaccount(UPDATED_ADDACCOUNT)
+            .aclinkinginstitution(UPDATED_ACLINKINGINSTITUTION)
+            .deactivated(UPDATED_DEACTIVATED)
+            .deactivatedon(UPDATED_DEACTIVATEDON)
+            .phonenochanged(UPDATED_PHONENOCHANGED)
+            .phonenochangedby(UPDATED_PHONENOCHANGEDBY)
+            .resetinginstitution(UPDATED_RESETINGINSTITUTION)
+            .pinresetremark(UPDATED_PINRESETREMARK)
+            .resetby(UPDATED_RESETBY)
+            .reseton(UPDATED_RESETON)
+            .pinblock(UPDATED_PINBLOCK)
+            .pinblockremarks(UPDATED_PINBLOCKREMARKS)
+            .pinunblockby(UPDATED_PINUNBLOCKBY)
+            .loggedin(UPDATED_LOGGEDIN)
+            .idtype(UPDATED_IDTYPE)
+            .idnumber(UPDATED_IDNUMBER)
+            .gender(UPDATED_GENDER)
+            .cif(UPDATED_CIF)
+            .remarks(UPDATED_REMARKS)
+            .resetimsi(UPDATED_RESETIMSI)
+            .imsiresetby(UPDATED_IMSIRESETBY)
+            .firstname(UPDATED_FIRSTNAME)
+            .lastname(UPDATED_LASTNAME)
+            .pinblocktime(UPDATED_PINBLOCKTIME)
+            .channel(UPDATED_CHANNEL)
+            .passresetby(UPDATED_PASSRESETBY)
+            .passblock(UPDATED_PASSBLOCK)
+            .passblockon(UPDATED_PASSBLOCKON)
+            .passresetremarks(UPDATED_PASSRESETREMARKS)
+            .passunblockby(UPDATED_PASSUNBLOCKBY)
+            .appactive(UPDATED_APPACTIVE)
+            .lastlogin(UPDATED_LASTLOGIN)
+            .appmarkeddisable(UPDATED_APPMARKEDDISABLE)
+            .disableby(UPDATED_DISABLEBY)
+            .shorcuts(UPDATED_SHORCUTS)
+            .approveddisableon(UPDATED_APPROVEDDISABLEON)
+            .resetapproveon(UPDATED_RESETAPPROVEON)
+            .deletedby(UPDATED_DELETEDBY)
+            .questionsasked(UPDATED_QUESTIONSASKED)
+            .questionstrials(UPDATED_QUESTIONSTRIALS)
+            .validotp(UPDATED_VALIDOTP)
+            .activatedon(UPDATED_ACTIVATEDON);
 
-        restCUSTOMERMockMvc
+        restCustomerMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedCUSTOMER.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedCustomer.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedCUSTOMER))
+                    .content(om.writeValueAsBytes(partialUpdatedCustomer))
             )
             .andExpect(status().isOk());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertCUSTOMERUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedCUSTOMER, cUSTOMER), getPersistedCUSTOMER(cUSTOMER));
+        assertCustomerUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedCustomer, customer), getPersistedCustomer(customer));
     }
 
     @Test
     @Transactional
-    void fullUpdateCUSTOMERWithPatch() throws Exception {
+    void fullUpdateCustomerWithPatch() throws Exception {
         // Initialize the database
-        insertedCUSTOMER = cUSTOMERRepository.saveAndFlush(cUSTOMER);
+        insertedCustomer = customerRepository.saveAndFlush(customer);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the cUSTOMER using partial update
-        CUSTOMER partialUpdatedCUSTOMER = new CUSTOMER();
-        partialUpdatedCUSTOMER.setId(cUSTOMER.getId());
+        // Update the customer using partial update
+        Customer partialUpdatedCustomer = new Customer();
+        partialUpdatedCustomer.setId(customer.getId());
 
-        partialUpdatedCUSTOMER
-            .cUSTOMERNAME(UPDATED_C_USTOMERNAME)
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .cARDNUMBER(UPDATED_C_ARDNUMBER)
-            .aCCOUNTNUMBER(UPDATED_A_CCOUNTNUMBER)
-            .lANG(UPDATED_L_ANG)
-            .pIN(UPDATED_P_IN)
-            .fIRSTLOGIN(UPDATED_F_IRSTLOGIN)
-            .aCTIVE(UPDATED_A_CTIVE)
-            .rEGISTERED(UPDATED_R_EGISTERED)
-            .cSTDELETE(UPDATED_C_STDELETE)
-            .rEGDATE(UPDATED_R_EGDATE)
-            .aLERTENABLED(UPDATED_A_LERTENABLED)
-            .rEMARK(UPDATED_R_EMARK)
-            .iMSI(UPDATED_I_MSI)
-            .pARTIALLYREGISTERED(UPDATED_P_ARTIALLYREGISTERED)
-            .pARTIALDATE(UPDATED_P_ARTIALDATE)
-            .rEGISTERDATE(UPDATED_R_EGISTERDATE)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE)
-            .dECLINED(UPDATED_D_ECLINED)
-            .dECLINEDBY(UPDATED_D_ECLINEDBY)
-            .dECLINEDDATE(UPDATED_D_ECLINEDDATE)
-            .cHECKERREMARKS(UPDATED_C_HECKERREMARKS)
-            .pOSTALADDRESS(UPDATED_P_OSTALADDRESS)
-            .rESIDENCE(UPDATED_R_ESIDENCE)
-            .dOB(UPDATED_D_OB)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .eMAILADDRESS(UPDATED_E_MAILADDRESS)
-            .iDENTIFICATIONID(UPDATED_I_DENTIFICATIONID)
-            .aDDACCOUNT(UPDATED_A_DDACCOUNT)
-            .aCLINKINGINSTITUTION(UPDATED_A_CLINKINGINSTITUTION)
-            .dEACTIVATED(UPDATED_D_EACTIVATED)
-            .dEACTIVATEDBY(UPDATED_D_EACTIVATEDBY)
-            .dEACTIVATEDON(UPDATED_D_EACTIVATEDON)
-            .pHONENOCHANGED(UPDATED_P_HONENOCHANGED)
-            .pHONENOCHANGEDBY(UPDATED_P_HONENOCHANGEDBY)
-            .pHONENOCHANGEDON(UPDATED_P_HONENOCHANGEDON)
-            .oRIGINALPHONENO(UPDATED_O_RIGINALPHONENO)
-            .nEWPHONENO(UPDATED_N_EWPHONENO)
-            .rESET(UPDATED_R_ESET)
-            .rESETINGINSTITUTION(UPDATED_R_ESETINGINSTITUTION)
-            .pINRESETREMARK(UPDATED_P_INRESETREMARK)
-            .rESETBY(UPDATED_R_ESETBY)
-            .rESETON(UPDATED_R_ESETON)
-            .uNBLOCKINGINSTITUTION(UPDATED_U_NBLOCKINGINSTITUTION)
-            .pINBLOCK(UPDATED_P_INBLOCK)
-            .pINBLOCKBY(UPDATED_P_INBLOCKBY)
-            .pINBLOCKREMARKS(UPDATED_P_INBLOCKREMARKS)
-            .bLOCKINGINSTITUTION(UPDATED_B_LOCKINGINSTITUTION)
-            .pINBLOCKON(UPDATED_P_INBLOCKON)
-            .aPPROVEDON(UPDATED_A_PPROVEDON)
-            .pINUNBLOCKBY(UPDATED_P_INUNBLOCKBY)
-            .lOGGEDIN(UPDATED_L_OGGEDIN)
-            .tRIALS(UPDATED_T_RIALS)
-            .iDTYPE(UPDATED_I_DTYPE)
-            .iDNUMBER(UPDATED_I_DNUMBER)
-            .gENDER(UPDATED_G_ENDER)
-            .cIF(UPDATED_C_IF)
-            .dATEOFBIRTH(UPDATED_D_ATEOFBIRTH)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .rESETIMSI(UPDATED_R_ESETIMSI)
-            .iMSIRESETBY(UPDATED_I_MSIRESETBY)
-            .fIRSTNAME(UPDATED_F_IRSTNAME)
-            .sECONDNAME(UPDATED_S_ECONDNAME)
-            .lASTNAME(UPDATED_L_ASTNAME)
-            .pINBLOCKTIME(UPDATED_P_INBLOCKTIME)
-            .cUSTOMERSTATUS(UPDATED_C_USTOMERSTATUS)
-            .uSERNAME(UPDATED_U_SERNAME)
-            .pASSWORD(UPDATED_P_ASSWORD)
-            .dEVICEID(UPDATED_D_EVICEID)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .pASSRESET(UPDATED_P_ASSRESET)
-            .pASSRESETBY(UPDATED_P_ASSRESETBY)
-            .pASSRESETON(UPDATED_P_ASSRESETON)
-            .pASSBLOCK(UPDATED_P_ASSBLOCK)
-            .pASSBLOCKBY(UPDATED_P_ASSBLOCKBY)
-            .pASSBLOCKON(UPDATED_P_ASSBLOCKON)
-            .pINMARKBLOCK(UPDATED_P_INMARKBLOCK)
-            .pASSMARKBLOCK(UPDATED_P_ASSMARKBLOCK)
-            .pASSRESETREMARKS(UPDATED_P_ASSRESETREMARKS)
-            .pASSBLOCKREMARKS(UPDATED_P_ASSBLOCKREMARKS)
-            .pASSUNBLOCKBY(UPDATED_P_ASSUNBLOCKBY)
-            .pASSTRIALS(UPDATED_P_ASSTRIALS)
-            .aPPACTIVE(UPDATED_A_PPACTIVE)
-            .lASTLOGIN(UPDATED_L_ASTLOGIN)
-            .aPPMARKEDDISABLE(UPDATED_A_PPMARKEDDISABLE)
-            .dISABLEBY(UPDATED_D_ISABLEBY)
-            .aPPROVEDISABLEBY(UPDATED_A_PPROVEDISABLEBY)
-            .aPPMARKEDENABLE(UPDATED_A_PPMARKEDENABLE)
-            .eNABLEBY(UPDATED_E_NABLEBY)
-            .aPPROVEDENABLEBY(UPDATED_A_PPROVEDENABLEBY)
-            .mARKEDDEACTIVATE(UPDATED_M_ARKEDDEACTIVATE)
-            .aPPFIRSTLOGIN(UPDATED_A_PPFIRSTLOGIN)
-            .aTMTRIALS(UPDATED_A_TMTRIALS)
-            .sHORCUTS(UPDATED_S_HORCUTS)
-            .mARKEDACTIVATE(UPDATED_M_ARKEDACTIVATE)
-            .tOWN(UPDATED_T_OWN)
-            .aPPROVEDDISABLEON(UPDATED_A_PPROVEDDISABLEON)
-            .dISABLEDON(UPDATED_D_ISABLEDON)
-            .rESETAPPROVEON(UPDATED_R_ESETAPPROVEON)
-            .dELETEDBY(UPDATED_D_ELETEDBY)
-            .qUESTIONSASKED(UPDATED_Q_UESTIONSASKED)
-            .qUESTIONSTRIALS(UPDATED_Q_UESTIONSTRIALS)
-            .qUESTIONSANSWERED(UPDATED_Q_UESTIONSANSWERED)
-            .vALIDOTP(UPDATED_V_ALIDOTP)
-            .aCTIVATEDBY(UPDATED_A_CTIVATEDBY)
-            .aCTIVATEDON(UPDATED_A_CTIVATEDON)
-            .bRANCHCODE(UPDATED_B_RANCHCODE);
+        partialUpdatedCustomer
+            .customername(UPDATED_CUSTOMERNAME)
+            .phonenumber(UPDATED_PHONENUMBER)
+            .cardnumber(UPDATED_CARDNUMBER)
+            .accountnumber(UPDATED_ACCOUNTNUMBER)
+            .lang(UPDATED_LANG)
+            .pin(UPDATED_PIN)
+            .firstlogin(UPDATED_FIRSTLOGIN)
+            .active(UPDATED_ACTIVE)
+            .registered(UPDATED_REGISTERED)
+            .cstdelete(UPDATED_CSTDELETE)
+            .regdate(UPDATED_REGDATE)
+            .alertenabled(UPDATED_ALERTENABLED)
+            .remark(UPDATED_REMARK)
+            .imsi(UPDATED_IMSI)
+            .partiallyregistered(UPDATED_PARTIALLYREGISTERED)
+            .partialdate(UPDATED_PARTIALDATE)
+            .registerdate(UPDATED_REGISTERDATE)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approveddate(UPDATED_APPROVEDDATE)
+            .declined(UPDATED_DECLINED)
+            .declinedby(UPDATED_DECLINEDBY)
+            .declineddate(UPDATED_DECLINEDDATE)
+            .checkerremarks(UPDATED_CHECKERREMARKS)
+            .postaladdress(UPDATED_POSTALADDRESS)
+            .residence(UPDATED_RESIDENCE)
+            .dob(UPDATED_DOB)
+            .createdby(UPDATED_CREATEDBY)
+            .emailaddress(UPDATED_EMAILADDRESS)
+            .identificationid(UPDATED_IDENTIFICATIONID)
+            .addaccount(UPDATED_ADDACCOUNT)
+            .aclinkinginstitution(UPDATED_ACLINKINGINSTITUTION)
+            .deactivated(UPDATED_DEACTIVATED)
+            .deactivatedby(UPDATED_DEACTIVATEDBY)
+            .deactivatedon(UPDATED_DEACTIVATEDON)
+            .phonenochanged(UPDATED_PHONENOCHANGED)
+            .phonenochangedby(UPDATED_PHONENOCHANGEDBY)
+            .phonenochangedon(UPDATED_PHONENOCHANGEDON)
+            .originalphoneno(UPDATED_ORIGINALPHONENO)
+            .newphoneno(UPDATED_NEWPHONENO)
+            .reset(UPDATED_RESET)
+            .resetinginstitution(UPDATED_RESETINGINSTITUTION)
+            .pinresetremark(UPDATED_PINRESETREMARK)
+            .resetby(UPDATED_RESETBY)
+            .reseton(UPDATED_RESETON)
+            .unblockinginstitution(UPDATED_UNBLOCKINGINSTITUTION)
+            .pinblock(UPDATED_PINBLOCK)
+            .pinblockby(UPDATED_PINBLOCKBY)
+            .pinblockremarks(UPDATED_PINBLOCKREMARKS)
+            .blockinginstitution(UPDATED_BLOCKINGINSTITUTION)
+            .pinblockon(UPDATED_PINBLOCKON)
+            .approvedon(UPDATED_APPROVEDON)
+            .pinunblockby(UPDATED_PINUNBLOCKBY)
+            .loggedin(UPDATED_LOGGEDIN)
+            .trials(UPDATED_TRIALS)
+            .idtype(UPDATED_IDTYPE)
+            .idnumber(UPDATED_IDNUMBER)
+            .gender(UPDATED_GENDER)
+            .cif(UPDATED_CIF)
+            .dateofbirth(UPDATED_DATEOFBIRTH)
+            .remarks(UPDATED_REMARKS)
+            .resetimsi(UPDATED_RESETIMSI)
+            .imsiresetby(UPDATED_IMSIRESETBY)
+            .firstname(UPDATED_FIRSTNAME)
+            .secondname(UPDATED_SECONDNAME)
+            .lastname(UPDATED_LASTNAME)
+            .pinblocktime(UPDATED_PINBLOCKTIME)
+            .customerstatus(UPDATED_CUSTOMERSTATUS)
+            .username(UPDATED_USERNAME)
+            .password(UPDATED_PASSWORD)
+            .deviceid(UPDATED_DEVICEID)
+            .channel(UPDATED_CHANNEL)
+            .passreset(UPDATED_PASSRESET)
+            .passresetby(UPDATED_PASSRESETBY)
+            .passreseton(UPDATED_PASSRESETON)
+            .passblock(UPDATED_PASSBLOCK)
+            .passblockby(UPDATED_PASSBLOCKBY)
+            .passblockon(UPDATED_PASSBLOCKON)
+            .pinmarkblock(UPDATED_PINMARKBLOCK)
+            .passmarkblock(UPDATED_PASSMARKBLOCK)
+            .passresetremarks(UPDATED_PASSRESETREMARKS)
+            .passblockremarks(UPDATED_PASSBLOCKREMARKS)
+            .passunblockby(UPDATED_PASSUNBLOCKBY)
+            .passtrials(UPDATED_PASSTRIALS)
+            .appactive(UPDATED_APPACTIVE)
+            .lastlogin(UPDATED_LASTLOGIN)
+            .appmarkeddisable(UPDATED_APPMARKEDDISABLE)
+            .disableby(UPDATED_DISABLEBY)
+            .approvedisableby(UPDATED_APPROVEDISABLEBY)
+            .appmarkedenable(UPDATED_APPMARKEDENABLE)
+            .enableby(UPDATED_ENABLEBY)
+            .approvedenableby(UPDATED_APPROVEDENABLEBY)
+            .markeddeactivate(UPDATED_MARKEDDEACTIVATE)
+            .appfirstlogin(UPDATED_APPFIRSTLOGIN)
+            .atmtrials(UPDATED_ATMTRIALS)
+            .shorcuts(UPDATED_SHORCUTS)
+            .markedactivate(UPDATED_MARKEDACTIVATE)
+            .town(UPDATED_TOWN)
+            .approveddisableon(UPDATED_APPROVEDDISABLEON)
+            .disabledon(UPDATED_DISABLEDON)
+            .resetapproveon(UPDATED_RESETAPPROVEON)
+            .deletedby(UPDATED_DELETEDBY)
+            .questionsasked(UPDATED_QUESTIONSASKED)
+            .questionstrials(UPDATED_QUESTIONSTRIALS)
+            .questionsanswered(UPDATED_QUESTIONSANSWERED)
+            .validotp(UPDATED_VALIDOTP)
+            .activatedby(UPDATED_ACTIVATEDBY)
+            .activatedon(UPDATED_ACTIVATEDON)
+            .branchcode(UPDATED_BRANCHCODE);
 
-        restCUSTOMERMockMvc
+        restCustomerMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedCUSTOMER.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedCustomer.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedCUSTOMER))
+                    .content(om.writeValueAsBytes(partialUpdatedCustomer))
             )
             .andExpect(status().isOk());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertCUSTOMERUpdatableFieldsEquals(partialUpdatedCUSTOMER, getPersistedCUSTOMER(partialUpdatedCUSTOMER));
+        assertCustomerUpdatableFieldsEquals(partialUpdatedCustomer, getPersistedCustomer(partialUpdatedCustomer));
     }
 
     @Test
     @Transactional
-    void patchNonExistingCUSTOMER() throws Exception {
+    void patchNonExistingCustomer() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cUSTOMER.setId(longCount.incrementAndGet());
+        customer.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restCUSTOMERMockMvc
+        restCustomerMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, cUSTOMER.getId())
+                patch(ENTITY_API_URL_ID, customer.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(cUSTOMER))
+                    .content(om.writeValueAsBytes(customer))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithIdMismatchCUSTOMER() throws Exception {
+    void patchWithIdMismatchCustomer() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cUSTOMER.setId(longCount.incrementAndGet());
+        customer.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restCUSTOMERMockMvc
+        restCustomerMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(cUSTOMER))
+                    .content(om.writeValueAsBytes(customer))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithMissingIdPathParamCUSTOMER() throws Exception {
+    void patchWithMissingIdPathParamCustomer() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cUSTOMER.setId(longCount.incrementAndGet());
+        customer.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restCUSTOMERMockMvc
-            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(cUSTOMER)))
+        restCustomerMockMvc
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(customer)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the CUSTOMER in the database
+        // Validate the Customer in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void deleteCUSTOMER() throws Exception {
+    void deleteCustomer() throws Exception {
         // Initialize the database
-        insertedCUSTOMER = cUSTOMERRepository.saveAndFlush(cUSTOMER);
+        insertedCustomer = customerRepository.saveAndFlush(customer);
 
         long databaseSizeBeforeDelete = getRepositoryCount();
 
-        // Delete the cUSTOMER
-        restCUSTOMERMockMvc
-            .perform(delete(ENTITY_API_URL_ID, cUSTOMER.getId()).accept(MediaType.APPLICATION_JSON))
+        // Delete the customer
+        restCustomerMockMvc
+            .perform(delete(ENTITY_API_URL_ID, customer.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
@@ -1429,7 +1441,7 @@ class CUSTOMERResourceIT {
     }
 
     protected long getRepositoryCount() {
-        return cUSTOMERRepository.count();
+        return customerRepository.count();
     }
 
     protected void assertIncrementedRepositoryCount(long countBefore) {
@@ -1444,15 +1456,15 @@ class CUSTOMERResourceIT {
         assertThat(countBefore).isEqualTo(getRepositoryCount());
     }
 
-    protected CUSTOMER getPersistedCUSTOMER(CUSTOMER cUSTOMER) {
-        return cUSTOMERRepository.findById(cUSTOMER.getId()).orElseThrow();
+    protected Customer getPersistedCustomer(Customer customer) {
+        return customerRepository.findById(customer.getId()).orElseThrow();
     }
 
-    protected void assertPersistedCUSTOMERToMatchAllProperties(CUSTOMER expectedCUSTOMER) {
-        assertCUSTOMERAllPropertiesEquals(expectedCUSTOMER, getPersistedCUSTOMER(expectedCUSTOMER));
+    protected void assertPersistedCustomerToMatchAllProperties(Customer expectedCustomer) {
+        assertCustomerAllPropertiesEquals(expectedCustomer, getPersistedCustomer(expectedCustomer));
     }
 
-    protected void assertPersistedCUSTOMERToMatchUpdatableProperties(CUSTOMER expectedCUSTOMER) {
-        assertCUSTOMERAllUpdatablePropertiesEquals(expectedCUSTOMER, getPersistedCUSTOMER(expectedCUSTOMER));
+    protected void assertPersistedCustomerToMatchUpdatableProperties(Customer expectedCustomer) {
+        assertCustomerAllUpdatablePropertiesEquals(expectedCustomer, getPersistedCustomer(expectedCustomer));
     }
 }

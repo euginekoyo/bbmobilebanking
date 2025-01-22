@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.LIMITS;
-import com.istl.app.repository.LIMITSRepository;
+import com.istl.app.domain.Limits;
+import com.istl.app.repository.LimitsRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,199 +20,199 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.LIMITS}.
+ * REST controller for managing {@link com.istl.app.domain.Limits}.
  */
 @RestController
 @RequestMapping("/api/limits")
 @Transactional
-public class LIMITSResource {
+public class LimitsResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(LIMITSResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LimitsResource.class);
 
-    private static final String ENTITY_NAME = "lIMITS";
+    private static final String ENTITY_NAME = "limits";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final LIMITSRepository lIMITSRepository;
+    private final LimitsRepository limitsRepository;
 
-    public LIMITSResource(LIMITSRepository lIMITSRepository) {
-        this.lIMITSRepository = lIMITSRepository;
+    public LimitsResource(LimitsRepository limitsRepository) {
+        this.limitsRepository = limitsRepository;
     }
 
     /**
-     * {@code POST  /limits} : Create a new lIMITS.
+     * {@code POST  /limits} : Create a new limits.
      *
-     * @param lIMITS the lIMITS to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new lIMITS, or with status {@code 400 (Bad Request)} if the lIMITS has already an ID.
+     * @param limits the limits to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new limits, or with status {@code 400 (Bad Request)} if the limits has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<LIMITS> createLIMITS(@Valid @RequestBody LIMITS lIMITS) throws URISyntaxException {
-        LOG.debug("REST request to save LIMITS : {}", lIMITS);
-        if (lIMITS.getId() != null) {
-            throw new BadRequestAlertException("A new lIMITS cannot already have an ID", ENTITY_NAME, "idexists");
+    public ResponseEntity<Limits> createLimits(@Valid @RequestBody Limits limits) throws URISyntaxException {
+        LOG.debug("REST request to save Limits : {}", limits);
+        if (limits.getId() != null) {
+            throw new BadRequestAlertException("A new limits cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        lIMITS = lIMITSRepository.save(lIMITS);
-        return ResponseEntity.created(new URI("/api/limits/" + lIMITS.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, lIMITS.getId().toString()))
-            .body(lIMITS);
+        limits = limitsRepository.save(limits);
+        return ResponseEntity.created(new URI("/api/limits/" + limits.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, limits.getId().toString()))
+            .body(limits);
     }
 
     /**
-     * {@code PUT  /limits/:id} : Updates an existing lIMITS.
+     * {@code PUT  /limits/:id} : Updates an existing limits.
      *
-     * @param id the id of the lIMITS to save.
-     * @param lIMITS the lIMITS to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated lIMITS,
-     * or with status {@code 400 (Bad Request)} if the lIMITS is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the lIMITS couldn't be updated.
+     * @param id the id of the limits to save.
+     * @param limits the limits to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated limits,
+     * or with status {@code 400 (Bad Request)} if the limits is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the limits couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<LIMITS> updateLIMITS(
+    public ResponseEntity<Limits> updateLimits(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody LIMITS lIMITS
+        @Valid @RequestBody Limits limits
     ) throws URISyntaxException {
-        LOG.debug("REST request to update LIMITS : {}, {}", id, lIMITS);
-        if (lIMITS.getId() == null) {
+        LOG.debug("REST request to update Limits : {}, {}", id, limits);
+        if (limits.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, lIMITS.getId())) {
+        if (!Objects.equals(id, limits.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!lIMITSRepository.existsById(id)) {
+        if (!limitsRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        lIMITS = lIMITSRepository.save(lIMITS);
+        limits = limitsRepository.save(limits);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, lIMITS.getId().toString()))
-            .body(lIMITS);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, limits.getId().toString()))
+            .body(limits);
     }
 
     /**
-     * {@code PATCH  /limits/:id} : Partial updates given fields of an existing lIMITS, field will ignore if it is null
+     * {@code PATCH  /limits/:id} : Partial updates given fields of an existing limits, field will ignore if it is null
      *
-     * @param id the id of the lIMITS to save.
-     * @param lIMITS the lIMITS to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated lIMITS,
-     * or with status {@code 400 (Bad Request)} if the lIMITS is not valid,
-     * or with status {@code 404 (Not Found)} if the lIMITS is not found,
-     * or with status {@code 500 (Internal Server Error)} if the lIMITS couldn't be updated.
+     * @param id the id of the limits to save.
+     * @param limits the limits to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated limits,
+     * or with status {@code 400 (Bad Request)} if the limits is not valid,
+     * or with status {@code 404 (Not Found)} if the limits is not found,
+     * or with status {@code 500 (Internal Server Error)} if the limits couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<LIMITS> partialUpdateLIMITS(
+    public ResponseEntity<Limits> partialUpdateLimits(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody LIMITS lIMITS
+        @NotNull @RequestBody Limits limits
     ) throws URISyntaxException {
-        LOG.debug("REST request to partial update LIMITS partially : {}, {}", id, lIMITS);
-        if (lIMITS.getId() == null) {
+        LOG.debug("REST request to partial update Limits partially : {}, {}", id, limits);
+        if (limits.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, lIMITS.getId())) {
+        if (!Objects.equals(id, limits.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!lIMITSRepository.existsById(id)) {
+        if (!limitsRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<LIMITS> result = lIMITSRepository
-            .findById(lIMITS.getId())
-            .map(existingLIMITS -> {
-                if (lIMITS.gettRANSACTIONTYPE() != null) {
-                    existingLIMITS.settRANSACTIONTYPE(lIMITS.gettRANSACTIONTYPE());
+        Optional<Limits> result = limitsRepository
+            .findById(limits.getId())
+            .map(existingLimits -> {
+                if (limits.getTransactiontype() != null) {
+                    existingLimits.setTransactiontype(limits.getTransactiontype());
                 }
-                if (lIMITS.getpROCODE() != null) {
-                    existingLIMITS.setpROCODE(lIMITS.getpROCODE());
+                if (limits.getProcode() != null) {
+                    existingLimits.setProcode(limits.getProcode());
                 }
-                if (lIMITS.getcHANNEL() != null) {
-                    existingLIMITS.setcHANNEL(lIMITS.getcHANNEL());
+                if (limits.getChannel() != null) {
+                    existingLimits.setChannel(limits.getChannel());
                 }
-                if (lIMITS.gettRANSACTIONLIMIT() != null) {
-                    existingLIMITS.settRANSACTIONLIMIT(lIMITS.gettRANSACTIONLIMIT());
+                if (limits.getTransactionlimit() != null) {
+                    existingLimits.setTransactionlimit(limits.getTransactionlimit());
                 }
-                if (lIMITS.getdAILYLIMIT() != null) {
-                    existingLIMITS.setdAILYLIMIT(lIMITS.getdAILYLIMIT());
+                if (limits.getDailylimit() != null) {
+                    existingLimits.setDailylimit(limits.getDailylimit());
                 }
-                if (lIMITS.getrEGISTEREDBY() != null) {
-                    existingLIMITS.setrEGISTEREDBY(lIMITS.getrEGISTEREDBY());
+                if (limits.getRegisteredby() != null) {
+                    existingLimits.setRegisteredby(limits.getRegisteredby());
                 }
-                if (lIMITS.getrEGISTEREDDATE() != null) {
-                    existingLIMITS.setrEGISTEREDDATE(lIMITS.getrEGISTEREDDATE());
+                if (limits.getRegistereddate() != null) {
+                    existingLimits.setRegistereddate(limits.getRegistereddate());
                 }
-                if (lIMITS.getaPPROVED() != null) {
-                    existingLIMITS.setaPPROVED(lIMITS.getaPPROVED());
+                if (limits.getApproved() != null) {
+                    existingLimits.setApproved(limits.getApproved());
                 }
-                if (lIMITS.getaPPROVEDBY() != null) {
-                    existingLIMITS.setaPPROVEDBY(lIMITS.getaPPROVEDBY());
+                if (limits.getApprovedby() != null) {
+                    existingLimits.setApprovedby(limits.getApprovedby());
                 }
-                if (lIMITS.getaPPROVEDDATE() != null) {
-                    existingLIMITS.setaPPROVEDDATE(lIMITS.getaPPROVEDDATE());
+                if (limits.getApproveddate() != null) {
+                    existingLimits.setApproveddate(limits.getApproveddate());
                 }
-                if (lIMITS.getuPDATEDBY() != null) {
-                    existingLIMITS.setuPDATEDBY(lIMITS.getuPDATEDBY());
+                if (limits.getUpdatedby() != null) {
+                    existingLimits.setUpdatedby(limits.getUpdatedby());
                 }
-                if (lIMITS.getuPDATEDDATE() != null) {
-                    existingLIMITS.setuPDATEDDATE(lIMITS.getuPDATEDDATE());
+                if (limits.getUpdateddate() != null) {
+                    existingLimits.setUpdateddate(limits.getUpdateddate());
                 }
-                if (lIMITS.getrEWORK() != null) {
-                    existingLIMITS.setrEWORK(lIMITS.getrEWORK());
+                if (limits.getRework() != null) {
+                    existingLimits.setRework(limits.getRework());
                 }
-                if (lIMITS.getrEWORKBY() != null) {
-                    existingLIMITS.setrEWORKBY(lIMITS.getrEWORKBY());
+                if (limits.getReworkby() != null) {
+                    existingLimits.setReworkby(limits.getReworkby());
                 }
-                if (lIMITS.getsESSIONID() != null) {
-                    existingLIMITS.setsESSIONID(lIMITS.getsESSIONID());
+                if (limits.getSessionid() != null) {
+                    existingLimits.setSessionid(limits.getSessionid());
                 }
 
-                return existingLIMITS;
+                return existingLimits;
             })
-            .map(lIMITSRepository::save);
+            .map(limitsRepository::save);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, lIMITS.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, limits.getId().toString())
         );
     }
 
     /**
-     * {@code GET  /limits} : get all the lIMITS.
+     * {@code GET  /limits} : get all the limits.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of lIMITS in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of limits in body.
      */
     @GetMapping("")
-    public List<LIMITS> getAllLIMITS() {
-        LOG.debug("REST request to get all LIMITS");
-        return lIMITSRepository.findAll();
+    public List<Limits> getAllLimits() {
+        LOG.debug("REST request to get all Limits");
+        return limitsRepository.findAll();
     }
 
     /**
-     * {@code GET  /limits/:id} : get the "id" lIMITS.
+     * {@code GET  /limits/:id} : get the "id" limits.
      *
-     * @param id the id of the lIMITS to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the lIMITS, or with status {@code 404 (Not Found)}.
+     * @param id the id of the limits to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the limits, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<LIMITS> getLIMITS(@PathVariable("id") Long id) {
-        LOG.debug("REST request to get LIMITS : {}", id);
-        Optional<LIMITS> lIMITS = lIMITSRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(lIMITS);
+    public ResponseEntity<Limits> getLimits(@PathVariable("id") Long id) {
+        LOG.debug("REST request to get Limits : {}", id);
+        Optional<Limits> limits = limitsRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(limits);
     }
 
     /**
-     * {@code DELETE  /limits/:id} : delete the "id" lIMITS.
+     * {@code DELETE  /limits/:id} : delete the "id" limits.
      *
-     * @param id the id of the lIMITS to delete.
+     * @param id the id of the limits to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLIMITS(@PathVariable("id") Long id) {
-        LOG.debug("REST request to delete LIMITS : {}", id);
-        lIMITSRepository.deleteById(id);
+    public ResponseEntity<Void> deleteLimits(@PathVariable("id") Long id) {
+        LOG.debug("REST request to delete Limits : {}", id);
+        limitsRepository.deleteById(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();

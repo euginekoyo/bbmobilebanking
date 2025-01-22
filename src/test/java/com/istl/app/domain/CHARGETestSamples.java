@@ -4,50 +4,50 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class CHARGETestSamples {
+public class ChargeTestSamples {
 
     private static final Random random = new Random();
     private static final AtomicLong longCount = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
-    public static CHARGE getCHARGESample1() {
-        return new CHARGE()
+    public static Charge getChargeSample1() {
+        return new Charge()
             .id(1L)
-            .tXNTYPE("tXNTYPE1")
-            .fEEMODE(1L)
-            .aMOUNT(1L)
-            .cREATEDBY("cREATEDBY1")
-            .aPPROVED("aPPROVED1")
-            .aPPROVEDBY("aPPROVEDBY1")
-            .cHANNEL("cHANNEL1")
-            .tXNCODE(1L)
-            .dESCRIPTION("dESCRIPTION1");
+            .txntype("txntype1")
+            .feemode(1L)
+            .amount(1L)
+            .createdby("createdby1")
+            .approved("approved1")
+            .approvedby("approvedby1")
+            .channel("channel1")
+            .txncode(1L)
+            .description("description1");
     }
 
-    public static CHARGE getCHARGESample2() {
-        return new CHARGE()
+    public static Charge getChargeSample2() {
+        return new Charge()
             .id(2L)
-            .tXNTYPE("tXNTYPE2")
-            .fEEMODE(2L)
-            .aMOUNT(2L)
-            .cREATEDBY("cREATEDBY2")
-            .aPPROVED("aPPROVED2")
-            .aPPROVEDBY("aPPROVEDBY2")
-            .cHANNEL("cHANNEL2")
-            .tXNCODE(2L)
-            .dESCRIPTION("dESCRIPTION2");
+            .txntype("txntype2")
+            .feemode(2L)
+            .amount(2L)
+            .createdby("createdby2")
+            .approved("approved2")
+            .approvedby("approvedby2")
+            .channel("channel2")
+            .txncode(2L)
+            .description("description2");
     }
 
-    public static CHARGE getCHARGERandomSampleGenerator() {
-        return new CHARGE()
+    public static Charge getChargeRandomSampleGenerator() {
+        return new Charge()
             .id(longCount.incrementAndGet())
-            .tXNTYPE(UUID.randomUUID().toString())
-            .fEEMODE(longCount.incrementAndGet())
-            .aMOUNT(longCount.incrementAndGet())
-            .cREATEDBY(UUID.randomUUID().toString())
-            .aPPROVED(UUID.randomUUID().toString())
-            .aPPROVEDBY(UUID.randomUUID().toString())
-            .cHANNEL(UUID.randomUUID().toString())
-            .tXNCODE(longCount.incrementAndGet())
-            .dESCRIPTION(UUID.randomUUID().toString());
+            .txntype(UUID.randomUUID().toString())
+            .feemode(longCount.incrementAndGet())
+            .amount(longCount.incrementAndGet())
+            .createdby(UUID.randomUUID().toString())
+            .approved(UUID.randomUUID().toString())
+            .approvedby(UUID.randomUUID().toString())
+            .channel(UUID.randomUUID().toString())
+            .txncode(longCount.incrementAndGet())
+            .description(UUID.randomUUID().toString());
     }
 }

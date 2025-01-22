@@ -1,6 +1,6 @@
 package com.istl.app.web.rest;
 
-import static com.istl.app.domain.RANGEAsserts.*;
+import static com.istl.app.domain.RangeAsserts.*;
 import static com.istl.app.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.RANGE;
-import com.istl.app.repository.RANGERepository;
+import com.istl.app.domain.Range;
+import com.istl.app.repository.RangeRepository;
 import jakarta.persistence.EntityManager;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -25,33 +25,33 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Integration tests for the {@link RANGEResource} REST controller.
+ * Integration tests for the {@link RangeResource} REST controller.
  */
 @IntegrationTest
 @AutoConfigureMockMvc
 @WithMockUser
-class RANGEResourceIT {
+class RangeResourceIT {
 
-    private static final Long DEFAULT_R_ANGEFROM = 1L;
-    private static final Long UPDATED_R_ANGEFROM = 2L;
+    private static final Long DEFAULT_RANGEFROM = 1L;
+    private static final Long UPDATED_RANGEFROM = 2L;
 
-    private static final Long DEFAULT_R_ANGETO = 1L;
-    private static final Long UPDATED_R_ANGETO = 2L;
+    private static final Long DEFAULT_RANGETO = 1L;
+    private static final Long UPDATED_RANGETO = 2L;
 
-    private static final Double DEFAULT_A_MOUNT = 1D;
-    private static final Double UPDATED_A_MOUNT = 2D;
+    private static final Double DEFAULT_AMOUNT = 1D;
+    private static final Double UPDATED_AMOUNT = 2D;
 
-    private static final String DEFAULT_T_XNTYPE = "AAAAAAAAAA";
-    private static final String UPDATED_T_XNTYPE = "BBBBBBBBBB";
+    private static final String DEFAULT_TXNTYPE = "AAAAAAAAAA";
+    private static final String UPDATED_TXNTYPE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_T_XNCODE = "AAAAAAAAAA";
-    private static final String UPDATED_T_XNCODE = "BBBBBBBBBB";
+    private static final String DEFAULT_TXNCODE = "AAAAAAAAAA";
+    private static final String UPDATED_TXNCODE = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_C_HARGEID = 1L;
-    private static final Long UPDATED_C_HARGEID = 2L;
+    private static final Long DEFAULT_CHARGEID = 1L;
+    private static final Long UPDATED_CHARGEID = 2L;
 
-    private static final String DEFAULT_C_HANNEL = "AAAAAAAAAA";
-    private static final String UPDATED_C_HANNEL = "BBBBBBBBBB";
+    private static final String DEFAULT_CHANNEL = "AAAAAAAAAA";
+    private static final String UPDATED_CHANNEL = "BBBBBBBBBB";
 
     private static final String ENTITY_API_URL = "/api/ranges";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -63,17 +63,17 @@ class RANGEResourceIT {
     private ObjectMapper om;
 
     @Autowired
-    private RANGERepository rANGERepository;
+    private RangeRepository rangeRepository;
 
     @Autowired
     private EntityManager em;
 
     @Autowired
-    private MockMvc restRANGEMockMvc;
+    private MockMvc restRangeMockMvc;
 
-    private RANGE rANGE;
+    private Range range;
 
-    private RANGE insertedRANGE;
+    private Range insertedRange;
 
     /**
      * Create an entity for this test.
@@ -81,15 +81,15 @@ class RANGEResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static RANGE createEntity() {
-        return new RANGE()
-            .rANGEFROM(DEFAULT_R_ANGEFROM)
-            .rANGETO(DEFAULT_R_ANGETO)
-            .aMOUNT(DEFAULT_A_MOUNT)
-            .tXNTYPE(DEFAULT_T_XNTYPE)
-            .tXNCODE(DEFAULT_T_XNCODE)
-            .cHARGEID(DEFAULT_C_HARGEID)
-            .cHANNEL(DEFAULT_C_HANNEL);
+    public static Range createEntity() {
+        return new Range()
+            .rangefrom(DEFAULT_RANGEFROM)
+            .rangeto(DEFAULT_RANGETO)
+            .amount(DEFAULT_AMOUNT)
+            .txntype(DEFAULT_TXNTYPE)
+            .txncode(DEFAULT_TXNCODE)
+            .chargeid(DEFAULT_CHARGEID)
+            .channel(DEFAULT_CHANNEL);
     }
 
     /**
@@ -98,326 +98,326 @@ class RANGEResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static RANGE createUpdatedEntity() {
-        return new RANGE()
-            .rANGEFROM(UPDATED_R_ANGEFROM)
-            .rANGETO(UPDATED_R_ANGETO)
-            .aMOUNT(UPDATED_A_MOUNT)
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .tXNCODE(UPDATED_T_XNCODE)
-            .cHARGEID(UPDATED_C_HARGEID)
-            .cHANNEL(UPDATED_C_HANNEL);
+    public static Range createUpdatedEntity() {
+        return new Range()
+            .rangefrom(UPDATED_RANGEFROM)
+            .rangeto(UPDATED_RANGETO)
+            .amount(UPDATED_AMOUNT)
+            .txntype(UPDATED_TXNTYPE)
+            .txncode(UPDATED_TXNCODE)
+            .chargeid(UPDATED_CHARGEID)
+            .channel(UPDATED_CHANNEL);
     }
 
     @BeforeEach
     public void initTest() {
-        rANGE = createEntity();
+        range = createEntity();
     }
 
     @AfterEach
     public void cleanup() {
-        if (insertedRANGE != null) {
-            rANGERepository.delete(insertedRANGE);
-            insertedRANGE = null;
+        if (insertedRange != null) {
+            rangeRepository.delete(insertedRange);
+            insertedRange = null;
         }
     }
 
     @Test
     @Transactional
-    void createRANGE() throws Exception {
+    void createRange() throws Exception {
         long databaseSizeBeforeCreate = getRepositoryCount();
-        // Create the RANGE
-        var returnedRANGE = om.readValue(
-            restRANGEMockMvc
-                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(rANGE)))
+        // Create the Range
+        var returnedRange = om.readValue(
+            restRangeMockMvc
+                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(range)))
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            RANGE.class
+            Range.class
         );
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
         assertIncrementedRepositoryCount(databaseSizeBeforeCreate);
-        assertRANGEUpdatableFieldsEquals(returnedRANGE, getPersistedRANGE(returnedRANGE));
+        assertRangeUpdatableFieldsEquals(returnedRange, getPersistedRange(returnedRange));
 
-        insertedRANGE = returnedRANGE;
+        insertedRange = returnedRange;
     }
 
     @Test
     @Transactional
-    void createRANGEWithExistingId() throws Exception {
-        // Create the RANGE with an existing ID
-        rANGE.setId(1L);
+    void createRangeWithExistingId() throws Exception {
+        // Create the Range with an existing ID
+        range.setId(1L);
 
         long databaseSizeBeforeCreate = getRepositoryCount();
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restRANGEMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(rANGE)))
+        restRangeMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(range)))
             .andExpect(status().isBadRequest());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
         assertSameRepositoryCount(databaseSizeBeforeCreate);
     }
 
     @Test
     @Transactional
-    void getAllRANGES() throws Exception {
+    void getAllRanges() throws Exception {
         // Initialize the database
-        insertedRANGE = rANGERepository.saveAndFlush(rANGE);
+        insertedRange = rangeRepository.saveAndFlush(range);
 
-        // Get all the rANGEList
-        restRANGEMockMvc
+        // Get all the rangeList
+        restRangeMockMvc
             .perform(get(ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(rANGE.getId().intValue())))
-            .andExpect(jsonPath("$.[*].rANGEFROM").value(hasItem(DEFAULT_R_ANGEFROM.intValue())))
-            .andExpect(jsonPath("$.[*].rANGETO").value(hasItem(DEFAULT_R_ANGETO.intValue())))
-            .andExpect(jsonPath("$.[*].aMOUNT").value(hasItem(DEFAULT_A_MOUNT)))
-            .andExpect(jsonPath("$.[*].tXNTYPE").value(hasItem(DEFAULT_T_XNTYPE)))
-            .andExpect(jsonPath("$.[*].tXNCODE").value(hasItem(DEFAULT_T_XNCODE)))
-            .andExpect(jsonPath("$.[*].cHARGEID").value(hasItem(DEFAULT_C_HARGEID.intValue())))
-            .andExpect(jsonPath("$.[*].cHANNEL").value(hasItem(DEFAULT_C_HANNEL)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(range.getId().intValue())))
+            .andExpect(jsonPath("$.[*].rangefrom").value(hasItem(DEFAULT_RANGEFROM.intValue())))
+            .andExpect(jsonPath("$.[*].rangeto").value(hasItem(DEFAULT_RANGETO.intValue())))
+            .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT)))
+            .andExpect(jsonPath("$.[*].txntype").value(hasItem(DEFAULT_TXNTYPE)))
+            .andExpect(jsonPath("$.[*].txncode").value(hasItem(DEFAULT_TXNCODE)))
+            .andExpect(jsonPath("$.[*].chargeid").value(hasItem(DEFAULT_CHARGEID.intValue())))
+            .andExpect(jsonPath("$.[*].channel").value(hasItem(DEFAULT_CHANNEL)));
     }
 
     @Test
     @Transactional
-    void getRANGE() throws Exception {
+    void getRange() throws Exception {
         // Initialize the database
-        insertedRANGE = rANGERepository.saveAndFlush(rANGE);
+        insertedRange = rangeRepository.saveAndFlush(range);
 
-        // Get the rANGE
-        restRANGEMockMvc
-            .perform(get(ENTITY_API_URL_ID, rANGE.getId()))
+        // Get the range
+        restRangeMockMvc
+            .perform(get(ENTITY_API_URL_ID, range.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(rANGE.getId().intValue()))
-            .andExpect(jsonPath("$.rANGEFROM").value(DEFAULT_R_ANGEFROM.intValue()))
-            .andExpect(jsonPath("$.rANGETO").value(DEFAULT_R_ANGETO.intValue()))
-            .andExpect(jsonPath("$.aMOUNT").value(DEFAULT_A_MOUNT))
-            .andExpect(jsonPath("$.tXNTYPE").value(DEFAULT_T_XNTYPE))
-            .andExpect(jsonPath("$.tXNCODE").value(DEFAULT_T_XNCODE))
-            .andExpect(jsonPath("$.cHARGEID").value(DEFAULT_C_HARGEID.intValue()))
-            .andExpect(jsonPath("$.cHANNEL").value(DEFAULT_C_HANNEL));
+            .andExpect(jsonPath("$.id").value(range.getId().intValue()))
+            .andExpect(jsonPath("$.rangefrom").value(DEFAULT_RANGEFROM.intValue()))
+            .andExpect(jsonPath("$.rangeto").value(DEFAULT_RANGETO.intValue()))
+            .andExpect(jsonPath("$.amount").value(DEFAULT_AMOUNT))
+            .andExpect(jsonPath("$.txntype").value(DEFAULT_TXNTYPE))
+            .andExpect(jsonPath("$.txncode").value(DEFAULT_TXNCODE))
+            .andExpect(jsonPath("$.chargeid").value(DEFAULT_CHARGEID.intValue()))
+            .andExpect(jsonPath("$.channel").value(DEFAULT_CHANNEL));
     }
 
     @Test
     @Transactional
-    void getNonExistingRANGE() throws Exception {
-        // Get the rANGE
-        restRANGEMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+    void getNonExistingRange() throws Exception {
+        // Get the range
+        restRangeMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
     @Transactional
-    void putExistingRANGE() throws Exception {
+    void putExistingRange() throws Exception {
         // Initialize the database
-        insertedRANGE = rANGERepository.saveAndFlush(rANGE);
+        insertedRange = rangeRepository.saveAndFlush(range);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the rANGE
-        RANGE updatedRANGE = rANGERepository.findById(rANGE.getId()).orElseThrow();
-        // Disconnect from session so that the updates on updatedRANGE are not directly saved in db
-        em.detach(updatedRANGE);
-        updatedRANGE
-            .rANGEFROM(UPDATED_R_ANGEFROM)
-            .rANGETO(UPDATED_R_ANGETO)
-            .aMOUNT(UPDATED_A_MOUNT)
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .tXNCODE(UPDATED_T_XNCODE)
-            .cHARGEID(UPDATED_C_HARGEID)
-            .cHANNEL(UPDATED_C_HANNEL);
+        // Update the range
+        Range updatedRange = rangeRepository.findById(range.getId()).orElseThrow();
+        // Disconnect from session so that the updates on updatedRange are not directly saved in db
+        em.detach(updatedRange);
+        updatedRange
+            .rangefrom(UPDATED_RANGEFROM)
+            .rangeto(UPDATED_RANGETO)
+            .amount(UPDATED_AMOUNT)
+            .txntype(UPDATED_TXNTYPE)
+            .txncode(UPDATED_TXNCODE)
+            .chargeid(UPDATED_CHARGEID)
+            .channel(UPDATED_CHANNEL);
 
-        restRANGEMockMvc
+        restRangeMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, updatedRANGE.getId())
+                put(ENTITY_API_URL_ID, updatedRange.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(updatedRANGE))
+                    .content(om.writeValueAsBytes(updatedRange))
             )
             .andExpect(status().isOk());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertPersistedRANGEToMatchAllProperties(updatedRANGE);
+        assertPersistedRangeToMatchAllProperties(updatedRange);
     }
 
     @Test
     @Transactional
-    void putNonExistingRANGE() throws Exception {
+    void putNonExistingRange() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        rANGE.setId(longCount.incrementAndGet());
+        range.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restRANGEMockMvc
-            .perform(put(ENTITY_API_URL_ID, rANGE.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(rANGE)))
+        restRangeMockMvc
+            .perform(put(ENTITY_API_URL_ID, range.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(range)))
             .andExpect(status().isBadRequest());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithIdMismatchRANGE() throws Exception {
+    void putWithIdMismatchRange() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        rANGE.setId(longCount.incrementAndGet());
+        range.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restRANGEMockMvc
+        restRangeMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(rANGE))
+                    .content(om.writeValueAsBytes(range))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithMissingIdPathParamRANGE() throws Exception {
+    void putWithMissingIdPathParamRange() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        rANGE.setId(longCount.incrementAndGet());
+        range.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restRANGEMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(rANGE)))
+        restRangeMockMvc
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(range)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void partialUpdateRANGEWithPatch() throws Exception {
+    void partialUpdateRangeWithPatch() throws Exception {
         // Initialize the database
-        insertedRANGE = rANGERepository.saveAndFlush(rANGE);
+        insertedRange = rangeRepository.saveAndFlush(range);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the rANGE using partial update
-        RANGE partialUpdatedRANGE = new RANGE();
-        partialUpdatedRANGE.setId(rANGE.getId());
+        // Update the range using partial update
+        Range partialUpdatedRange = new Range();
+        partialUpdatedRange.setId(range.getId());
 
-        partialUpdatedRANGE.rANGEFROM(UPDATED_R_ANGEFROM).rANGETO(UPDATED_R_ANGETO).aMOUNT(UPDATED_A_MOUNT).tXNTYPE(UPDATED_T_XNTYPE);
+        partialUpdatedRange.rangefrom(UPDATED_RANGEFROM).amount(UPDATED_AMOUNT).txntype(UPDATED_TXNTYPE).channel(UPDATED_CHANNEL);
 
-        restRANGEMockMvc
+        restRangeMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedRANGE.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedRange.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedRANGE))
+                    .content(om.writeValueAsBytes(partialUpdatedRange))
             )
             .andExpect(status().isOk());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertRANGEUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedRANGE, rANGE), getPersistedRANGE(rANGE));
+        assertRangeUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedRange, range), getPersistedRange(range));
     }
 
     @Test
     @Transactional
-    void fullUpdateRANGEWithPatch() throws Exception {
+    void fullUpdateRangeWithPatch() throws Exception {
         // Initialize the database
-        insertedRANGE = rANGERepository.saveAndFlush(rANGE);
+        insertedRange = rangeRepository.saveAndFlush(range);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the rANGE using partial update
-        RANGE partialUpdatedRANGE = new RANGE();
-        partialUpdatedRANGE.setId(rANGE.getId());
+        // Update the range using partial update
+        Range partialUpdatedRange = new Range();
+        partialUpdatedRange.setId(range.getId());
 
-        partialUpdatedRANGE
-            .rANGEFROM(UPDATED_R_ANGEFROM)
-            .rANGETO(UPDATED_R_ANGETO)
-            .aMOUNT(UPDATED_A_MOUNT)
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .tXNCODE(UPDATED_T_XNCODE)
-            .cHARGEID(UPDATED_C_HARGEID)
-            .cHANNEL(UPDATED_C_HANNEL);
+        partialUpdatedRange
+            .rangefrom(UPDATED_RANGEFROM)
+            .rangeto(UPDATED_RANGETO)
+            .amount(UPDATED_AMOUNT)
+            .txntype(UPDATED_TXNTYPE)
+            .txncode(UPDATED_TXNCODE)
+            .chargeid(UPDATED_CHARGEID)
+            .channel(UPDATED_CHANNEL);
 
-        restRANGEMockMvc
+        restRangeMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedRANGE.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedRange.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedRANGE))
+                    .content(om.writeValueAsBytes(partialUpdatedRange))
             )
             .andExpect(status().isOk());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertRANGEUpdatableFieldsEquals(partialUpdatedRANGE, getPersistedRANGE(partialUpdatedRANGE));
+        assertRangeUpdatableFieldsEquals(partialUpdatedRange, getPersistedRange(partialUpdatedRange));
     }
 
     @Test
     @Transactional
-    void patchNonExistingRANGE() throws Exception {
+    void patchNonExistingRange() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        rANGE.setId(longCount.incrementAndGet());
+        range.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restRANGEMockMvc
+        restRangeMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, rANGE.getId()).contentType("application/merge-patch+json").content(om.writeValueAsBytes(rANGE))
+                patch(ENTITY_API_URL_ID, range.getId()).contentType("application/merge-patch+json").content(om.writeValueAsBytes(range))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithIdMismatchRANGE() throws Exception {
+    void patchWithIdMismatchRange() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        rANGE.setId(longCount.incrementAndGet());
+        range.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restRANGEMockMvc
+        restRangeMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(rANGE))
+                    .content(om.writeValueAsBytes(range))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithMissingIdPathParamRANGE() throws Exception {
+    void patchWithMissingIdPathParamRange() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        rANGE.setId(longCount.incrementAndGet());
+        range.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restRANGEMockMvc
-            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(rANGE)))
+        restRangeMockMvc
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(range)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the RANGE in the database
+        // Validate the Range in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void deleteRANGE() throws Exception {
+    void deleteRange() throws Exception {
         // Initialize the database
-        insertedRANGE = rANGERepository.saveAndFlush(rANGE);
+        insertedRange = rangeRepository.saveAndFlush(range);
 
         long databaseSizeBeforeDelete = getRepositoryCount();
 
-        // Delete the rANGE
-        restRANGEMockMvc
-            .perform(delete(ENTITY_API_URL_ID, rANGE.getId()).accept(MediaType.APPLICATION_JSON))
+        // Delete the range
+        restRangeMockMvc
+            .perform(delete(ENTITY_API_URL_ID, range.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
@@ -425,7 +425,7 @@ class RANGEResourceIT {
     }
 
     protected long getRepositoryCount() {
-        return rANGERepository.count();
+        return rangeRepository.count();
     }
 
     protected void assertIncrementedRepositoryCount(long countBefore) {
@@ -440,15 +440,15 @@ class RANGEResourceIT {
         assertThat(countBefore).isEqualTo(getRepositoryCount());
     }
 
-    protected RANGE getPersistedRANGE(RANGE rANGE) {
-        return rANGERepository.findById(rANGE.getId()).orElseThrow();
+    protected Range getPersistedRange(Range range) {
+        return rangeRepository.findById(range.getId()).orElseThrow();
     }
 
-    protected void assertPersistedRANGEToMatchAllProperties(RANGE expectedRANGE) {
-        assertRANGEAllPropertiesEquals(expectedRANGE, getPersistedRANGE(expectedRANGE));
+    protected void assertPersistedRangeToMatchAllProperties(Range expectedRange) {
+        assertRangeAllPropertiesEquals(expectedRange, getPersistedRange(expectedRange));
     }
 
-    protected void assertPersistedRANGEToMatchUpdatableProperties(RANGE expectedRANGE) {
-        assertRANGEAllUpdatablePropertiesEquals(expectedRANGE, getPersistedRANGE(expectedRANGE));
+    protected void assertPersistedRangeToMatchUpdatableProperties(Range expectedRange) {
+        assertRangeAllUpdatablePropertiesEquals(expectedRange, getPersistedRange(expectedRange));
     }
 }

@@ -8,13 +8,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A BILLERS.
+ * A Billers.
  */
 @Entity
 @Table(name = "billers")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class BILLERS implements Serializable {
+public class Billers implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,70 +26,70 @@ public class BILLERS implements Serializable {
 
     @NotNull
     @Size(max = 50)
-    @Column(name = "b_illerid", length = 50, nullable = false)
-    private String bILLERID;
+    @Column(name = "billerid", length = 50, nullable = false)
+    private String billerid;
 
     @NotNull
     @Size(max = 100)
-    @Column(name = "d_escription", length = 100, nullable = false)
-    private String dESCRIPTION;
+    @Column(name = "description", length = 100, nullable = false)
+    private String description;
 
     @Size(max = 20)
-    @Column(name = "b_illercollectionaccount", length = 20)
-    private String bILLERCOLLECTIONACCOUNT;
+    @Column(name = "billercollectionaccount", length = 20)
+    private String billercollectionaccount;
 
-    @Column(name = "d_atecreated")
-    private Instant dATECREATED;
-
-    @Size(max = 50)
-    @Column(name = "c_reatedby", length = 50)
-    private String cREATEDBY;
-
-    @Column(name = "a_pproved")
-    private Long aPPROVED;
+    @Column(name = "datecreated")
+    private Instant datecreated;
 
     @Size(max = 50)
-    @Column(name = "a_pprovedby", length = 50)
-    private String aPPROVEDBY;
+    @Column(name = "createdby", length = 50)
+    private String createdby;
 
-    @Column(name = "a_pproveddate")
-    private Instant aPPROVEDDATE;
+    @Column(name = "approved")
+    private Long approved;
+
+    @Size(max = 50)
+    @Column(name = "approvedby", length = 50)
+    private String approvedby;
+
+    @Column(name = "approveddate")
+    private Instant approveddate;
 
     @Size(max = 25)
-    @Column(name = "c_hargableproductid", length = 25)
-    private String cHARGABLEPRODUCTID;
+    @Column(name = "chargableproductid", length = 25)
+    private String chargableproductid;
 
     @Size(max = 25)
-    @Column(name = "n_onchargableproductid", length = 25)
-    private String nONCHARGABLEPRODUCTID;
+    @Column(name = "nonchargableproductid", length = 25)
+    private String nonchargableproductid;
 
     @Size(max = 20)
-    @Column(name = "u_sdbillercollectionaccount", length = 20)
-    private String uSDBILLERCOLLECTIONACCOUNT;
+    @Column(name = "usdbillercollectionaccount", length = 20)
+    private String usdbillercollectionaccount;
 
-    @Column(name = "e_nableduplicatecheck")
-    private Long eNABLEDUPLICATECHECK;
+    @Column(name = "enableduplicatecheck")
+    private Long enableduplicatecheck;
 
     @Size(max = 250)
-    @Column(name = "r_emarks", length = 250)
-    private String rEMARKS;
+    @Column(name = "remarks", length = 250)
+    private String remarks;
 
     @Size(max = 50)
-    @Column(name = "s_essionid", length = 50)
-    private String sESSIONID;
+    @Column(name = "sessionid", length = 50)
+    private String sessionid;
 
     @Size(max = 50)
-    @Column(name = "r_eworkby", length = 50)
-    private String rEWORKBY;
+    @Column(name = "reworkby", length = 50)
+    private String reworkby;
 
-    @Column(name = "s_tatus")
-    private Long sTATUS;
+    @Column(name = "status")
+    private Long status;
 
-    @Column(name = "a_ctive")
-    private Long aCTIVE;
+    @Column(name = "active")
+    private Long active;
 
-    @Column(name = "r_ework")
-    private Long rEWORK;
+    @Column(name = "rework")
+    private Long rework;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -97,7 +97,7 @@ public class BILLERS implements Serializable {
         return this.id;
     }
 
-    public BILLERS id(Long id) {
+    public Billers id(Long id) {
         this.setId(id);
         return this;
     }
@@ -106,238 +106,238 @@ public class BILLERS implements Serializable {
         this.id = id;
     }
 
-    public String getbILLERID() {
-        return this.bILLERID;
+    public String getBillerid() {
+        return this.billerid;
     }
 
-    public BILLERS bILLERID(String bILLERID) {
-        this.setbILLERID(bILLERID);
+    public Billers billerid(String billerid) {
+        this.setBillerid(billerid);
         return this;
     }
 
-    public void setbILLERID(String bILLERID) {
-        this.bILLERID = bILLERID;
+    public void setBillerid(String billerid) {
+        this.billerid = billerid;
     }
 
-    public String getdESCRIPTION() {
-        return this.dESCRIPTION;
+    public String getDescription() {
+        return this.description;
     }
 
-    public BILLERS dESCRIPTION(String dESCRIPTION) {
-        this.setdESCRIPTION(dESCRIPTION);
+    public Billers description(String description) {
+        this.setDescription(description);
         return this;
     }
 
-    public void setdESCRIPTION(String dESCRIPTION) {
-        this.dESCRIPTION = dESCRIPTION;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getbILLERCOLLECTIONACCOUNT() {
-        return this.bILLERCOLLECTIONACCOUNT;
+    public String getBillercollectionaccount() {
+        return this.billercollectionaccount;
     }
 
-    public BILLERS bILLERCOLLECTIONACCOUNT(String bILLERCOLLECTIONACCOUNT) {
-        this.setbILLERCOLLECTIONACCOUNT(bILLERCOLLECTIONACCOUNT);
+    public Billers billercollectionaccount(String billercollectionaccount) {
+        this.setBillercollectionaccount(billercollectionaccount);
         return this;
     }
 
-    public void setbILLERCOLLECTIONACCOUNT(String bILLERCOLLECTIONACCOUNT) {
-        this.bILLERCOLLECTIONACCOUNT = bILLERCOLLECTIONACCOUNT;
+    public void setBillercollectionaccount(String billercollectionaccount) {
+        this.billercollectionaccount = billercollectionaccount;
     }
 
-    public Instant getdATECREATED() {
-        return this.dATECREATED;
+    public Instant getDatecreated() {
+        return this.datecreated;
     }
 
-    public BILLERS dATECREATED(Instant dATECREATED) {
-        this.setdATECREATED(dATECREATED);
+    public Billers datecreated(Instant datecreated) {
+        this.setDatecreated(datecreated);
         return this;
     }
 
-    public void setdATECREATED(Instant dATECREATED) {
-        this.dATECREATED = dATECREATED;
+    public void setDatecreated(Instant datecreated) {
+        this.datecreated = datecreated;
     }
 
-    public String getcREATEDBY() {
-        return this.cREATEDBY;
+    public String getCreatedby() {
+        return this.createdby;
     }
 
-    public BILLERS cREATEDBY(String cREATEDBY) {
-        this.setcREATEDBY(cREATEDBY);
+    public Billers createdby(String createdby) {
+        this.setCreatedby(createdby);
         return this;
     }
 
-    public void setcREATEDBY(String cREATEDBY) {
-        this.cREATEDBY = cREATEDBY;
+    public void setCreatedby(String createdby) {
+        this.createdby = createdby;
     }
 
-    public Long getaPPROVED() {
-        return this.aPPROVED;
+    public Long getApproved() {
+        return this.approved;
     }
 
-    public BILLERS aPPROVED(Long aPPROVED) {
-        this.setaPPROVED(aPPROVED);
+    public Billers approved(Long approved) {
+        this.setApproved(approved);
         return this;
     }
 
-    public void setaPPROVED(Long aPPROVED) {
-        this.aPPROVED = aPPROVED;
+    public void setApproved(Long approved) {
+        this.approved = approved;
     }
 
-    public String getaPPROVEDBY() {
-        return this.aPPROVEDBY;
+    public String getApprovedby() {
+        return this.approvedby;
     }
 
-    public BILLERS aPPROVEDBY(String aPPROVEDBY) {
-        this.setaPPROVEDBY(aPPROVEDBY);
+    public Billers approvedby(String approvedby) {
+        this.setApprovedby(approvedby);
         return this;
     }
 
-    public void setaPPROVEDBY(String aPPROVEDBY) {
-        this.aPPROVEDBY = aPPROVEDBY;
+    public void setApprovedby(String approvedby) {
+        this.approvedby = approvedby;
     }
 
-    public Instant getaPPROVEDDATE() {
-        return this.aPPROVEDDATE;
+    public Instant getApproveddate() {
+        return this.approveddate;
     }
 
-    public BILLERS aPPROVEDDATE(Instant aPPROVEDDATE) {
-        this.setaPPROVEDDATE(aPPROVEDDATE);
+    public Billers approveddate(Instant approveddate) {
+        this.setApproveddate(approveddate);
         return this;
     }
 
-    public void setaPPROVEDDATE(Instant aPPROVEDDATE) {
-        this.aPPROVEDDATE = aPPROVEDDATE;
+    public void setApproveddate(Instant approveddate) {
+        this.approveddate = approveddate;
     }
 
-    public String getcHARGABLEPRODUCTID() {
-        return this.cHARGABLEPRODUCTID;
+    public String getChargableproductid() {
+        return this.chargableproductid;
     }
 
-    public BILLERS cHARGABLEPRODUCTID(String cHARGABLEPRODUCTID) {
-        this.setcHARGABLEPRODUCTID(cHARGABLEPRODUCTID);
+    public Billers chargableproductid(String chargableproductid) {
+        this.setChargableproductid(chargableproductid);
         return this;
     }
 
-    public void setcHARGABLEPRODUCTID(String cHARGABLEPRODUCTID) {
-        this.cHARGABLEPRODUCTID = cHARGABLEPRODUCTID;
+    public void setChargableproductid(String chargableproductid) {
+        this.chargableproductid = chargableproductid;
     }
 
-    public String getnONCHARGABLEPRODUCTID() {
-        return this.nONCHARGABLEPRODUCTID;
+    public String getNonchargableproductid() {
+        return this.nonchargableproductid;
     }
 
-    public BILLERS nONCHARGABLEPRODUCTID(String nONCHARGABLEPRODUCTID) {
-        this.setnONCHARGABLEPRODUCTID(nONCHARGABLEPRODUCTID);
+    public Billers nonchargableproductid(String nonchargableproductid) {
+        this.setNonchargableproductid(nonchargableproductid);
         return this;
     }
 
-    public void setnONCHARGABLEPRODUCTID(String nONCHARGABLEPRODUCTID) {
-        this.nONCHARGABLEPRODUCTID = nONCHARGABLEPRODUCTID;
+    public void setNonchargableproductid(String nonchargableproductid) {
+        this.nonchargableproductid = nonchargableproductid;
     }
 
-    public String getuSDBILLERCOLLECTIONACCOUNT() {
-        return this.uSDBILLERCOLLECTIONACCOUNT;
+    public String getUsdbillercollectionaccount() {
+        return this.usdbillercollectionaccount;
     }
 
-    public BILLERS uSDBILLERCOLLECTIONACCOUNT(String uSDBILLERCOLLECTIONACCOUNT) {
-        this.setuSDBILLERCOLLECTIONACCOUNT(uSDBILLERCOLLECTIONACCOUNT);
+    public Billers usdbillercollectionaccount(String usdbillercollectionaccount) {
+        this.setUsdbillercollectionaccount(usdbillercollectionaccount);
         return this;
     }
 
-    public void setuSDBILLERCOLLECTIONACCOUNT(String uSDBILLERCOLLECTIONACCOUNT) {
-        this.uSDBILLERCOLLECTIONACCOUNT = uSDBILLERCOLLECTIONACCOUNT;
+    public void setUsdbillercollectionaccount(String usdbillercollectionaccount) {
+        this.usdbillercollectionaccount = usdbillercollectionaccount;
     }
 
-    public Long geteNABLEDUPLICATECHECK() {
-        return this.eNABLEDUPLICATECHECK;
+    public Long getEnableduplicatecheck() {
+        return this.enableduplicatecheck;
     }
 
-    public BILLERS eNABLEDUPLICATECHECK(Long eNABLEDUPLICATECHECK) {
-        this.seteNABLEDUPLICATECHECK(eNABLEDUPLICATECHECK);
+    public Billers enableduplicatecheck(Long enableduplicatecheck) {
+        this.setEnableduplicatecheck(enableduplicatecheck);
         return this;
     }
 
-    public void seteNABLEDUPLICATECHECK(Long eNABLEDUPLICATECHECK) {
-        this.eNABLEDUPLICATECHECK = eNABLEDUPLICATECHECK;
+    public void setEnableduplicatecheck(Long enableduplicatecheck) {
+        this.enableduplicatecheck = enableduplicatecheck;
     }
 
-    public String getrEMARKS() {
-        return this.rEMARKS;
+    public String getRemarks() {
+        return this.remarks;
     }
 
-    public BILLERS rEMARKS(String rEMARKS) {
-        this.setrEMARKS(rEMARKS);
+    public Billers remarks(String remarks) {
+        this.setRemarks(remarks);
         return this;
     }
 
-    public void setrEMARKS(String rEMARKS) {
-        this.rEMARKS = rEMARKS;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
-    public String getsESSIONID() {
-        return this.sESSIONID;
+    public String getSessionid() {
+        return this.sessionid;
     }
 
-    public BILLERS sESSIONID(String sESSIONID) {
-        this.setsESSIONID(sESSIONID);
+    public Billers sessionid(String sessionid) {
+        this.setSessionid(sessionid);
         return this;
     }
 
-    public void setsESSIONID(String sESSIONID) {
-        this.sESSIONID = sESSIONID;
+    public void setSessionid(String sessionid) {
+        this.sessionid = sessionid;
     }
 
-    public String getrEWORKBY() {
-        return this.rEWORKBY;
+    public String getReworkby() {
+        return this.reworkby;
     }
 
-    public BILLERS rEWORKBY(String rEWORKBY) {
-        this.setrEWORKBY(rEWORKBY);
+    public Billers reworkby(String reworkby) {
+        this.setReworkby(reworkby);
         return this;
     }
 
-    public void setrEWORKBY(String rEWORKBY) {
-        this.rEWORKBY = rEWORKBY;
+    public void setReworkby(String reworkby) {
+        this.reworkby = reworkby;
     }
 
-    public Long getsTATUS() {
-        return this.sTATUS;
+    public Long getStatus() {
+        return this.status;
     }
 
-    public BILLERS sTATUS(Long sTATUS) {
-        this.setsTATUS(sTATUS);
+    public Billers status(Long status) {
+        this.setStatus(status);
         return this;
     }
 
-    public void setsTATUS(Long sTATUS) {
-        this.sTATUS = sTATUS;
+    public void setStatus(Long status) {
+        this.status = status;
     }
 
-    public Long getaCTIVE() {
-        return this.aCTIVE;
+    public Long getActive() {
+        return this.active;
     }
 
-    public BILLERS aCTIVE(Long aCTIVE) {
-        this.setaCTIVE(aCTIVE);
+    public Billers active(Long active) {
+        this.setActive(active);
         return this;
     }
 
-    public void setaCTIVE(Long aCTIVE) {
-        this.aCTIVE = aCTIVE;
+    public void setActive(Long active) {
+        this.active = active;
     }
 
-    public Long getrEWORK() {
-        return this.rEWORK;
+    public Long getRework() {
+        return this.rework;
     }
 
-    public BILLERS rEWORK(Long rEWORK) {
-        this.setrEWORK(rEWORK);
+    public Billers rework(Long rework) {
+        this.setRework(rework);
         return this;
     }
 
-    public void setrEWORK(Long rEWORK) {
-        this.rEWORK = rEWORK;
+    public void setRework(Long rework) {
+        this.rework = rework;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -347,10 +347,10 @@ public class BILLERS implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof BILLERS)) {
+        if (!(o instanceof Billers)) {
             return false;
         }
-        return getId() != null && getId().equals(((BILLERS) o).getId());
+        return getId() != null && getId().equals(((Billers) o).getId());
     }
 
     @Override
@@ -362,26 +362,26 @@ public class BILLERS implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "BILLERS{" +
+        return "Billers{" +
             "id=" + getId() +
-            ", bILLERID='" + getbILLERID() + "'" +
-            ", dESCRIPTION='" + getdESCRIPTION() + "'" +
-            ", bILLERCOLLECTIONACCOUNT='" + getbILLERCOLLECTIONACCOUNT() + "'" +
-            ", dATECREATED='" + getdATECREATED() + "'" +
-            ", cREATEDBY='" + getcREATEDBY() + "'" +
-            ", aPPROVED=" + getaPPROVED() +
-            ", aPPROVEDBY='" + getaPPROVEDBY() + "'" +
-            ", aPPROVEDDATE='" + getaPPROVEDDATE() + "'" +
-            ", cHARGABLEPRODUCTID='" + getcHARGABLEPRODUCTID() + "'" +
-            ", nONCHARGABLEPRODUCTID='" + getnONCHARGABLEPRODUCTID() + "'" +
-            ", uSDBILLERCOLLECTIONACCOUNT='" + getuSDBILLERCOLLECTIONACCOUNT() + "'" +
-            ", eNABLEDUPLICATECHECK=" + geteNABLEDUPLICATECHECK() +
-            ", rEMARKS='" + getrEMARKS() + "'" +
-            ", sESSIONID='" + getsESSIONID() + "'" +
-            ", rEWORKBY='" + getrEWORKBY() + "'" +
-            ", sTATUS=" + getsTATUS() +
-            ", aCTIVE=" + getaCTIVE() +
-            ", rEWORK=" + getrEWORK() +
+            ", billerid='" + getBillerid() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", billercollectionaccount='" + getBillercollectionaccount() + "'" +
+            ", datecreated='" + getDatecreated() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", approved=" + getApproved() +
+            ", approvedby='" + getApprovedby() + "'" +
+            ", approveddate='" + getApproveddate() + "'" +
+            ", chargableproductid='" + getChargableproductid() + "'" +
+            ", nonchargableproductid='" + getNonchargableproductid() + "'" +
+            ", usdbillercollectionaccount='" + getUsdbillercollectionaccount() + "'" +
+            ", enableduplicatecheck=" + getEnableduplicatecheck() +
+            ", remarks='" + getRemarks() + "'" +
+            ", sessionid='" + getSessionid() + "'" +
+            ", reworkby='" + getReworkby() + "'" +
+            ", status=" + getStatus() +
+            ", active=" + getActive() +
+            ", rework=" + getRework() +
             "}";
     }
 }

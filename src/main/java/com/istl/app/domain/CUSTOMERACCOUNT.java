@@ -8,13 +8,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A CUSTOMERACCOUNT.
+ * A CustomerAccount.
  */
 @Entity
-@Table(name = "customeraccount")
+@Table(name = "customer_account")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class CUSTOMERACCOUNT implements Serializable {
+public class CustomerAccount implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,38 +25,38 @@ public class CUSTOMERACCOUNT implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "c_ustomerid", nullable = false)
-    private Long cUSTOMERID;
+    @Column(name = "customerid", nullable = false)
+    private Long customerid;
 
     @NotNull
     @Size(max = 11)
-    @Column(name = "a_ccountnumber", length = 11, nullable = false)
-    private String aCCOUNTNUMBER;
+    @Column(name = "accountnumber", length = 11, nullable = false)
+    private String accountnumber;
 
     @Size(max = 10)
-    @Column(name = "a_ccountclass", length = 10)
-    private String aCCOUNTCLASS;
+    @Column(name = "accountclass", length = 10)
+    private String accountclass;
 
     @Size(max = 20)
-    @Column(name = "c_ustomernumber", length = 20)
-    private String cUSTOMERNUMBER;
+    @Column(name = "customernumber", length = 20)
+    private String customernumber;
 
     @NotNull
     @Size(max = 20)
-    @Column(name = "c_if", length = 20, nullable = false)
-    private String cIF;
+    @Column(name = "cif", length = 20, nullable = false)
+    private String cif;
 
-    @Column(name = "t_imelinked")
-    private Instant tIMELINKED;
+    @Column(name = "timelinked")
+    private Instant timelinked;
 
-    @Column(name = "b_locked")
-    private Long bLOCKED;
+    @Column(name = "blocked")
+    private Long blocked;
 
-    @Column(name = "s_topped")
-    private Long sTOPPED;
+    @Column(name = "stopped")
+    private Long stopped;
 
-    @Column(name = "d_ormant")
-    private Long dORMANT;
+    @Column(name = "dormant")
+    private Long dormant;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -64,7 +64,7 @@ public class CUSTOMERACCOUNT implements Serializable {
         return this.id;
     }
 
-    public CUSTOMERACCOUNT id(Long id) {
+    public CustomerAccount id(Long id) {
         this.setId(id);
         return this;
     }
@@ -73,121 +73,121 @@ public class CUSTOMERACCOUNT implements Serializable {
         this.id = id;
     }
 
-    public Long getcUSTOMERID() {
-        return this.cUSTOMERID;
+    public Long getCustomerid() {
+        return this.customerid;
     }
 
-    public CUSTOMERACCOUNT cUSTOMERID(Long cUSTOMERID) {
-        this.setcUSTOMERID(cUSTOMERID);
+    public CustomerAccount customerid(Long customerid) {
+        this.setCustomerid(customerid);
         return this;
     }
 
-    public void setcUSTOMERID(Long cUSTOMERID) {
-        this.cUSTOMERID = cUSTOMERID;
+    public void setCustomerid(Long customerid) {
+        this.customerid = customerid;
     }
 
-    public String getaCCOUNTNUMBER() {
-        return this.aCCOUNTNUMBER;
+    public String getAccountnumber() {
+        return this.accountnumber;
     }
 
-    public CUSTOMERACCOUNT aCCOUNTNUMBER(String aCCOUNTNUMBER) {
-        this.setaCCOUNTNUMBER(aCCOUNTNUMBER);
+    public CustomerAccount accountnumber(String accountnumber) {
+        this.setAccountnumber(accountnumber);
         return this;
     }
 
-    public void setaCCOUNTNUMBER(String aCCOUNTNUMBER) {
-        this.aCCOUNTNUMBER = aCCOUNTNUMBER;
+    public void setAccountnumber(String accountnumber) {
+        this.accountnumber = accountnumber;
     }
 
-    public String getaCCOUNTCLASS() {
-        return this.aCCOUNTCLASS;
+    public String getAccountclass() {
+        return this.accountclass;
     }
 
-    public CUSTOMERACCOUNT aCCOUNTCLASS(String aCCOUNTCLASS) {
-        this.setaCCOUNTCLASS(aCCOUNTCLASS);
+    public CustomerAccount accountclass(String accountclass) {
+        this.setAccountclass(accountclass);
         return this;
     }
 
-    public void setaCCOUNTCLASS(String aCCOUNTCLASS) {
-        this.aCCOUNTCLASS = aCCOUNTCLASS;
+    public void setAccountclass(String accountclass) {
+        this.accountclass = accountclass;
     }
 
-    public String getcUSTOMERNUMBER() {
-        return this.cUSTOMERNUMBER;
+    public String getCustomernumber() {
+        return this.customernumber;
     }
 
-    public CUSTOMERACCOUNT cUSTOMERNUMBER(String cUSTOMERNUMBER) {
-        this.setcUSTOMERNUMBER(cUSTOMERNUMBER);
+    public CustomerAccount customernumber(String customernumber) {
+        this.setCustomernumber(customernumber);
         return this;
     }
 
-    public void setcUSTOMERNUMBER(String cUSTOMERNUMBER) {
-        this.cUSTOMERNUMBER = cUSTOMERNUMBER;
+    public void setCustomernumber(String customernumber) {
+        this.customernumber = customernumber;
     }
 
-    public String getcIF() {
-        return this.cIF;
+    public String getCif() {
+        return this.cif;
     }
 
-    public CUSTOMERACCOUNT cIF(String cIF) {
-        this.setcIF(cIF);
+    public CustomerAccount cif(String cif) {
+        this.setCif(cif);
         return this;
     }
 
-    public void setcIF(String cIF) {
-        this.cIF = cIF;
+    public void setCif(String cif) {
+        this.cif = cif;
     }
 
-    public Instant gettIMELINKED() {
-        return this.tIMELINKED;
+    public Instant getTimelinked() {
+        return this.timelinked;
     }
 
-    public CUSTOMERACCOUNT tIMELINKED(Instant tIMELINKED) {
-        this.settIMELINKED(tIMELINKED);
+    public CustomerAccount timelinked(Instant timelinked) {
+        this.setTimelinked(timelinked);
         return this;
     }
 
-    public void settIMELINKED(Instant tIMELINKED) {
-        this.tIMELINKED = tIMELINKED;
+    public void setTimelinked(Instant timelinked) {
+        this.timelinked = timelinked;
     }
 
-    public Long getbLOCKED() {
-        return this.bLOCKED;
+    public Long getBlocked() {
+        return this.blocked;
     }
 
-    public CUSTOMERACCOUNT bLOCKED(Long bLOCKED) {
-        this.setbLOCKED(bLOCKED);
+    public CustomerAccount blocked(Long blocked) {
+        this.setBlocked(blocked);
         return this;
     }
 
-    public void setbLOCKED(Long bLOCKED) {
-        this.bLOCKED = bLOCKED;
+    public void setBlocked(Long blocked) {
+        this.blocked = blocked;
     }
 
-    public Long getsTOPPED() {
-        return this.sTOPPED;
+    public Long getStopped() {
+        return this.stopped;
     }
 
-    public CUSTOMERACCOUNT sTOPPED(Long sTOPPED) {
-        this.setsTOPPED(sTOPPED);
+    public CustomerAccount stopped(Long stopped) {
+        this.setStopped(stopped);
         return this;
     }
 
-    public void setsTOPPED(Long sTOPPED) {
-        this.sTOPPED = sTOPPED;
+    public void setStopped(Long stopped) {
+        this.stopped = stopped;
     }
 
-    public Long getdORMANT() {
-        return this.dORMANT;
+    public Long getDormant() {
+        return this.dormant;
     }
 
-    public CUSTOMERACCOUNT dORMANT(Long dORMANT) {
-        this.setdORMANT(dORMANT);
+    public CustomerAccount dormant(Long dormant) {
+        this.setDormant(dormant);
         return this;
     }
 
-    public void setdORMANT(Long dORMANT) {
-        this.dORMANT = dORMANT;
+    public void setDormant(Long dormant) {
+        this.dormant = dormant;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -197,10 +197,10 @@ public class CUSTOMERACCOUNT implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof CUSTOMERACCOUNT)) {
+        if (!(o instanceof CustomerAccount)) {
             return false;
         }
-        return getId() != null && getId().equals(((CUSTOMERACCOUNT) o).getId());
+        return getId() != null && getId().equals(((CustomerAccount) o).getId());
     }
 
     @Override
@@ -212,17 +212,17 @@ public class CUSTOMERACCOUNT implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "CUSTOMERACCOUNT{" +
+        return "CustomerAccount{" +
             "id=" + getId() +
-            ", cUSTOMERID=" + getcUSTOMERID() +
-            ", aCCOUNTNUMBER='" + getaCCOUNTNUMBER() + "'" +
-            ", aCCOUNTCLASS='" + getaCCOUNTCLASS() + "'" +
-            ", cUSTOMERNUMBER='" + getcUSTOMERNUMBER() + "'" +
-            ", cIF='" + getcIF() + "'" +
-            ", tIMELINKED='" + gettIMELINKED() + "'" +
-            ", bLOCKED=" + getbLOCKED() +
-            ", sTOPPED=" + getsTOPPED() +
-            ", dORMANT=" + getdORMANT() +
+            ", customerid=" + getCustomerid() +
+            ", accountnumber='" + getAccountnumber() + "'" +
+            ", accountclass='" + getAccountclass() + "'" +
+            ", customernumber='" + getCustomernumber() + "'" +
+            ", cif='" + getCif() + "'" +
+            ", timelinked='" + getTimelinked() + "'" +
+            ", blocked=" + getBlocked() +
+            ", stopped=" + getStopped() +
+            ", dormant=" + getDormant() +
             "}";
     }
 }

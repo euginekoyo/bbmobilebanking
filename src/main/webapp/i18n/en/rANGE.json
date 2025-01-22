@@ -1,31 +1,31 @@
 {
   "bbMobileBankingAdminApp": {
-    "rANGE": {
+    "range": {
       "home": {
-        "title": "RANGES",
+        "title": "Ranges",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new RANGE",
-        "createOrEditLabel": "Create or edit a RANGE",
-        "notFound": "No RANGES found"
+        "createLabel": "Create a new Range",
+        "createOrEditLabel": "Create or edit a Range",
+        "notFound": "No Ranges found"
       },
-      "created": "A new RANGE is created with identifier {{ param }}",
-      "updated": "A RANGE is updated with identifier {{ param }}",
-      "deleted": "A RANGE is deleted with identifier {{ param }}",
+      "created": "A new Range is created with identifier { param }",
+      "updated": "A Range is updated with identifier { param }",
+      "deleted": "A Range is deleted with identifier { param }",
       "delete": {
-        "question": "Are you sure you want to delete RANGE {{ id }}?"
+        "question": "Are you sure you want to delete Range { id }?"
       },
       "detail": {
-        "title": "RANGE"
+        "title": "Range"
       },
       "id": "ID",
-      "rANGEFROM": "R ANGEFROM",
-      "rANGETO": "R ANGETO",
-      "aMOUNT": "A MOUNT",
-      "tXNTYPE": "T XNTYPE",
-      "tXNCODE": "T XNCODE",
-      "cHARGEID": "C HARGEID",
-      "cHANNEL": "C HANNEL",
-      "cHARGEID": "C HARGEID"
+      "rangefrom": "Rangefrom",
+      "rangeto": "Rangeto",
+      "amount": "Amount",
+      "txntype": "Txntype",
+      "txncode": "Txncode",
+      "chargeid": "Chargeid",
+      "channel": "Channel",
+      "chargeid": "Chargeid"
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.istl.app.domain;
 
-import static com.istl.app.domain.CHARGETestSamples.*;
-import static com.istl.app.domain.RANGETestSamples.*;
+import static com.istl.app.domain.ChargeTestSamples.*;
+import static com.istl.app.domain.RangeTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.istl.app.web.rest.TestUtil;
@@ -9,41 +9,41 @@ import java.util.HashSet;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 
-class RANGETest {
+class RangeTest {
 
     @Test
     void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(RANGE.class);
-        RANGE rANGE1 = getRANGESample1();
-        RANGE rANGE2 = new RANGE();
-        assertThat(rANGE1).isNotEqualTo(rANGE2);
+        TestUtil.equalsVerifier(Range.class);
+        Range range1 = getRangeSample1();
+        Range range2 = new Range();
+        assertThat(range1).isNotEqualTo(range2);
 
-        rANGE2.setId(rANGE1.getId());
-        assertThat(rANGE1).isEqualTo(rANGE2);
+        range2.setId(range1.getId());
+        assertThat(range1).isEqualTo(range2);
 
-        rANGE2 = getRANGESample2();
-        assertThat(rANGE1).isNotEqualTo(rANGE2);
+        range2 = getRangeSample2();
+        assertThat(range1).isNotEqualTo(range2);
     }
 
     @Test
-    void cHARGEIDTest() {
-        RANGE rANGE = getRANGERandomSampleGenerator();
-        CHARGE cHARGEBack = getCHARGERandomSampleGenerator();
+    void chargeidTest() {
+        Range range = getRangeRandomSampleGenerator();
+        Charge chargeBack = getChargeRandomSampleGenerator();
 
-        rANGE.addCHARGEID(cHARGEBack);
-        assertThat(rANGE.getCHARGEIDS()).containsOnly(cHARGEBack);
-        assertThat(cHARGEBack.getRANGE()).isEqualTo(rANGE);
+        range.addChargeid(chargeBack);
+        assertThat(range.getChargeids()).containsOnly(chargeBack);
+        assertThat(chargeBack.getRange()).isEqualTo(range);
 
-        rANGE.removeCHARGEID(cHARGEBack);
-        assertThat(rANGE.getCHARGEIDS()).doesNotContain(cHARGEBack);
-        assertThat(cHARGEBack.getRANGE()).isNull();
+        range.removeChargeid(chargeBack);
+        assertThat(range.getChargeids()).doesNotContain(chargeBack);
+        assertThat(chargeBack.getRange()).isNull();
 
-        rANGE.cHARGEIDS(new HashSet<>(Set.of(cHARGEBack)));
-        assertThat(rANGE.getCHARGEIDS()).containsOnly(cHARGEBack);
-        assertThat(cHARGEBack.getRANGE()).isEqualTo(rANGE);
+        range.chargeids(new HashSet<>(Set.of(chargeBack)));
+        assertThat(range.getChargeids()).containsOnly(chargeBack);
+        assertThat(chargeBack.getRange()).isEqualTo(range);
 
-        rANGE.setCHARGEIDS(new HashSet<>());
-        assertThat(rANGE.getCHARGEIDS()).doesNotContain(cHARGEBack);
-        assertThat(cHARGEBack.getRANGE()).isNull();
+        range.setChargeids(new HashSet<>());
+        assertThat(range.getChargeids()).doesNotContain(chargeBack);
+        assertThat(chargeBack.getRange()).isNull();
     }
 }

@@ -8,13 +8,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A BRANCHES.
+ * A Branches.
  */
 @Entity
 @Table(name = "branches")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class BRANCHES implements Serializable {
+public class Branches implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,114 +25,114 @@ public class BRANCHES implements Serializable {
     private Long id;
 
     @Size(max = 4000)
-    @Column(name = "b_ranchname", length = 4000)
-    private String bRANCHNAME;
+    @Column(name = "branchname", length = 4000)
+    private String branchname;
 
     @NotNull
     @Size(max = 3)
-    @Column(name = "b_ranchcode", length = 3, nullable = false)
-    private String bRANCHCODE;
+    @Column(name = "branchcode", length = 3, nullable = false)
+    private String branchcode;
 
-    @Column(name = "a_pproved")
-    private Long aPPROVED;
-
-    @Size(max = 4000)
-    @Column(name = "e_mail", length = 4000)
-    private String eMAIL;
+    @Column(name = "approved")
+    private Long approved;
 
     @Size(max = 4000)
-    @Column(name = "a_ddress", length = 4000)
-    private String aDDRESS;
+    @Column(name = "email", length = 4000)
+    private String email;
+
+    @Size(max = 4000)
+    @Column(name = "address", length = 4000)
+    private String address;
 
     @Size(max = 12)
-    @Column(name = "p_hone", length = 12)
-    private String pHONE;
+    @Column(name = "phone", length = 12)
+    private String phone;
 
     @NotNull
     @Size(max = 4000)
-    @Column(name = "l_ocation", length = 4000, nullable = false)
-    private String lOCATION;
+    @Column(name = "location", length = 4000, nullable = false)
+    private String location;
 
     @Size(max = 4000)
-    @Column(name = "c_ontactperson", length = 4000)
-    private String cONTACTPERSON;
+    @Column(name = "contactperson", length = 4000)
+    private String contactperson;
 
     @Size(max = 2000)
-    @Column(name = "r_emarks", length = 2000)
-    private String rEMARKS;
+    @Column(name = "remarks", length = 2000)
+    private String remarks;
 
     @Size(max = 20)
-    @Column(name = "c_reatedby", length = 20)
-    private String cREATEDBY;
+    @Column(name = "createdby", length = 20)
+    private String createdby;
 
-    @Column(name = "c_reatedon")
-    private Instant cREATEDON;
+    @Column(name = "createdon")
+    private Instant createdon;
 
     @Size(max = 20)
-    @Column(name = "a_pprovedby", length = 20)
-    private String aPPROVEDBY;
+    @Column(name = "approvedby", length = 20)
+    private String approvedby;
 
     @Size(max = 7)
-    @Column(name = "a_pprovedon", length = 7)
-    private String aPPROVEDON;
+    @Column(name = "approvedon", length = 7)
+    private String approvedon;
 
     @Size(max = 200)
-    @Column(name = "c_heckerremarks", length = 200)
-    private String cHECKERREMARKS;
+    @Column(name = "checkerremarks", length = 200)
+    private String checkerremarks;
 
     @Size(max = 20)
-    @Column(name = "d_eletedby", length = 20)
-    private String dELETEDBY;
+    @Column(name = "deletedby", length = 20)
+    private String deletedby;
 
-    @Column(name = "d_eletedon")
-    private Instant dELETEDON;
+    @Column(name = "deletedon")
+    private Instant deletedon;
 
     @Size(max = 200)
-    @Column(name = "d_eleteremarks", length = 200)
-    private String dELETEREMARKS;
+    @Column(name = "deleteremarks", length = 200)
+    private String deleteremarks;
 
-    @Column(name = "d_eleted")
-    private Long dELETED;
+    @Column(name = "deleted")
+    private Long deleted;
 
-    @Column(name = "d_eclined")
-    private Long dECLINED;
+    @Column(name = "declined")
+    private Long declined;
 
     @Size(max = 7)
-    @Column(name = "d_eclineddon", length = 7)
-    private String dECLINEDDON;
+    @Column(name = "declineddon", length = 7)
+    private String declineddon;
 
     @Size(max = 20)
-    @Column(name = "d_eclinedby", length = 20)
-    private String dECLINEDBY;
+    @Column(name = "declinedby", length = 20)
+    private String declinedby;
 
     @Size(max = 20)
-    @Column(name = "s_essionid", length = 20)
-    private String sESSIONID;
+    @Column(name = "sessionid", length = 20)
+    private String sessionid;
 
-    @Column(name = "r_eworked")
-    private Long rEWORKED;
+    @Column(name = "reworked")
+    private Long reworked;
 
     @Size(max = 20)
-    @Column(name = "r_eworkedby", length = 20)
-    private String rEWORKEDBY;
+    @Column(name = "reworkedby", length = 20)
+    private String reworkedby;
 
-    @Column(name = "r_eworkedon")
-    private Instant rEWORKEDON;
-
-    @Size(max = 50)
-    @Column(name = "d_istrict", length = 50)
-    private String dISTRICT;
+    @Column(name = "reworkedon")
+    private Instant reworkedon;
 
     @Size(max = 50)
-    @Column(name = "r_egion", length = 50)
-    private String rEGION;
+    @Column(name = "district", length = 50)
+    private String district;
 
     @Size(max = 50)
-    @Column(name = "r_egionname", length = 50)
-    private String rEGIONNAME;
+    @Column(name = "region", length = 50)
+    private String region;
 
-    @Column(name = "r_eporting")
-    private Long rEPORTING;
+    @Size(max = 50)
+    @Column(name = "regionname", length = 50)
+    private String regionname;
+
+    @Column(name = "reporting")
+    private Long reporting;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -140,7 +140,7 @@ public class BRANCHES implements Serializable {
         return this.id;
     }
 
-    public BRANCHES id(Long id) {
+    public Branches id(Long id) {
         this.setId(id);
         return this;
     }
@@ -149,381 +149,381 @@ public class BRANCHES implements Serializable {
         this.id = id;
     }
 
-    public String getbRANCHNAME() {
-        return this.bRANCHNAME;
+    public String getBranchname() {
+        return this.branchname;
     }
 
-    public BRANCHES bRANCHNAME(String bRANCHNAME) {
-        this.setbRANCHNAME(bRANCHNAME);
+    public Branches branchname(String branchname) {
+        this.setBranchname(branchname);
         return this;
     }
 
-    public void setbRANCHNAME(String bRANCHNAME) {
-        this.bRANCHNAME = bRANCHNAME;
+    public void setBranchname(String branchname) {
+        this.branchname = branchname;
     }
 
-    public String getbRANCHCODE() {
-        return this.bRANCHCODE;
+    public String getBranchcode() {
+        return this.branchcode;
     }
 
-    public BRANCHES bRANCHCODE(String bRANCHCODE) {
-        this.setbRANCHCODE(bRANCHCODE);
+    public Branches branchcode(String branchcode) {
+        this.setBranchcode(branchcode);
         return this;
     }
 
-    public void setbRANCHCODE(String bRANCHCODE) {
-        this.bRANCHCODE = bRANCHCODE;
+    public void setBranchcode(String branchcode) {
+        this.branchcode = branchcode;
     }
 
-    public Long getaPPROVED() {
-        return this.aPPROVED;
+    public Long getApproved() {
+        return this.approved;
     }
 
-    public BRANCHES aPPROVED(Long aPPROVED) {
-        this.setaPPROVED(aPPROVED);
+    public Branches approved(Long approved) {
+        this.setApproved(approved);
         return this;
     }
 
-    public void setaPPROVED(Long aPPROVED) {
-        this.aPPROVED = aPPROVED;
+    public void setApproved(Long approved) {
+        this.approved = approved;
     }
 
-    public String geteMAIL() {
-        return this.eMAIL;
+    public String getEmail() {
+        return this.email;
     }
 
-    public BRANCHES eMAIL(String eMAIL) {
-        this.seteMAIL(eMAIL);
+    public Branches email(String email) {
+        this.setEmail(email);
         return this;
     }
 
-    public void seteMAIL(String eMAIL) {
-        this.eMAIL = eMAIL;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getaDDRESS() {
-        return this.aDDRESS;
+    public String getAddress() {
+        return this.address;
     }
 
-    public BRANCHES aDDRESS(String aDDRESS) {
-        this.setaDDRESS(aDDRESS);
+    public Branches address(String address) {
+        this.setAddress(address);
         return this;
     }
 
-    public void setaDDRESS(String aDDRESS) {
-        this.aDDRESS = aDDRESS;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getpHONE() {
-        return this.pHONE;
+    public String getPhone() {
+        return this.phone;
     }
 
-    public BRANCHES pHONE(String pHONE) {
-        this.setpHONE(pHONE);
+    public Branches phone(String phone) {
+        this.setPhone(phone);
         return this;
     }
 
-    public void setpHONE(String pHONE) {
-        this.pHONE = pHONE;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getlOCATION() {
-        return this.lOCATION;
+    public String getLocation() {
+        return this.location;
     }
 
-    public BRANCHES lOCATION(String lOCATION) {
-        this.setlOCATION(lOCATION);
+    public Branches location(String location) {
+        this.setLocation(location);
         return this;
     }
 
-    public void setlOCATION(String lOCATION) {
-        this.lOCATION = lOCATION;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getcONTACTPERSON() {
-        return this.cONTACTPERSON;
+    public String getContactperson() {
+        return this.contactperson;
     }
 
-    public BRANCHES cONTACTPERSON(String cONTACTPERSON) {
-        this.setcONTACTPERSON(cONTACTPERSON);
+    public Branches contactperson(String contactperson) {
+        this.setContactperson(contactperson);
         return this;
     }
 
-    public void setcONTACTPERSON(String cONTACTPERSON) {
-        this.cONTACTPERSON = cONTACTPERSON;
+    public void setContactperson(String contactperson) {
+        this.contactperson = contactperson;
     }
 
-    public String getrEMARKS() {
-        return this.rEMARKS;
+    public String getRemarks() {
+        return this.remarks;
     }
 
-    public BRANCHES rEMARKS(String rEMARKS) {
-        this.setrEMARKS(rEMARKS);
+    public Branches remarks(String remarks) {
+        this.setRemarks(remarks);
         return this;
     }
 
-    public void setrEMARKS(String rEMARKS) {
-        this.rEMARKS = rEMARKS;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
-    public String getcREATEDBY() {
-        return this.cREATEDBY;
+    public String getCreatedby() {
+        return this.createdby;
     }
 
-    public BRANCHES cREATEDBY(String cREATEDBY) {
-        this.setcREATEDBY(cREATEDBY);
+    public Branches createdby(String createdby) {
+        this.setCreatedby(createdby);
         return this;
     }
 
-    public void setcREATEDBY(String cREATEDBY) {
-        this.cREATEDBY = cREATEDBY;
+    public void setCreatedby(String createdby) {
+        this.createdby = createdby;
     }
 
-    public Instant getcREATEDON() {
-        return this.cREATEDON;
+    public Instant getCreatedon() {
+        return this.createdon;
     }
 
-    public BRANCHES cREATEDON(Instant cREATEDON) {
-        this.setcREATEDON(cREATEDON);
+    public Branches createdon(Instant createdon) {
+        this.setCreatedon(createdon);
         return this;
     }
 
-    public void setcREATEDON(Instant cREATEDON) {
-        this.cREATEDON = cREATEDON;
+    public void setCreatedon(Instant createdon) {
+        this.createdon = createdon;
     }
 
-    public String getaPPROVEDBY() {
-        return this.aPPROVEDBY;
+    public String getApprovedby() {
+        return this.approvedby;
     }
 
-    public BRANCHES aPPROVEDBY(String aPPROVEDBY) {
-        this.setaPPROVEDBY(aPPROVEDBY);
+    public Branches approvedby(String approvedby) {
+        this.setApprovedby(approvedby);
         return this;
     }
 
-    public void setaPPROVEDBY(String aPPROVEDBY) {
-        this.aPPROVEDBY = aPPROVEDBY;
+    public void setApprovedby(String approvedby) {
+        this.approvedby = approvedby;
     }
 
-    public String getaPPROVEDON() {
-        return this.aPPROVEDON;
+    public String getApprovedon() {
+        return this.approvedon;
     }
 
-    public BRANCHES aPPROVEDON(String aPPROVEDON) {
-        this.setaPPROVEDON(aPPROVEDON);
+    public Branches approvedon(String approvedon) {
+        this.setApprovedon(approvedon);
         return this;
     }
 
-    public void setaPPROVEDON(String aPPROVEDON) {
-        this.aPPROVEDON = aPPROVEDON;
+    public void setApprovedon(String approvedon) {
+        this.approvedon = approvedon;
     }
 
-    public String getcHECKERREMARKS() {
-        return this.cHECKERREMARKS;
+    public String getCheckerremarks() {
+        return this.checkerremarks;
     }
 
-    public BRANCHES cHECKERREMARKS(String cHECKERREMARKS) {
-        this.setcHECKERREMARKS(cHECKERREMARKS);
+    public Branches checkerremarks(String checkerremarks) {
+        this.setCheckerremarks(checkerremarks);
         return this;
     }
 
-    public void setcHECKERREMARKS(String cHECKERREMARKS) {
-        this.cHECKERREMARKS = cHECKERREMARKS;
+    public void setCheckerremarks(String checkerremarks) {
+        this.checkerremarks = checkerremarks;
     }
 
-    public String getdELETEDBY() {
-        return this.dELETEDBY;
+    public String getDeletedby() {
+        return this.deletedby;
     }
 
-    public BRANCHES dELETEDBY(String dELETEDBY) {
-        this.setdELETEDBY(dELETEDBY);
+    public Branches deletedby(String deletedby) {
+        this.setDeletedby(deletedby);
         return this;
     }
 
-    public void setdELETEDBY(String dELETEDBY) {
-        this.dELETEDBY = dELETEDBY;
+    public void setDeletedby(String deletedby) {
+        this.deletedby = deletedby;
     }
 
-    public Instant getdELETEDON() {
-        return this.dELETEDON;
+    public Instant getDeletedon() {
+        return this.deletedon;
     }
 
-    public BRANCHES dELETEDON(Instant dELETEDON) {
-        this.setdELETEDON(dELETEDON);
+    public Branches deletedon(Instant deletedon) {
+        this.setDeletedon(deletedon);
         return this;
     }
 
-    public void setdELETEDON(Instant dELETEDON) {
-        this.dELETEDON = dELETEDON;
+    public void setDeletedon(Instant deletedon) {
+        this.deletedon = deletedon;
     }
 
-    public String getdELETEREMARKS() {
-        return this.dELETEREMARKS;
+    public String getDeleteremarks() {
+        return this.deleteremarks;
     }
 
-    public BRANCHES dELETEREMARKS(String dELETEREMARKS) {
-        this.setdELETEREMARKS(dELETEREMARKS);
+    public Branches deleteremarks(String deleteremarks) {
+        this.setDeleteremarks(deleteremarks);
         return this;
     }
 
-    public void setdELETEREMARKS(String dELETEREMARKS) {
-        this.dELETEREMARKS = dELETEREMARKS;
+    public void setDeleteremarks(String deleteremarks) {
+        this.deleteremarks = deleteremarks;
     }
 
-    public Long getdELETED() {
-        return this.dELETED;
+    public Long getDeleted() {
+        return this.deleted;
     }
 
-    public BRANCHES dELETED(Long dELETED) {
-        this.setdELETED(dELETED);
+    public Branches deleted(Long deleted) {
+        this.setDeleted(deleted);
         return this;
     }
 
-    public void setdELETED(Long dELETED) {
-        this.dELETED = dELETED;
+    public void setDeleted(Long deleted) {
+        this.deleted = deleted;
     }
 
-    public Long getdECLINED() {
-        return this.dECLINED;
+    public Long getDeclined() {
+        return this.declined;
     }
 
-    public BRANCHES dECLINED(Long dECLINED) {
-        this.setdECLINED(dECLINED);
+    public Branches declined(Long declined) {
+        this.setDeclined(declined);
         return this;
     }
 
-    public void setdECLINED(Long dECLINED) {
-        this.dECLINED = dECLINED;
+    public void setDeclined(Long declined) {
+        this.declined = declined;
     }
 
-    public String getdECLINEDDON() {
-        return this.dECLINEDDON;
+    public String getDeclineddon() {
+        return this.declineddon;
     }
 
-    public BRANCHES dECLINEDDON(String dECLINEDDON) {
-        this.setdECLINEDDON(dECLINEDDON);
+    public Branches declineddon(String declineddon) {
+        this.setDeclineddon(declineddon);
         return this;
     }
 
-    public void setdECLINEDDON(String dECLINEDDON) {
-        this.dECLINEDDON = dECLINEDDON;
+    public void setDeclineddon(String declineddon) {
+        this.declineddon = declineddon;
     }
 
-    public String getdECLINEDBY() {
-        return this.dECLINEDBY;
+    public String getDeclinedby() {
+        return this.declinedby;
     }
 
-    public BRANCHES dECLINEDBY(String dECLINEDBY) {
-        this.setdECLINEDBY(dECLINEDBY);
+    public Branches declinedby(String declinedby) {
+        this.setDeclinedby(declinedby);
         return this;
     }
 
-    public void setdECLINEDBY(String dECLINEDBY) {
-        this.dECLINEDBY = dECLINEDBY;
+    public void setDeclinedby(String declinedby) {
+        this.declinedby = declinedby;
     }
 
-    public String getsESSIONID() {
-        return this.sESSIONID;
+    public String getSessionid() {
+        return this.sessionid;
     }
 
-    public BRANCHES sESSIONID(String sESSIONID) {
-        this.setsESSIONID(sESSIONID);
+    public Branches sessionid(String sessionid) {
+        this.setSessionid(sessionid);
         return this;
     }
 
-    public void setsESSIONID(String sESSIONID) {
-        this.sESSIONID = sESSIONID;
+    public void setSessionid(String sessionid) {
+        this.sessionid = sessionid;
     }
 
-    public Long getrEWORKED() {
-        return this.rEWORKED;
+    public Long getReworked() {
+        return this.reworked;
     }
 
-    public BRANCHES rEWORKED(Long rEWORKED) {
-        this.setrEWORKED(rEWORKED);
+    public Branches reworked(Long reworked) {
+        this.setReworked(reworked);
         return this;
     }
 
-    public void setrEWORKED(Long rEWORKED) {
-        this.rEWORKED = rEWORKED;
+    public void setReworked(Long reworked) {
+        this.reworked = reworked;
     }
 
-    public String getrEWORKEDBY() {
-        return this.rEWORKEDBY;
+    public String getReworkedby() {
+        return this.reworkedby;
     }
 
-    public BRANCHES rEWORKEDBY(String rEWORKEDBY) {
-        this.setrEWORKEDBY(rEWORKEDBY);
+    public Branches reworkedby(String reworkedby) {
+        this.setReworkedby(reworkedby);
         return this;
     }
 
-    public void setrEWORKEDBY(String rEWORKEDBY) {
-        this.rEWORKEDBY = rEWORKEDBY;
+    public void setReworkedby(String reworkedby) {
+        this.reworkedby = reworkedby;
     }
 
-    public Instant getrEWORKEDON() {
-        return this.rEWORKEDON;
+    public Instant getReworkedon() {
+        return this.reworkedon;
     }
 
-    public BRANCHES rEWORKEDON(Instant rEWORKEDON) {
-        this.setrEWORKEDON(rEWORKEDON);
+    public Branches reworkedon(Instant reworkedon) {
+        this.setReworkedon(reworkedon);
         return this;
     }
 
-    public void setrEWORKEDON(Instant rEWORKEDON) {
-        this.rEWORKEDON = rEWORKEDON;
+    public void setReworkedon(Instant reworkedon) {
+        this.reworkedon = reworkedon;
     }
 
-    public String getdISTRICT() {
-        return this.dISTRICT;
+    public String getDistrict() {
+        return this.district;
     }
 
-    public BRANCHES dISTRICT(String dISTRICT) {
-        this.setdISTRICT(dISTRICT);
+    public Branches district(String district) {
+        this.setDistrict(district);
         return this;
     }
 
-    public void setdISTRICT(String dISTRICT) {
-        this.dISTRICT = dISTRICT;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
-    public String getrEGION() {
-        return this.rEGION;
+    public String getRegion() {
+        return this.region;
     }
 
-    public BRANCHES rEGION(String rEGION) {
-        this.setrEGION(rEGION);
+    public Branches region(String region) {
+        this.setRegion(region);
         return this;
     }
 
-    public void setrEGION(String rEGION) {
-        this.rEGION = rEGION;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
-    public String getrEGIONNAME() {
-        return this.rEGIONNAME;
+    public String getRegionname() {
+        return this.regionname;
     }
 
-    public BRANCHES rEGIONNAME(String rEGIONNAME) {
-        this.setrEGIONNAME(rEGIONNAME);
+    public Branches regionname(String regionname) {
+        this.setRegionname(regionname);
         return this;
     }
 
-    public void setrEGIONNAME(String rEGIONNAME) {
-        this.rEGIONNAME = rEGIONNAME;
+    public void setRegionname(String regionname) {
+        this.regionname = regionname;
     }
 
-    public Long getrEPORTING() {
-        return this.rEPORTING;
+    public Long getReporting() {
+        return this.reporting;
     }
 
-    public BRANCHES rEPORTING(Long rEPORTING) {
-        this.setrEPORTING(rEPORTING);
+    public Branches reporting(Long reporting) {
+        this.setReporting(reporting);
         return this;
     }
 
-    public void setrEPORTING(Long rEPORTING) {
-        this.rEPORTING = rEPORTING;
+    public void setReporting(Long reporting) {
+        this.reporting = reporting;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -533,10 +533,10 @@ public class BRANCHES implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof BRANCHES)) {
+        if (!(o instanceof Branches)) {
             return false;
         }
-        return getId() != null && getId().equals(((BRANCHES) o).getId());
+        return getId() != null && getId().equals(((Branches) o).getId());
     }
 
     @Override
@@ -548,37 +548,37 @@ public class BRANCHES implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "BRANCHES{" +
+        return "Branches{" +
             "id=" + getId() +
-            ", bRANCHNAME='" + getbRANCHNAME() + "'" +
-            ", bRANCHCODE='" + getbRANCHCODE() + "'" +
-            ", aPPROVED=" + getaPPROVED() +
-            ", eMAIL='" + geteMAIL() + "'" +
-            ", aDDRESS='" + getaDDRESS() + "'" +
-            ", pHONE='" + getpHONE() + "'" +
-            ", lOCATION='" + getlOCATION() + "'" +
-            ", cONTACTPERSON='" + getcONTACTPERSON() + "'" +
-            ", rEMARKS='" + getrEMARKS() + "'" +
-            ", cREATEDBY='" + getcREATEDBY() + "'" +
-            ", cREATEDON='" + getcREATEDON() + "'" +
-            ", aPPROVEDBY='" + getaPPROVEDBY() + "'" +
-            ", aPPROVEDON='" + getaPPROVEDON() + "'" +
-            ", cHECKERREMARKS='" + getcHECKERREMARKS() + "'" +
-            ", dELETEDBY='" + getdELETEDBY() + "'" +
-            ", dELETEDON='" + getdELETEDON() + "'" +
-            ", dELETEREMARKS='" + getdELETEREMARKS() + "'" +
-            ", dELETED=" + getdELETED() +
-            ", dECLINED=" + getdECLINED() +
-            ", dECLINEDDON='" + getdECLINEDDON() + "'" +
-            ", dECLINEDBY='" + getdECLINEDBY() + "'" +
-            ", sESSIONID='" + getsESSIONID() + "'" +
-            ", rEWORKED=" + getrEWORKED() +
-            ", rEWORKEDBY='" + getrEWORKEDBY() + "'" +
-            ", rEWORKEDON='" + getrEWORKEDON() + "'" +
-            ", dISTRICT='" + getdISTRICT() + "'" +
-            ", rEGION='" + getrEGION() + "'" +
-            ", rEGIONNAME='" + getrEGIONNAME() + "'" +
-            ", rEPORTING=" + getrEPORTING() +
+            ", branchname='" + getBranchname() + "'" +
+            ", branchcode='" + getBranchcode() + "'" +
+            ", approved=" + getApproved() +
+            ", email='" + getEmail() + "'" +
+            ", address='" + getAddress() + "'" +
+            ", phone='" + getPhone() + "'" +
+            ", location='" + getLocation() + "'" +
+            ", contactperson='" + getContactperson() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", createdon='" + getCreatedon() + "'" +
+            ", approvedby='" + getApprovedby() + "'" +
+            ", approvedon='" + getApprovedon() + "'" +
+            ", checkerremarks='" + getCheckerremarks() + "'" +
+            ", deletedby='" + getDeletedby() + "'" +
+            ", deletedon='" + getDeletedon() + "'" +
+            ", deleteremarks='" + getDeleteremarks() + "'" +
+            ", deleted=" + getDeleted() +
+            ", declined=" + getDeclined() +
+            ", declineddon='" + getDeclineddon() + "'" +
+            ", declinedby='" + getDeclinedby() + "'" +
+            ", sessionid='" + getSessionid() + "'" +
+            ", reworked=" + getReworked() +
+            ", reworkedby='" + getReworkedby() + "'" +
+            ", reworkedon='" + getReworkedon() + "'" +
+            ", district='" + getDistrict() + "'" +
+            ", region='" + getRegion() + "'" +
+            ", regionname='" + getRegionname() + "'" +
+            ", reporting=" + getReporting() +
             "}";
     }
 }

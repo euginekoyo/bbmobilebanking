@@ -1,105 +1,105 @@
 {
   "annotations": {
-    "changelogDate": "20250117142852"
+    "changelogDate": "20250121085649"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "bILLERID",
+      "fieldName": "billerid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "dESCRIPTION",
+      "fieldName": "description",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "bILLERCOLLECTIONACCOUNT",
+      "fieldName": "billercollectionaccount",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "dATECREATED",
+      "fieldName": "datecreated",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "cREATEDBY",
+      "fieldName": "createdby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aPPROVED",
+      "fieldName": "approved",
       "fieldType": "Long"
     },
     {
-      "fieldName": "aPPROVEDBY",
+      "fieldName": "approvedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aPPROVEDDATE",
+      "fieldName": "approveddate",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "cHARGABLEPRODUCTID",
+      "fieldName": "chargableproductid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "25"
     },
     {
-      "fieldName": "nONCHARGABLEPRODUCTID",
+      "fieldName": "nonchargableproductid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "25"
     },
     {
-      "fieldName": "uSDBILLERCOLLECTIONACCOUNT",
+      "fieldName": "usdbillercollectionaccount",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "eNABLEDUPLICATECHECK",
+      "fieldName": "enableduplicatecheck",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rEMARKS",
+      "fieldName": "remarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "250"
     },
     {
-      "fieldName": "sESSIONID",
+      "fieldName": "sessionid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "rEWORKBY",
+      "fieldName": "reworkby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "sTATUS",
+      "fieldName": "status",
       "fieldType": "Long"
     },
     {
-      "fieldName": "aCTIVE",
+      "fieldName": "active",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rEWORK",
+      "fieldName": "rework",
       "fieldType": "Long"
     }
   ],
-  "name": "BILLERS",
+  "name": "Billers",
   "relationships": [],
   "searchEngine": "no"
 }

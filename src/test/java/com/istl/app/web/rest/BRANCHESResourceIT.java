@@ -1,6 +1,6 @@
 package com.istl.app.web.rest;
 
-import static com.istl.app.domain.BRANCHESAsserts.*;
+import static com.istl.app.domain.BranchesAsserts.*;
 import static com.istl.app.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.BRANCHES;
-import com.istl.app.repository.BRANCHESRepository;
+import com.istl.app.domain.Branches;
+import com.istl.app.repository.BranchesRepository;
 import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -27,99 +27,99 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Integration tests for the {@link BRANCHESResource} REST controller.
+ * Integration tests for the {@link BranchesResource} REST controller.
  */
 @IntegrationTest
 @AutoConfigureMockMvc
 @WithMockUser
-class BRANCHESResourceIT {
+class BranchesResourceIT {
 
-    private static final String DEFAULT_B_RANCHNAME = "AAAAAAAAAA";
-    private static final String UPDATED_B_RANCHNAME = "BBBBBBBBBB";
+    private static final String DEFAULT_BRANCHNAME = "AAAAAAAAAA";
+    private static final String UPDATED_BRANCHNAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_B_RANCHCODE = "AAA";
-    private static final String UPDATED_B_RANCHCODE = "BBB";
+    private static final String DEFAULT_BRANCHCODE = "AAA";
+    private static final String UPDATED_BRANCHCODE = "BBB";
 
-    private static final Long DEFAULT_A_PPROVED = 1L;
-    private static final Long UPDATED_A_PPROVED = 2L;
+    private static final Long DEFAULT_APPROVED = 1L;
+    private static final Long UPDATED_APPROVED = 2L;
 
-    private static final String DEFAULT_E_MAIL = "AAAAAAAAAA";
-    private static final String UPDATED_E_MAIL = "BBBBBBBBBB";
+    private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
+    private static final String UPDATED_EMAIL = "BBBBBBBBBB";
 
-    private static final String DEFAULT_A_DDRESS = "AAAAAAAAAA";
-    private static final String UPDATED_A_DDRESS = "BBBBBBBBBB";
+    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_HONE = "AAAAAAAAAA";
-    private static final String UPDATED_P_HONE = "BBBBBBBBBB";
+    private static final String DEFAULT_PHONE = "AAAAAAAAAA";
+    private static final String UPDATED_PHONE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_L_OCATION = "AAAAAAAAAA";
-    private static final String UPDATED_L_OCATION = "BBBBBBBBBB";
+    private static final String DEFAULT_LOCATION = "AAAAAAAAAA";
+    private static final String UPDATED_LOCATION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_C_ONTACTPERSON = "AAAAAAAAAA";
-    private static final String UPDATED_C_ONTACTPERSON = "BBBBBBBBBB";
+    private static final String DEFAULT_CONTACTPERSON = "AAAAAAAAAA";
+    private static final String UPDATED_CONTACTPERSON = "BBBBBBBBBB";
 
-    private static final String DEFAULT_R_EMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_R_EMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_REMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_REMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_C_REATEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_C_REATEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_CREATEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_CREATEDBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_C_REATEDON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_C_REATEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_CREATEDON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_CREATEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_A_PPROVEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_A_PPROVEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_APPROVEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_APPROVEDBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_A_PPROVEDON = "AAAAAAA";
-    private static final String UPDATED_A_PPROVEDON = "BBBBBBB";
+    private static final String DEFAULT_APPROVEDON = "AAAAAAA";
+    private static final String UPDATED_APPROVEDON = "BBBBBBB";
 
-    private static final String DEFAULT_C_HECKERREMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_C_HECKERREMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_CHECKERREMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_CHECKERREMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_D_ELETEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_D_ELETEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_DELETEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_DELETEDBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_D_ELETEDON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_D_ELETEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_DELETEDON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DELETEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_D_ELETEREMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_D_ELETEREMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_DELETEREMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_DELETEREMARKS = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_D_ELETED = 1L;
-    private static final Long UPDATED_D_ELETED = 2L;
+    private static final Long DEFAULT_DELETED = 1L;
+    private static final Long UPDATED_DELETED = 2L;
 
-    private static final Long DEFAULT_D_ECLINED = 1L;
-    private static final Long UPDATED_D_ECLINED = 2L;
+    private static final Long DEFAULT_DECLINED = 1L;
+    private static final Long UPDATED_DECLINED = 2L;
 
-    private static final String DEFAULT_D_ECLINEDDON = "AAAAAAA";
-    private static final String UPDATED_D_ECLINEDDON = "BBBBBBB";
+    private static final String DEFAULT_DECLINEDDON = "AAAAAAA";
+    private static final String UPDATED_DECLINEDDON = "BBBBBBB";
 
-    private static final String DEFAULT_D_ECLINEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_D_ECLINEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_DECLINEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_DECLINEDBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_S_ESSIONID = "AAAAAAAAAA";
-    private static final String UPDATED_S_ESSIONID = "BBBBBBBBBB";
+    private static final String DEFAULT_SESSIONID = "AAAAAAAAAA";
+    private static final String UPDATED_SESSIONID = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_R_EWORKED = 1L;
-    private static final Long UPDATED_R_EWORKED = 2L;
+    private static final Long DEFAULT_REWORKED = 1L;
+    private static final Long UPDATED_REWORKED = 2L;
 
-    private static final String DEFAULT_R_EWORKEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_R_EWORKEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_REWORKEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_REWORKEDBY = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_R_EWORKEDON = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_R_EWORKEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_REWORKEDON = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_REWORKEDON = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_D_ISTRICT = "AAAAAAAAAA";
-    private static final String UPDATED_D_ISTRICT = "BBBBBBBBBB";
+    private static final String DEFAULT_DISTRICT = "AAAAAAAAAA";
+    private static final String UPDATED_DISTRICT = "BBBBBBBBBB";
 
-    private static final String DEFAULT_R_EGION = "AAAAAAAAAA";
-    private static final String UPDATED_R_EGION = "BBBBBBBBBB";
+    private static final String DEFAULT_REGION = "AAAAAAAAAA";
+    private static final String UPDATED_REGION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_R_EGIONNAME = "AAAAAAAAAA";
-    private static final String UPDATED_R_EGIONNAME = "BBBBBBBBBB";
+    private static final String DEFAULT_REGIONNAME = "AAAAAAAAAA";
+    private static final String UPDATED_REGIONNAME = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_R_EPORTING = 1L;
-    private static final Long UPDATED_R_EPORTING = 2L;
+    private static final Long DEFAULT_REPORTING = 1L;
+    private static final Long UPDATED_REPORTING = 2L;
 
     private static final String ENTITY_API_URL = "/api/branches";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -131,17 +131,17 @@ class BRANCHESResourceIT {
     private ObjectMapper om;
 
     @Autowired
-    private BRANCHESRepository bRANCHESRepository;
+    private BranchesRepository branchesRepository;
 
     @Autowired
     private EntityManager em;
 
     @Autowired
-    private MockMvc restBRANCHESMockMvc;
+    private MockMvc restBranchesMockMvc;
 
-    private BRANCHES bRANCHES;
+    private Branches branches;
 
-    private BRANCHES insertedBRANCHES;
+    private Branches insertedBranches;
 
     /**
      * Create an entity for this test.
@@ -149,37 +149,37 @@ class BRANCHESResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static BRANCHES createEntity() {
-        return new BRANCHES()
-            .bRANCHNAME(DEFAULT_B_RANCHNAME)
-            .bRANCHCODE(DEFAULT_B_RANCHCODE)
-            .aPPROVED(DEFAULT_A_PPROVED)
-            .eMAIL(DEFAULT_E_MAIL)
-            .aDDRESS(DEFAULT_A_DDRESS)
-            .pHONE(DEFAULT_P_HONE)
-            .lOCATION(DEFAULT_L_OCATION)
-            .cONTACTPERSON(DEFAULT_C_ONTACTPERSON)
-            .rEMARKS(DEFAULT_R_EMARKS)
-            .cREATEDBY(DEFAULT_C_REATEDBY)
-            .cREATEDON(DEFAULT_C_REATEDON)
-            .aPPROVEDBY(DEFAULT_A_PPROVEDBY)
-            .aPPROVEDON(DEFAULT_A_PPROVEDON)
-            .cHECKERREMARKS(DEFAULT_C_HECKERREMARKS)
-            .dELETEDBY(DEFAULT_D_ELETEDBY)
-            .dELETEDON(DEFAULT_D_ELETEDON)
-            .dELETEREMARKS(DEFAULT_D_ELETEREMARKS)
-            .dELETED(DEFAULT_D_ELETED)
-            .dECLINED(DEFAULT_D_ECLINED)
-            .dECLINEDDON(DEFAULT_D_ECLINEDDON)
-            .dECLINEDBY(DEFAULT_D_ECLINEDBY)
-            .sESSIONID(DEFAULT_S_ESSIONID)
-            .rEWORKED(DEFAULT_R_EWORKED)
-            .rEWORKEDBY(DEFAULT_R_EWORKEDBY)
-            .rEWORKEDON(DEFAULT_R_EWORKEDON)
-            .dISTRICT(DEFAULT_D_ISTRICT)
-            .rEGION(DEFAULT_R_EGION)
-            .rEGIONNAME(DEFAULT_R_EGIONNAME)
-            .rEPORTING(DEFAULT_R_EPORTING);
+    public static Branches createEntity() {
+        return new Branches()
+            .branchname(DEFAULT_BRANCHNAME)
+            .branchcode(DEFAULT_BRANCHCODE)
+            .approved(DEFAULT_APPROVED)
+            .email(DEFAULT_EMAIL)
+            .address(DEFAULT_ADDRESS)
+            .phone(DEFAULT_PHONE)
+            .location(DEFAULT_LOCATION)
+            .contactperson(DEFAULT_CONTACTPERSON)
+            .remarks(DEFAULT_REMARKS)
+            .createdby(DEFAULT_CREATEDBY)
+            .createdon(DEFAULT_CREATEDON)
+            .approvedby(DEFAULT_APPROVEDBY)
+            .approvedon(DEFAULT_APPROVEDON)
+            .checkerremarks(DEFAULT_CHECKERREMARKS)
+            .deletedby(DEFAULT_DELETEDBY)
+            .deletedon(DEFAULT_DELETEDON)
+            .deleteremarks(DEFAULT_DELETEREMARKS)
+            .deleted(DEFAULT_DELETED)
+            .declined(DEFAULT_DECLINED)
+            .declineddon(DEFAULT_DECLINEDDON)
+            .declinedby(DEFAULT_DECLINEDBY)
+            .sessionid(DEFAULT_SESSIONID)
+            .reworked(DEFAULT_REWORKED)
+            .reworkedby(DEFAULT_REWORKEDBY)
+            .reworkedon(DEFAULT_REWORKEDON)
+            .district(DEFAULT_DISTRICT)
+            .region(DEFAULT_REGION)
+            .regionname(DEFAULT_REGIONNAME)
+            .reporting(DEFAULT_REPORTING);
     }
 
     /**
@@ -188,102 +188,102 @@ class BRANCHESResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static BRANCHES createUpdatedEntity() {
-        return new BRANCHES()
-            .bRANCHNAME(UPDATED_B_RANCHNAME)
-            .bRANCHCODE(UPDATED_B_RANCHCODE)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .eMAIL(UPDATED_E_MAIL)
-            .aDDRESS(UPDATED_A_DDRESS)
-            .pHONE(UPDATED_P_HONE)
-            .lOCATION(UPDATED_L_OCATION)
-            .cONTACTPERSON(UPDATED_C_ONTACTPERSON)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .cREATEDON(UPDATED_C_REATEDON)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDON(UPDATED_A_PPROVEDON)
-            .cHECKERREMARKS(UPDATED_C_HECKERREMARKS)
-            .dELETEDBY(UPDATED_D_ELETEDBY)
-            .dELETEDON(UPDATED_D_ELETEDON)
-            .dELETEREMARKS(UPDATED_D_ELETEREMARKS)
-            .dELETED(UPDATED_D_ELETED)
-            .dECLINED(UPDATED_D_ECLINED)
-            .dECLINEDDON(UPDATED_D_ECLINEDDON)
-            .dECLINEDBY(UPDATED_D_ECLINEDBY)
-            .sESSIONID(UPDATED_S_ESSIONID)
-            .rEWORKED(UPDATED_R_EWORKED)
-            .rEWORKEDBY(UPDATED_R_EWORKEDBY)
-            .rEWORKEDON(UPDATED_R_EWORKEDON)
-            .dISTRICT(UPDATED_D_ISTRICT)
-            .rEGION(UPDATED_R_EGION)
-            .rEGIONNAME(UPDATED_R_EGIONNAME)
-            .rEPORTING(UPDATED_R_EPORTING);
+    public static Branches createUpdatedEntity() {
+        return new Branches()
+            .branchname(UPDATED_BRANCHNAME)
+            .branchcode(UPDATED_BRANCHCODE)
+            .approved(UPDATED_APPROVED)
+            .email(UPDATED_EMAIL)
+            .address(UPDATED_ADDRESS)
+            .phone(UPDATED_PHONE)
+            .location(UPDATED_LOCATION)
+            .contactperson(UPDATED_CONTACTPERSON)
+            .remarks(UPDATED_REMARKS)
+            .createdby(UPDATED_CREATEDBY)
+            .createdon(UPDATED_CREATEDON)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approvedon(UPDATED_APPROVEDON)
+            .checkerremarks(UPDATED_CHECKERREMARKS)
+            .deletedby(UPDATED_DELETEDBY)
+            .deletedon(UPDATED_DELETEDON)
+            .deleteremarks(UPDATED_DELETEREMARKS)
+            .deleted(UPDATED_DELETED)
+            .declined(UPDATED_DECLINED)
+            .declineddon(UPDATED_DECLINEDDON)
+            .declinedby(UPDATED_DECLINEDBY)
+            .sessionid(UPDATED_SESSIONID)
+            .reworked(UPDATED_REWORKED)
+            .reworkedby(UPDATED_REWORKEDBY)
+            .reworkedon(UPDATED_REWORKEDON)
+            .district(UPDATED_DISTRICT)
+            .region(UPDATED_REGION)
+            .regionname(UPDATED_REGIONNAME)
+            .reporting(UPDATED_REPORTING);
     }
 
     @BeforeEach
     public void initTest() {
-        bRANCHES = createEntity();
+        branches = createEntity();
     }
 
     @AfterEach
     public void cleanup() {
-        if (insertedBRANCHES != null) {
-            bRANCHESRepository.delete(insertedBRANCHES);
-            insertedBRANCHES = null;
+        if (insertedBranches != null) {
+            branchesRepository.delete(insertedBranches);
+            insertedBranches = null;
         }
     }
 
     @Test
     @Transactional
-    void createBRANCHES() throws Exception {
+    void createBranches() throws Exception {
         long databaseSizeBeforeCreate = getRepositoryCount();
-        // Create the BRANCHES
-        var returnedBRANCHES = om.readValue(
-            restBRANCHESMockMvc
-                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bRANCHES)))
+        // Create the Branches
+        var returnedBranches = om.readValue(
+            restBranchesMockMvc
+                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(branches)))
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            BRANCHES.class
+            Branches.class
         );
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
         assertIncrementedRepositoryCount(databaseSizeBeforeCreate);
-        assertBRANCHESUpdatableFieldsEquals(returnedBRANCHES, getPersistedBRANCHES(returnedBRANCHES));
+        assertBranchesUpdatableFieldsEquals(returnedBranches, getPersistedBranches(returnedBranches));
 
-        insertedBRANCHES = returnedBRANCHES;
+        insertedBranches = returnedBranches;
     }
 
     @Test
     @Transactional
-    void createBRANCHESWithExistingId() throws Exception {
-        // Create the BRANCHES with an existing ID
-        bRANCHES.setId(1L);
+    void createBranchesWithExistingId() throws Exception {
+        // Create the Branches with an existing ID
+        branches.setId(1L);
 
         long databaseSizeBeforeCreate = getRepositoryCount();
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restBRANCHESMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bRANCHES)))
+        restBranchesMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(branches)))
             .andExpect(status().isBadRequest());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
         assertSameRepositoryCount(databaseSizeBeforeCreate);
     }
 
     @Test
     @Transactional
-    void checkbRANCHCODEIsRequired() throws Exception {
+    void checkBranchcodeIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        bRANCHES.setbRANCHCODE(null);
+        branches.setBranchcode(null);
 
-        // Create the BRANCHES, which fails.
+        // Create the Branches, which fails.
 
-        restBRANCHESMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bRANCHES)))
+        restBranchesMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(branches)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -291,15 +291,15 @@ class BRANCHESResourceIT {
 
     @Test
     @Transactional
-    void checklOCATIONIsRequired() throws Exception {
+    void checkLocationIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        bRANCHES.setlOCATION(null);
+        branches.setLocation(null);
 
-        // Create the BRANCHES, which fails.
+        // Create the Branches, which fails.
 
-        restBRANCHESMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bRANCHES)))
+        restBranchesMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(branches)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -307,369 +307,372 @@ class BRANCHESResourceIT {
 
     @Test
     @Transactional
-    void getAllBRANCHES() throws Exception {
+    void getAllBranches() throws Exception {
         // Initialize the database
-        insertedBRANCHES = bRANCHESRepository.saveAndFlush(bRANCHES);
+        insertedBranches = branchesRepository.saveAndFlush(branches);
 
-        // Get all the bRANCHESList
-        restBRANCHESMockMvc
+        // Get all the branchesList
+        restBranchesMockMvc
             .perform(get(ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(bRANCHES.getId().intValue())))
-            .andExpect(jsonPath("$.[*].bRANCHNAME").value(hasItem(DEFAULT_B_RANCHNAME)))
-            .andExpect(jsonPath("$.[*].bRANCHCODE").value(hasItem(DEFAULT_B_RANCHCODE)))
-            .andExpect(jsonPath("$.[*].aPPROVED").value(hasItem(DEFAULT_A_PPROVED.intValue())))
-            .andExpect(jsonPath("$.[*].eMAIL").value(hasItem(DEFAULT_E_MAIL)))
-            .andExpect(jsonPath("$.[*].aDDRESS").value(hasItem(DEFAULT_A_DDRESS)))
-            .andExpect(jsonPath("$.[*].pHONE").value(hasItem(DEFAULT_P_HONE)))
-            .andExpect(jsonPath("$.[*].lOCATION").value(hasItem(DEFAULT_L_OCATION)))
-            .andExpect(jsonPath("$.[*].cONTACTPERSON").value(hasItem(DEFAULT_C_ONTACTPERSON)))
-            .andExpect(jsonPath("$.[*].rEMARKS").value(hasItem(DEFAULT_R_EMARKS)))
-            .andExpect(jsonPath("$.[*].cREATEDBY").value(hasItem(DEFAULT_C_REATEDBY)))
-            .andExpect(jsonPath("$.[*].cREATEDON").value(hasItem(DEFAULT_C_REATEDON.toString())))
-            .andExpect(jsonPath("$.[*].aPPROVEDBY").value(hasItem(DEFAULT_A_PPROVEDBY)))
-            .andExpect(jsonPath("$.[*].aPPROVEDON").value(hasItem(DEFAULT_A_PPROVEDON)))
-            .andExpect(jsonPath("$.[*].cHECKERREMARKS").value(hasItem(DEFAULT_C_HECKERREMARKS)))
-            .andExpect(jsonPath("$.[*].dELETEDBY").value(hasItem(DEFAULT_D_ELETEDBY)))
-            .andExpect(jsonPath("$.[*].dELETEDON").value(hasItem(DEFAULT_D_ELETEDON.toString())))
-            .andExpect(jsonPath("$.[*].dELETEREMARKS").value(hasItem(DEFAULT_D_ELETEREMARKS)))
-            .andExpect(jsonPath("$.[*].dELETED").value(hasItem(DEFAULT_D_ELETED.intValue())))
-            .andExpect(jsonPath("$.[*].dECLINED").value(hasItem(DEFAULT_D_ECLINED.intValue())))
-            .andExpect(jsonPath("$.[*].dECLINEDDON").value(hasItem(DEFAULT_D_ECLINEDDON)))
-            .andExpect(jsonPath("$.[*].dECLINEDBY").value(hasItem(DEFAULT_D_ECLINEDBY)))
-            .andExpect(jsonPath("$.[*].sESSIONID").value(hasItem(DEFAULT_S_ESSIONID)))
-            .andExpect(jsonPath("$.[*].rEWORKED").value(hasItem(DEFAULT_R_EWORKED.intValue())))
-            .andExpect(jsonPath("$.[*].rEWORKEDBY").value(hasItem(DEFAULT_R_EWORKEDBY)))
-            .andExpect(jsonPath("$.[*].rEWORKEDON").value(hasItem(DEFAULT_R_EWORKEDON.toString())))
-            .andExpect(jsonPath("$.[*].dISTRICT").value(hasItem(DEFAULT_D_ISTRICT)))
-            .andExpect(jsonPath("$.[*].rEGION").value(hasItem(DEFAULT_R_EGION)))
-            .andExpect(jsonPath("$.[*].rEGIONNAME").value(hasItem(DEFAULT_R_EGIONNAME)))
-            .andExpect(jsonPath("$.[*].rEPORTING").value(hasItem(DEFAULT_R_EPORTING.intValue())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(branches.getId().intValue())))
+            .andExpect(jsonPath("$.[*].branchname").value(hasItem(DEFAULT_BRANCHNAME)))
+            .andExpect(jsonPath("$.[*].branchcode").value(hasItem(DEFAULT_BRANCHCODE)))
+            .andExpect(jsonPath("$.[*].approved").value(hasItem(DEFAULT_APPROVED.intValue())))
+            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
+            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
+            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE)))
+            .andExpect(jsonPath("$.[*].location").value(hasItem(DEFAULT_LOCATION)))
+            .andExpect(jsonPath("$.[*].contactperson").value(hasItem(DEFAULT_CONTACTPERSON)))
+            .andExpect(jsonPath("$.[*].remarks").value(hasItem(DEFAULT_REMARKS)))
+            .andExpect(jsonPath("$.[*].createdby").value(hasItem(DEFAULT_CREATEDBY)))
+            .andExpect(jsonPath("$.[*].createdon").value(hasItem(DEFAULT_CREATEDON.toString())))
+            .andExpect(jsonPath("$.[*].approvedby").value(hasItem(DEFAULT_APPROVEDBY)))
+            .andExpect(jsonPath("$.[*].approvedon").value(hasItem(DEFAULT_APPROVEDON)))
+            .andExpect(jsonPath("$.[*].checkerremarks").value(hasItem(DEFAULT_CHECKERREMARKS)))
+            .andExpect(jsonPath("$.[*].deletedby").value(hasItem(DEFAULT_DELETEDBY)))
+            .andExpect(jsonPath("$.[*].deletedon").value(hasItem(DEFAULT_DELETEDON.toString())))
+            .andExpect(jsonPath("$.[*].deleteremarks").value(hasItem(DEFAULT_DELETEREMARKS)))
+            .andExpect(jsonPath("$.[*].deleted").value(hasItem(DEFAULT_DELETED.intValue())))
+            .andExpect(jsonPath("$.[*].declined").value(hasItem(DEFAULT_DECLINED.intValue())))
+            .andExpect(jsonPath("$.[*].declineddon").value(hasItem(DEFAULT_DECLINEDDON)))
+            .andExpect(jsonPath("$.[*].declinedby").value(hasItem(DEFAULT_DECLINEDBY)))
+            .andExpect(jsonPath("$.[*].sessionid").value(hasItem(DEFAULT_SESSIONID)))
+            .andExpect(jsonPath("$.[*].reworked").value(hasItem(DEFAULT_REWORKED.intValue())))
+            .andExpect(jsonPath("$.[*].reworkedby").value(hasItem(DEFAULT_REWORKEDBY)))
+            .andExpect(jsonPath("$.[*].reworkedon").value(hasItem(DEFAULT_REWORKEDON.toString())))
+            .andExpect(jsonPath("$.[*].district").value(hasItem(DEFAULT_DISTRICT)))
+            .andExpect(jsonPath("$.[*].region").value(hasItem(DEFAULT_REGION)))
+            .andExpect(jsonPath("$.[*].regionname").value(hasItem(DEFAULT_REGIONNAME)))
+            .andExpect(jsonPath("$.[*].reporting").value(hasItem(DEFAULT_REPORTING.intValue())));
     }
 
     @Test
     @Transactional
-    void getBRANCHES() throws Exception {
+    void getBranches() throws Exception {
         // Initialize the database
-        insertedBRANCHES = bRANCHESRepository.saveAndFlush(bRANCHES);
+        insertedBranches = branchesRepository.saveAndFlush(branches);
 
-        // Get the bRANCHES
-        restBRANCHESMockMvc
-            .perform(get(ENTITY_API_URL_ID, bRANCHES.getId()))
+        // Get the branches
+        restBranchesMockMvc
+            .perform(get(ENTITY_API_URL_ID, branches.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(bRANCHES.getId().intValue()))
-            .andExpect(jsonPath("$.bRANCHNAME").value(DEFAULT_B_RANCHNAME))
-            .andExpect(jsonPath("$.bRANCHCODE").value(DEFAULT_B_RANCHCODE))
-            .andExpect(jsonPath("$.aPPROVED").value(DEFAULT_A_PPROVED.intValue()))
-            .andExpect(jsonPath("$.eMAIL").value(DEFAULT_E_MAIL))
-            .andExpect(jsonPath("$.aDDRESS").value(DEFAULT_A_DDRESS))
-            .andExpect(jsonPath("$.pHONE").value(DEFAULT_P_HONE))
-            .andExpect(jsonPath("$.lOCATION").value(DEFAULT_L_OCATION))
-            .andExpect(jsonPath("$.cONTACTPERSON").value(DEFAULT_C_ONTACTPERSON))
-            .andExpect(jsonPath("$.rEMARKS").value(DEFAULT_R_EMARKS))
-            .andExpect(jsonPath("$.cREATEDBY").value(DEFAULT_C_REATEDBY))
-            .andExpect(jsonPath("$.cREATEDON").value(DEFAULT_C_REATEDON.toString()))
-            .andExpect(jsonPath("$.aPPROVEDBY").value(DEFAULT_A_PPROVEDBY))
-            .andExpect(jsonPath("$.aPPROVEDON").value(DEFAULT_A_PPROVEDON))
-            .andExpect(jsonPath("$.cHECKERREMARKS").value(DEFAULT_C_HECKERREMARKS))
-            .andExpect(jsonPath("$.dELETEDBY").value(DEFAULT_D_ELETEDBY))
-            .andExpect(jsonPath("$.dELETEDON").value(DEFAULT_D_ELETEDON.toString()))
-            .andExpect(jsonPath("$.dELETEREMARKS").value(DEFAULT_D_ELETEREMARKS))
-            .andExpect(jsonPath("$.dELETED").value(DEFAULT_D_ELETED.intValue()))
-            .andExpect(jsonPath("$.dECLINED").value(DEFAULT_D_ECLINED.intValue()))
-            .andExpect(jsonPath("$.dECLINEDDON").value(DEFAULT_D_ECLINEDDON))
-            .andExpect(jsonPath("$.dECLINEDBY").value(DEFAULT_D_ECLINEDBY))
-            .andExpect(jsonPath("$.sESSIONID").value(DEFAULT_S_ESSIONID))
-            .andExpect(jsonPath("$.rEWORKED").value(DEFAULT_R_EWORKED.intValue()))
-            .andExpect(jsonPath("$.rEWORKEDBY").value(DEFAULT_R_EWORKEDBY))
-            .andExpect(jsonPath("$.rEWORKEDON").value(DEFAULT_R_EWORKEDON.toString()))
-            .andExpect(jsonPath("$.dISTRICT").value(DEFAULT_D_ISTRICT))
-            .andExpect(jsonPath("$.rEGION").value(DEFAULT_R_EGION))
-            .andExpect(jsonPath("$.rEGIONNAME").value(DEFAULT_R_EGIONNAME))
-            .andExpect(jsonPath("$.rEPORTING").value(DEFAULT_R_EPORTING.intValue()));
+            .andExpect(jsonPath("$.id").value(branches.getId().intValue()))
+            .andExpect(jsonPath("$.branchname").value(DEFAULT_BRANCHNAME))
+            .andExpect(jsonPath("$.branchcode").value(DEFAULT_BRANCHCODE))
+            .andExpect(jsonPath("$.approved").value(DEFAULT_APPROVED.intValue()))
+            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
+            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE))
+            .andExpect(jsonPath("$.location").value(DEFAULT_LOCATION))
+            .andExpect(jsonPath("$.contactperson").value(DEFAULT_CONTACTPERSON))
+            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS))
+            .andExpect(jsonPath("$.createdby").value(DEFAULT_CREATEDBY))
+            .andExpect(jsonPath("$.createdon").value(DEFAULT_CREATEDON.toString()))
+            .andExpect(jsonPath("$.approvedby").value(DEFAULT_APPROVEDBY))
+            .andExpect(jsonPath("$.approvedon").value(DEFAULT_APPROVEDON))
+            .andExpect(jsonPath("$.checkerremarks").value(DEFAULT_CHECKERREMARKS))
+            .andExpect(jsonPath("$.deletedby").value(DEFAULT_DELETEDBY))
+            .andExpect(jsonPath("$.deletedon").value(DEFAULT_DELETEDON.toString()))
+            .andExpect(jsonPath("$.deleteremarks").value(DEFAULT_DELETEREMARKS))
+            .andExpect(jsonPath("$.deleted").value(DEFAULT_DELETED.intValue()))
+            .andExpect(jsonPath("$.declined").value(DEFAULT_DECLINED.intValue()))
+            .andExpect(jsonPath("$.declineddon").value(DEFAULT_DECLINEDDON))
+            .andExpect(jsonPath("$.declinedby").value(DEFAULT_DECLINEDBY))
+            .andExpect(jsonPath("$.sessionid").value(DEFAULT_SESSIONID))
+            .andExpect(jsonPath("$.reworked").value(DEFAULT_REWORKED.intValue()))
+            .andExpect(jsonPath("$.reworkedby").value(DEFAULT_REWORKEDBY))
+            .andExpect(jsonPath("$.reworkedon").value(DEFAULT_REWORKEDON.toString()))
+            .andExpect(jsonPath("$.district").value(DEFAULT_DISTRICT))
+            .andExpect(jsonPath("$.region").value(DEFAULT_REGION))
+            .andExpect(jsonPath("$.regionname").value(DEFAULT_REGIONNAME))
+            .andExpect(jsonPath("$.reporting").value(DEFAULT_REPORTING.intValue()));
     }
 
     @Test
     @Transactional
-    void getNonExistingBRANCHES() throws Exception {
-        // Get the bRANCHES
-        restBRANCHESMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+    void getNonExistingBranches() throws Exception {
+        // Get the branches
+        restBranchesMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
     @Transactional
-    void putExistingBRANCHES() throws Exception {
+    void putExistingBranches() throws Exception {
         // Initialize the database
-        insertedBRANCHES = bRANCHESRepository.saveAndFlush(bRANCHES);
+        insertedBranches = branchesRepository.saveAndFlush(branches);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the bRANCHES
-        BRANCHES updatedBRANCHES = bRANCHESRepository.findById(bRANCHES.getId()).orElseThrow();
-        // Disconnect from session so that the updates on updatedBRANCHES are not directly saved in db
-        em.detach(updatedBRANCHES);
-        updatedBRANCHES
-            .bRANCHNAME(UPDATED_B_RANCHNAME)
-            .bRANCHCODE(UPDATED_B_RANCHCODE)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .eMAIL(UPDATED_E_MAIL)
-            .aDDRESS(UPDATED_A_DDRESS)
-            .pHONE(UPDATED_P_HONE)
-            .lOCATION(UPDATED_L_OCATION)
-            .cONTACTPERSON(UPDATED_C_ONTACTPERSON)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .cREATEDON(UPDATED_C_REATEDON)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDON(UPDATED_A_PPROVEDON)
-            .cHECKERREMARKS(UPDATED_C_HECKERREMARKS)
-            .dELETEDBY(UPDATED_D_ELETEDBY)
-            .dELETEDON(UPDATED_D_ELETEDON)
-            .dELETEREMARKS(UPDATED_D_ELETEREMARKS)
-            .dELETED(UPDATED_D_ELETED)
-            .dECLINED(UPDATED_D_ECLINED)
-            .dECLINEDDON(UPDATED_D_ECLINEDDON)
-            .dECLINEDBY(UPDATED_D_ECLINEDBY)
-            .sESSIONID(UPDATED_S_ESSIONID)
-            .rEWORKED(UPDATED_R_EWORKED)
-            .rEWORKEDBY(UPDATED_R_EWORKEDBY)
-            .rEWORKEDON(UPDATED_R_EWORKEDON)
-            .dISTRICT(UPDATED_D_ISTRICT)
-            .rEGION(UPDATED_R_EGION)
-            .rEGIONNAME(UPDATED_R_EGIONNAME)
-            .rEPORTING(UPDATED_R_EPORTING);
+        // Update the branches
+        Branches updatedBranches = branchesRepository.findById(branches.getId()).orElseThrow();
+        // Disconnect from session so that the updates on updatedBranches are not directly saved in db
+        em.detach(updatedBranches);
+        updatedBranches
+            .branchname(UPDATED_BRANCHNAME)
+            .branchcode(UPDATED_BRANCHCODE)
+            .approved(UPDATED_APPROVED)
+            .email(UPDATED_EMAIL)
+            .address(UPDATED_ADDRESS)
+            .phone(UPDATED_PHONE)
+            .location(UPDATED_LOCATION)
+            .contactperson(UPDATED_CONTACTPERSON)
+            .remarks(UPDATED_REMARKS)
+            .createdby(UPDATED_CREATEDBY)
+            .createdon(UPDATED_CREATEDON)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approvedon(UPDATED_APPROVEDON)
+            .checkerremarks(UPDATED_CHECKERREMARKS)
+            .deletedby(UPDATED_DELETEDBY)
+            .deletedon(UPDATED_DELETEDON)
+            .deleteremarks(UPDATED_DELETEREMARKS)
+            .deleted(UPDATED_DELETED)
+            .declined(UPDATED_DECLINED)
+            .declineddon(UPDATED_DECLINEDDON)
+            .declinedby(UPDATED_DECLINEDBY)
+            .sessionid(UPDATED_SESSIONID)
+            .reworked(UPDATED_REWORKED)
+            .reworkedby(UPDATED_REWORKEDBY)
+            .reworkedon(UPDATED_REWORKEDON)
+            .district(UPDATED_DISTRICT)
+            .region(UPDATED_REGION)
+            .regionname(UPDATED_REGIONNAME)
+            .reporting(UPDATED_REPORTING);
 
-        restBRANCHESMockMvc
+        restBranchesMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, updatedBRANCHES.getId())
+                put(ENTITY_API_URL_ID, updatedBranches.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(updatedBRANCHES))
+                    .content(om.writeValueAsBytes(updatedBranches))
             )
             .andExpect(status().isOk());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertPersistedBRANCHESToMatchAllProperties(updatedBRANCHES);
+        assertPersistedBranchesToMatchAllProperties(updatedBranches);
     }
 
     @Test
     @Transactional
-    void putNonExistingBRANCHES() throws Exception {
+    void putNonExistingBranches() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bRANCHES.setId(longCount.incrementAndGet());
+        branches.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restBRANCHESMockMvc
+        restBranchesMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, bRANCHES.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bRANCHES))
+                put(ENTITY_API_URL_ID, branches.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(branches))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithIdMismatchBRANCHES() throws Exception {
+    void putWithIdMismatchBranches() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bRANCHES.setId(longCount.incrementAndGet());
+        branches.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restBRANCHESMockMvc
+        restBranchesMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(bRANCHES))
+                    .content(om.writeValueAsBytes(branches))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithMissingIdPathParamBRANCHES() throws Exception {
+    void putWithMissingIdPathParamBranches() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bRANCHES.setId(longCount.incrementAndGet());
+        branches.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restBRANCHESMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(bRANCHES)))
+        restBranchesMockMvc
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(branches)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void partialUpdateBRANCHESWithPatch() throws Exception {
+    void partialUpdateBranchesWithPatch() throws Exception {
         // Initialize the database
-        insertedBRANCHES = bRANCHESRepository.saveAndFlush(bRANCHES);
+        insertedBranches = branchesRepository.saveAndFlush(branches);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the bRANCHES using partial update
-        BRANCHES partialUpdatedBRANCHES = new BRANCHES();
-        partialUpdatedBRANCHES.setId(bRANCHES.getId());
+        // Update the branches using partial update
+        Branches partialUpdatedBranches = new Branches();
+        partialUpdatedBranches.setId(branches.getId());
 
-        partialUpdatedBRANCHES
-            .bRANCHNAME(UPDATED_B_RANCHNAME)
-            .bRANCHCODE(UPDATED_B_RANCHCODE)
-            .eMAIL(UPDATED_E_MAIL)
-            .aDDRESS(UPDATED_A_DDRESS)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .cREATEDON(UPDATED_C_REATEDON)
-            .dELETEREMARKS(UPDATED_D_ELETEREMARKS)
-            .dELETED(UPDATED_D_ELETED)
-            .dECLINED(UPDATED_D_ECLINED)
-            .dECLINEDDON(UPDATED_D_ECLINEDDON)
-            .dECLINEDBY(UPDATED_D_ECLINEDBY)
-            .sESSIONID(UPDATED_S_ESSIONID)
-            .rEWORKEDBY(UPDATED_R_EWORKEDBY)
-            .rEWORKEDON(UPDATED_R_EWORKEDON)
-            .rEPORTING(UPDATED_R_EPORTING);
+        partialUpdatedBranches
+            .branchname(UPDATED_BRANCHNAME)
+            .branchcode(UPDATED_BRANCHCODE)
+            .address(UPDATED_ADDRESS)
+            .phone(UPDATED_PHONE)
+            .location(UPDATED_LOCATION)
+            .contactperson(UPDATED_CONTACTPERSON)
+            .createdby(UPDATED_CREATEDBY)
+            .createdon(UPDATED_CREATEDON)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approvedon(UPDATED_APPROVEDON)
+            .deletedby(UPDATED_DELETEDBY)
+            .deletedon(UPDATED_DELETEDON)
+            .deleteremarks(UPDATED_DELETEREMARKS)
+            .declineddon(UPDATED_DECLINEDDON)
+            .sessionid(UPDATED_SESSIONID)
+            .reworked(UPDATED_REWORKED)
+            .reworkedby(UPDATED_REWORKEDBY)
+            .district(UPDATED_DISTRICT)
+            .region(UPDATED_REGION);
 
-        restBRANCHESMockMvc
+        restBranchesMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedBRANCHES.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedBranches.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedBRANCHES))
+                    .content(om.writeValueAsBytes(partialUpdatedBranches))
             )
             .andExpect(status().isOk());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertBRANCHESUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedBRANCHES, bRANCHES), getPersistedBRANCHES(bRANCHES));
+        assertBranchesUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedBranches, branches), getPersistedBranches(branches));
     }
 
     @Test
     @Transactional
-    void fullUpdateBRANCHESWithPatch() throws Exception {
+    void fullUpdateBranchesWithPatch() throws Exception {
         // Initialize the database
-        insertedBRANCHES = bRANCHESRepository.saveAndFlush(bRANCHES);
+        insertedBranches = branchesRepository.saveAndFlush(branches);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the bRANCHES using partial update
-        BRANCHES partialUpdatedBRANCHES = new BRANCHES();
-        partialUpdatedBRANCHES.setId(bRANCHES.getId());
+        // Update the branches using partial update
+        Branches partialUpdatedBranches = new Branches();
+        partialUpdatedBranches.setId(branches.getId());
 
-        partialUpdatedBRANCHES
-            .bRANCHNAME(UPDATED_B_RANCHNAME)
-            .bRANCHCODE(UPDATED_B_RANCHCODE)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .eMAIL(UPDATED_E_MAIL)
-            .aDDRESS(UPDATED_A_DDRESS)
-            .pHONE(UPDATED_P_HONE)
-            .lOCATION(UPDATED_L_OCATION)
-            .cONTACTPERSON(UPDATED_C_ONTACTPERSON)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .cREATEDON(UPDATED_C_REATEDON)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .aPPROVEDON(UPDATED_A_PPROVEDON)
-            .cHECKERREMARKS(UPDATED_C_HECKERREMARKS)
-            .dELETEDBY(UPDATED_D_ELETEDBY)
-            .dELETEDON(UPDATED_D_ELETEDON)
-            .dELETEREMARKS(UPDATED_D_ELETEREMARKS)
-            .dELETED(UPDATED_D_ELETED)
-            .dECLINED(UPDATED_D_ECLINED)
-            .dECLINEDDON(UPDATED_D_ECLINEDDON)
-            .dECLINEDBY(UPDATED_D_ECLINEDBY)
-            .sESSIONID(UPDATED_S_ESSIONID)
-            .rEWORKED(UPDATED_R_EWORKED)
-            .rEWORKEDBY(UPDATED_R_EWORKEDBY)
-            .rEWORKEDON(UPDATED_R_EWORKEDON)
-            .dISTRICT(UPDATED_D_ISTRICT)
-            .rEGION(UPDATED_R_EGION)
-            .rEGIONNAME(UPDATED_R_EGIONNAME)
-            .rEPORTING(UPDATED_R_EPORTING);
+        partialUpdatedBranches
+            .branchname(UPDATED_BRANCHNAME)
+            .branchcode(UPDATED_BRANCHCODE)
+            .approved(UPDATED_APPROVED)
+            .email(UPDATED_EMAIL)
+            .address(UPDATED_ADDRESS)
+            .phone(UPDATED_PHONE)
+            .location(UPDATED_LOCATION)
+            .contactperson(UPDATED_CONTACTPERSON)
+            .remarks(UPDATED_REMARKS)
+            .createdby(UPDATED_CREATEDBY)
+            .createdon(UPDATED_CREATEDON)
+            .approvedby(UPDATED_APPROVEDBY)
+            .approvedon(UPDATED_APPROVEDON)
+            .checkerremarks(UPDATED_CHECKERREMARKS)
+            .deletedby(UPDATED_DELETEDBY)
+            .deletedon(UPDATED_DELETEDON)
+            .deleteremarks(UPDATED_DELETEREMARKS)
+            .deleted(UPDATED_DELETED)
+            .declined(UPDATED_DECLINED)
+            .declineddon(UPDATED_DECLINEDDON)
+            .declinedby(UPDATED_DECLINEDBY)
+            .sessionid(UPDATED_SESSIONID)
+            .reworked(UPDATED_REWORKED)
+            .reworkedby(UPDATED_REWORKEDBY)
+            .reworkedon(UPDATED_REWORKEDON)
+            .district(UPDATED_DISTRICT)
+            .region(UPDATED_REGION)
+            .regionname(UPDATED_REGIONNAME)
+            .reporting(UPDATED_REPORTING);
 
-        restBRANCHESMockMvc
+        restBranchesMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedBRANCHES.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedBranches.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedBRANCHES))
+                    .content(om.writeValueAsBytes(partialUpdatedBranches))
             )
             .andExpect(status().isOk());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertBRANCHESUpdatableFieldsEquals(partialUpdatedBRANCHES, getPersistedBRANCHES(partialUpdatedBRANCHES));
+        assertBranchesUpdatableFieldsEquals(partialUpdatedBranches, getPersistedBranches(partialUpdatedBranches));
     }
 
     @Test
     @Transactional
-    void patchNonExistingBRANCHES() throws Exception {
+    void patchNonExistingBranches() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bRANCHES.setId(longCount.incrementAndGet());
+        branches.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restBRANCHESMockMvc
+        restBranchesMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, bRANCHES.getId())
+                patch(ENTITY_API_URL_ID, branches.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(bRANCHES))
+                    .content(om.writeValueAsBytes(branches))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithIdMismatchBRANCHES() throws Exception {
+    void patchWithIdMismatchBranches() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bRANCHES.setId(longCount.incrementAndGet());
+        branches.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restBRANCHESMockMvc
+        restBranchesMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(bRANCHES))
+                    .content(om.writeValueAsBytes(branches))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithMissingIdPathParamBRANCHES() throws Exception {
+    void patchWithMissingIdPathParamBranches() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        bRANCHES.setId(longCount.incrementAndGet());
+        branches.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restBRANCHESMockMvc
-            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(bRANCHES)))
+        restBranchesMockMvc
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(branches)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the BRANCHES in the database
+        // Validate the Branches in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void deleteBRANCHES() throws Exception {
+    void deleteBranches() throws Exception {
         // Initialize the database
-        insertedBRANCHES = bRANCHESRepository.saveAndFlush(bRANCHES);
+        insertedBranches = branchesRepository.saveAndFlush(branches);
 
         long databaseSizeBeforeDelete = getRepositoryCount();
 
-        // Delete the bRANCHES
-        restBRANCHESMockMvc
-            .perform(delete(ENTITY_API_URL_ID, bRANCHES.getId()).accept(MediaType.APPLICATION_JSON))
+        // Delete the branches
+        restBranchesMockMvc
+            .perform(delete(ENTITY_API_URL_ID, branches.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
@@ -677,7 +680,7 @@ class BRANCHESResourceIT {
     }
 
     protected long getRepositoryCount() {
-        return bRANCHESRepository.count();
+        return branchesRepository.count();
     }
 
     protected void assertIncrementedRepositoryCount(long countBefore) {
@@ -692,15 +695,15 @@ class BRANCHESResourceIT {
         assertThat(countBefore).isEqualTo(getRepositoryCount());
     }
 
-    protected BRANCHES getPersistedBRANCHES(BRANCHES bRANCHES) {
-        return bRANCHESRepository.findById(bRANCHES.getId()).orElseThrow();
+    protected Branches getPersistedBranches(Branches branches) {
+        return branchesRepository.findById(branches.getId()).orElseThrow();
     }
 
-    protected void assertPersistedBRANCHESToMatchAllProperties(BRANCHES expectedBRANCHES) {
-        assertBRANCHESAllPropertiesEquals(expectedBRANCHES, getPersistedBRANCHES(expectedBRANCHES));
+    protected void assertPersistedBranchesToMatchAllProperties(Branches expectedBranches) {
+        assertBranchesAllPropertiesEquals(expectedBranches, getPersistedBranches(expectedBranches));
     }
 
-    protected void assertPersistedBRANCHESToMatchUpdatableProperties(BRANCHES expectedBRANCHES) {
-        assertBRANCHESAllUpdatablePropertiesEquals(expectedBRANCHES, getPersistedBRANCHES(expectedBRANCHES));
+    protected void assertPersistedBranchesToMatchUpdatableProperties(Branches expectedBranches) {
+        assertBranchesAllUpdatablePropertiesEquals(expectedBranches, getPersistedBranches(expectedBranches));
     }
 }

@@ -4,27 +4,27 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class RANGETestSamples {
+public class RangeTestSamples {
 
     private static final Random random = new Random();
     private static final AtomicLong longCount = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
-    public static RANGE getRANGESample1() {
-        return new RANGE().id(1L).rANGEFROM(1L).rANGETO(1L).tXNTYPE("tXNTYPE1").tXNCODE("tXNCODE1").cHARGEID(1L).cHANNEL("cHANNEL1");
+    public static Range getRangeSample1() {
+        return new Range().id(1L).rangefrom(1L).rangeto(1L).txntype("txntype1").txncode("txncode1").chargeid(1L).channel("channel1");
     }
 
-    public static RANGE getRANGESample2() {
-        return new RANGE().id(2L).rANGEFROM(2L).rANGETO(2L).tXNTYPE("tXNTYPE2").tXNCODE("tXNCODE2").cHARGEID(2L).cHANNEL("cHANNEL2");
+    public static Range getRangeSample2() {
+        return new Range().id(2L).rangefrom(2L).rangeto(2L).txntype("txntype2").txncode("txncode2").chargeid(2L).channel("channel2");
     }
 
-    public static RANGE getRANGERandomSampleGenerator() {
-        return new RANGE()
+    public static Range getRangeRandomSampleGenerator() {
+        return new Range()
             .id(longCount.incrementAndGet())
-            .rANGEFROM(longCount.incrementAndGet())
-            .rANGETO(longCount.incrementAndGet())
-            .tXNTYPE(UUID.randomUUID().toString())
-            .tXNCODE(UUID.randomUUID().toString())
-            .cHARGEID(longCount.incrementAndGet())
-            .cHANNEL(UUID.randomUUID().toString());
+            .rangefrom(longCount.incrementAndGet())
+            .rangeto(longCount.incrementAndGet())
+            .txntype(UUID.randomUUID().toString())
+            .txncode(UUID.randomUUID().toString())
+            .chargeid(longCount.incrementAndGet())
+            .channel(UUID.randomUUID().toString());
     }
 }

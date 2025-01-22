@@ -1,71 +1,71 @@
 {
   "annotations": {
-    "changelogDate": "20250117142903"
+    "changelogDate": "20250121085659"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "pHONENUMBER",
+      "fieldName": "phonenumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "cUSTOMERNAME",
+      "fieldName": "customername",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "pINBLOCKEDON",
+      "fieldName": "pinblockedon",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pINBLOCKREMARKS",
+      "fieldName": "pinblockremarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "pINRESETBY",
+      "fieldName": "pinresetby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pINRESETON",
+      "fieldName": "pinreseton",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pINRESETAPPROVEDBY",
+      "fieldName": "pinresetapprovedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pINRESETAPPROVEDON",
+      "fieldName": "pinresetapprovedon",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pINRESETREMARKS",
+      "fieldName": "pinresetremarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "bRANCHCODE",
+      "fieldName": "branchcode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     }
   ],
-  "name": "PINRESETHISTORY",
+  "name": "PinResetHistory",
   "relationships": [],
   "searchEngine": "no"
 }

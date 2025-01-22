@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.CUSTOMER;
-import com.istl.app.repository.CUSTOMERRepository;
+import com.istl.app.domain.Customer;
+import com.istl.app.repository.CustomerRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,481 +20,481 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.CUSTOMER}.
+ * REST controller for managing {@link com.istl.app.domain.Customer}.
  */
 @RestController
 @RequestMapping("/api/customers")
 @Transactional
-public class CUSTOMERResource {
+public class CustomerResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CUSTOMERResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CustomerResource.class);
 
-    private static final String ENTITY_NAME = "cUSTOMER";
+    private static final String ENTITY_NAME = "customer";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final CUSTOMERRepository cUSTOMERRepository;
+    private final CustomerRepository customerRepository;
 
-    public CUSTOMERResource(CUSTOMERRepository cUSTOMERRepository) {
-        this.cUSTOMERRepository = cUSTOMERRepository;
+    public CustomerResource(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     /**
-     * {@code POST  /customers} : Create a new cUSTOMER.
+     * {@code POST  /customers} : Create a new customer.
      *
-     * @param cUSTOMER the cUSTOMER to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new cUSTOMER, or with status {@code 400 (Bad Request)} if the cUSTOMER has already an ID.
+     * @param customer the customer to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new customer, or with status {@code 400 (Bad Request)} if the customer has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<CUSTOMER> createCUSTOMER(@Valid @RequestBody CUSTOMER cUSTOMER) throws URISyntaxException {
-        LOG.debug("REST request to save CUSTOMER : {}", cUSTOMER);
-        if (cUSTOMER.getId() != null) {
-            throw new BadRequestAlertException("A new cUSTOMER cannot already have an ID", ENTITY_NAME, "idexists");
+    public ResponseEntity<Customer> createCustomer(@Valid @RequestBody Customer customer) throws URISyntaxException {
+        LOG.debug("REST request to save Customer : {}", customer);
+        if (customer.getId() != null) {
+            throw new BadRequestAlertException("A new customer cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        cUSTOMER = cUSTOMERRepository.save(cUSTOMER);
-        return ResponseEntity.created(new URI("/api/customers/" + cUSTOMER.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, cUSTOMER.getId().toString()))
-            .body(cUSTOMER);
+        customer = customerRepository.save(customer);
+        return ResponseEntity.created(new URI("/api/customers/" + customer.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, customer.getId().toString()))
+            .body(customer);
     }
 
     /**
-     * {@code PUT  /customers/:id} : Updates an existing cUSTOMER.
+     * {@code PUT  /customers/:id} : Updates an existing customer.
      *
-     * @param id the id of the cUSTOMER to save.
-     * @param cUSTOMER the cUSTOMER to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated cUSTOMER,
-     * or with status {@code 400 (Bad Request)} if the cUSTOMER is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the cUSTOMER couldn't be updated.
+     * @param id the id of the customer to save.
+     * @param customer the customer to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated customer,
+     * or with status {@code 400 (Bad Request)} if the customer is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the customer couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<CUSTOMER> updateCUSTOMER(
+    public ResponseEntity<Customer> updateCustomer(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody CUSTOMER cUSTOMER
+        @Valid @RequestBody Customer customer
     ) throws URISyntaxException {
-        LOG.debug("REST request to update CUSTOMER : {}, {}", id, cUSTOMER);
-        if (cUSTOMER.getId() == null) {
+        LOG.debug("REST request to update Customer : {}, {}", id, customer);
+        if (customer.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, cUSTOMER.getId())) {
+        if (!Objects.equals(id, customer.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!cUSTOMERRepository.existsById(id)) {
+        if (!customerRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        cUSTOMER = cUSTOMERRepository.save(cUSTOMER);
+        customer = customerRepository.save(customer);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, cUSTOMER.getId().toString()))
-            .body(cUSTOMER);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, customer.getId().toString()))
+            .body(customer);
     }
 
     /**
-     * {@code PATCH  /customers/:id} : Partial updates given fields of an existing cUSTOMER, field will ignore if it is null
+     * {@code PATCH  /customers/:id} : Partial updates given fields of an existing customer, field will ignore if it is null
      *
-     * @param id the id of the cUSTOMER to save.
-     * @param cUSTOMER the cUSTOMER to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated cUSTOMER,
-     * or with status {@code 400 (Bad Request)} if the cUSTOMER is not valid,
-     * or with status {@code 404 (Not Found)} if the cUSTOMER is not found,
-     * or with status {@code 500 (Internal Server Error)} if the cUSTOMER couldn't be updated.
+     * @param id the id of the customer to save.
+     * @param customer the customer to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated customer,
+     * or with status {@code 400 (Bad Request)} if the customer is not valid,
+     * or with status {@code 404 (Not Found)} if the customer is not found,
+     * or with status {@code 500 (Internal Server Error)} if the customer couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<CUSTOMER> partialUpdateCUSTOMER(
+    public ResponseEntity<Customer> partialUpdateCustomer(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody CUSTOMER cUSTOMER
+        @NotNull @RequestBody Customer customer
     ) throws URISyntaxException {
-        LOG.debug("REST request to partial update CUSTOMER partially : {}, {}", id, cUSTOMER);
-        if (cUSTOMER.getId() == null) {
+        LOG.debug("REST request to partial update Customer partially : {}, {}", id, customer);
+        if (customer.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, cUSTOMER.getId())) {
+        if (!Objects.equals(id, customer.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!cUSTOMERRepository.existsById(id)) {
+        if (!customerRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<CUSTOMER> result = cUSTOMERRepository
-            .findById(cUSTOMER.getId())
-            .map(existingCUSTOMER -> {
-                if (cUSTOMER.getcUSTOMERNAME() != null) {
-                    existingCUSTOMER.setcUSTOMERNAME(cUSTOMER.getcUSTOMERNAME());
+        Optional<Customer> result = customerRepository
+            .findById(customer.getId())
+            .map(existingCustomer -> {
+                if (customer.getCustomername() != null) {
+                    existingCustomer.setCustomername(customer.getCustomername());
                 }
-                if (cUSTOMER.getpHONENUMBER() != null) {
-                    existingCUSTOMER.setpHONENUMBER(cUSTOMER.getpHONENUMBER());
+                if (customer.getPhonenumber() != null) {
+                    existingCustomer.setPhonenumber(customer.getPhonenumber());
                 }
-                if (cUSTOMER.getcARDNUMBER() != null) {
-                    existingCUSTOMER.setcARDNUMBER(cUSTOMER.getcARDNUMBER());
+                if (customer.getCardnumber() != null) {
+                    existingCustomer.setCardnumber(customer.getCardnumber());
                 }
-                if (cUSTOMER.getaCCOUNTNUMBER() != null) {
-                    existingCUSTOMER.setaCCOUNTNUMBER(cUSTOMER.getaCCOUNTNUMBER());
+                if (customer.getAccountnumber() != null) {
+                    existingCustomer.setAccountnumber(customer.getAccountnumber());
                 }
-                if (cUSTOMER.getlANG() != null) {
-                    existingCUSTOMER.setlANG(cUSTOMER.getlANG());
+                if (customer.getLang() != null) {
+                    existingCustomer.setLang(customer.getLang());
                 }
-                if (cUSTOMER.getpIN() != null) {
-                    existingCUSTOMER.setpIN(cUSTOMER.getpIN());
+                if (customer.getPin() != null) {
+                    existingCustomer.setPin(customer.getPin());
                 }
-                if (cUSTOMER.getfIRSTLOGIN() != null) {
-                    existingCUSTOMER.setfIRSTLOGIN(cUSTOMER.getfIRSTLOGIN());
+                if (customer.getFirstlogin() != null) {
+                    existingCustomer.setFirstlogin(customer.getFirstlogin());
                 }
-                if (cUSTOMER.getaCTIVE() != null) {
-                    existingCUSTOMER.setaCTIVE(cUSTOMER.getaCTIVE());
+                if (customer.getActive() != null) {
+                    existingCustomer.setActive(customer.getActive());
                 }
-                if (cUSTOMER.getrEGISTERED() != null) {
-                    existingCUSTOMER.setrEGISTERED(cUSTOMER.getrEGISTERED());
+                if (customer.getRegistered() != null) {
+                    existingCustomer.setRegistered(customer.getRegistered());
                 }
-                if (cUSTOMER.getcSTDELETE() != null) {
-                    existingCUSTOMER.setcSTDELETE(cUSTOMER.getcSTDELETE());
+                if (customer.getCstdelete() != null) {
+                    existingCustomer.setCstdelete(customer.getCstdelete());
                 }
-                if (cUSTOMER.getrEGDATE() != null) {
-                    existingCUSTOMER.setrEGDATE(cUSTOMER.getrEGDATE());
+                if (customer.getRegdate() != null) {
+                    existingCustomer.setRegdate(customer.getRegdate());
                 }
-                if (cUSTOMER.getaLERTENABLED() != null) {
-                    existingCUSTOMER.setaLERTENABLED(cUSTOMER.getaLERTENABLED());
+                if (customer.getAlertenabled() != null) {
+                    existingCustomer.setAlertenabled(customer.getAlertenabled());
                 }
-                if (cUSTOMER.getrEMARK() != null) {
-                    existingCUSTOMER.setrEMARK(cUSTOMER.getrEMARK());
+                if (customer.getRemark() != null) {
+                    existingCustomer.setRemark(customer.getRemark());
                 }
-                if (cUSTOMER.getiMSI() != null) {
-                    existingCUSTOMER.setiMSI(cUSTOMER.getiMSI());
+                if (customer.getImsi() != null) {
+                    existingCustomer.setImsi(customer.getImsi());
                 }
-                if (cUSTOMER.getpARTIALLYREGISTERED() != null) {
-                    existingCUSTOMER.setpARTIALLYREGISTERED(cUSTOMER.getpARTIALLYREGISTERED());
+                if (customer.getPartiallyregistered() != null) {
+                    existingCustomer.setPartiallyregistered(customer.getPartiallyregistered());
                 }
-                if (cUSTOMER.getpARTIALDATE() != null) {
-                    existingCUSTOMER.setpARTIALDATE(cUSTOMER.getpARTIALDATE());
+                if (customer.getPartialdate() != null) {
+                    existingCustomer.setPartialdate(customer.getPartialdate());
                 }
-                if (cUSTOMER.getrEGISTERDATE() != null) {
-                    existingCUSTOMER.setrEGISTERDATE(cUSTOMER.getrEGISTERDATE());
+                if (customer.getRegisterdate() != null) {
+                    existingCustomer.setRegisterdate(customer.getRegisterdate());
                 }
-                if (cUSTOMER.getaPPROVED() != null) {
-                    existingCUSTOMER.setaPPROVED(cUSTOMER.getaPPROVED());
+                if (customer.getApproved() != null) {
+                    existingCustomer.setApproved(customer.getApproved());
                 }
-                if (cUSTOMER.getaPPROVEDBY() != null) {
-                    existingCUSTOMER.setaPPROVEDBY(cUSTOMER.getaPPROVEDBY());
+                if (customer.getApprovedby() != null) {
+                    existingCustomer.setApprovedby(customer.getApprovedby());
                 }
-                if (cUSTOMER.getaPPROVEDDATE() != null) {
-                    existingCUSTOMER.setaPPROVEDDATE(cUSTOMER.getaPPROVEDDATE());
+                if (customer.getApproveddate() != null) {
+                    existingCustomer.setApproveddate(customer.getApproveddate());
                 }
-                if (cUSTOMER.getdECLINED() != null) {
-                    existingCUSTOMER.setdECLINED(cUSTOMER.getdECLINED());
+                if (customer.getDeclined() != null) {
+                    existingCustomer.setDeclined(customer.getDeclined());
                 }
-                if (cUSTOMER.getdECLINEDBY() != null) {
-                    existingCUSTOMER.setdECLINEDBY(cUSTOMER.getdECLINEDBY());
+                if (customer.getDeclinedby() != null) {
+                    existingCustomer.setDeclinedby(customer.getDeclinedby());
                 }
-                if (cUSTOMER.getdECLINEDDATE() != null) {
-                    existingCUSTOMER.setdECLINEDDATE(cUSTOMER.getdECLINEDDATE());
+                if (customer.getDeclineddate() != null) {
+                    existingCustomer.setDeclineddate(customer.getDeclineddate());
                 }
-                if (cUSTOMER.getcHECKERREMARKS() != null) {
-                    existingCUSTOMER.setcHECKERREMARKS(cUSTOMER.getcHECKERREMARKS());
+                if (customer.getCheckerremarks() != null) {
+                    existingCustomer.setCheckerremarks(customer.getCheckerremarks());
                 }
-                if (cUSTOMER.getpOSTALADDRESS() != null) {
-                    existingCUSTOMER.setpOSTALADDRESS(cUSTOMER.getpOSTALADDRESS());
+                if (customer.getPostaladdress() != null) {
+                    existingCustomer.setPostaladdress(customer.getPostaladdress());
                 }
-                if (cUSTOMER.getrESIDENCE() != null) {
-                    existingCUSTOMER.setrESIDENCE(cUSTOMER.getrESIDENCE());
+                if (customer.getResidence() != null) {
+                    existingCustomer.setResidence(customer.getResidence());
                 }
-                if (cUSTOMER.getdOB() != null) {
-                    existingCUSTOMER.setdOB(cUSTOMER.getdOB());
+                if (customer.getDob() != null) {
+                    existingCustomer.setDob(customer.getDob());
                 }
-                if (cUSTOMER.getcREATEDBY() != null) {
-                    existingCUSTOMER.setcREATEDBY(cUSTOMER.getcREATEDBY());
+                if (customer.getCreatedby() != null) {
+                    existingCustomer.setCreatedby(customer.getCreatedby());
                 }
-                if (cUSTOMER.geteMAILADDRESS() != null) {
-                    existingCUSTOMER.seteMAILADDRESS(cUSTOMER.geteMAILADDRESS());
+                if (customer.getEmailaddress() != null) {
+                    existingCustomer.setEmailaddress(customer.getEmailaddress());
                 }
-                if (cUSTOMER.getiDENTIFICATIONID() != null) {
-                    existingCUSTOMER.setiDENTIFICATIONID(cUSTOMER.getiDENTIFICATIONID());
+                if (customer.getIdentificationid() != null) {
+                    existingCustomer.setIdentificationid(customer.getIdentificationid());
                 }
-                if (cUSTOMER.getaDDACCOUNT() != null) {
-                    existingCUSTOMER.setaDDACCOUNT(cUSTOMER.getaDDACCOUNT());
+                if (customer.getAddaccount() != null) {
+                    existingCustomer.setAddaccount(customer.getAddaccount());
                 }
-                if (cUSTOMER.getaCLINKINGINSTITUTION() != null) {
-                    existingCUSTOMER.setaCLINKINGINSTITUTION(cUSTOMER.getaCLINKINGINSTITUTION());
+                if (customer.getAclinkinginstitution() != null) {
+                    existingCustomer.setAclinkinginstitution(customer.getAclinkinginstitution());
                 }
-                if (cUSTOMER.getdEACTIVATED() != null) {
-                    existingCUSTOMER.setdEACTIVATED(cUSTOMER.getdEACTIVATED());
+                if (customer.getDeactivated() != null) {
+                    existingCustomer.setDeactivated(customer.getDeactivated());
                 }
-                if (cUSTOMER.getdEACTIVATEDBY() != null) {
-                    existingCUSTOMER.setdEACTIVATEDBY(cUSTOMER.getdEACTIVATEDBY());
+                if (customer.getDeactivatedby() != null) {
+                    existingCustomer.setDeactivatedby(customer.getDeactivatedby());
                 }
-                if (cUSTOMER.getdEACTIVATEDON() != null) {
-                    existingCUSTOMER.setdEACTIVATEDON(cUSTOMER.getdEACTIVATEDON());
+                if (customer.getDeactivatedon() != null) {
+                    existingCustomer.setDeactivatedon(customer.getDeactivatedon());
                 }
-                if (cUSTOMER.getpHONENOCHANGED() != null) {
-                    existingCUSTOMER.setpHONENOCHANGED(cUSTOMER.getpHONENOCHANGED());
+                if (customer.getPhonenochanged() != null) {
+                    existingCustomer.setPhonenochanged(customer.getPhonenochanged());
                 }
-                if (cUSTOMER.getpHONENOCHANGEDBY() != null) {
-                    existingCUSTOMER.setpHONENOCHANGEDBY(cUSTOMER.getpHONENOCHANGEDBY());
+                if (customer.getPhonenochangedby() != null) {
+                    existingCustomer.setPhonenochangedby(customer.getPhonenochangedby());
                 }
-                if (cUSTOMER.getpHONENOCHANGEDON() != null) {
-                    existingCUSTOMER.setpHONENOCHANGEDON(cUSTOMER.getpHONENOCHANGEDON());
+                if (customer.getPhonenochangedon() != null) {
+                    existingCustomer.setPhonenochangedon(customer.getPhonenochangedon());
                 }
-                if (cUSTOMER.getoRIGINALPHONENO() != null) {
-                    existingCUSTOMER.setoRIGINALPHONENO(cUSTOMER.getoRIGINALPHONENO());
+                if (customer.getOriginalphoneno() != null) {
+                    existingCustomer.setOriginalphoneno(customer.getOriginalphoneno());
                 }
-                if (cUSTOMER.getnEWPHONENO() != null) {
-                    existingCUSTOMER.setnEWPHONENO(cUSTOMER.getnEWPHONENO());
+                if (customer.getNewphoneno() != null) {
+                    existingCustomer.setNewphoneno(customer.getNewphoneno());
                 }
-                if (cUSTOMER.getrESET() != null) {
-                    existingCUSTOMER.setrESET(cUSTOMER.getrESET());
+                if (customer.getReset() != null) {
+                    existingCustomer.setReset(customer.getReset());
                 }
-                if (cUSTOMER.getrESETINGINSTITUTION() != null) {
-                    existingCUSTOMER.setrESETINGINSTITUTION(cUSTOMER.getrESETINGINSTITUTION());
+                if (customer.getResetinginstitution() != null) {
+                    existingCustomer.setResetinginstitution(customer.getResetinginstitution());
                 }
-                if (cUSTOMER.getpINRESETREMARK() != null) {
-                    existingCUSTOMER.setpINRESETREMARK(cUSTOMER.getpINRESETREMARK());
+                if (customer.getPinresetremark() != null) {
+                    existingCustomer.setPinresetremark(customer.getPinresetremark());
                 }
-                if (cUSTOMER.getrESETBY() != null) {
-                    existingCUSTOMER.setrESETBY(cUSTOMER.getrESETBY());
+                if (customer.getResetby() != null) {
+                    existingCustomer.setResetby(customer.getResetby());
                 }
-                if (cUSTOMER.getrESETON() != null) {
-                    existingCUSTOMER.setrESETON(cUSTOMER.getrESETON());
+                if (customer.getReseton() != null) {
+                    existingCustomer.setReseton(customer.getReseton());
                 }
-                if (cUSTOMER.getuNBLOCKINGINSTITUTION() != null) {
-                    existingCUSTOMER.setuNBLOCKINGINSTITUTION(cUSTOMER.getuNBLOCKINGINSTITUTION());
+                if (customer.getUnblockinginstitution() != null) {
+                    existingCustomer.setUnblockinginstitution(customer.getUnblockinginstitution());
                 }
-                if (cUSTOMER.getpINBLOCK() != null) {
-                    existingCUSTOMER.setpINBLOCK(cUSTOMER.getpINBLOCK());
+                if (customer.getPinblock() != null) {
+                    existingCustomer.setPinblock(customer.getPinblock());
                 }
-                if (cUSTOMER.getpINBLOCKBY() != null) {
-                    existingCUSTOMER.setpINBLOCKBY(cUSTOMER.getpINBLOCKBY());
+                if (customer.getPinblockby() != null) {
+                    existingCustomer.setPinblockby(customer.getPinblockby());
                 }
-                if (cUSTOMER.getpINBLOCKREMARKS() != null) {
-                    existingCUSTOMER.setpINBLOCKREMARKS(cUSTOMER.getpINBLOCKREMARKS());
+                if (customer.getPinblockremarks() != null) {
+                    existingCustomer.setPinblockremarks(customer.getPinblockremarks());
                 }
-                if (cUSTOMER.getbLOCKINGINSTITUTION() != null) {
-                    existingCUSTOMER.setbLOCKINGINSTITUTION(cUSTOMER.getbLOCKINGINSTITUTION());
+                if (customer.getBlockinginstitution() != null) {
+                    existingCustomer.setBlockinginstitution(customer.getBlockinginstitution());
                 }
-                if (cUSTOMER.getpINBLOCKON() != null) {
-                    existingCUSTOMER.setpINBLOCKON(cUSTOMER.getpINBLOCKON());
+                if (customer.getPinblockon() != null) {
+                    existingCustomer.setPinblockon(customer.getPinblockon());
                 }
-                if (cUSTOMER.getaPPROVEDON() != null) {
-                    existingCUSTOMER.setaPPROVEDON(cUSTOMER.getaPPROVEDON());
+                if (customer.getApprovedon() != null) {
+                    existingCustomer.setApprovedon(customer.getApprovedon());
                 }
-                if (cUSTOMER.getpINUNBLOCKBY() != null) {
-                    existingCUSTOMER.setpINUNBLOCKBY(cUSTOMER.getpINUNBLOCKBY());
+                if (customer.getPinunblockby() != null) {
+                    existingCustomer.setPinunblockby(customer.getPinunblockby());
                 }
-                if (cUSTOMER.getlOGGEDIN() != null) {
-                    existingCUSTOMER.setlOGGEDIN(cUSTOMER.getlOGGEDIN());
+                if (customer.getLoggedin() != null) {
+                    existingCustomer.setLoggedin(customer.getLoggedin());
                 }
-                if (cUSTOMER.gettRIALS() != null) {
-                    existingCUSTOMER.settRIALS(cUSTOMER.gettRIALS());
+                if (customer.getTrials() != null) {
+                    existingCustomer.setTrials(customer.getTrials());
                 }
-                if (cUSTOMER.getiDTYPE() != null) {
-                    existingCUSTOMER.setiDTYPE(cUSTOMER.getiDTYPE());
+                if (customer.getIdtype() != null) {
+                    existingCustomer.setIdtype(customer.getIdtype());
                 }
-                if (cUSTOMER.getiDNUMBER() != null) {
-                    existingCUSTOMER.setiDNUMBER(cUSTOMER.getiDNUMBER());
+                if (customer.getIdnumber() != null) {
+                    existingCustomer.setIdnumber(customer.getIdnumber());
                 }
-                if (cUSTOMER.getgENDER() != null) {
-                    existingCUSTOMER.setgENDER(cUSTOMER.getgENDER());
+                if (customer.getGender() != null) {
+                    existingCustomer.setGender(customer.getGender());
                 }
-                if (cUSTOMER.getcIF() != null) {
-                    existingCUSTOMER.setcIF(cUSTOMER.getcIF());
+                if (customer.getCif() != null) {
+                    existingCustomer.setCif(customer.getCif());
                 }
-                if (cUSTOMER.getdATEOFBIRTH() != null) {
-                    existingCUSTOMER.setdATEOFBIRTH(cUSTOMER.getdATEOFBIRTH());
+                if (customer.getDateofbirth() != null) {
+                    existingCustomer.setDateofbirth(customer.getDateofbirth());
                 }
-                if (cUSTOMER.getrEMARKS() != null) {
-                    existingCUSTOMER.setrEMARKS(cUSTOMER.getrEMARKS());
+                if (customer.getRemarks() != null) {
+                    existingCustomer.setRemarks(customer.getRemarks());
                 }
-                if (cUSTOMER.getrESETIMSI() != null) {
-                    existingCUSTOMER.setrESETIMSI(cUSTOMER.getrESETIMSI());
+                if (customer.getResetimsi() != null) {
+                    existingCustomer.setResetimsi(customer.getResetimsi());
                 }
-                if (cUSTOMER.getiMSIRESETBY() != null) {
-                    existingCUSTOMER.setiMSIRESETBY(cUSTOMER.getiMSIRESETBY());
+                if (customer.getImsiresetby() != null) {
+                    existingCustomer.setImsiresetby(customer.getImsiresetby());
                 }
-                if (cUSTOMER.getfIRSTNAME() != null) {
-                    existingCUSTOMER.setfIRSTNAME(cUSTOMER.getfIRSTNAME());
+                if (customer.getFirstname() != null) {
+                    existingCustomer.setFirstname(customer.getFirstname());
                 }
-                if (cUSTOMER.getsECONDNAME() != null) {
-                    existingCUSTOMER.setsECONDNAME(cUSTOMER.getsECONDNAME());
+                if (customer.getSecondname() != null) {
+                    existingCustomer.setSecondname(customer.getSecondname());
                 }
-                if (cUSTOMER.getlASTNAME() != null) {
-                    existingCUSTOMER.setlASTNAME(cUSTOMER.getlASTNAME());
+                if (customer.getLastname() != null) {
+                    existingCustomer.setLastname(customer.getLastname());
                 }
-                if (cUSTOMER.getpINBLOCKTIME() != null) {
-                    existingCUSTOMER.setpINBLOCKTIME(cUSTOMER.getpINBLOCKTIME());
+                if (customer.getPinblocktime() != null) {
+                    existingCustomer.setPinblocktime(customer.getPinblocktime());
                 }
-                if (cUSTOMER.getcUSTOMERSTATUS() != null) {
-                    existingCUSTOMER.setcUSTOMERSTATUS(cUSTOMER.getcUSTOMERSTATUS());
+                if (customer.getCustomerstatus() != null) {
+                    existingCustomer.setCustomerstatus(customer.getCustomerstatus());
                 }
-                if (cUSTOMER.getuSERNAME() != null) {
-                    existingCUSTOMER.setuSERNAME(cUSTOMER.getuSERNAME());
+                if (customer.getUsername() != null) {
+                    existingCustomer.setUsername(customer.getUsername());
                 }
-                if (cUSTOMER.getpASSWORD() != null) {
-                    existingCUSTOMER.setpASSWORD(cUSTOMER.getpASSWORD());
+                if (customer.getPassword() != null) {
+                    existingCustomer.setPassword(customer.getPassword());
                 }
-                if (cUSTOMER.getdEVICEID() != null) {
-                    existingCUSTOMER.setdEVICEID(cUSTOMER.getdEVICEID());
+                if (customer.getDeviceid() != null) {
+                    existingCustomer.setDeviceid(customer.getDeviceid());
                 }
-                if (cUSTOMER.getcHANNEL() != null) {
-                    existingCUSTOMER.setcHANNEL(cUSTOMER.getcHANNEL());
+                if (customer.getChannel() != null) {
+                    existingCustomer.setChannel(customer.getChannel());
                 }
-                if (cUSTOMER.getpASSRESET() != null) {
-                    existingCUSTOMER.setpASSRESET(cUSTOMER.getpASSRESET());
+                if (customer.getPassreset() != null) {
+                    existingCustomer.setPassreset(customer.getPassreset());
                 }
-                if (cUSTOMER.getpASSRESETBY() != null) {
-                    existingCUSTOMER.setpASSRESETBY(cUSTOMER.getpASSRESETBY());
+                if (customer.getPassresetby() != null) {
+                    existingCustomer.setPassresetby(customer.getPassresetby());
                 }
-                if (cUSTOMER.getpASSRESETON() != null) {
-                    existingCUSTOMER.setpASSRESETON(cUSTOMER.getpASSRESETON());
+                if (customer.getPassreseton() != null) {
+                    existingCustomer.setPassreseton(customer.getPassreseton());
                 }
-                if (cUSTOMER.getpASSBLOCK() != null) {
-                    existingCUSTOMER.setpASSBLOCK(cUSTOMER.getpASSBLOCK());
+                if (customer.getPassblock() != null) {
+                    existingCustomer.setPassblock(customer.getPassblock());
                 }
-                if (cUSTOMER.getpASSBLOCKBY() != null) {
-                    existingCUSTOMER.setpASSBLOCKBY(cUSTOMER.getpASSBLOCKBY());
+                if (customer.getPassblockby() != null) {
+                    existingCustomer.setPassblockby(customer.getPassblockby());
                 }
-                if (cUSTOMER.getpASSBLOCKON() != null) {
-                    existingCUSTOMER.setpASSBLOCKON(cUSTOMER.getpASSBLOCKON());
+                if (customer.getPassblockon() != null) {
+                    existingCustomer.setPassblockon(customer.getPassblockon());
                 }
-                if (cUSTOMER.getpINMARKBLOCK() != null) {
-                    existingCUSTOMER.setpINMARKBLOCK(cUSTOMER.getpINMARKBLOCK());
+                if (customer.getPinmarkblock() != null) {
+                    existingCustomer.setPinmarkblock(customer.getPinmarkblock());
                 }
-                if (cUSTOMER.getpASSMARKBLOCK() != null) {
-                    existingCUSTOMER.setpASSMARKBLOCK(cUSTOMER.getpASSMARKBLOCK());
+                if (customer.getPassmarkblock() != null) {
+                    existingCustomer.setPassmarkblock(customer.getPassmarkblock());
                 }
-                if (cUSTOMER.getpASSRESETREMARKS() != null) {
-                    existingCUSTOMER.setpASSRESETREMARKS(cUSTOMER.getpASSRESETREMARKS());
+                if (customer.getPassresetremarks() != null) {
+                    existingCustomer.setPassresetremarks(customer.getPassresetremarks());
                 }
-                if (cUSTOMER.getpASSBLOCKREMARKS() != null) {
-                    existingCUSTOMER.setpASSBLOCKREMARKS(cUSTOMER.getpASSBLOCKREMARKS());
+                if (customer.getPassblockremarks() != null) {
+                    existingCustomer.setPassblockremarks(customer.getPassblockremarks());
                 }
-                if (cUSTOMER.getpASSUNBLOCKBY() != null) {
-                    existingCUSTOMER.setpASSUNBLOCKBY(cUSTOMER.getpASSUNBLOCKBY());
+                if (customer.getPassunblockby() != null) {
+                    existingCustomer.setPassunblockby(customer.getPassunblockby());
                 }
-                if (cUSTOMER.getpASSTRIALS() != null) {
-                    existingCUSTOMER.setpASSTRIALS(cUSTOMER.getpASSTRIALS());
+                if (customer.getPasstrials() != null) {
+                    existingCustomer.setPasstrials(customer.getPasstrials());
                 }
-                if (cUSTOMER.getaPPACTIVE() != null) {
-                    existingCUSTOMER.setaPPACTIVE(cUSTOMER.getaPPACTIVE());
+                if (customer.getAppactive() != null) {
+                    existingCustomer.setAppactive(customer.getAppactive());
                 }
-                if (cUSTOMER.getlASTLOGIN() != null) {
-                    existingCUSTOMER.setlASTLOGIN(cUSTOMER.getlASTLOGIN());
+                if (customer.getLastlogin() != null) {
+                    existingCustomer.setLastlogin(customer.getLastlogin());
                 }
-                if (cUSTOMER.getaPPMARKEDDISABLE() != null) {
-                    existingCUSTOMER.setaPPMARKEDDISABLE(cUSTOMER.getaPPMARKEDDISABLE());
+                if (customer.getAppmarkeddisable() != null) {
+                    existingCustomer.setAppmarkeddisable(customer.getAppmarkeddisable());
                 }
-                if (cUSTOMER.getdISABLEBY() != null) {
-                    existingCUSTOMER.setdISABLEBY(cUSTOMER.getdISABLEBY());
+                if (customer.getDisableby() != null) {
+                    existingCustomer.setDisableby(customer.getDisableby());
                 }
-                if (cUSTOMER.getaPPROVEDISABLEBY() != null) {
-                    existingCUSTOMER.setaPPROVEDISABLEBY(cUSTOMER.getaPPROVEDISABLEBY());
+                if (customer.getApprovedisableby() != null) {
+                    existingCustomer.setApprovedisableby(customer.getApprovedisableby());
                 }
-                if (cUSTOMER.getaPPMARKEDENABLE() != null) {
-                    existingCUSTOMER.setaPPMARKEDENABLE(cUSTOMER.getaPPMARKEDENABLE());
+                if (customer.getAppmarkedenable() != null) {
+                    existingCustomer.setAppmarkedenable(customer.getAppmarkedenable());
                 }
-                if (cUSTOMER.geteNABLEBY() != null) {
-                    existingCUSTOMER.seteNABLEBY(cUSTOMER.geteNABLEBY());
+                if (customer.getEnableby() != null) {
+                    existingCustomer.setEnableby(customer.getEnableby());
                 }
-                if (cUSTOMER.getaPPROVEDENABLEBY() != null) {
-                    existingCUSTOMER.setaPPROVEDENABLEBY(cUSTOMER.getaPPROVEDENABLEBY());
+                if (customer.getApprovedenableby() != null) {
+                    existingCustomer.setApprovedenableby(customer.getApprovedenableby());
                 }
-                if (cUSTOMER.getmARKEDDEACTIVATE() != null) {
-                    existingCUSTOMER.setmARKEDDEACTIVATE(cUSTOMER.getmARKEDDEACTIVATE());
+                if (customer.getMarkeddeactivate() != null) {
+                    existingCustomer.setMarkeddeactivate(customer.getMarkeddeactivate());
                 }
-                if (cUSTOMER.getaPPFIRSTLOGIN() != null) {
-                    existingCUSTOMER.setaPPFIRSTLOGIN(cUSTOMER.getaPPFIRSTLOGIN());
+                if (customer.getAppfirstlogin() != null) {
+                    existingCustomer.setAppfirstlogin(customer.getAppfirstlogin());
                 }
-                if (cUSTOMER.getaTMTRIALS() != null) {
-                    existingCUSTOMER.setaTMTRIALS(cUSTOMER.getaTMTRIALS());
+                if (customer.getAtmtrials() != null) {
+                    existingCustomer.setAtmtrials(customer.getAtmtrials());
                 }
-                if (cUSTOMER.getsHORCUTS() != null) {
-                    existingCUSTOMER.setsHORCUTS(cUSTOMER.getsHORCUTS());
+                if (customer.getShorcuts() != null) {
+                    existingCustomer.setShorcuts(customer.getShorcuts());
                 }
-                if (cUSTOMER.getmARKEDACTIVATE() != null) {
-                    existingCUSTOMER.setmARKEDACTIVATE(cUSTOMER.getmARKEDACTIVATE());
+                if (customer.getMarkedactivate() != null) {
+                    existingCustomer.setMarkedactivate(customer.getMarkedactivate());
                 }
-                if (cUSTOMER.gettOWN() != null) {
-                    existingCUSTOMER.settOWN(cUSTOMER.gettOWN());
+                if (customer.getTown() != null) {
+                    existingCustomer.setTown(customer.getTown());
                 }
-                if (cUSTOMER.getaPPROVEDDISABLEON() != null) {
-                    existingCUSTOMER.setaPPROVEDDISABLEON(cUSTOMER.getaPPROVEDDISABLEON());
+                if (customer.getApproveddisableon() != null) {
+                    existingCustomer.setApproveddisableon(customer.getApproveddisableon());
                 }
-                if (cUSTOMER.getdISABLEDON() != null) {
-                    existingCUSTOMER.setdISABLEDON(cUSTOMER.getdISABLEDON());
+                if (customer.getDisabledon() != null) {
+                    existingCustomer.setDisabledon(customer.getDisabledon());
                 }
-                if (cUSTOMER.getrESETAPPROVEON() != null) {
-                    existingCUSTOMER.setrESETAPPROVEON(cUSTOMER.getrESETAPPROVEON());
+                if (customer.getResetapproveon() != null) {
+                    existingCustomer.setResetapproveon(customer.getResetapproveon());
                 }
-                if (cUSTOMER.getdELETEDBY() != null) {
-                    existingCUSTOMER.setdELETEDBY(cUSTOMER.getdELETEDBY());
+                if (customer.getDeletedby() != null) {
+                    existingCustomer.setDeletedby(customer.getDeletedby());
                 }
-                if (cUSTOMER.getqUESTIONSASKED() != null) {
-                    existingCUSTOMER.setqUESTIONSASKED(cUSTOMER.getqUESTIONSASKED());
+                if (customer.getQuestionsasked() != null) {
+                    existingCustomer.setQuestionsasked(customer.getQuestionsasked());
                 }
-                if (cUSTOMER.getqUESTIONSTRIALS() != null) {
-                    existingCUSTOMER.setqUESTIONSTRIALS(cUSTOMER.getqUESTIONSTRIALS());
+                if (customer.getQuestionstrials() != null) {
+                    existingCustomer.setQuestionstrials(customer.getQuestionstrials());
                 }
-                if (cUSTOMER.getqUESTIONSANSWERED() != null) {
-                    existingCUSTOMER.setqUESTIONSANSWERED(cUSTOMER.getqUESTIONSANSWERED());
+                if (customer.getQuestionsanswered() != null) {
+                    existingCustomer.setQuestionsanswered(customer.getQuestionsanswered());
                 }
-                if (cUSTOMER.getvALIDOTP() != null) {
-                    existingCUSTOMER.setvALIDOTP(cUSTOMER.getvALIDOTP());
+                if (customer.getValidotp() != null) {
+                    existingCustomer.setValidotp(customer.getValidotp());
                 }
-                if (cUSTOMER.getaCTIVATEDBY() != null) {
-                    existingCUSTOMER.setaCTIVATEDBY(cUSTOMER.getaCTIVATEDBY());
+                if (customer.getActivatedby() != null) {
+                    existingCustomer.setActivatedby(customer.getActivatedby());
                 }
-                if (cUSTOMER.getaCTIVATEDON() != null) {
-                    existingCUSTOMER.setaCTIVATEDON(cUSTOMER.getaCTIVATEDON());
+                if (customer.getActivatedon() != null) {
+                    existingCustomer.setActivatedon(customer.getActivatedon());
                 }
-                if (cUSTOMER.getbRANCHCODE() != null) {
-                    existingCUSTOMER.setbRANCHCODE(cUSTOMER.getbRANCHCODE());
+                if (customer.getBranchcode() != null) {
+                    existingCustomer.setBranchcode(customer.getBranchcode());
                 }
 
-                return existingCUSTOMER;
+                return existingCustomer;
             })
-            .map(cUSTOMERRepository::save);
+            .map(customerRepository::save);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, cUSTOMER.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, customer.getId().toString())
         );
     }
 
     /**
-     * {@code GET  /customers} : get all the cUSTOMERS.
+     * {@code GET  /customers} : get all the customers.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of cUSTOMERS in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of customers in body.
      */
     @GetMapping("")
-    public List<CUSTOMER> getAllCUSTOMERS() {
-        LOG.debug("REST request to get all CUSTOMERS");
-        return cUSTOMERRepository.findAll();
+    public List<Customer> getAllCustomers() {
+        LOG.debug("REST request to get all Customers");
+        return customerRepository.findAll();
     }
 
     /**
-     * {@code GET  /customers/:id} : get the "id" cUSTOMER.
+     * {@code GET  /customers/:id} : get the "id" customer.
      *
-     * @param id the id of the cUSTOMER to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the cUSTOMER, or with status {@code 404 (Not Found)}.
+     * @param id the id of the customer to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the customer, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<CUSTOMER> getCUSTOMER(@PathVariable("id") Long id) {
-        LOG.debug("REST request to get CUSTOMER : {}", id);
-        Optional<CUSTOMER> cUSTOMER = cUSTOMERRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(cUSTOMER);
+    public ResponseEntity<Customer> getCustomer(@PathVariable("id") Long id) {
+        LOG.debug("REST request to get Customer : {}", id);
+        Optional<Customer> customer = customerRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(customer);
     }
 
     /**
-     * {@code DELETE  /customers/:id} : delete the "id" cUSTOMER.
+     * {@code DELETE  /customers/:id} : delete the "id" customer.
      *
-     * @param id the id of the cUSTOMER to delete.
+     * @param id the id of the customer to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCUSTOMER(@PathVariable("id") Long id) {
-        LOG.debug("REST request to delete CUSTOMER : {}", id);
-        cUSTOMERRepository.deleteById(id);
+    public ResponseEntity<Void> deleteCustomer(@PathVariable("id") Long id) {
+        LOG.debug("REST request to delete Customer : {}", id);
+        customerRepository.deleteById(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();

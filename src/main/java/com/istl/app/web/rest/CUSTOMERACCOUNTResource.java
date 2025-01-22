@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.CUSTOMERACCOUNT;
-import com.istl.app.repository.CUSTOMERACCOUNTRepository;
+import com.istl.app.domain.CustomerAccount;
+import com.istl.app.repository.CustomerAccountRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,182 +20,182 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.CUSTOMERACCOUNT}.
+ * REST controller for managing {@link com.istl.app.domain.CustomerAccount}.
  */
 @RestController
-@RequestMapping("/api/customeraccounts")
+@RequestMapping("/api/customer-accounts")
 @Transactional
-public class CUSTOMERACCOUNTResource {
+public class CustomerAccountResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CUSTOMERACCOUNTResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CustomerAccountResource.class);
 
-    private static final String ENTITY_NAME = "cUSTOMERACCOUNT";
+    private static final String ENTITY_NAME = "customerAccount";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final CUSTOMERACCOUNTRepository cUSTOMERACCOUNTRepository;
+    private final CustomerAccountRepository customerAccountRepository;
 
-    public CUSTOMERACCOUNTResource(CUSTOMERACCOUNTRepository cUSTOMERACCOUNTRepository) {
-        this.cUSTOMERACCOUNTRepository = cUSTOMERACCOUNTRepository;
+    public CustomerAccountResource(CustomerAccountRepository customerAccountRepository) {
+        this.customerAccountRepository = customerAccountRepository;
     }
 
     /**
-     * {@code POST  /customeraccounts} : Create a new cUSTOMERACCOUNT.
+     * {@code POST  /customer-accounts} : Create a new customerAccount.
      *
-     * @param cUSTOMERACCOUNT the cUSTOMERACCOUNT to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new cUSTOMERACCOUNT, or with status {@code 400 (Bad Request)} if the cUSTOMERACCOUNT has already an ID.
+     * @param customerAccount the customerAccount to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new customerAccount, or with status {@code 400 (Bad Request)} if the customerAccount has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<CUSTOMERACCOUNT> createCUSTOMERACCOUNT(@Valid @RequestBody CUSTOMERACCOUNT cUSTOMERACCOUNT)
+    public ResponseEntity<CustomerAccount> createCustomerAccount(@Valid @RequestBody CustomerAccount customerAccount)
         throws URISyntaxException {
-        LOG.debug("REST request to save CUSTOMERACCOUNT : {}", cUSTOMERACCOUNT);
-        if (cUSTOMERACCOUNT.getId() != null) {
-            throw new BadRequestAlertException("A new cUSTOMERACCOUNT cannot already have an ID", ENTITY_NAME, "idexists");
+        LOG.debug("REST request to save CustomerAccount : {}", customerAccount);
+        if (customerAccount.getId() != null) {
+            throw new BadRequestAlertException("A new customerAccount cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        cUSTOMERACCOUNT = cUSTOMERACCOUNTRepository.save(cUSTOMERACCOUNT);
-        return ResponseEntity.created(new URI("/api/customeraccounts/" + cUSTOMERACCOUNT.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, cUSTOMERACCOUNT.getId().toString()))
-            .body(cUSTOMERACCOUNT);
+        customerAccount = customerAccountRepository.save(customerAccount);
+        return ResponseEntity.created(new URI("/api/customer-accounts/" + customerAccount.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, customerAccount.getId().toString()))
+            .body(customerAccount);
     }
 
     /**
-     * {@code PUT  /customeraccounts/:id} : Updates an existing cUSTOMERACCOUNT.
+     * {@code PUT  /customer-accounts/:id} : Updates an existing customerAccount.
      *
-     * @param id the id of the cUSTOMERACCOUNT to save.
-     * @param cUSTOMERACCOUNT the cUSTOMERACCOUNT to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated cUSTOMERACCOUNT,
-     * or with status {@code 400 (Bad Request)} if the cUSTOMERACCOUNT is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the cUSTOMERACCOUNT couldn't be updated.
+     * @param id the id of the customerAccount to save.
+     * @param customerAccount the customerAccount to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated customerAccount,
+     * or with status {@code 400 (Bad Request)} if the customerAccount is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the customerAccount couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<CUSTOMERACCOUNT> updateCUSTOMERACCOUNT(
+    public ResponseEntity<CustomerAccount> updateCustomerAccount(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody CUSTOMERACCOUNT cUSTOMERACCOUNT
+        @Valid @RequestBody CustomerAccount customerAccount
     ) throws URISyntaxException {
-        LOG.debug("REST request to update CUSTOMERACCOUNT : {}, {}", id, cUSTOMERACCOUNT);
-        if (cUSTOMERACCOUNT.getId() == null) {
+        LOG.debug("REST request to update CustomerAccount : {}, {}", id, customerAccount);
+        if (customerAccount.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, cUSTOMERACCOUNT.getId())) {
+        if (!Objects.equals(id, customerAccount.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!cUSTOMERACCOUNTRepository.existsById(id)) {
+        if (!customerAccountRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        cUSTOMERACCOUNT = cUSTOMERACCOUNTRepository.save(cUSTOMERACCOUNT);
+        customerAccount = customerAccountRepository.save(customerAccount);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, cUSTOMERACCOUNT.getId().toString()))
-            .body(cUSTOMERACCOUNT);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, customerAccount.getId().toString()))
+            .body(customerAccount);
     }
 
     /**
-     * {@code PATCH  /customeraccounts/:id} : Partial updates given fields of an existing cUSTOMERACCOUNT, field will ignore if it is null
+     * {@code PATCH  /customer-accounts/:id} : Partial updates given fields of an existing customerAccount, field will ignore if it is null
      *
-     * @param id the id of the cUSTOMERACCOUNT to save.
-     * @param cUSTOMERACCOUNT the cUSTOMERACCOUNT to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated cUSTOMERACCOUNT,
-     * or with status {@code 400 (Bad Request)} if the cUSTOMERACCOUNT is not valid,
-     * or with status {@code 404 (Not Found)} if the cUSTOMERACCOUNT is not found,
-     * or with status {@code 500 (Internal Server Error)} if the cUSTOMERACCOUNT couldn't be updated.
+     * @param id the id of the customerAccount to save.
+     * @param customerAccount the customerAccount to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated customerAccount,
+     * or with status {@code 400 (Bad Request)} if the customerAccount is not valid,
+     * or with status {@code 404 (Not Found)} if the customerAccount is not found,
+     * or with status {@code 500 (Internal Server Error)} if the customerAccount couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<CUSTOMERACCOUNT> partialUpdateCUSTOMERACCOUNT(
+    public ResponseEntity<CustomerAccount> partialUpdateCustomerAccount(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody CUSTOMERACCOUNT cUSTOMERACCOUNT
+        @NotNull @RequestBody CustomerAccount customerAccount
     ) throws URISyntaxException {
-        LOG.debug("REST request to partial update CUSTOMERACCOUNT partially : {}, {}", id, cUSTOMERACCOUNT);
-        if (cUSTOMERACCOUNT.getId() == null) {
+        LOG.debug("REST request to partial update CustomerAccount partially : {}, {}", id, customerAccount);
+        if (customerAccount.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, cUSTOMERACCOUNT.getId())) {
+        if (!Objects.equals(id, customerAccount.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!cUSTOMERACCOUNTRepository.existsById(id)) {
+        if (!customerAccountRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<CUSTOMERACCOUNT> result = cUSTOMERACCOUNTRepository
-            .findById(cUSTOMERACCOUNT.getId())
-            .map(existingCUSTOMERACCOUNT -> {
-                if (cUSTOMERACCOUNT.getcUSTOMERID() != null) {
-                    existingCUSTOMERACCOUNT.setcUSTOMERID(cUSTOMERACCOUNT.getcUSTOMERID());
+        Optional<CustomerAccount> result = customerAccountRepository
+            .findById(customerAccount.getId())
+            .map(existingCustomerAccount -> {
+                if (customerAccount.getCustomerid() != null) {
+                    existingCustomerAccount.setCustomerid(customerAccount.getCustomerid());
                 }
-                if (cUSTOMERACCOUNT.getaCCOUNTNUMBER() != null) {
-                    existingCUSTOMERACCOUNT.setaCCOUNTNUMBER(cUSTOMERACCOUNT.getaCCOUNTNUMBER());
+                if (customerAccount.getAccountnumber() != null) {
+                    existingCustomerAccount.setAccountnumber(customerAccount.getAccountnumber());
                 }
-                if (cUSTOMERACCOUNT.getaCCOUNTCLASS() != null) {
-                    existingCUSTOMERACCOUNT.setaCCOUNTCLASS(cUSTOMERACCOUNT.getaCCOUNTCLASS());
+                if (customerAccount.getAccountclass() != null) {
+                    existingCustomerAccount.setAccountclass(customerAccount.getAccountclass());
                 }
-                if (cUSTOMERACCOUNT.getcUSTOMERNUMBER() != null) {
-                    existingCUSTOMERACCOUNT.setcUSTOMERNUMBER(cUSTOMERACCOUNT.getcUSTOMERNUMBER());
+                if (customerAccount.getCustomernumber() != null) {
+                    existingCustomerAccount.setCustomernumber(customerAccount.getCustomernumber());
                 }
-                if (cUSTOMERACCOUNT.getcIF() != null) {
-                    existingCUSTOMERACCOUNT.setcIF(cUSTOMERACCOUNT.getcIF());
+                if (customerAccount.getCif() != null) {
+                    existingCustomerAccount.setCif(customerAccount.getCif());
                 }
-                if (cUSTOMERACCOUNT.gettIMELINKED() != null) {
-                    existingCUSTOMERACCOUNT.settIMELINKED(cUSTOMERACCOUNT.gettIMELINKED());
+                if (customerAccount.getTimelinked() != null) {
+                    existingCustomerAccount.setTimelinked(customerAccount.getTimelinked());
                 }
-                if (cUSTOMERACCOUNT.getbLOCKED() != null) {
-                    existingCUSTOMERACCOUNT.setbLOCKED(cUSTOMERACCOUNT.getbLOCKED());
+                if (customerAccount.getBlocked() != null) {
+                    existingCustomerAccount.setBlocked(customerAccount.getBlocked());
                 }
-                if (cUSTOMERACCOUNT.getsTOPPED() != null) {
-                    existingCUSTOMERACCOUNT.setsTOPPED(cUSTOMERACCOUNT.getsTOPPED());
+                if (customerAccount.getStopped() != null) {
+                    existingCustomerAccount.setStopped(customerAccount.getStopped());
                 }
-                if (cUSTOMERACCOUNT.getdORMANT() != null) {
-                    existingCUSTOMERACCOUNT.setdORMANT(cUSTOMERACCOUNT.getdORMANT());
+                if (customerAccount.getDormant() != null) {
+                    existingCustomerAccount.setDormant(customerAccount.getDormant());
                 }
 
-                return existingCUSTOMERACCOUNT;
+                return existingCustomerAccount;
             })
-            .map(cUSTOMERACCOUNTRepository::save);
+            .map(customerAccountRepository::save);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, cUSTOMERACCOUNT.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, customerAccount.getId().toString())
         );
     }
 
     /**
-     * {@code GET  /customeraccounts} : get all the cUSTOMERACCOUNTS.
+     * {@code GET  /customer-accounts} : get all the customerAccounts.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of cUSTOMERACCOUNTS in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of customerAccounts in body.
      */
     @GetMapping("")
-    public List<CUSTOMERACCOUNT> getAllCUSTOMERACCOUNTS() {
-        LOG.debug("REST request to get all CUSTOMERACCOUNTS");
-        return cUSTOMERACCOUNTRepository.findAll();
+    public List<CustomerAccount> getAllCustomerAccounts() {
+        LOG.debug("REST request to get all CustomerAccounts");
+        return customerAccountRepository.findAll();
     }
 
     /**
-     * {@code GET  /customeraccounts/:id} : get the "id" cUSTOMERACCOUNT.
+     * {@code GET  /customer-accounts/:id} : get the "id" customerAccount.
      *
-     * @param id the id of the cUSTOMERACCOUNT to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the cUSTOMERACCOUNT, or with status {@code 404 (Not Found)}.
+     * @param id the id of the customerAccount to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the customerAccount, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<CUSTOMERACCOUNT> getCUSTOMERACCOUNT(@PathVariable("id") Long id) {
-        LOG.debug("REST request to get CUSTOMERACCOUNT : {}", id);
-        Optional<CUSTOMERACCOUNT> cUSTOMERACCOUNT = cUSTOMERACCOUNTRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(cUSTOMERACCOUNT);
+    public ResponseEntity<CustomerAccount> getCustomerAccount(@PathVariable("id") Long id) {
+        LOG.debug("REST request to get CustomerAccount : {}", id);
+        Optional<CustomerAccount> customerAccount = customerAccountRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(customerAccount);
     }
 
     /**
-     * {@code DELETE  /customeraccounts/:id} : delete the "id" cUSTOMERACCOUNT.
+     * {@code DELETE  /customer-accounts/:id} : delete the "id" customerAccount.
      *
-     * @param id the id of the cUSTOMERACCOUNT to delete.
+     * @param id the id of the customerAccount to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCUSTOMERACCOUNT(@PathVariable("id") Long id) {
-        LOG.debug("REST request to delete CUSTOMERACCOUNT : {}", id);
-        cUSTOMERACCOUNTRepository.deleteById(id);
+    public ResponseEntity<Void> deleteCustomerAccount(@PathVariable("id") Long id) {
+        LOG.debug("REST request to delete CustomerAccount : {}", id);
+        customerAccountRepository.deleteById(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();

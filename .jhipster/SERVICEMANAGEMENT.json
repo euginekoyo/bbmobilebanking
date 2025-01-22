@@ -1,90 +1,90 @@
 {
   "annotations": {
-    "changelogDate": "20250117142906"
+    "changelogDate": "20250121085701"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "pROCESSINGCODE",
+      "fieldName": "processingcode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "aCTIVE",
+      "fieldName": "active",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "cREATEDBY",
+      "fieldName": "createdby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "dATECREATED",
+      "fieldName": "datecreated",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "aPPROVED",
+      "fieldName": "approved",
       "fieldType": "Long"
     },
     {
-      "fieldName": "aPPROVEDBY",
+      "fieldName": "approvedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "aPPROVEDDATE",
+      "fieldName": "approveddate",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "aDAPTORTYPE",
+      "fieldName": "adaptortype",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "dESTINATION",
+      "fieldName": "destination",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "tHIRDPARTYRESPONSE",
+      "fieldName": "thirdpartyresponse",
       "fieldType": "Double"
     },
     {
-      "fieldName": "tELCO",
+      "fieldName": "telco",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "dESCRIPTION",
+      "fieldName": "description",
       "fieldType": "String",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "rEMARKS",
+      "fieldName": "remarks",
       "fieldType": "String"
     },
     {
-      "fieldName": "sESSIONID",
+      "fieldName": "sessionid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "rEWORKBY",
+      "fieldName": "reworkby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "100"
     }
   ],
-  "name": "SERVICEMANAGEMENT",
+  "name": "ServiceManagement",
   "relationships": [],
   "searchEngine": "no"
 }

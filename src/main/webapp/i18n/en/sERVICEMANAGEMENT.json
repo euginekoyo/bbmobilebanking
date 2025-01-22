@@ -1,38 +1,38 @@
 {
   "bbMobileBankingAdminApp": {
-    "sERVICEMANAGEMENT": {
+    "serviceManagement": {
       "home": {
-        "title": "SERVICEMANAGEMENTS",
+        "title": "Service Managements",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new SERVICEMANAGEMENT",
-        "createOrEditLabel": "Create or edit a SERVICEMANAGEMENT",
-        "notFound": "No SERVICEMANAGEMENTS found"
+        "createLabel": "Create a new Service Management",
+        "createOrEditLabel": "Create or edit a Service Management",
+        "notFound": "No Service Managements found"
       },
-      "created": "A new SERVICEMANAGEMENT is created with identifier {{ param }}",
-      "updated": "A SERVICEMANAGEMENT is updated with identifier {{ param }}",
-      "deleted": "A SERVICEMANAGEMENT is deleted with identifier {{ param }}",
+      "created": "A new Service Management is created with identifier { param }",
+      "updated": "A Service Management is updated with identifier { param }",
+      "deleted": "A Service Management is deleted with identifier { param }",
       "delete": {
-        "question": "Are you sure you want to delete SERVICEMANAGEMENT {{ id }}?"
+        "question": "Are you sure you want to delete Service Management { id }?"
       },
       "detail": {
-        "title": "SERVICEMANAGEMENT"
+        "title": "Service Management"
       },
       "id": "ID",
-      "pROCESSINGCODE": "P ROCESSINGCODE",
-      "aCTIVE": "A CTIVE",
-      "cREATEDBY": "C REATEDBY",
-      "dATECREATED": "D ATECREATED",
-      "aPPROVED": "A PPROVED",
-      "aPPROVEDBY": "A PPROVEDBY",
-      "aPPROVEDDATE": "A PPROVEDDATE",
-      "aDAPTORTYPE": "A DAPTORTYPE",
-      "dESTINATION": "D ESTINATION",
-      "tHIRDPARTYRESPONSE": "T HIRDPARTYRESPONSE",
-      "tELCO": "T ELCO",
-      "dESCRIPTION": "D ESCRIPTION",
-      "rEMARKS": "R EMARKS",
-      "sESSIONID": "S ESSIONID",
-      "rEWORKBY": "R EWORKBY"
+      "processingcode": "Processingcode",
+      "active": "Active",
+      "createdby": "Createdby",
+      "datecreated": "Datecreated",
+      "approved": "Approved",
+      "approvedby": "Approvedby",
+      "approveddate": "Approveddate",
+      "adaptortype": "Adaptortype",
+      "destination": "Destination",
+      "thirdpartyresponse": "Thirdpartyresponse",
+      "telco": "Telco",
+      "description": "Description",
+      "remarks": "Remarks",
+      "sessionid": "Sessionid",
+      "reworkby": "Reworkby"
     }
   }
 }

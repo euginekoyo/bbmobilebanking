@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Customer.
+    -->
+    <changeSet id="20250121085654-1" author="jhipster">
+        <createTable tableName="customer">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="customername" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="phonenumber" type="varchar(12)">
+                <constraints nullable="false" />
+            </column>
+            <column name="cardnumber" type="varchar(1000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="accountnumber" type="varchar(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="lang" type="varchar(10)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pin" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="firstlogin" type="varchar(1)">
+                <constraints nullable="true" />
+            </column>
+            <column name="active" type="varchar(1)">
+                <constraints nullable="true" />
+            </column>
+            <column name="registered" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="cstdelete" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="regdate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="alertenabled" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="remark" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="imsi" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="partiallyregistered" type="varchar(1)">
+                <constraints nullable="true" />
+            </column>
+            <column name="partialdate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="registerdate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="approved" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="approvedby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="approveddate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="declined" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="declinedby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="declineddate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="checkerremarks" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="postaladdress" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="residence" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="dob" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="createdby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="emailaddress" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="identificationid" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="addaccount" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="aclinkinginstitution" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="deactivated" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="deactivatedby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="deactivatedon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="phonenochanged" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="phonenochangedby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="phonenochangedon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="originalphoneno" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="newphoneno" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="reset" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="resetinginstitution" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pinresetremark" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="resetby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="reseton" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="unblockinginstitution" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pinblock" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="pinblockby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pinblockremarks" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="blockinginstitution" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pinblockon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="approvedon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="pinunblockby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="loggedin" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="trials" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="idtype" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="idnumber" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="gender" type="varchar(1)">
+                <constraints nullable="true" />
+            </column>
+            <column name="cif" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="dateofbirth" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="remarks" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="resetimsi" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="imsiresetby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="firstname" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="secondname" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastname" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="pinblocktime" type="varchar(7)">
+                <constraints nullable="true" />
+            </column>
+            <column name="customerstatus" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="username" type="varchar(2000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="password" type="varchar(3900)">
+                <constraints nullable="true" />
+            </column>
+            <column name="deviceid" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="channel" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="passreset" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="passresetby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="passreseton" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="passblock" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="passblockby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="passblockon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="pinmarkblock" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="passmarkblock" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="passresetremarks" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="passblockremarks" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="passunblockby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="passtrials" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="appactive" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastlogin" type="varchar(32)">
+                <constraints nullable="true" />
+            </column>
+            <column name="appmarkeddisable" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="disableby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="approvedisableby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="appmarkedenable" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="enableby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="approvedenableby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="markeddeactivate" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="appfirstlogin" type="varchar(5)">
+                <constraints nullable="true" />
+            </column>
+            <column name="atmtrials" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="shorcuts" type="varchar(1000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="markedactivate" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="town" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="approveddisableon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="disabledon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="resetapproveon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="deletedby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="questionsasked" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="questionstrials" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="questionsanswered" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="validotp" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="activatedby" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="activatedon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="branchcode" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="customer" columnName="regdate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="partialdate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="registerdate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="approveddate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="declineddate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="dob" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="deactivatedon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="phonenochangedon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="reseton" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="pinblockon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="approvedon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="dateofbirth" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="passreseton" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="passblockon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="approveddisableon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="disabledon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="resetapproveon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="customer" columnName="activatedon" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20250121085654-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/customer.csv"
+                  separator=";"
+                  tableName="customer"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="customername" type="string"/>
+            <column name="phonenumber" type="string"/>
+            <column name="cardnumber" type="string"/>
+            <column name="accountnumber" type="string"/>
+            <column name="lang" type="string"/>
+            <column name="pin" type="string"/>
+            <column name="firstlogin" type="string"/>
+            <column name="active" type="string"/>
+            <column name="registered" type="numeric"/>
+            <column name="cstdelete" type="numeric"/>
+            <column name="regdate" type="date"/>
+            <column name="alertenabled" type="numeric"/>
+            <column name="remark" type="string"/>
+            <column name="imsi" type="string"/>
+            <column name="partiallyregistered" type="string"/>
+            <column name="partialdate" type="date"/>
+            <column name="registerdate" type="date"/>
+            <column name="approved" type="numeric"/>
+            <column name="approvedby" type="string"/>
+            <column name="approveddate" type="date"/>
+            <column name="declined" type="numeric"/>
+            <column name="declinedby" type="string"/>
+            <column name="declineddate" type="date"/>
+            <column name="checkerremarks" type="string"/>
+            <column name="postaladdress" type="string"/>
+            <column name="residence" type="string"/>
+            <column name="dob" type="date"/>
+            <column name="createdby" type="string"/>
+            <column name="emailaddress" type="string"/>
+            <column name="identificationid" type="string"/>
+            <column name="addaccount" type="numeric"/>
+            <column name="aclinkinginstitution" type="string"/>
+            <column name="deactivated" type="numeric"/>
+            <column name="deactivatedby" type="string"/>
+            <column name="deactivatedon" type="date"/>
+            <column name="phonenochanged" type="numeric"/>
+            <column name="phonenochangedby" type="string"/>
+            <column name="phonenochangedon" type="date"/>
+            <column name="originalphoneno" type="string"/>
+            <column name="newphoneno" type="string"/>
+            <column name="reset" type="numeric"/>
+            <column name="resetinginstitution" type="string"/>
+            <column name="pinresetremark" type="string"/>
+            <column name="resetby" type="string"/>
+            <column name="reseton" type="date"/>
+            <column name="unblockinginstitution" type="string"/>
+            <column name="pinblock" type="numeric"/>
+            <column name="pinblockby" type="string"/>
+            <column name="pinblockremarks" type="string"/>
+            <column name="blockinginstitution" type="string"/>
+            <column name="pinblockon" type="date"/>
+            <column name="approvedon" type="date"/>
+            <column name="pinunblockby" type="string"/>
+            <column name="loggedin" type="numeric"/>
+            <column name="trials" type="string"/>
+            <column name="idtype" type="string"/>
+            <column name="idnumber" type="string"/>
+            <column name="gender" type="string"/>
+            <column name="cif" type="string"/>
+            <column name="dateofbirth" type="date"/>
+            <column name="remarks" type="string"/>
+            <column name="resetimsi" type="numeric"/>
+            <column name="imsiresetby" type="string"/>
+            <column name="firstname" type="string"/>
+            <column name="secondname" type="string"/>
+            <column name="lastname" type="string"/>
+            <column name="pinblocktime" type="string"/>
+            <column name="customerstatus" type="string"/>
+            <column name="username" type="string"/>
+            <column name="password" type="string"/>
+            <column name="deviceid" type="string"/>
+            <column name="channel" type="string"/>
+            <column name="passreset" type="numeric"/>
+            <column name="passresetby" type="string"/>
+            <column name="passreseton" type="date"/>
+            <column name="passblock" type="numeric"/>
+            <column name="passblockby" type="string"/>
+            <column name="passblockon" type="date"/>
+            <column name="pinmarkblock" type="numeric"/>
+            <column name="passmarkblock" type="numeric"/>
+            <column name="passresetremarks" type="string"/>
+            <column name="passblockremarks" type="string"/>
+            <column name="passunblockby" type="string"/>
+            <column name="passtrials" type="numeric"/>
+            <column name="appactive" type="numeric"/>
+            <column name="lastlogin" type="string"/>
+            <column name="appmarkeddisable" type="numeric"/>
+            <column name="disableby" type="string"/>
+            <column name="approvedisableby" type="string"/>
+            <column name="appmarkedenable" type="numeric"/>
+            <column name="enableby" type="string"/>
+            <column name="approvedenableby" type="string"/>
+            <column name="markeddeactivate" type="numeric"/>
+            <column name="appfirstlogin" type="string"/>
+            <column name="atmtrials" type="numeric"/>
+            <column name="shorcuts" type="string"/>
+            <column name="markedactivate" type="string"/>
+            <column name="town" type="string"/>
+            <column name="approveddisableon" type="date"/>
+            <column name="disabledon" type="date"/>
+            <column name="resetapproveon" type="date"/>
+            <column name="deletedby" type="string"/>
+            <column name="questionsasked" type="string"/>
+            <column name="questionstrials" type="string"/>
+            <column name="questionsanswered" type="string"/>
+            <column name="validotp" type="numeric"/>
+            <column name="activatedby" type="string"/>
+            <column name="activatedon" type="date"/>
+            <column name="branchcode" type="string"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

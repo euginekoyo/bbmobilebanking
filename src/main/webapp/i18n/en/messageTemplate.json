@@ -1,0 +1,28 @@
+{
+  "bbMobileBankingAdminApp": {
+    "messageTemplate": {
+      "home": {
+        "title": "Message Templates",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Message Template",
+        "createOrEditLabel": "Create or edit a Message Template",
+        "notFound": "No Message Templates found"
+      },
+      "created": "A new Message Template is created with identifier { param }",
+      "updated": "A Message Template is updated with identifier { param }",
+      "deleted": "A Message Template is deleted with identifier { param }",
+      "delete": {
+        "question": "Are you sure you want to delete Message Template { id }?"
+      },
+      "detail": {
+        "title": "Message Template"
+      },
+      "id": "ID",
+      "messagetype": "Messagetype",
+      "description": "Description",
+      "messageenglish": "Messageenglish",
+      "messagesomali": "Messagesomali",
+      "createdon": "Createdon"
+    }
+  }
+}

@@ -4,59 +4,59 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class SERVICEMANAGEMENTTestSamples {
+public class ServiceManagementTestSamples {
 
     private static final Random random = new Random();
     private static final AtomicLong longCount = new AtomicLong(random.nextInt() + (2 * Integer.MAX_VALUE));
 
-    public static SERVICEMANAGEMENT getSERVICEMANAGEMENTSample1() {
-        return new SERVICEMANAGEMENT()
+    public static ServiceManagement getServiceManagementSample1() {
+        return new ServiceManagement()
             .id(1L)
-            .pROCESSINGCODE("pROCESSINGCODE1")
-            .aCTIVE("aCTIVE1")
-            .cREATEDBY("cREATEDBY1")
-            .aPPROVED(1L)
-            .aPPROVEDBY("aPPROVEDBY1")
-            .aDAPTORTYPE("aDAPTORTYPE1")
-            .dESTINATION("dESTINATION1")
-            .tELCO("tELCO1")
-            .dESCRIPTION("dESCRIPTION1")
-            .rEMARKS("rEMARKS1")
-            .sESSIONID("sESSIONID1")
-            .rEWORKBY("rEWORKBY1");
+            .processingcode("processingcode1")
+            .active("active1")
+            .createdby("createdby1")
+            .approved(1L)
+            .approvedby("approvedby1")
+            .adaptortype("adaptortype1")
+            .destination("destination1")
+            .telco("telco1")
+            .description("description1")
+            .remarks("remarks1")
+            .sessionid("sessionid1")
+            .reworkby("reworkby1");
     }
 
-    public static SERVICEMANAGEMENT getSERVICEMANAGEMENTSample2() {
-        return new SERVICEMANAGEMENT()
+    public static ServiceManagement getServiceManagementSample2() {
+        return new ServiceManagement()
             .id(2L)
-            .pROCESSINGCODE("pROCESSINGCODE2")
-            .aCTIVE("aCTIVE2")
-            .cREATEDBY("cREATEDBY2")
-            .aPPROVED(2L)
-            .aPPROVEDBY("aPPROVEDBY2")
-            .aDAPTORTYPE("aDAPTORTYPE2")
-            .dESTINATION("dESTINATION2")
-            .tELCO("tELCO2")
-            .dESCRIPTION("dESCRIPTION2")
-            .rEMARKS("rEMARKS2")
-            .sESSIONID("sESSIONID2")
-            .rEWORKBY("rEWORKBY2");
+            .processingcode("processingcode2")
+            .active("active2")
+            .createdby("createdby2")
+            .approved(2L)
+            .approvedby("approvedby2")
+            .adaptortype("adaptortype2")
+            .destination("destination2")
+            .telco("telco2")
+            .description("description2")
+            .remarks("remarks2")
+            .sessionid("sessionid2")
+            .reworkby("reworkby2");
     }
 
-    public static SERVICEMANAGEMENT getSERVICEMANAGEMENTRandomSampleGenerator() {
-        return new SERVICEMANAGEMENT()
+    public static ServiceManagement getServiceManagementRandomSampleGenerator() {
+        return new ServiceManagement()
             .id(longCount.incrementAndGet())
-            .pROCESSINGCODE(UUID.randomUUID().toString())
-            .aCTIVE(UUID.randomUUID().toString())
-            .cREATEDBY(UUID.randomUUID().toString())
-            .aPPROVED(longCount.incrementAndGet())
-            .aPPROVEDBY(UUID.randomUUID().toString())
-            .aDAPTORTYPE(UUID.randomUUID().toString())
-            .dESTINATION(UUID.randomUUID().toString())
-            .tELCO(UUID.randomUUID().toString())
-            .dESCRIPTION(UUID.randomUUID().toString())
-            .rEMARKS(UUID.randomUUID().toString())
-            .sESSIONID(UUID.randomUUID().toString())
-            .rEWORKBY(UUID.randomUUID().toString());
+            .processingcode(UUID.randomUUID().toString())
+            .active(UUID.randomUUID().toString())
+            .createdby(UUID.randomUUID().toString())
+            .approved(longCount.incrementAndGet())
+            .approvedby(UUID.randomUUID().toString())
+            .adaptortype(UUID.randomUUID().toString())
+            .destination(UUID.randomUUID().toString())
+            .telco(UUID.randomUUID().toString())
+            .description(UUID.randomUUID().toString())
+            .remarks(UUID.randomUUID().toString())
+            .sessionid(UUID.randomUUID().toString())
+            .reworkby(UUID.randomUUID().toString());
     }
 }

@@ -1,56 +1,56 @@
 {
   "annotations": {
-    "changelogDate": "20250117142858"
+    "changelogDate": "20250121085655"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "cUSTOMERID",
+      "fieldName": "customerid",
       "fieldType": "Long",
       "fieldValidateRules": ["required"]
     },
     {
-      "fieldName": "aCCOUNTNUMBER",
+      "fieldName": "accountnumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "11"
     },
     {
-      "fieldName": "aCCOUNTCLASS",
+      "fieldName": "accountclass",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "10"
     },
     {
-      "fieldName": "cUSTOMERNUMBER",
+      "fieldName": "customernumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "cIF",
+      "fieldName": "cif",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "tIMELINKED",
+      "fieldName": "timelinked",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "bLOCKED",
+      "fieldName": "blocked",
       "fieldType": "Long"
     },
     {
-      "fieldName": "sTOPPED",
+      "fieldName": "stopped",
       "fieldType": "Long"
     },
     {
-      "fieldName": "dORMANT",
+      "fieldName": "dormant",
       "fieldType": "Long"
     }
   ],
-  "name": "CUSTOMERACCOUNT",
+  "name": "CustomerAccount",
   "relationships": [],
   "searchEngine": "no"
 }

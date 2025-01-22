@@ -1,32 +1,32 @@
 {
   "bbMobileBankingAdminApp": {
-    "cUSTOMERACCOUNT": {
+    "customerAccount": {
       "home": {
-        "title": "CUSTOMERACCOUNTS",
+        "title": "Customer Accounts",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new CUSTOMERACCOUNT",
-        "createOrEditLabel": "Create or edit a CUSTOMERACCOUNT",
-        "notFound": "No CUSTOMERACCOUNTS found"
+        "createLabel": "Create a new Customer Account",
+        "createOrEditLabel": "Create or edit a Customer Account",
+        "notFound": "No Customer Accounts found"
       },
-      "created": "A new CUSTOMERACCOUNT is created with identifier {{ param }}",
-      "updated": "A CUSTOMERACCOUNT is updated with identifier {{ param }}",
-      "deleted": "A CUSTOMERACCOUNT is deleted with identifier {{ param }}",
+      "created": "A new Customer Account is created with identifier { param }",
+      "updated": "A Customer Account is updated with identifier { param }",
+      "deleted": "A Customer Account is deleted with identifier { param }",
       "delete": {
-        "question": "Are you sure you want to delete CUSTOMERACCOUNT {{ id }}?"
+        "question": "Are you sure you want to delete Customer Account { id }?"
       },
       "detail": {
-        "title": "CUSTOMERACCOUNT"
+        "title": "Customer Account"
       },
       "id": "ID",
-      "cUSTOMERID": "C USTOMERID",
-      "aCCOUNTNUMBER": "A CCOUNTNUMBER",
-      "aCCOUNTCLASS": "A CCOUNTCLASS",
-      "cUSTOMERNUMBER": "C USTOMERNUMBER",
-      "cIF": "C IF",
-      "tIMELINKED": "T IMELINKED",
-      "bLOCKED": "B LOCKED",
-      "sTOPPED": "S TOPPED",
-      "dORMANT": "D ORMANT"
+      "customerid": "Customerid",
+      "accountnumber": "Accountnumber",
+      "accountclass": "Accountclass",
+      "customernumber": "Customernumber",
+      "cif": "Cif",
+      "timelinked": "Timelinked",
+      "blocked": "Blocked",
+      "stopped": "Stopped",
+      "dormant": "Dormant"
     }
   }
 }

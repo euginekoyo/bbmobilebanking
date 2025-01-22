@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.SERVICEMANAGEMENT;
-import com.istl.app.repository.SERVICEMANAGEMENTRepository;
+import com.istl.app.domain.ServiceManagement;
+import com.istl.app.repository.ServiceManagementRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,200 +20,200 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.SERVICEMANAGEMENT}.
+ * REST controller for managing {@link com.istl.app.domain.ServiceManagement}.
  */
 @RestController
-@RequestMapping("/api/servicemanagements")
+@RequestMapping("/api/service-managements")
 @Transactional
-public class SERVICEMANAGEMENTResource {
+public class ServiceManagementResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SERVICEMANAGEMENTResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ServiceManagementResource.class);
 
-    private static final String ENTITY_NAME = "sERVICEMANAGEMENT";
+    private static final String ENTITY_NAME = "serviceManagement";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final SERVICEMANAGEMENTRepository sERVICEMANAGEMENTRepository;
+    private final ServiceManagementRepository serviceManagementRepository;
 
-    public SERVICEMANAGEMENTResource(SERVICEMANAGEMENTRepository sERVICEMANAGEMENTRepository) {
-        this.sERVICEMANAGEMENTRepository = sERVICEMANAGEMENTRepository;
+    public ServiceManagementResource(ServiceManagementRepository serviceManagementRepository) {
+        this.serviceManagementRepository = serviceManagementRepository;
     }
 
     /**
-     * {@code POST  /servicemanagements} : Create a new sERVICEMANAGEMENT.
+     * {@code POST  /service-managements} : Create a new serviceManagement.
      *
-     * @param sERVICEMANAGEMENT the sERVICEMANAGEMENT to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new sERVICEMANAGEMENT, or with status {@code 400 (Bad Request)} if the sERVICEMANAGEMENT has already an ID.
+     * @param serviceManagement the serviceManagement to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new serviceManagement, or with status {@code 400 (Bad Request)} if the serviceManagement has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<SERVICEMANAGEMENT> createSERVICEMANAGEMENT(@Valid @RequestBody SERVICEMANAGEMENT sERVICEMANAGEMENT)
+    public ResponseEntity<ServiceManagement> createServiceManagement(@Valid @RequestBody ServiceManagement serviceManagement)
         throws URISyntaxException {
-        LOG.debug("REST request to save SERVICEMANAGEMENT : {}", sERVICEMANAGEMENT);
-        if (sERVICEMANAGEMENT.getId() != null) {
-            throw new BadRequestAlertException("A new sERVICEMANAGEMENT cannot already have an ID", ENTITY_NAME, "idexists");
+        LOG.debug("REST request to save ServiceManagement : {}", serviceManagement);
+        if (serviceManagement.getId() != null) {
+            throw new BadRequestAlertException("A new serviceManagement cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        sERVICEMANAGEMENT = sERVICEMANAGEMENTRepository.save(sERVICEMANAGEMENT);
-        return ResponseEntity.created(new URI("/api/servicemanagements/" + sERVICEMANAGEMENT.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, sERVICEMANAGEMENT.getId().toString()))
-            .body(sERVICEMANAGEMENT);
+        serviceManagement = serviceManagementRepository.save(serviceManagement);
+        return ResponseEntity.created(new URI("/api/service-managements/" + serviceManagement.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, serviceManagement.getId().toString()))
+            .body(serviceManagement);
     }
 
     /**
-     * {@code PUT  /servicemanagements/:id} : Updates an existing sERVICEMANAGEMENT.
+     * {@code PUT  /service-managements/:id} : Updates an existing serviceManagement.
      *
-     * @param id the id of the sERVICEMANAGEMENT to save.
-     * @param sERVICEMANAGEMENT the sERVICEMANAGEMENT to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated sERVICEMANAGEMENT,
-     * or with status {@code 400 (Bad Request)} if the sERVICEMANAGEMENT is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the sERVICEMANAGEMENT couldn't be updated.
+     * @param id the id of the serviceManagement to save.
+     * @param serviceManagement the serviceManagement to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated serviceManagement,
+     * or with status {@code 400 (Bad Request)} if the serviceManagement is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the serviceManagement couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<SERVICEMANAGEMENT> updateSERVICEMANAGEMENT(
+    public ResponseEntity<ServiceManagement> updateServiceManagement(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody SERVICEMANAGEMENT sERVICEMANAGEMENT
+        @Valid @RequestBody ServiceManagement serviceManagement
     ) throws URISyntaxException {
-        LOG.debug("REST request to update SERVICEMANAGEMENT : {}, {}", id, sERVICEMANAGEMENT);
-        if (sERVICEMANAGEMENT.getId() == null) {
+        LOG.debug("REST request to update ServiceManagement : {}, {}", id, serviceManagement);
+        if (serviceManagement.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, sERVICEMANAGEMENT.getId())) {
+        if (!Objects.equals(id, serviceManagement.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!sERVICEMANAGEMENTRepository.existsById(id)) {
+        if (!serviceManagementRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        sERVICEMANAGEMENT = sERVICEMANAGEMENTRepository.save(sERVICEMANAGEMENT);
+        serviceManagement = serviceManagementRepository.save(serviceManagement);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, sERVICEMANAGEMENT.getId().toString()))
-            .body(sERVICEMANAGEMENT);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, serviceManagement.getId().toString()))
+            .body(serviceManagement);
     }
 
     /**
-     * {@code PATCH  /servicemanagements/:id} : Partial updates given fields of an existing sERVICEMANAGEMENT, field will ignore if it is null
+     * {@code PATCH  /service-managements/:id} : Partial updates given fields of an existing serviceManagement, field will ignore if it is null
      *
-     * @param id the id of the sERVICEMANAGEMENT to save.
-     * @param sERVICEMANAGEMENT the sERVICEMANAGEMENT to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated sERVICEMANAGEMENT,
-     * or with status {@code 400 (Bad Request)} if the sERVICEMANAGEMENT is not valid,
-     * or with status {@code 404 (Not Found)} if the sERVICEMANAGEMENT is not found,
-     * or with status {@code 500 (Internal Server Error)} if the sERVICEMANAGEMENT couldn't be updated.
+     * @param id the id of the serviceManagement to save.
+     * @param serviceManagement the serviceManagement to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated serviceManagement,
+     * or with status {@code 400 (Bad Request)} if the serviceManagement is not valid,
+     * or with status {@code 404 (Not Found)} if the serviceManagement is not found,
+     * or with status {@code 500 (Internal Server Error)} if the serviceManagement couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<SERVICEMANAGEMENT> partialUpdateSERVICEMANAGEMENT(
+    public ResponseEntity<ServiceManagement> partialUpdateServiceManagement(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody SERVICEMANAGEMENT sERVICEMANAGEMENT
+        @NotNull @RequestBody ServiceManagement serviceManagement
     ) throws URISyntaxException {
-        LOG.debug("REST request to partial update SERVICEMANAGEMENT partially : {}, {}", id, sERVICEMANAGEMENT);
-        if (sERVICEMANAGEMENT.getId() == null) {
+        LOG.debug("REST request to partial update ServiceManagement partially : {}, {}", id, serviceManagement);
+        if (serviceManagement.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, sERVICEMANAGEMENT.getId())) {
+        if (!Objects.equals(id, serviceManagement.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!sERVICEMANAGEMENTRepository.existsById(id)) {
+        if (!serviceManagementRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<SERVICEMANAGEMENT> result = sERVICEMANAGEMENTRepository
-            .findById(sERVICEMANAGEMENT.getId())
-            .map(existingSERVICEMANAGEMENT -> {
-                if (sERVICEMANAGEMENT.getpROCESSINGCODE() != null) {
-                    existingSERVICEMANAGEMENT.setpROCESSINGCODE(sERVICEMANAGEMENT.getpROCESSINGCODE());
+        Optional<ServiceManagement> result = serviceManagementRepository
+            .findById(serviceManagement.getId())
+            .map(existingServiceManagement -> {
+                if (serviceManagement.getProcessingcode() != null) {
+                    existingServiceManagement.setProcessingcode(serviceManagement.getProcessingcode());
                 }
-                if (sERVICEMANAGEMENT.getaCTIVE() != null) {
-                    existingSERVICEMANAGEMENT.setaCTIVE(sERVICEMANAGEMENT.getaCTIVE());
+                if (serviceManagement.getActive() != null) {
+                    existingServiceManagement.setActive(serviceManagement.getActive());
                 }
-                if (sERVICEMANAGEMENT.getcREATEDBY() != null) {
-                    existingSERVICEMANAGEMENT.setcREATEDBY(sERVICEMANAGEMENT.getcREATEDBY());
+                if (serviceManagement.getCreatedby() != null) {
+                    existingServiceManagement.setCreatedby(serviceManagement.getCreatedby());
                 }
-                if (sERVICEMANAGEMENT.getdATECREATED() != null) {
-                    existingSERVICEMANAGEMENT.setdATECREATED(sERVICEMANAGEMENT.getdATECREATED());
+                if (serviceManagement.getDatecreated() != null) {
+                    existingServiceManagement.setDatecreated(serviceManagement.getDatecreated());
                 }
-                if (sERVICEMANAGEMENT.getaPPROVED() != null) {
-                    existingSERVICEMANAGEMENT.setaPPROVED(sERVICEMANAGEMENT.getaPPROVED());
+                if (serviceManagement.getApproved() != null) {
+                    existingServiceManagement.setApproved(serviceManagement.getApproved());
                 }
-                if (sERVICEMANAGEMENT.getaPPROVEDBY() != null) {
-                    existingSERVICEMANAGEMENT.setaPPROVEDBY(sERVICEMANAGEMENT.getaPPROVEDBY());
+                if (serviceManagement.getApprovedby() != null) {
+                    existingServiceManagement.setApprovedby(serviceManagement.getApprovedby());
                 }
-                if (sERVICEMANAGEMENT.getaPPROVEDDATE() != null) {
-                    existingSERVICEMANAGEMENT.setaPPROVEDDATE(sERVICEMANAGEMENT.getaPPROVEDDATE());
+                if (serviceManagement.getApproveddate() != null) {
+                    existingServiceManagement.setApproveddate(serviceManagement.getApproveddate());
                 }
-                if (sERVICEMANAGEMENT.getaDAPTORTYPE() != null) {
-                    existingSERVICEMANAGEMENT.setaDAPTORTYPE(sERVICEMANAGEMENT.getaDAPTORTYPE());
+                if (serviceManagement.getAdaptortype() != null) {
+                    existingServiceManagement.setAdaptortype(serviceManagement.getAdaptortype());
                 }
-                if (sERVICEMANAGEMENT.getdESTINATION() != null) {
-                    existingSERVICEMANAGEMENT.setdESTINATION(sERVICEMANAGEMENT.getdESTINATION());
+                if (serviceManagement.getDestination() != null) {
+                    existingServiceManagement.setDestination(serviceManagement.getDestination());
                 }
-                if (sERVICEMANAGEMENT.gettHIRDPARTYRESPONSE() != null) {
-                    existingSERVICEMANAGEMENT.settHIRDPARTYRESPONSE(sERVICEMANAGEMENT.gettHIRDPARTYRESPONSE());
+                if (serviceManagement.getThirdpartyresponse() != null) {
+                    existingServiceManagement.setThirdpartyresponse(serviceManagement.getThirdpartyresponse());
                 }
-                if (sERVICEMANAGEMENT.gettELCO() != null) {
-                    existingSERVICEMANAGEMENT.settELCO(sERVICEMANAGEMENT.gettELCO());
+                if (serviceManagement.getTelco() != null) {
+                    existingServiceManagement.setTelco(serviceManagement.getTelco());
                 }
-                if (sERVICEMANAGEMENT.getdESCRIPTION() != null) {
-                    existingSERVICEMANAGEMENT.setdESCRIPTION(sERVICEMANAGEMENT.getdESCRIPTION());
+                if (serviceManagement.getDescription() != null) {
+                    existingServiceManagement.setDescription(serviceManagement.getDescription());
                 }
-                if (sERVICEMANAGEMENT.getrEMARKS() != null) {
-                    existingSERVICEMANAGEMENT.setrEMARKS(sERVICEMANAGEMENT.getrEMARKS());
+                if (serviceManagement.getRemarks() != null) {
+                    existingServiceManagement.setRemarks(serviceManagement.getRemarks());
                 }
-                if (sERVICEMANAGEMENT.getsESSIONID() != null) {
-                    existingSERVICEMANAGEMENT.setsESSIONID(sERVICEMANAGEMENT.getsESSIONID());
+                if (serviceManagement.getSessionid() != null) {
+                    existingServiceManagement.setSessionid(serviceManagement.getSessionid());
                 }
-                if (sERVICEMANAGEMENT.getrEWORKBY() != null) {
-                    existingSERVICEMANAGEMENT.setrEWORKBY(sERVICEMANAGEMENT.getrEWORKBY());
+                if (serviceManagement.getReworkby() != null) {
+                    existingServiceManagement.setReworkby(serviceManagement.getReworkby());
                 }
 
-                return existingSERVICEMANAGEMENT;
+                return existingServiceManagement;
             })
-            .map(sERVICEMANAGEMENTRepository::save);
+            .map(serviceManagementRepository::save);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, sERVICEMANAGEMENT.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, serviceManagement.getId().toString())
         );
     }
 
     /**
-     * {@code GET  /servicemanagements} : get all the sERVICEMANAGEMENTS.
+     * {@code GET  /service-managements} : get all the serviceManagements.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of sERVICEMANAGEMENTS in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of serviceManagements in body.
      */
     @GetMapping("")
-    public List<SERVICEMANAGEMENT> getAllSERVICEMANAGEMENTS() {
-        LOG.debug("REST request to get all SERVICEMANAGEMENTS");
-        return sERVICEMANAGEMENTRepository.findAll();
+    public List<ServiceManagement> getAllServiceManagements() {
+        LOG.debug("REST request to get all ServiceManagements");
+        return serviceManagementRepository.findAll();
     }
 
     /**
-     * {@code GET  /servicemanagements/:id} : get the "id" sERVICEMANAGEMENT.
+     * {@code GET  /service-managements/:id} : get the "id" serviceManagement.
      *
-     * @param id the id of the sERVICEMANAGEMENT to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the sERVICEMANAGEMENT, or with status {@code 404 (Not Found)}.
+     * @param id the id of the serviceManagement to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the serviceManagement, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<SERVICEMANAGEMENT> getSERVICEMANAGEMENT(@PathVariable("id") Long id) {
-        LOG.debug("REST request to get SERVICEMANAGEMENT : {}", id);
-        Optional<SERVICEMANAGEMENT> sERVICEMANAGEMENT = sERVICEMANAGEMENTRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(sERVICEMANAGEMENT);
+    public ResponseEntity<ServiceManagement> getServiceManagement(@PathVariable("id") Long id) {
+        LOG.debug("REST request to get ServiceManagement : {}", id);
+        Optional<ServiceManagement> serviceManagement = serviceManagementRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(serviceManagement);
     }
 
     /**
-     * {@code DELETE  /servicemanagements/:id} : delete the "id" sERVICEMANAGEMENT.
+     * {@code DELETE  /service-managements/:id} : delete the "id" serviceManagement.
      *
-     * @param id the id of the sERVICEMANAGEMENT to delete.
+     * @param id the id of the serviceManagement to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSERVICEMANAGEMENT(@PathVariable("id") Long id) {
-        LOG.debug("REST request to delete SERVICEMANAGEMENT : {}", id);
-        sERVICEMANAGEMENTRepository.deleteById(id);
+    public ResponseEntity<Void> deleteServiceManagement(@PathVariable("id") Long id) {
+        LOG.debug("REST request to delete ServiceManagement : {}", id);
+        serviceManagementRepository.deleteById(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();

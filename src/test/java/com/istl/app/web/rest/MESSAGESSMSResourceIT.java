@@ -1,6 +1,6 @@
 package com.istl.app.web.rest;
 
-import static com.istl.app.domain.MESSAGESSMSAsserts.*;
+import static com.istl.app.domain.MessagesSmsAsserts.*;
 import static com.istl.app.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.MESSAGESSMS;
-import com.istl.app.repository.MESSAGESSMSRepository;
+import com.istl.app.domain.MessagesSms;
+import com.istl.app.repository.MessagesSmsRepository;
 import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -27,89 +27,89 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Integration tests for the {@link MESSAGESSMSResource} REST controller.
+ * Integration tests for the {@link MessagesSmsResource} REST controller.
  */
 @IntegrationTest
 @AutoConfigureMockMvc
 @WithMockUser
-class MESSAGESSMSResourceIT {
+class MessagesSmsResourceIT {
 
-    private static final Instant DEFAULT_T_RNDATETIME = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_T_RNDATETIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_TRNDATETIME = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_TRNDATETIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_P_HONENUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_P_HONENUMBER = "BBBBBBBBBB";
+    private static final String DEFAULT_PHONENUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_PHONENUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_T_RANSACTIONNO = "AAAAAAAAAA";
-    private static final String UPDATED_T_RANSACTIONNO = "BBBBBBBBBB";
+    private static final String DEFAULT_TRANSACTIONNO = "AAAAAAAAAA";
+    private static final String UPDATED_TRANSACTIONNO = "BBBBBBBBBB";
 
-    private static final String DEFAULT_A_CCOUNTNUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_A_CCOUNTNUMBER = "BBBBBBBBBB";
+    private static final String DEFAULT_ACCOUNTNUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_ACCOUNTNUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_M_ESSAGE = "AAAAAAAAAA";
-    private static final String UPDATED_M_ESSAGE = "BBBBBBBBBB";
+    private static final String DEFAULT_MESSAGE = "AAAAAAAAAA";
+    private static final String UPDATED_MESSAGE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_C_HANNEL = "AAAAAAAAAA";
-    private static final String UPDATED_C_HANNEL = "BBBBBBBBBB";
+    private static final String DEFAULT_CHANNEL = "AAAAAAAAAA";
+    private static final String UPDATED_CHANNEL = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_T_RIALS = 1L;
-    private static final Long UPDATED_T_RIALS = 2L;
+    private static final Long DEFAULT_TRIALS = 1L;
+    private static final Long UPDATED_TRIALS = 2L;
 
-    private static final Long DEFAULT_P_RIORITY = 1L;
-    private static final Long UPDATED_P_RIORITY = 2L;
+    private static final Long DEFAULT_PRIORITY = 1L;
+    private static final Long UPDATED_PRIORITY = 2L;
 
-    private static final String DEFAULT_R_ESPONSECODE = "AAAA";
-    private static final String UPDATED_R_ESPONSECODE = "BBBB";
+    private static final String DEFAULT_RESPONSECODE = "AAAA";
+    private static final String UPDATED_RESPONSECODE = "BBBB";
 
-    private static final String DEFAULT_R_ESPONSEMSG = "AAAAAAAAAA";
-    private static final String UPDATED_R_ESPONSEMSG = "BBBBBBBBBB";
+    private static final String DEFAULT_RESPONSEMSG = "AAAAAAAAAA";
+    private static final String UPDATED_RESPONSEMSG = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_S_ENT = 1L;
-    private static final Long UPDATED_S_ENT = 2L;
+    private static final Long DEFAULT_SENT = 1L;
+    private static final Long UPDATED_SENT = 2L;
 
-    private static final Long DEFAULT_D_ELIVERED = 1L;
-    private static final Long UPDATED_D_ELIVERED = 2L;
+    private static final Long DEFAULT_DELIVERED = 1L;
+    private static final Long UPDATED_DELIVERED = 2L;
 
-    private static final String DEFAULT_T_XNTYPE = "AAAAAAAAAA";
-    private static final String UPDATED_T_XNTYPE = "BBBBBBBBBB";
+    private static final String DEFAULT_TXNTYPE = "AAAAAAAAAA";
+    private static final String UPDATED_TXNTYPE = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_E_RROREXCEPTION = 1L;
-    private static final Long UPDATED_E_RROREXCEPTION = 2L;
+    private static final Long DEFAULT_ERROREXCEPTION = 1L;
+    private static final Long UPDATED_ERROREXCEPTION = 2L;
 
-    private static final Instant DEFAULT_D_ATECREATED = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_D_ATECREATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_DATECREATED = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DATECREATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_D_ATESENT = "AAAAAAA";
-    private static final String UPDATED_D_ATESENT = "BBBBBBB";
+    private static final String DEFAULT_DATESENT = "AAAAAAA";
+    private static final String UPDATED_DATESENT = "BBBBBBB";
 
-    private static final String DEFAULT_R_TPSREQTIME = "AAAAAAAAAA";
-    private static final String UPDATED_R_TPSREQTIME = "BBBBBBBBBB";
+    private static final String DEFAULT_RTPSREQTIME = "AAAAAAAAAA";
+    private static final String UPDATED_RTPSREQTIME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_F_XGENERATED = "AAAAAAAAAA";
-    private static final String UPDATED_F_XGENERATED = "BBBBBBBBBB";
+    private static final String DEFAULT_FXGENERATED = "AAAAAAAAAA";
+    private static final String UPDATED_FXGENERATED = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_T_AXPROCESSED = 1L;
-    private static final Long UPDATED_T_AXPROCESSED = 2L;
+    private static final Long DEFAULT_TAXPROCESSED = 1L;
+    private static final Long UPDATED_TAXPROCESSED = 2L;
 
-    private static final String DEFAULT_B_ATCHNUMBER = "AAAAAAAAAA";
-    private static final String UPDATED_B_ATCHNUMBER = "BBBBBBBBBB";
+    private static final String DEFAULT_BATCHNUMBER = "AAAAAAAAAA";
+    private static final String UPDATED_BATCHNUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_B_ATCHNUMBERTAX = "AAAAAAAAAA";
-    private static final String UPDATED_B_ATCHNUMBERTAX = "BBBBBBBBBB";
+    private static final String DEFAULT_BATCHNUMBERTAX = "AAAAAAAAAA";
+    private static final String UPDATED_BATCHNUMBERTAX = "BBBBBBBBBB";
 
-    private static final String DEFAULT_R_ESPONSETIME = "AAAAAAAAAA";
-    private static final String UPDATED_R_ESPONSETIME = "BBBBBBBBBB";
+    private static final String DEFAULT_RESPONSETIME = "AAAAAAAAAA";
+    private static final String UPDATED_RESPONSETIME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_P_DUSEQID = "AAAAAAAAAA";
-    private static final String UPDATED_P_DUSEQID = "BBBBBBBBBB";
+    private static final String DEFAULT_PDUSEQID = "AAAAAAAAAA";
+    private static final String UPDATED_PDUSEQID = "BBBBBBBBBB";
 
-    private static final String DEFAULT_R_EMARKS = "AAAAAAAAAA";
-    private static final String UPDATED_R_EMARKS = "BBBBBBBBBB";
+    private static final String DEFAULT_REMARKS = "AAAAAAAAAA";
+    private static final String UPDATED_REMARKS = "BBBBBBBBBB";
 
-    private static final String DEFAULT_R_ESENDBY = "AAAAAAAAAA";
-    private static final String UPDATED_R_ESENDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_RESENDBY = "AAAAAAAAAA";
+    private static final String UPDATED_RESENDBY = "BBBBBBBBBB";
 
-    private static final String ENTITY_API_URL = "/api/messagessms";
+    private static final String ENTITY_API_URL = "/api/messages-sms";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
     private static Random random = new Random();
@@ -119,17 +119,17 @@ class MESSAGESSMSResourceIT {
     private ObjectMapper om;
 
     @Autowired
-    private MESSAGESSMSRepository mESSAGESSMSRepository;
+    private MessagesSmsRepository messagesSmsRepository;
 
     @Autowired
     private EntityManager em;
 
     @Autowired
-    private MockMvc restMESSAGESSMSMockMvc;
+    private MockMvc restMessagesSmsMockMvc;
 
-    private MESSAGESSMS mESSAGESSMS;
+    private MessagesSms messagesSms;
 
-    private MESSAGESSMS insertedMESSAGESSMS;
+    private MessagesSms insertedMessagesSms;
 
     /**
      * Create an entity for this test.
@@ -137,33 +137,33 @@ class MESSAGESSMSResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static MESSAGESSMS createEntity() {
-        return new MESSAGESSMS()
-            .tRNDATETIME(DEFAULT_T_RNDATETIME)
-            .pHONENUMBER(DEFAULT_P_HONENUMBER)
-            .tRANSACTIONNO(DEFAULT_T_RANSACTIONNO)
-            .aCCOUNTNUMBER(DEFAULT_A_CCOUNTNUMBER)
-            .mESSAGE(DEFAULT_M_ESSAGE)
-            .cHANNEL(DEFAULT_C_HANNEL)
-            .tRIALS(DEFAULT_T_RIALS)
-            .pRIORITY(DEFAULT_P_RIORITY)
-            .rESPONSECODE(DEFAULT_R_ESPONSECODE)
-            .rESPONSEMSG(DEFAULT_R_ESPONSEMSG)
-            .sENT(DEFAULT_S_ENT)
-            .dELIVERED(DEFAULT_D_ELIVERED)
-            .tXNTYPE(DEFAULT_T_XNTYPE)
-            .eRROREXCEPTION(DEFAULT_E_RROREXCEPTION)
-            .dATECREATED(DEFAULT_D_ATECREATED)
-            .dATESENT(DEFAULT_D_ATESENT)
-            .rTPSREQTIME(DEFAULT_R_TPSREQTIME)
-            .fXGENERATED(DEFAULT_F_XGENERATED)
-            .tAXPROCESSED(DEFAULT_T_AXPROCESSED)
-            .bATCHNUMBER(DEFAULT_B_ATCHNUMBER)
-            .bATCHNUMBERTAX(DEFAULT_B_ATCHNUMBERTAX)
-            .rESPONSETIME(DEFAULT_R_ESPONSETIME)
-            .pDUSEQID(DEFAULT_P_DUSEQID)
-            .rEMARKS(DEFAULT_R_EMARKS)
-            .rESENDBY(DEFAULT_R_ESENDBY);
+    public static MessagesSms createEntity() {
+        return new MessagesSms()
+            .trndatetime(DEFAULT_TRNDATETIME)
+            .phonenumber(DEFAULT_PHONENUMBER)
+            .transactionno(DEFAULT_TRANSACTIONNO)
+            .accountnumber(DEFAULT_ACCOUNTNUMBER)
+            .message(DEFAULT_MESSAGE)
+            .channel(DEFAULT_CHANNEL)
+            .trials(DEFAULT_TRIALS)
+            .priority(DEFAULT_PRIORITY)
+            .responsecode(DEFAULT_RESPONSECODE)
+            .responsemsg(DEFAULT_RESPONSEMSG)
+            .sent(DEFAULT_SENT)
+            .delivered(DEFAULT_DELIVERED)
+            .txntype(DEFAULT_TXNTYPE)
+            .errorexception(DEFAULT_ERROREXCEPTION)
+            .datecreated(DEFAULT_DATECREATED)
+            .datesent(DEFAULT_DATESENT)
+            .rtpsreqtime(DEFAULT_RTPSREQTIME)
+            .fxgenerated(DEFAULT_FXGENERATED)
+            .taxprocessed(DEFAULT_TAXPROCESSED)
+            .batchnumber(DEFAULT_BATCHNUMBER)
+            .batchnumbertax(DEFAULT_BATCHNUMBERTAX)
+            .responsetime(DEFAULT_RESPONSETIME)
+            .pduseqid(DEFAULT_PDUSEQID)
+            .remarks(DEFAULT_REMARKS)
+            .resendby(DEFAULT_RESENDBY);
     }
 
     /**
@@ -172,438 +172,436 @@ class MESSAGESSMSResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static MESSAGESSMS createUpdatedEntity() {
-        return new MESSAGESSMS()
-            .tRNDATETIME(UPDATED_T_RNDATETIME)
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .tRANSACTIONNO(UPDATED_T_RANSACTIONNO)
-            .aCCOUNTNUMBER(UPDATED_A_CCOUNTNUMBER)
-            .mESSAGE(UPDATED_M_ESSAGE)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .tRIALS(UPDATED_T_RIALS)
-            .pRIORITY(UPDATED_P_RIORITY)
-            .rESPONSECODE(UPDATED_R_ESPONSECODE)
-            .rESPONSEMSG(UPDATED_R_ESPONSEMSG)
-            .sENT(UPDATED_S_ENT)
-            .dELIVERED(UPDATED_D_ELIVERED)
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .eRROREXCEPTION(UPDATED_E_RROREXCEPTION)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .dATESENT(UPDATED_D_ATESENT)
-            .rTPSREQTIME(UPDATED_R_TPSREQTIME)
-            .fXGENERATED(UPDATED_F_XGENERATED)
-            .tAXPROCESSED(UPDATED_T_AXPROCESSED)
-            .bATCHNUMBER(UPDATED_B_ATCHNUMBER)
-            .bATCHNUMBERTAX(UPDATED_B_ATCHNUMBERTAX)
-            .rESPONSETIME(UPDATED_R_ESPONSETIME)
-            .pDUSEQID(UPDATED_P_DUSEQID)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .rESENDBY(UPDATED_R_ESENDBY);
+    public static MessagesSms createUpdatedEntity() {
+        return new MessagesSms()
+            .trndatetime(UPDATED_TRNDATETIME)
+            .phonenumber(UPDATED_PHONENUMBER)
+            .transactionno(UPDATED_TRANSACTIONNO)
+            .accountnumber(UPDATED_ACCOUNTNUMBER)
+            .message(UPDATED_MESSAGE)
+            .channel(UPDATED_CHANNEL)
+            .trials(UPDATED_TRIALS)
+            .priority(UPDATED_PRIORITY)
+            .responsecode(UPDATED_RESPONSECODE)
+            .responsemsg(UPDATED_RESPONSEMSG)
+            .sent(UPDATED_SENT)
+            .delivered(UPDATED_DELIVERED)
+            .txntype(UPDATED_TXNTYPE)
+            .errorexception(UPDATED_ERROREXCEPTION)
+            .datecreated(UPDATED_DATECREATED)
+            .datesent(UPDATED_DATESENT)
+            .rtpsreqtime(UPDATED_RTPSREQTIME)
+            .fxgenerated(UPDATED_FXGENERATED)
+            .taxprocessed(UPDATED_TAXPROCESSED)
+            .batchnumber(UPDATED_BATCHNUMBER)
+            .batchnumbertax(UPDATED_BATCHNUMBERTAX)
+            .responsetime(UPDATED_RESPONSETIME)
+            .pduseqid(UPDATED_PDUSEQID)
+            .remarks(UPDATED_REMARKS)
+            .resendby(UPDATED_RESENDBY);
     }
 
     @BeforeEach
     public void initTest() {
-        mESSAGESSMS = createEntity();
+        messagesSms = createEntity();
     }
 
     @AfterEach
     public void cleanup() {
-        if (insertedMESSAGESSMS != null) {
-            mESSAGESSMSRepository.delete(insertedMESSAGESSMS);
-            insertedMESSAGESSMS = null;
+        if (insertedMessagesSms != null) {
+            messagesSmsRepository.delete(insertedMessagesSms);
+            insertedMessagesSms = null;
         }
     }
 
     @Test
     @Transactional
-    void createMESSAGESSMS() throws Exception {
+    void createMessagesSms() throws Exception {
         long databaseSizeBeforeCreate = getRepositoryCount();
-        // Create the MESSAGESSMS
-        var returnedMESSAGESSMS = om.readValue(
-            restMESSAGESSMSMockMvc
-                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(mESSAGESSMS)))
+        // Create the MessagesSms
+        var returnedMessagesSms = om.readValue(
+            restMessagesSmsMockMvc
+                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(messagesSms)))
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            MESSAGESSMS.class
+            MessagesSms.class
         );
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
         assertIncrementedRepositoryCount(databaseSizeBeforeCreate);
-        assertMESSAGESSMSUpdatableFieldsEquals(returnedMESSAGESSMS, getPersistedMESSAGESSMS(returnedMESSAGESSMS));
+        assertMessagesSmsUpdatableFieldsEquals(returnedMessagesSms, getPersistedMessagesSms(returnedMessagesSms));
 
-        insertedMESSAGESSMS = returnedMESSAGESSMS;
+        insertedMessagesSms = returnedMessagesSms;
     }
 
     @Test
     @Transactional
-    void createMESSAGESSMSWithExistingId() throws Exception {
-        // Create the MESSAGESSMS with an existing ID
-        mESSAGESSMS.setId(1L);
+    void createMessagesSmsWithExistingId() throws Exception {
+        // Create the MessagesSms with an existing ID
+        messagesSms.setId(1L);
 
         long databaseSizeBeforeCreate = getRepositoryCount();
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restMESSAGESSMSMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(mESSAGESSMS)))
+        restMessagesSmsMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(messagesSms)))
             .andExpect(status().isBadRequest());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
         assertSameRepositoryCount(databaseSizeBeforeCreate);
     }
 
     @Test
     @Transactional
-    void getAllMESSAGESSMS() throws Exception {
+    void getAllMessagesSms() throws Exception {
         // Initialize the database
-        insertedMESSAGESSMS = mESSAGESSMSRepository.saveAndFlush(mESSAGESSMS);
+        insertedMessagesSms = messagesSmsRepository.saveAndFlush(messagesSms);
 
-        // Get all the mESSAGESSMSList
-        restMESSAGESSMSMockMvc
+        // Get all the messagesSmsList
+        restMessagesSmsMockMvc
             .perform(get(ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(mESSAGESSMS.getId().intValue())))
-            .andExpect(jsonPath("$.[*].tRNDATETIME").value(hasItem(DEFAULT_T_RNDATETIME.toString())))
-            .andExpect(jsonPath("$.[*].pHONENUMBER").value(hasItem(DEFAULT_P_HONENUMBER)))
-            .andExpect(jsonPath("$.[*].tRANSACTIONNO").value(hasItem(DEFAULT_T_RANSACTIONNO)))
-            .andExpect(jsonPath("$.[*].aCCOUNTNUMBER").value(hasItem(DEFAULT_A_CCOUNTNUMBER)))
-            .andExpect(jsonPath("$.[*].mESSAGE").value(hasItem(DEFAULT_M_ESSAGE)))
-            .andExpect(jsonPath("$.[*].cHANNEL").value(hasItem(DEFAULT_C_HANNEL)))
-            .andExpect(jsonPath("$.[*].tRIALS").value(hasItem(DEFAULT_T_RIALS.intValue())))
-            .andExpect(jsonPath("$.[*].pRIORITY").value(hasItem(DEFAULT_P_RIORITY.intValue())))
-            .andExpect(jsonPath("$.[*].rESPONSECODE").value(hasItem(DEFAULT_R_ESPONSECODE)))
-            .andExpect(jsonPath("$.[*].rESPONSEMSG").value(hasItem(DEFAULT_R_ESPONSEMSG)))
-            .andExpect(jsonPath("$.[*].sENT").value(hasItem(DEFAULT_S_ENT.intValue())))
-            .andExpect(jsonPath("$.[*].dELIVERED").value(hasItem(DEFAULT_D_ELIVERED.intValue())))
-            .andExpect(jsonPath("$.[*].tXNTYPE").value(hasItem(DEFAULT_T_XNTYPE)))
-            .andExpect(jsonPath("$.[*].eRROREXCEPTION").value(hasItem(DEFAULT_E_RROREXCEPTION.intValue())))
-            .andExpect(jsonPath("$.[*].dATECREATED").value(hasItem(DEFAULT_D_ATECREATED.toString())))
-            .andExpect(jsonPath("$.[*].dATESENT").value(hasItem(DEFAULT_D_ATESENT)))
-            .andExpect(jsonPath("$.[*].rTPSREQTIME").value(hasItem(DEFAULT_R_TPSREQTIME)))
-            .andExpect(jsonPath("$.[*].fXGENERATED").value(hasItem(DEFAULT_F_XGENERATED)))
-            .andExpect(jsonPath("$.[*].tAXPROCESSED").value(hasItem(DEFAULT_T_AXPROCESSED.intValue())))
-            .andExpect(jsonPath("$.[*].bATCHNUMBER").value(hasItem(DEFAULT_B_ATCHNUMBER)))
-            .andExpect(jsonPath("$.[*].bATCHNUMBERTAX").value(hasItem(DEFAULT_B_ATCHNUMBERTAX)))
-            .andExpect(jsonPath("$.[*].rESPONSETIME").value(hasItem(DEFAULT_R_ESPONSETIME)))
-            .andExpect(jsonPath("$.[*].pDUSEQID").value(hasItem(DEFAULT_P_DUSEQID)))
-            .andExpect(jsonPath("$.[*].rEMARKS").value(hasItem(DEFAULT_R_EMARKS)))
-            .andExpect(jsonPath("$.[*].rESENDBY").value(hasItem(DEFAULT_R_ESENDBY)));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(messagesSms.getId().intValue())))
+            .andExpect(jsonPath("$.[*].trndatetime").value(hasItem(DEFAULT_TRNDATETIME.toString())))
+            .andExpect(jsonPath("$.[*].phonenumber").value(hasItem(DEFAULT_PHONENUMBER)))
+            .andExpect(jsonPath("$.[*].transactionno").value(hasItem(DEFAULT_TRANSACTIONNO)))
+            .andExpect(jsonPath("$.[*].accountnumber").value(hasItem(DEFAULT_ACCOUNTNUMBER)))
+            .andExpect(jsonPath("$.[*].message").value(hasItem(DEFAULT_MESSAGE)))
+            .andExpect(jsonPath("$.[*].channel").value(hasItem(DEFAULT_CHANNEL)))
+            .andExpect(jsonPath("$.[*].trials").value(hasItem(DEFAULT_TRIALS.intValue())))
+            .andExpect(jsonPath("$.[*].priority").value(hasItem(DEFAULT_PRIORITY.intValue())))
+            .andExpect(jsonPath("$.[*].responsecode").value(hasItem(DEFAULT_RESPONSECODE)))
+            .andExpect(jsonPath("$.[*].responsemsg").value(hasItem(DEFAULT_RESPONSEMSG)))
+            .andExpect(jsonPath("$.[*].sent").value(hasItem(DEFAULT_SENT.intValue())))
+            .andExpect(jsonPath("$.[*].delivered").value(hasItem(DEFAULT_DELIVERED.intValue())))
+            .andExpect(jsonPath("$.[*].txntype").value(hasItem(DEFAULT_TXNTYPE)))
+            .andExpect(jsonPath("$.[*].errorexception").value(hasItem(DEFAULT_ERROREXCEPTION.intValue())))
+            .andExpect(jsonPath("$.[*].datecreated").value(hasItem(DEFAULT_DATECREATED.toString())))
+            .andExpect(jsonPath("$.[*].datesent").value(hasItem(DEFAULT_DATESENT)))
+            .andExpect(jsonPath("$.[*].rtpsreqtime").value(hasItem(DEFAULT_RTPSREQTIME)))
+            .andExpect(jsonPath("$.[*].fxgenerated").value(hasItem(DEFAULT_FXGENERATED)))
+            .andExpect(jsonPath("$.[*].taxprocessed").value(hasItem(DEFAULT_TAXPROCESSED.intValue())))
+            .andExpect(jsonPath("$.[*].batchnumber").value(hasItem(DEFAULT_BATCHNUMBER)))
+            .andExpect(jsonPath("$.[*].batchnumbertax").value(hasItem(DEFAULT_BATCHNUMBERTAX)))
+            .andExpect(jsonPath("$.[*].responsetime").value(hasItem(DEFAULT_RESPONSETIME)))
+            .andExpect(jsonPath("$.[*].pduseqid").value(hasItem(DEFAULT_PDUSEQID)))
+            .andExpect(jsonPath("$.[*].remarks").value(hasItem(DEFAULT_REMARKS)))
+            .andExpect(jsonPath("$.[*].resendby").value(hasItem(DEFAULT_RESENDBY)));
     }
 
     @Test
     @Transactional
-    void getMESSAGESSMS() throws Exception {
+    void getMessagesSms() throws Exception {
         // Initialize the database
-        insertedMESSAGESSMS = mESSAGESSMSRepository.saveAndFlush(mESSAGESSMS);
+        insertedMessagesSms = messagesSmsRepository.saveAndFlush(messagesSms);
 
-        // Get the mESSAGESSMS
-        restMESSAGESSMSMockMvc
-            .perform(get(ENTITY_API_URL_ID, mESSAGESSMS.getId()))
+        // Get the messagesSms
+        restMessagesSmsMockMvc
+            .perform(get(ENTITY_API_URL_ID, messagesSms.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(mESSAGESSMS.getId().intValue()))
-            .andExpect(jsonPath("$.tRNDATETIME").value(DEFAULT_T_RNDATETIME.toString()))
-            .andExpect(jsonPath("$.pHONENUMBER").value(DEFAULT_P_HONENUMBER))
-            .andExpect(jsonPath("$.tRANSACTIONNO").value(DEFAULT_T_RANSACTIONNO))
-            .andExpect(jsonPath("$.aCCOUNTNUMBER").value(DEFAULT_A_CCOUNTNUMBER))
-            .andExpect(jsonPath("$.mESSAGE").value(DEFAULT_M_ESSAGE))
-            .andExpect(jsonPath("$.cHANNEL").value(DEFAULT_C_HANNEL))
-            .andExpect(jsonPath("$.tRIALS").value(DEFAULT_T_RIALS.intValue()))
-            .andExpect(jsonPath("$.pRIORITY").value(DEFAULT_P_RIORITY.intValue()))
-            .andExpect(jsonPath("$.rESPONSECODE").value(DEFAULT_R_ESPONSECODE))
-            .andExpect(jsonPath("$.rESPONSEMSG").value(DEFAULT_R_ESPONSEMSG))
-            .andExpect(jsonPath("$.sENT").value(DEFAULT_S_ENT.intValue()))
-            .andExpect(jsonPath("$.dELIVERED").value(DEFAULT_D_ELIVERED.intValue()))
-            .andExpect(jsonPath("$.tXNTYPE").value(DEFAULT_T_XNTYPE))
-            .andExpect(jsonPath("$.eRROREXCEPTION").value(DEFAULT_E_RROREXCEPTION.intValue()))
-            .andExpect(jsonPath("$.dATECREATED").value(DEFAULT_D_ATECREATED.toString()))
-            .andExpect(jsonPath("$.dATESENT").value(DEFAULT_D_ATESENT))
-            .andExpect(jsonPath("$.rTPSREQTIME").value(DEFAULT_R_TPSREQTIME))
-            .andExpect(jsonPath("$.fXGENERATED").value(DEFAULT_F_XGENERATED))
-            .andExpect(jsonPath("$.tAXPROCESSED").value(DEFAULT_T_AXPROCESSED.intValue()))
-            .andExpect(jsonPath("$.bATCHNUMBER").value(DEFAULT_B_ATCHNUMBER))
-            .andExpect(jsonPath("$.bATCHNUMBERTAX").value(DEFAULT_B_ATCHNUMBERTAX))
-            .andExpect(jsonPath("$.rESPONSETIME").value(DEFAULT_R_ESPONSETIME))
-            .andExpect(jsonPath("$.pDUSEQID").value(DEFAULT_P_DUSEQID))
-            .andExpect(jsonPath("$.rEMARKS").value(DEFAULT_R_EMARKS))
-            .andExpect(jsonPath("$.rESENDBY").value(DEFAULT_R_ESENDBY));
+            .andExpect(jsonPath("$.id").value(messagesSms.getId().intValue()))
+            .andExpect(jsonPath("$.trndatetime").value(DEFAULT_TRNDATETIME.toString()))
+            .andExpect(jsonPath("$.phonenumber").value(DEFAULT_PHONENUMBER))
+            .andExpect(jsonPath("$.transactionno").value(DEFAULT_TRANSACTIONNO))
+            .andExpect(jsonPath("$.accountnumber").value(DEFAULT_ACCOUNTNUMBER))
+            .andExpect(jsonPath("$.message").value(DEFAULT_MESSAGE))
+            .andExpect(jsonPath("$.channel").value(DEFAULT_CHANNEL))
+            .andExpect(jsonPath("$.trials").value(DEFAULT_TRIALS.intValue()))
+            .andExpect(jsonPath("$.priority").value(DEFAULT_PRIORITY.intValue()))
+            .andExpect(jsonPath("$.responsecode").value(DEFAULT_RESPONSECODE))
+            .andExpect(jsonPath("$.responsemsg").value(DEFAULT_RESPONSEMSG))
+            .andExpect(jsonPath("$.sent").value(DEFAULT_SENT.intValue()))
+            .andExpect(jsonPath("$.delivered").value(DEFAULT_DELIVERED.intValue()))
+            .andExpect(jsonPath("$.txntype").value(DEFAULT_TXNTYPE))
+            .andExpect(jsonPath("$.errorexception").value(DEFAULT_ERROREXCEPTION.intValue()))
+            .andExpect(jsonPath("$.datecreated").value(DEFAULT_DATECREATED.toString()))
+            .andExpect(jsonPath("$.datesent").value(DEFAULT_DATESENT))
+            .andExpect(jsonPath("$.rtpsreqtime").value(DEFAULT_RTPSREQTIME))
+            .andExpect(jsonPath("$.fxgenerated").value(DEFAULT_FXGENERATED))
+            .andExpect(jsonPath("$.taxprocessed").value(DEFAULT_TAXPROCESSED.intValue()))
+            .andExpect(jsonPath("$.batchnumber").value(DEFAULT_BATCHNUMBER))
+            .andExpect(jsonPath("$.batchnumbertax").value(DEFAULT_BATCHNUMBERTAX))
+            .andExpect(jsonPath("$.responsetime").value(DEFAULT_RESPONSETIME))
+            .andExpect(jsonPath("$.pduseqid").value(DEFAULT_PDUSEQID))
+            .andExpect(jsonPath("$.remarks").value(DEFAULT_REMARKS))
+            .andExpect(jsonPath("$.resendby").value(DEFAULT_RESENDBY));
     }
 
     @Test
     @Transactional
-    void getNonExistingMESSAGESSMS() throws Exception {
-        // Get the mESSAGESSMS
-        restMESSAGESSMSMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+    void getNonExistingMessagesSms() throws Exception {
+        // Get the messagesSms
+        restMessagesSmsMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
     @Transactional
-    void putExistingMESSAGESSMS() throws Exception {
+    void putExistingMessagesSms() throws Exception {
         // Initialize the database
-        insertedMESSAGESSMS = mESSAGESSMSRepository.saveAndFlush(mESSAGESSMS);
+        insertedMessagesSms = messagesSmsRepository.saveAndFlush(messagesSms);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the mESSAGESSMS
-        MESSAGESSMS updatedMESSAGESSMS = mESSAGESSMSRepository.findById(mESSAGESSMS.getId()).orElseThrow();
-        // Disconnect from session so that the updates on updatedMESSAGESSMS are not directly saved in db
-        em.detach(updatedMESSAGESSMS);
-        updatedMESSAGESSMS
-            .tRNDATETIME(UPDATED_T_RNDATETIME)
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .tRANSACTIONNO(UPDATED_T_RANSACTIONNO)
-            .aCCOUNTNUMBER(UPDATED_A_CCOUNTNUMBER)
-            .mESSAGE(UPDATED_M_ESSAGE)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .tRIALS(UPDATED_T_RIALS)
-            .pRIORITY(UPDATED_P_RIORITY)
-            .rESPONSECODE(UPDATED_R_ESPONSECODE)
-            .rESPONSEMSG(UPDATED_R_ESPONSEMSG)
-            .sENT(UPDATED_S_ENT)
-            .dELIVERED(UPDATED_D_ELIVERED)
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .eRROREXCEPTION(UPDATED_E_RROREXCEPTION)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .dATESENT(UPDATED_D_ATESENT)
-            .rTPSREQTIME(UPDATED_R_TPSREQTIME)
-            .fXGENERATED(UPDATED_F_XGENERATED)
-            .tAXPROCESSED(UPDATED_T_AXPROCESSED)
-            .bATCHNUMBER(UPDATED_B_ATCHNUMBER)
-            .bATCHNUMBERTAX(UPDATED_B_ATCHNUMBERTAX)
-            .rESPONSETIME(UPDATED_R_ESPONSETIME)
-            .pDUSEQID(UPDATED_P_DUSEQID)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .rESENDBY(UPDATED_R_ESENDBY);
+        // Update the messagesSms
+        MessagesSms updatedMessagesSms = messagesSmsRepository.findById(messagesSms.getId()).orElseThrow();
+        // Disconnect from session so that the updates on updatedMessagesSms are not directly saved in db
+        em.detach(updatedMessagesSms);
+        updatedMessagesSms
+            .trndatetime(UPDATED_TRNDATETIME)
+            .phonenumber(UPDATED_PHONENUMBER)
+            .transactionno(UPDATED_TRANSACTIONNO)
+            .accountnumber(UPDATED_ACCOUNTNUMBER)
+            .message(UPDATED_MESSAGE)
+            .channel(UPDATED_CHANNEL)
+            .trials(UPDATED_TRIALS)
+            .priority(UPDATED_PRIORITY)
+            .responsecode(UPDATED_RESPONSECODE)
+            .responsemsg(UPDATED_RESPONSEMSG)
+            .sent(UPDATED_SENT)
+            .delivered(UPDATED_DELIVERED)
+            .txntype(UPDATED_TXNTYPE)
+            .errorexception(UPDATED_ERROREXCEPTION)
+            .datecreated(UPDATED_DATECREATED)
+            .datesent(UPDATED_DATESENT)
+            .rtpsreqtime(UPDATED_RTPSREQTIME)
+            .fxgenerated(UPDATED_FXGENERATED)
+            .taxprocessed(UPDATED_TAXPROCESSED)
+            .batchnumber(UPDATED_BATCHNUMBER)
+            .batchnumbertax(UPDATED_BATCHNUMBERTAX)
+            .responsetime(UPDATED_RESPONSETIME)
+            .pduseqid(UPDATED_PDUSEQID)
+            .remarks(UPDATED_REMARKS)
+            .resendby(UPDATED_RESENDBY);
 
-        restMESSAGESSMSMockMvc
+        restMessagesSmsMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, updatedMESSAGESSMS.getId())
+                put(ENTITY_API_URL_ID, updatedMessagesSms.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(updatedMESSAGESSMS))
+                    .content(om.writeValueAsBytes(updatedMessagesSms))
             )
             .andExpect(status().isOk());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertPersistedMESSAGESSMSToMatchAllProperties(updatedMESSAGESSMS);
+        assertPersistedMessagesSmsToMatchAllProperties(updatedMessagesSms);
     }
 
     @Test
     @Transactional
-    void putNonExistingMESSAGESSMS() throws Exception {
+    void putNonExistingMessagesSms() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        mESSAGESSMS.setId(longCount.incrementAndGet());
+        messagesSms.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restMESSAGESSMSMockMvc
+        restMessagesSmsMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, mESSAGESSMS.getId())
+                put(ENTITY_API_URL_ID, messagesSms.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(mESSAGESSMS))
+                    .content(om.writeValueAsBytes(messagesSms))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithIdMismatchMESSAGESSMS() throws Exception {
+    void putWithIdMismatchMessagesSms() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        mESSAGESSMS.setId(longCount.incrementAndGet());
+        messagesSms.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restMESSAGESSMSMockMvc
+        restMessagesSmsMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(mESSAGESSMS))
+                    .content(om.writeValueAsBytes(messagesSms))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithMissingIdPathParamMESSAGESSMS() throws Exception {
+    void putWithMissingIdPathParamMessagesSms() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        mESSAGESSMS.setId(longCount.incrementAndGet());
+        messagesSms.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restMESSAGESSMSMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(mESSAGESSMS)))
+        restMessagesSmsMockMvc
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(messagesSms)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void partialUpdateMESSAGESSMSWithPatch() throws Exception {
+    void partialUpdateMessagesSmsWithPatch() throws Exception {
         // Initialize the database
-        insertedMESSAGESSMS = mESSAGESSMSRepository.saveAndFlush(mESSAGESSMS);
+        insertedMessagesSms = messagesSmsRepository.saveAndFlush(messagesSms);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the mESSAGESSMS using partial update
-        MESSAGESSMS partialUpdatedMESSAGESSMS = new MESSAGESSMS();
-        partialUpdatedMESSAGESSMS.setId(mESSAGESSMS.getId());
+        // Update the messagesSms using partial update
+        MessagesSms partialUpdatedMessagesSms = new MessagesSms();
+        partialUpdatedMessagesSms.setId(messagesSms.getId());
 
-        partialUpdatedMESSAGESSMS
-            .aCCOUNTNUMBER(UPDATED_A_CCOUNTNUMBER)
-            .mESSAGE(UPDATED_M_ESSAGE)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .pRIORITY(UPDATED_P_RIORITY)
-            .rESPONSECODE(UPDATED_R_ESPONSECODE)
-            .dELIVERED(UPDATED_D_ELIVERED)
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .dATESENT(UPDATED_D_ATESENT)
-            .fXGENERATED(UPDATED_F_XGENERATED)
-            .tAXPROCESSED(UPDATED_T_AXPROCESSED)
-            .bATCHNUMBER(UPDATED_B_ATCHNUMBER)
-            .rESPONSETIME(UPDATED_R_ESPONSETIME)
-            .rEMARKS(UPDATED_R_EMARKS);
+        partialUpdatedMessagesSms
+            .transactionno(UPDATED_TRANSACTIONNO)
+            .message(UPDATED_MESSAGE)
+            .trials(UPDATED_TRIALS)
+            .priority(UPDATED_PRIORITY)
+            .sent(UPDATED_SENT)
+            .delivered(UPDATED_DELIVERED)
+            .txntype(UPDATED_TXNTYPE)
+            .datecreated(UPDATED_DATECREATED)
+            .rtpsreqtime(UPDATED_RTPSREQTIME)
+            .taxprocessed(UPDATED_TAXPROCESSED)
+            .resendby(UPDATED_RESENDBY);
 
-        restMESSAGESSMSMockMvc
+        restMessagesSmsMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedMESSAGESSMS.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedMessagesSms.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedMESSAGESSMS))
+                    .content(om.writeValueAsBytes(partialUpdatedMessagesSms))
             )
             .andExpect(status().isOk());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertMESSAGESSMSUpdatableFieldsEquals(
-            createUpdateProxyForBean(partialUpdatedMESSAGESSMS, mESSAGESSMS),
-            getPersistedMESSAGESSMS(mESSAGESSMS)
+        assertMessagesSmsUpdatableFieldsEquals(
+            createUpdateProxyForBean(partialUpdatedMessagesSms, messagesSms),
+            getPersistedMessagesSms(messagesSms)
         );
     }
 
     @Test
     @Transactional
-    void fullUpdateMESSAGESSMSWithPatch() throws Exception {
+    void fullUpdateMessagesSmsWithPatch() throws Exception {
         // Initialize the database
-        insertedMESSAGESSMS = mESSAGESSMSRepository.saveAndFlush(mESSAGESSMS);
+        insertedMessagesSms = messagesSmsRepository.saveAndFlush(messagesSms);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the mESSAGESSMS using partial update
-        MESSAGESSMS partialUpdatedMESSAGESSMS = new MESSAGESSMS();
-        partialUpdatedMESSAGESSMS.setId(mESSAGESSMS.getId());
+        // Update the messagesSms using partial update
+        MessagesSms partialUpdatedMessagesSms = new MessagesSms();
+        partialUpdatedMessagesSms.setId(messagesSms.getId());
 
-        partialUpdatedMESSAGESSMS
-            .tRNDATETIME(UPDATED_T_RNDATETIME)
-            .pHONENUMBER(UPDATED_P_HONENUMBER)
-            .tRANSACTIONNO(UPDATED_T_RANSACTIONNO)
-            .aCCOUNTNUMBER(UPDATED_A_CCOUNTNUMBER)
-            .mESSAGE(UPDATED_M_ESSAGE)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .tRIALS(UPDATED_T_RIALS)
-            .pRIORITY(UPDATED_P_RIORITY)
-            .rESPONSECODE(UPDATED_R_ESPONSECODE)
-            .rESPONSEMSG(UPDATED_R_ESPONSEMSG)
-            .sENT(UPDATED_S_ENT)
-            .dELIVERED(UPDATED_D_ELIVERED)
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .eRROREXCEPTION(UPDATED_E_RROREXCEPTION)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .dATESENT(UPDATED_D_ATESENT)
-            .rTPSREQTIME(UPDATED_R_TPSREQTIME)
-            .fXGENERATED(UPDATED_F_XGENERATED)
-            .tAXPROCESSED(UPDATED_T_AXPROCESSED)
-            .bATCHNUMBER(UPDATED_B_ATCHNUMBER)
-            .bATCHNUMBERTAX(UPDATED_B_ATCHNUMBERTAX)
-            .rESPONSETIME(UPDATED_R_ESPONSETIME)
-            .pDUSEQID(UPDATED_P_DUSEQID)
-            .rEMARKS(UPDATED_R_EMARKS)
-            .rESENDBY(UPDATED_R_ESENDBY);
+        partialUpdatedMessagesSms
+            .trndatetime(UPDATED_TRNDATETIME)
+            .phonenumber(UPDATED_PHONENUMBER)
+            .transactionno(UPDATED_TRANSACTIONNO)
+            .accountnumber(UPDATED_ACCOUNTNUMBER)
+            .message(UPDATED_MESSAGE)
+            .channel(UPDATED_CHANNEL)
+            .trials(UPDATED_TRIALS)
+            .priority(UPDATED_PRIORITY)
+            .responsecode(UPDATED_RESPONSECODE)
+            .responsemsg(UPDATED_RESPONSEMSG)
+            .sent(UPDATED_SENT)
+            .delivered(UPDATED_DELIVERED)
+            .txntype(UPDATED_TXNTYPE)
+            .errorexception(UPDATED_ERROREXCEPTION)
+            .datecreated(UPDATED_DATECREATED)
+            .datesent(UPDATED_DATESENT)
+            .rtpsreqtime(UPDATED_RTPSREQTIME)
+            .fxgenerated(UPDATED_FXGENERATED)
+            .taxprocessed(UPDATED_TAXPROCESSED)
+            .batchnumber(UPDATED_BATCHNUMBER)
+            .batchnumbertax(UPDATED_BATCHNUMBERTAX)
+            .responsetime(UPDATED_RESPONSETIME)
+            .pduseqid(UPDATED_PDUSEQID)
+            .remarks(UPDATED_REMARKS)
+            .resendby(UPDATED_RESENDBY);
 
-        restMESSAGESSMSMockMvc
+        restMessagesSmsMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedMESSAGESSMS.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedMessagesSms.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedMESSAGESSMS))
+                    .content(om.writeValueAsBytes(partialUpdatedMessagesSms))
             )
             .andExpect(status().isOk());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertMESSAGESSMSUpdatableFieldsEquals(partialUpdatedMESSAGESSMS, getPersistedMESSAGESSMS(partialUpdatedMESSAGESSMS));
+        assertMessagesSmsUpdatableFieldsEquals(partialUpdatedMessagesSms, getPersistedMessagesSms(partialUpdatedMessagesSms));
     }
 
     @Test
     @Transactional
-    void patchNonExistingMESSAGESSMS() throws Exception {
+    void patchNonExistingMessagesSms() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        mESSAGESSMS.setId(longCount.incrementAndGet());
+        messagesSms.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restMESSAGESSMSMockMvc
+        restMessagesSmsMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, mESSAGESSMS.getId())
+                patch(ENTITY_API_URL_ID, messagesSms.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(mESSAGESSMS))
+                    .content(om.writeValueAsBytes(messagesSms))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithIdMismatchMESSAGESSMS() throws Exception {
+    void patchWithIdMismatchMessagesSms() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        mESSAGESSMS.setId(longCount.incrementAndGet());
+        messagesSms.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restMESSAGESSMSMockMvc
+        restMessagesSmsMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(mESSAGESSMS))
+                    .content(om.writeValueAsBytes(messagesSms))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithMissingIdPathParamMESSAGESSMS() throws Exception {
+    void patchWithMissingIdPathParamMessagesSms() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        mESSAGESSMS.setId(longCount.incrementAndGet());
+        messagesSms.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restMESSAGESSMSMockMvc
-            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(mESSAGESSMS)))
+        restMessagesSmsMockMvc
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(messagesSms)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the MESSAGESSMS in the database
+        // Validate the MessagesSms in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void deleteMESSAGESSMS() throws Exception {
+    void deleteMessagesSms() throws Exception {
         // Initialize the database
-        insertedMESSAGESSMS = mESSAGESSMSRepository.saveAndFlush(mESSAGESSMS);
+        insertedMessagesSms = messagesSmsRepository.saveAndFlush(messagesSms);
 
         long databaseSizeBeforeDelete = getRepositoryCount();
 
-        // Delete the mESSAGESSMS
-        restMESSAGESSMSMockMvc
-            .perform(delete(ENTITY_API_URL_ID, mESSAGESSMS.getId()).accept(MediaType.APPLICATION_JSON))
+        // Delete the messagesSms
+        restMessagesSmsMockMvc
+            .perform(delete(ENTITY_API_URL_ID, messagesSms.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
@@ -611,7 +609,7 @@ class MESSAGESSMSResourceIT {
     }
 
     protected long getRepositoryCount() {
-        return mESSAGESSMSRepository.count();
+        return messagesSmsRepository.count();
     }
 
     protected void assertIncrementedRepositoryCount(long countBefore) {
@@ -626,15 +624,15 @@ class MESSAGESSMSResourceIT {
         assertThat(countBefore).isEqualTo(getRepositoryCount());
     }
 
-    protected MESSAGESSMS getPersistedMESSAGESSMS(MESSAGESSMS mESSAGESSMS) {
-        return mESSAGESSMSRepository.findById(mESSAGESSMS.getId()).orElseThrow();
+    protected MessagesSms getPersistedMessagesSms(MessagesSms messagesSms) {
+        return messagesSmsRepository.findById(messagesSms.getId()).orElseThrow();
     }
 
-    protected void assertPersistedMESSAGESSMSToMatchAllProperties(MESSAGESSMS expectedMESSAGESSMS) {
-        assertMESSAGESSMSAllPropertiesEquals(expectedMESSAGESSMS, getPersistedMESSAGESSMS(expectedMESSAGESSMS));
+    protected void assertPersistedMessagesSmsToMatchAllProperties(MessagesSms expectedMessagesSms) {
+        assertMessagesSmsAllPropertiesEquals(expectedMessagesSms, getPersistedMessagesSms(expectedMessagesSms));
     }
 
-    protected void assertPersistedMESSAGESSMSToMatchUpdatableProperties(MESSAGESSMS expectedMESSAGESSMS) {
-        assertMESSAGESSMSAllUpdatablePropertiesEquals(expectedMESSAGESSMS, getPersistedMESSAGESSMS(expectedMESSAGESSMS));
+    protected void assertPersistedMessagesSmsToMatchUpdatableProperties(MessagesSms expectedMessagesSms) {
+        assertMessagesSmsAllUpdatablePropertiesEquals(expectedMessagesSms, getPersistedMessagesSms(expectedMessagesSms));
     }
 }

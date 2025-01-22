@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Branches.
+    -->
+    <changeSet id="20250121085650-1" author="jhipster">
+        <createTable tableName="branches">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="branchname" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="branchcode" type="varchar(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="approved" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="email" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="address" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="phone" type="varchar(12)">
+                <constraints nullable="true" />
+            </column>
+            <column name="location" type="varchar(4000)">
+                <constraints nullable="false" />
+            </column>
+            <column name="contactperson" type="varchar(4000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="remarks" type="varchar(2000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="createdby" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="createdon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="approvedby" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="approvedon" type="varchar(7)">
+                <constraints nullable="true" />
+            </column>
+            <column name="checkerremarks" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="deletedby" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="deletedon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleteremarks" type="varchar(200)">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="declined" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="declineddon" type="varchar(7)">
+                <constraints nullable="true" />
+            </column>
+            <column name="declinedby" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sessionid" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="reworked" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="reworkedby" type="varchar(20)">
+                <constraints nullable="true" />
+            </column>
+            <column name="reworkedon" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="district" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="region" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="regionname" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="reporting" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="branches" columnName="createdon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="branches" columnName="deletedon" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="branches" columnName="reworkedon" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20250121085650-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/branches.csv"
+                  separator=";"
+                  tableName="branches"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="branchname" type="string"/>
+            <column name="branchcode" type="string"/>
+            <column name="approved" type="numeric"/>
+            <column name="email" type="string"/>
+            <column name="address" type="string"/>
+            <column name="phone" type="string"/>
+            <column name="location" type="string"/>
+            <column name="contactperson" type="string"/>
+            <column name="remarks" type="string"/>
+            <column name="createdby" type="string"/>
+            <column name="createdon" type="date"/>
+            <column name="approvedby" type="string"/>
+            <column name="approvedon" type="string"/>
+            <column name="checkerremarks" type="string"/>
+            <column name="deletedby" type="string"/>
+            <column name="deletedon" type="date"/>
+            <column name="deleteremarks" type="string"/>
+            <column name="deleted" type="numeric"/>
+            <column name="declined" type="numeric"/>
+            <column name="declineddon" type="string"/>
+            <column name="declinedby" type="string"/>
+            <column name="sessionid" type="string"/>
+            <column name="reworked" type="numeric"/>
+            <column name="reworkedby" type="string"/>
+            <column name="reworkedon" type="date"/>
+            <column name="district" type="string"/>
+            <column name="region" type="string"/>
+            <column name="regionname" type="string"/>
+            <column name="reporting" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

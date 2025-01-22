@@ -7,13 +7,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A CHANNELS.
+ * A Channels.
  */
 @Entity
 @Table(name = "channels")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class CHANNELS implements Serializable {
+public class Channels implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,16 +24,16 @@ public class CHANNELS implements Serializable {
     private Long id;
 
     @Size(max = 15)
-    @Column(name = "c_hannel", length = 15)
-    private String cHANNEL;
+    @Column(name = "channel", length = 15)
+    private String channel;
 
     @Size(max = 50)
-    @Column(name = "d_escription", length = 50)
-    private String dESCRIPTION;
+    @Column(name = "description", length = 50)
+    private String description;
 
     @Size(max = 6)
-    @Column(name = "b_in", length = 6)
-    private String bIN;
+    @Column(name = "bin", length = 6)
+    private String bin;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -41,7 +41,7 @@ public class CHANNELS implements Serializable {
         return this.id;
     }
 
-    public CHANNELS id(Long id) {
+    public Channels id(Long id) {
         this.setId(id);
         return this;
     }
@@ -50,43 +50,43 @@ public class CHANNELS implements Serializable {
         this.id = id;
     }
 
-    public String getcHANNEL() {
-        return this.cHANNEL;
+    public String getChannel() {
+        return this.channel;
     }
 
-    public CHANNELS cHANNEL(String cHANNEL) {
-        this.setcHANNEL(cHANNEL);
+    public Channels channel(String channel) {
+        this.setChannel(channel);
         return this;
     }
 
-    public void setcHANNEL(String cHANNEL) {
-        this.cHANNEL = cHANNEL;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
-    public String getdESCRIPTION() {
-        return this.dESCRIPTION;
+    public String getDescription() {
+        return this.description;
     }
 
-    public CHANNELS dESCRIPTION(String dESCRIPTION) {
-        this.setdESCRIPTION(dESCRIPTION);
+    public Channels description(String description) {
+        this.setDescription(description);
         return this;
     }
 
-    public void setdESCRIPTION(String dESCRIPTION) {
-        this.dESCRIPTION = dESCRIPTION;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getbIN() {
-        return this.bIN;
+    public String getBin() {
+        return this.bin;
     }
 
-    public CHANNELS bIN(String bIN) {
-        this.setbIN(bIN);
+    public Channels bin(String bin) {
+        this.setBin(bin);
         return this;
     }
 
-    public void setbIN(String bIN) {
-        this.bIN = bIN;
+    public void setBin(String bin) {
+        this.bin = bin;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -96,10 +96,10 @@ public class CHANNELS implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof CHANNELS)) {
+        if (!(o instanceof Channels)) {
             return false;
         }
-        return getId() != null && getId().equals(((CHANNELS) o).getId());
+        return getId() != null && getId().equals(((Channels) o).getId());
     }
 
     @Override
@@ -111,11 +111,11 @@ public class CHANNELS implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "CHANNELS{" +
+        return "Channels{" +
             "id=" + getId() +
-            ", cHANNEL='" + getcHANNEL() + "'" +
-            ", dESCRIPTION='" + getdESCRIPTION() + "'" +
-            ", bIN='" + getbIN() + "'" +
+            ", channel='" + getChannel() + "'" +
+            ", description='" + getDescription() + "'" +
+            ", bin='" + getBin() + "'" +
             "}";
     }
 }

@@ -1,24 +1,24 @@
 package com.istl.app.domain;
 
-import static com.istl.app.domain.CUSTOMERTestSamples.*;
+import static com.istl.app.domain.CustomerTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.istl.app.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
 
-class CUSTOMERTest {
+class CustomerTest {
 
     @Test
     void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(CUSTOMER.class);
-        CUSTOMER cUSTOMER1 = getCUSTOMERSample1();
-        CUSTOMER cUSTOMER2 = new CUSTOMER();
-        assertThat(cUSTOMER1).isNotEqualTo(cUSTOMER2);
+        TestUtil.equalsVerifier(Customer.class);
+        Customer customer1 = getCustomerSample1();
+        Customer customer2 = new Customer();
+        assertThat(customer1).isNotEqualTo(customer2);
 
-        cUSTOMER2.setId(cUSTOMER1.getId());
-        assertThat(cUSTOMER1).isEqualTo(cUSTOMER2);
+        customer2.setId(customer1.getId());
+        assertThat(customer1).isEqualTo(customer2);
 
-        cUSTOMER2 = getCUSTOMERSample2();
-        assertThat(cUSTOMER1).isNotEqualTo(cUSTOMER2);
+        customer2 = getCustomerSample2();
+        assertThat(customer1).isNotEqualTo(customer2);
     }
 }

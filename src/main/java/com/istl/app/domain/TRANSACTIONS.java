@@ -8,13 +8,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A TRANSACTIONS.
+ * A Transactions.
  */
 @Entity
 @Table(name = "transactions")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class TRANSACTIONS implements Serializable {
+public class Transactions implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,203 +24,203 @@ public class TRANSACTIONS implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "p_rocessed")
-    private Long pROCESSED;
+    @Column(name = "processed")
+    private Long processed;
 
     @Size(max = 150)
-    @Column(name = "i_ncomingbitmap", length = 150)
-    private String iNCOMINGBITMAP;
+    @Column(name = "incomingbitmap", length = 150)
+    private String incomingbitmap;
 
     @Size(max = 150)
-    @Column(name = "o_utgoingbitmap", length = 150)
-    private String oUTGOINGBITMAP;
+    @Column(name = "outgoingbitmap", length = 150)
+    private String outgoingbitmap;
 
     @Size(max = 4000)
-    @Column(name = "i_nmessage", length = 4000)
-    private String iNMESSAGE;
+    @Column(name = "inmessage", length = 4000)
+    private String inmessage;
 
     @Size(max = 4000)
-    @Column(name = "m_essagetocbs", length = 4000)
-    private String mESSAGETOCBS;
+    @Column(name = "messagetocbs", length = 4000)
+    private String messagetocbs;
 
     @Size(max = 4000)
-    @Column(name = "m_essagefromcbs", length = 4000)
-    private String mESSAGEFROMCBS;
+    @Column(name = "messagefromcbs", length = 4000)
+    private String messagefromcbs;
 
-    @Column(name = "c_bsprocess")
-    private Long cBSPROCESS;
+    @Column(name = "cbsprocess")
+    private Long cbsprocess;
 
-    @Column(name = "c_bsonline")
-    private Long cBSONLINE;
+    @Column(name = "cbsonline")
+    private Long cbsonline;
 
     @Size(max = 500)
-    @Column(name = "c_bsresponse", length = 500)
-    private String cBSRESPONSE;
+    @Column(name = "cbsresponse", length = 500)
+    private String cbsresponse;
 
     @Size(max = 4000)
-    @Column(name = "r_esponsemessage", length = 4000)
-    private String rESPONSEMESSAGE;
+    @Column(name = "responsemessage", length = 4000)
+    private String responsemessage;
 
-    @Column(name = "r_esponsesent")
-    private Long rESPONSESENT;
+    @Column(name = "responsesent")
+    private Long responsesent;
 
     @Size(max = 20)
-    @Column(name = "c_hannel", length = 20)
-    private String cHANNEL;
+    @Column(name = "channel", length = 20)
+    private String channel;
 
     @Size(max = 50)
-    @Column(name = "o_riginaldata", length = 50)
-    private String oRIGINALDATA;
+    @Column(name = "originaldata", length = 50)
+    private String originaldata;
 
     @Size(max = 150)
-    @Column(name = "f_ield_39_resp", length = 150)
-    private String fIELD39RESP;
+    @Column(name = "field_39_resp", length = 150)
+    private String field39resp;
 
     @Size(max = 4000)
-    @Column(name = "n_arration", length = 4000)
-    private String nARRATION;
+    @Column(name = "narration", length = 4000)
+    private String narration;
 
-    @Column(name = "a_uthorised")
-    private Long aUTHORISED;
+    @Column(name = "authorised")
+    private Long authorised;
 
     @Size(max = 30)
-    @Column(name = "b_ranchcode", length = 30)
-    private String bRANCHCODE;
+    @Column(name = "branchcode", length = 30)
+    private String branchcode;
 
     @Size(max = 150)
-    @Column(name = "f_ield_39_original", length = 150)
-    private String fIELD39ORIGINAL;
+    @Column(name = "field_39_original", length = 150)
+    private String field39original;
 
     @Size(max = 10)
-    @Column(name = "m_essageclass", length = 10)
-    private String mESSAGECLASS;
+    @Column(name = "messageclass", length = 10)
+    private String messageclass;
 
     @Size(max = 10)
-    @Column(name = "t_xncode", length = 10)
-    private String tXNCODE;
+    @Column(name = "txncode", length = 10)
+    private String txncode;
 
     @Size(max = 5)
-    @Column(name = "c_urrcode", length = 5)
-    private String cURRCODE;
+    @Column(name = "currcode", length = 5)
+    private String currcode;
 
     @Size(max = 20)
-    @Column(name = "d_evice", length = 20)
-    private String dEVICE;
+    @Column(name = "device", length = 20)
+    private String device;
 
     @Size(max = 30)
-    @Column(name = "b_ranch_2", length = 30)
-    private String bRANCH2;
+    @Column(name = "branch_2", length = 30)
+    private String branch2;
 
-    @Column(name = "long_erbranch")
-    private Long longERBRANCH;
+    @Column(name = "longerbranch")
+    private Long longerbranch;
 
-    @Column(name = "d_atex")
-    private Instant dATEX;
+    @Column(name = "datex")
+    private Instant datex;
 
     @Size(max = 50)
-    @Column(name = "t_imex", length = 50)
-    private String tIMEX;
+    @Column(name = "timex", length = 50)
+    private String timex;
 
-    @Column(name = "p_osted")
-    private Long pOSTED;
+    @Column(name = "posted")
+    private Long posted;
 
-    @Column(name = "a_ttempts")
-    private Long aTTEMPTS;
-
-    @Size(max = 100)
-    @Column(name = "o_riginaldata_2", length = 100)
-    private String oRIGINALDATA2;
-
-    @Column(name = "c_ommission")
-    private Long cOMMISSION;
-
-    @Column(name = "r_esponsecreated")
-    private Long rESPONSECREATED;
-
-    @Column(name = "o_nline")
-    private Long oNLINE;
+    @Column(name = "attempts")
+    private Long attempts;
 
     @Size(max = 100)
-    @Column(name = "o_riginaldata_3", length = 100)
-    private String oRIGINALDATA3;
+    @Column(name = "originaldata_2", length = 100)
+    private String originaldata2;
+
+    @Column(name = "commission")
+    private Long commission;
+
+    @Column(name = "responsecreated")
+    private Long responsecreated;
+
+    @Column(name = "online")
+    private Long online;
+
+    @Size(max = 100)
+    @Column(name = "originaldata_3", length = 100)
+    private String originaldata3;
 
     @Size(max = 15)
-    @Column(name = "t_oswitch", length = 15)
-    private String tOSWITCH;
+    @Column(name = "toswitch", length = 15)
+    private String toswitch;
 
     @Size(max = 15)
-    @Column(name = "f_romswitch", length = 15)
-    private String fROMSWITCH;
+    @Column(name = "fromswitch", length = 15)
+    private String fromswitch;
 
     @Size(max = 15)
-    @Column(name = "t_ocbs", length = 15)
-    private String tOCBS;
+    @Column(name = "tocbs", length = 15)
+    private String tocbs;
 
     @Size(max = 15)
-    @Column(name = "f_romcbs", length = 15)
-    private String fROMCBS;
+    @Column(name = "fromcbs", length = 15)
+    private String fromcbs;
 
-    @Column(name = "p_ostinglegs")
-    private Long pOSTINGLEGS;
+    @Column(name = "postinglegs")
+    private Long postinglegs;
 
     @Size(max = 10)
-    @Column(name = "c_ommissiontxncode", length = 10)
-    private String cOMMISSIONTXNCODE;
+    @Column(name = "commissiontxncode", length = 10)
+    private String commissiontxncode;
 
     @Size(max = 30)
-    @Column(name = "h_ostref", length = 30)
-    private String hOSTREF;
+    @Column(name = "hostref", length = 30)
+    private String hostref;
 
-    @Column(name = "r_equestcreated")
-    private Long rEQUESTCREATED;
+    @Column(name = "requestcreated")
+    private Long requestcreated;
 
     @Size(max = 4000)
-    @Column(name = "r_equestmessage", length = 4000)
-    private String rEQUESTMESSAGE;
+    @Column(name = "requestmessage", length = 4000)
+    private String requestmessage;
 
     @Size(max = 150)
-    @Column(name = "o_utgoingbitmapflex", length = 150)
-    private String oUTGOINGBITMAPFLEX;
+    @Column(name = "outgoingbitmapflex", length = 150)
+    private String outgoingbitmapflex;
 
     @Size(max = 150)
-    @Column(name = "i_ncomingbitmapflex", length = 150)
-    private String iNCOMINGBITMAPFLEX;
+    @Column(name = "incomingbitmapflex", length = 150)
+    private String incomingbitmapflex;
 
-    @Column(name = "r_equestsent")
-    private Long rEQUESTSENT;
+    @Column(name = "requestsent")
+    private Long requestsent;
 
-    @Column(name = "m_inicbs")
-    private Long mINICBS;
+    @Column(name = "minicbs")
+    private Long minicbs;
 
-    @Column(name = "r_eversed")
-    private Long rEVERSED;
+    @Column(name = "reversed")
+    private Long reversed;
 
-    @Column(name = "o_fflinesenttohost")
-    private Long oFFLINESENTTOHOST;
+    @Column(name = "offlinesenttohost")
+    private Long offlinesenttohost;
 
     @Size(max = 150)
-    @Column(name = "o_fflineresponse", length = 150)
-    private String oFFLINERESPONSE;
+    @Column(name = "offlineresponse", length = 150)
+    private String offlineresponse;
 
     @Size(max = 40)
-    @Column(name = "s_ource_long_erface", length = 40)
-    private String sOURCELongERFACE;
+    @Column(name = "source_longerface", length = 40)
+    private String sourceLongerface;
 
     @Size(max = 150)
-    @Column(name = "m_tirrn", length = 150)
-    private String mTIRRN;
+    @Column(name = "mtirrn", length = 150)
+    private String mtirrn;
 
     @Size(max = 200)
-    @Column(name = "h_ostresponsecode", length = 200)
-    private String hOSTRESPONSECODE;
+    @Column(name = "hostresponsecode", length = 200)
+    private String hostresponsecode;
 
     @Size(max = 150)
-    @Column(name = "f_ield_48", length = 150)
-    private String fIELD48;
+    @Column(name = "field_48", length = 150)
+    private String field48;
 
     @Size(max = 150)
-    @Column(name = "s_ource", length = 150)
-    private String sOURCE;
+    @Column(name = "source", length = 150)
+    private String source;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -228,7 +228,7 @@ public class TRANSACTIONS implements Serializable {
         return this.id;
     }
 
-    public TRANSACTIONS id(Long id) {
+    public Transactions id(Long id) {
         this.setId(id);
         return this;
     }
@@ -237,706 +237,706 @@ public class TRANSACTIONS implements Serializable {
         this.id = id;
     }
 
-    public Long getpROCESSED() {
-        return this.pROCESSED;
+    public Long getProcessed() {
+        return this.processed;
     }
 
-    public TRANSACTIONS pROCESSED(Long pROCESSED) {
-        this.setpROCESSED(pROCESSED);
+    public Transactions processed(Long processed) {
+        this.setProcessed(processed);
         return this;
     }
 
-    public void setpROCESSED(Long pROCESSED) {
-        this.pROCESSED = pROCESSED;
+    public void setProcessed(Long processed) {
+        this.processed = processed;
     }
 
-    public String getiNCOMINGBITMAP() {
-        return this.iNCOMINGBITMAP;
+    public String getIncomingbitmap() {
+        return this.incomingbitmap;
     }
 
-    public TRANSACTIONS iNCOMINGBITMAP(String iNCOMINGBITMAP) {
-        this.setiNCOMINGBITMAP(iNCOMINGBITMAP);
+    public Transactions incomingbitmap(String incomingbitmap) {
+        this.setIncomingbitmap(incomingbitmap);
         return this;
     }
 
-    public void setiNCOMINGBITMAP(String iNCOMINGBITMAP) {
-        this.iNCOMINGBITMAP = iNCOMINGBITMAP;
+    public void setIncomingbitmap(String incomingbitmap) {
+        this.incomingbitmap = incomingbitmap;
     }
 
-    public String getoUTGOINGBITMAP() {
-        return this.oUTGOINGBITMAP;
+    public String getOutgoingbitmap() {
+        return this.outgoingbitmap;
     }
 
-    public TRANSACTIONS oUTGOINGBITMAP(String oUTGOINGBITMAP) {
-        this.setoUTGOINGBITMAP(oUTGOINGBITMAP);
+    public Transactions outgoingbitmap(String outgoingbitmap) {
+        this.setOutgoingbitmap(outgoingbitmap);
         return this;
     }
 
-    public void setoUTGOINGBITMAP(String oUTGOINGBITMAP) {
-        this.oUTGOINGBITMAP = oUTGOINGBITMAP;
+    public void setOutgoingbitmap(String outgoingbitmap) {
+        this.outgoingbitmap = outgoingbitmap;
     }
 
-    public String getiNMESSAGE() {
-        return this.iNMESSAGE;
+    public String getInmessage() {
+        return this.inmessage;
     }
 
-    public TRANSACTIONS iNMESSAGE(String iNMESSAGE) {
-        this.setiNMESSAGE(iNMESSAGE);
+    public Transactions inmessage(String inmessage) {
+        this.setInmessage(inmessage);
         return this;
     }
 
-    public void setiNMESSAGE(String iNMESSAGE) {
-        this.iNMESSAGE = iNMESSAGE;
+    public void setInmessage(String inmessage) {
+        this.inmessage = inmessage;
     }
 
-    public String getmESSAGETOCBS() {
-        return this.mESSAGETOCBS;
+    public String getMessagetocbs() {
+        return this.messagetocbs;
     }
 
-    public TRANSACTIONS mESSAGETOCBS(String mESSAGETOCBS) {
-        this.setmESSAGETOCBS(mESSAGETOCBS);
+    public Transactions messagetocbs(String messagetocbs) {
+        this.setMessagetocbs(messagetocbs);
         return this;
     }
 
-    public void setmESSAGETOCBS(String mESSAGETOCBS) {
-        this.mESSAGETOCBS = mESSAGETOCBS;
+    public void setMessagetocbs(String messagetocbs) {
+        this.messagetocbs = messagetocbs;
     }
 
-    public String getmESSAGEFROMCBS() {
-        return this.mESSAGEFROMCBS;
+    public String getMessagefromcbs() {
+        return this.messagefromcbs;
     }
 
-    public TRANSACTIONS mESSAGEFROMCBS(String mESSAGEFROMCBS) {
-        this.setmESSAGEFROMCBS(mESSAGEFROMCBS);
+    public Transactions messagefromcbs(String messagefromcbs) {
+        this.setMessagefromcbs(messagefromcbs);
         return this;
     }
 
-    public void setmESSAGEFROMCBS(String mESSAGEFROMCBS) {
-        this.mESSAGEFROMCBS = mESSAGEFROMCBS;
+    public void setMessagefromcbs(String messagefromcbs) {
+        this.messagefromcbs = messagefromcbs;
     }
 
-    public Long getcBSPROCESS() {
-        return this.cBSPROCESS;
+    public Long getCbsprocess() {
+        return this.cbsprocess;
     }
 
-    public TRANSACTIONS cBSPROCESS(Long cBSPROCESS) {
-        this.setcBSPROCESS(cBSPROCESS);
+    public Transactions cbsprocess(Long cbsprocess) {
+        this.setCbsprocess(cbsprocess);
         return this;
     }
 
-    public void setcBSPROCESS(Long cBSPROCESS) {
-        this.cBSPROCESS = cBSPROCESS;
+    public void setCbsprocess(Long cbsprocess) {
+        this.cbsprocess = cbsprocess;
     }
 
-    public Long getcBSONLINE() {
-        return this.cBSONLINE;
+    public Long getCbsonline() {
+        return this.cbsonline;
     }
 
-    public TRANSACTIONS cBSONLINE(Long cBSONLINE) {
-        this.setcBSONLINE(cBSONLINE);
+    public Transactions cbsonline(Long cbsonline) {
+        this.setCbsonline(cbsonline);
         return this;
     }
 
-    public void setcBSONLINE(Long cBSONLINE) {
-        this.cBSONLINE = cBSONLINE;
+    public void setCbsonline(Long cbsonline) {
+        this.cbsonline = cbsonline;
     }
 
-    public String getcBSRESPONSE() {
-        return this.cBSRESPONSE;
+    public String getCbsresponse() {
+        return this.cbsresponse;
     }
 
-    public TRANSACTIONS cBSRESPONSE(String cBSRESPONSE) {
-        this.setcBSRESPONSE(cBSRESPONSE);
+    public Transactions cbsresponse(String cbsresponse) {
+        this.setCbsresponse(cbsresponse);
         return this;
     }
 
-    public void setcBSRESPONSE(String cBSRESPONSE) {
-        this.cBSRESPONSE = cBSRESPONSE;
+    public void setCbsresponse(String cbsresponse) {
+        this.cbsresponse = cbsresponse;
     }
 
-    public String getrESPONSEMESSAGE() {
-        return this.rESPONSEMESSAGE;
+    public String getResponsemessage() {
+        return this.responsemessage;
     }
 
-    public TRANSACTIONS rESPONSEMESSAGE(String rESPONSEMESSAGE) {
-        this.setrESPONSEMESSAGE(rESPONSEMESSAGE);
+    public Transactions responsemessage(String responsemessage) {
+        this.setResponsemessage(responsemessage);
         return this;
     }
 
-    public void setrESPONSEMESSAGE(String rESPONSEMESSAGE) {
-        this.rESPONSEMESSAGE = rESPONSEMESSAGE;
+    public void setResponsemessage(String responsemessage) {
+        this.responsemessage = responsemessage;
     }
 
-    public Long getrESPONSESENT() {
-        return this.rESPONSESENT;
+    public Long getResponsesent() {
+        return this.responsesent;
     }
 
-    public TRANSACTIONS rESPONSESENT(Long rESPONSESENT) {
-        this.setrESPONSESENT(rESPONSESENT);
+    public Transactions responsesent(Long responsesent) {
+        this.setResponsesent(responsesent);
         return this;
     }
 
-    public void setrESPONSESENT(Long rESPONSESENT) {
-        this.rESPONSESENT = rESPONSESENT;
+    public void setResponsesent(Long responsesent) {
+        this.responsesent = responsesent;
     }
 
-    public String getcHANNEL() {
-        return this.cHANNEL;
+    public String getChannel() {
+        return this.channel;
     }
 
-    public TRANSACTIONS cHANNEL(String cHANNEL) {
-        this.setcHANNEL(cHANNEL);
+    public Transactions channel(String channel) {
+        this.setChannel(channel);
         return this;
     }
 
-    public void setcHANNEL(String cHANNEL) {
-        this.cHANNEL = cHANNEL;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
-    public String getoRIGINALDATA() {
-        return this.oRIGINALDATA;
+    public String getOriginaldata() {
+        return this.originaldata;
     }
 
-    public TRANSACTIONS oRIGINALDATA(String oRIGINALDATA) {
-        this.setoRIGINALDATA(oRIGINALDATA);
+    public Transactions originaldata(String originaldata) {
+        this.setOriginaldata(originaldata);
         return this;
     }
 
-    public void setoRIGINALDATA(String oRIGINALDATA) {
-        this.oRIGINALDATA = oRIGINALDATA;
+    public void setOriginaldata(String originaldata) {
+        this.originaldata = originaldata;
     }
 
-    public String getfIELD39RESP() {
-        return this.fIELD39RESP;
+    public String getField39resp() {
+        return this.field39resp;
     }
 
-    public TRANSACTIONS fIELD39RESP(String fIELD39RESP) {
-        this.setfIELD39RESP(fIELD39RESP);
+    public Transactions field39resp(String field39resp) {
+        this.setField39resp(field39resp);
         return this;
     }
 
-    public void setfIELD39RESP(String fIELD39RESP) {
-        this.fIELD39RESP = fIELD39RESP;
+    public void setField39resp(String field39resp) {
+        this.field39resp = field39resp;
     }
 
-    public String getnARRATION() {
-        return this.nARRATION;
+    public String getNarration() {
+        return this.narration;
     }
 
-    public TRANSACTIONS nARRATION(String nARRATION) {
-        this.setnARRATION(nARRATION);
+    public Transactions narration(String narration) {
+        this.setNarration(narration);
         return this;
     }
 
-    public void setnARRATION(String nARRATION) {
-        this.nARRATION = nARRATION;
+    public void setNarration(String narration) {
+        this.narration = narration;
     }
 
-    public Long getaUTHORISED() {
-        return this.aUTHORISED;
+    public Long getAuthorised() {
+        return this.authorised;
     }
 
-    public TRANSACTIONS aUTHORISED(Long aUTHORISED) {
-        this.setaUTHORISED(aUTHORISED);
+    public Transactions authorised(Long authorised) {
+        this.setAuthorised(authorised);
         return this;
     }
 
-    public void setaUTHORISED(Long aUTHORISED) {
-        this.aUTHORISED = aUTHORISED;
+    public void setAuthorised(Long authorised) {
+        this.authorised = authorised;
     }
 
-    public String getbRANCHCODE() {
-        return this.bRANCHCODE;
+    public String getBranchcode() {
+        return this.branchcode;
     }
 
-    public TRANSACTIONS bRANCHCODE(String bRANCHCODE) {
-        this.setbRANCHCODE(bRANCHCODE);
+    public Transactions branchcode(String branchcode) {
+        this.setBranchcode(branchcode);
         return this;
     }
 
-    public void setbRANCHCODE(String bRANCHCODE) {
-        this.bRANCHCODE = bRANCHCODE;
+    public void setBranchcode(String branchcode) {
+        this.branchcode = branchcode;
     }
 
-    public String getfIELD39ORIGINAL() {
-        return this.fIELD39ORIGINAL;
+    public String getField39original() {
+        return this.field39original;
     }
 
-    public TRANSACTIONS fIELD39ORIGINAL(String fIELD39ORIGINAL) {
-        this.setfIELD39ORIGINAL(fIELD39ORIGINAL);
+    public Transactions field39original(String field39original) {
+        this.setField39original(field39original);
         return this;
     }
 
-    public void setfIELD39ORIGINAL(String fIELD39ORIGINAL) {
-        this.fIELD39ORIGINAL = fIELD39ORIGINAL;
+    public void setField39original(String field39original) {
+        this.field39original = field39original;
     }
 
-    public String getmESSAGECLASS() {
-        return this.mESSAGECLASS;
+    public String getMessageclass() {
+        return this.messageclass;
     }
 
-    public TRANSACTIONS mESSAGECLASS(String mESSAGECLASS) {
-        this.setmESSAGECLASS(mESSAGECLASS);
+    public Transactions messageclass(String messageclass) {
+        this.setMessageclass(messageclass);
         return this;
     }
 
-    public void setmESSAGECLASS(String mESSAGECLASS) {
-        this.mESSAGECLASS = mESSAGECLASS;
+    public void setMessageclass(String messageclass) {
+        this.messageclass = messageclass;
     }
 
-    public String gettXNCODE() {
-        return this.tXNCODE;
+    public String getTxncode() {
+        return this.txncode;
     }
 
-    public TRANSACTIONS tXNCODE(String tXNCODE) {
-        this.settXNCODE(tXNCODE);
+    public Transactions txncode(String txncode) {
+        this.setTxncode(txncode);
         return this;
     }
 
-    public void settXNCODE(String tXNCODE) {
-        this.tXNCODE = tXNCODE;
+    public void setTxncode(String txncode) {
+        this.txncode = txncode;
     }
 
-    public String getcURRCODE() {
-        return this.cURRCODE;
+    public String getCurrcode() {
+        return this.currcode;
     }
 
-    public TRANSACTIONS cURRCODE(String cURRCODE) {
-        this.setcURRCODE(cURRCODE);
+    public Transactions currcode(String currcode) {
+        this.setCurrcode(currcode);
         return this;
     }
 
-    public void setcURRCODE(String cURRCODE) {
-        this.cURRCODE = cURRCODE;
+    public void setCurrcode(String currcode) {
+        this.currcode = currcode;
     }
 
-    public String getdEVICE() {
-        return this.dEVICE;
+    public String getDevice() {
+        return this.device;
     }
 
-    public TRANSACTIONS dEVICE(String dEVICE) {
-        this.setdEVICE(dEVICE);
+    public Transactions device(String device) {
+        this.setDevice(device);
         return this;
     }
 
-    public void setdEVICE(String dEVICE) {
-        this.dEVICE = dEVICE;
+    public void setDevice(String device) {
+        this.device = device;
     }
 
-    public String getbRANCH2() {
-        return this.bRANCH2;
+    public String getBranch2() {
+        return this.branch2;
     }
 
-    public TRANSACTIONS bRANCH2(String bRANCH2) {
-        this.setbRANCH2(bRANCH2);
+    public Transactions branch2(String branch2) {
+        this.setBranch2(branch2);
         return this;
     }
 
-    public void setbRANCH2(String bRANCH2) {
-        this.bRANCH2 = bRANCH2;
+    public void setBranch2(String branch2) {
+        this.branch2 = branch2;
     }
 
-    public Long getLongERBRANCH() {
-        return this.longERBRANCH;
+    public Long getLongerbranch() {
+        return this.longerbranch;
     }
 
-    public TRANSACTIONS longERBRANCH(Long longERBRANCH) {
-        this.setLongERBRANCH(longERBRANCH);
+    public Transactions longerbranch(Long longerbranch) {
+        this.setLongerbranch(longerbranch);
         return this;
     }
 
-    public void setLongERBRANCH(Long longERBRANCH) {
-        this.longERBRANCH = longERBRANCH;
+    public void setLongerbranch(Long longerbranch) {
+        this.longerbranch = longerbranch;
     }
 
-    public Instant getdATEX() {
-        return this.dATEX;
+    public Instant getDatex() {
+        return this.datex;
     }
 
-    public TRANSACTIONS dATEX(Instant dATEX) {
-        this.setdATEX(dATEX);
+    public Transactions datex(Instant datex) {
+        this.setDatex(datex);
         return this;
     }
 
-    public void setdATEX(Instant dATEX) {
-        this.dATEX = dATEX;
+    public void setDatex(Instant datex) {
+        this.datex = datex;
     }
 
-    public String gettIMEX() {
-        return this.tIMEX;
+    public String getTimex() {
+        return this.timex;
     }
 
-    public TRANSACTIONS tIMEX(String tIMEX) {
-        this.settIMEX(tIMEX);
+    public Transactions timex(String timex) {
+        this.setTimex(timex);
         return this;
     }
 
-    public void settIMEX(String tIMEX) {
-        this.tIMEX = tIMEX;
+    public void setTimex(String timex) {
+        this.timex = timex;
     }
 
-    public Long getpOSTED() {
-        return this.pOSTED;
+    public Long getPosted() {
+        return this.posted;
     }
 
-    public TRANSACTIONS pOSTED(Long pOSTED) {
-        this.setpOSTED(pOSTED);
+    public Transactions posted(Long posted) {
+        this.setPosted(posted);
         return this;
     }
 
-    public void setpOSTED(Long pOSTED) {
-        this.pOSTED = pOSTED;
+    public void setPosted(Long posted) {
+        this.posted = posted;
     }
 
-    public Long getaTTEMPTS() {
-        return this.aTTEMPTS;
+    public Long getAttempts() {
+        return this.attempts;
     }
 
-    public TRANSACTIONS aTTEMPTS(Long aTTEMPTS) {
-        this.setaTTEMPTS(aTTEMPTS);
+    public Transactions attempts(Long attempts) {
+        this.setAttempts(attempts);
         return this;
     }
 
-    public void setaTTEMPTS(Long aTTEMPTS) {
-        this.aTTEMPTS = aTTEMPTS;
+    public void setAttempts(Long attempts) {
+        this.attempts = attempts;
     }
 
-    public String getoRIGINALDATA2() {
-        return this.oRIGINALDATA2;
+    public String getOriginaldata2() {
+        return this.originaldata2;
     }
 
-    public TRANSACTIONS oRIGINALDATA2(String oRIGINALDATA2) {
-        this.setoRIGINALDATA2(oRIGINALDATA2);
+    public Transactions originaldata2(String originaldata2) {
+        this.setOriginaldata2(originaldata2);
         return this;
     }
 
-    public void setoRIGINALDATA2(String oRIGINALDATA2) {
-        this.oRIGINALDATA2 = oRIGINALDATA2;
+    public void setOriginaldata2(String originaldata2) {
+        this.originaldata2 = originaldata2;
     }
 
-    public Long getcOMMISSION() {
-        return this.cOMMISSION;
+    public Long getCommission() {
+        return this.commission;
     }
 
-    public TRANSACTIONS cOMMISSION(Long cOMMISSION) {
-        this.setcOMMISSION(cOMMISSION);
+    public Transactions commission(Long commission) {
+        this.setCommission(commission);
         return this;
     }
 
-    public void setcOMMISSION(Long cOMMISSION) {
-        this.cOMMISSION = cOMMISSION;
+    public void setCommission(Long commission) {
+        this.commission = commission;
     }
 
-    public Long getrESPONSECREATED() {
-        return this.rESPONSECREATED;
+    public Long getResponsecreated() {
+        return this.responsecreated;
     }
 
-    public TRANSACTIONS rESPONSECREATED(Long rESPONSECREATED) {
-        this.setrESPONSECREATED(rESPONSECREATED);
+    public Transactions responsecreated(Long responsecreated) {
+        this.setResponsecreated(responsecreated);
         return this;
     }
 
-    public void setrESPONSECREATED(Long rESPONSECREATED) {
-        this.rESPONSECREATED = rESPONSECREATED;
+    public void setResponsecreated(Long responsecreated) {
+        this.responsecreated = responsecreated;
     }
 
-    public Long getoNLINE() {
-        return this.oNLINE;
+    public Long getOnline() {
+        return this.online;
     }
 
-    public TRANSACTIONS oNLINE(Long oNLINE) {
-        this.setoNLINE(oNLINE);
+    public Transactions online(Long online) {
+        this.setOnline(online);
         return this;
     }
 
-    public void setoNLINE(Long oNLINE) {
-        this.oNLINE = oNLINE;
+    public void setOnline(Long online) {
+        this.online = online;
     }
 
-    public String getoRIGINALDATA3() {
-        return this.oRIGINALDATA3;
+    public String getOriginaldata3() {
+        return this.originaldata3;
     }
 
-    public TRANSACTIONS oRIGINALDATA3(String oRIGINALDATA3) {
-        this.setoRIGINALDATA3(oRIGINALDATA3);
+    public Transactions originaldata3(String originaldata3) {
+        this.setOriginaldata3(originaldata3);
         return this;
     }
 
-    public void setoRIGINALDATA3(String oRIGINALDATA3) {
-        this.oRIGINALDATA3 = oRIGINALDATA3;
+    public void setOriginaldata3(String originaldata3) {
+        this.originaldata3 = originaldata3;
     }
 
-    public String gettOSWITCH() {
-        return this.tOSWITCH;
+    public String getToswitch() {
+        return this.toswitch;
     }
 
-    public TRANSACTIONS tOSWITCH(String tOSWITCH) {
-        this.settOSWITCH(tOSWITCH);
+    public Transactions toswitch(String toswitch) {
+        this.setToswitch(toswitch);
         return this;
     }
 
-    public void settOSWITCH(String tOSWITCH) {
-        this.tOSWITCH = tOSWITCH;
+    public void setToswitch(String toswitch) {
+        this.toswitch = toswitch;
     }
 
-    public String getfROMSWITCH() {
-        return this.fROMSWITCH;
+    public String getFromswitch() {
+        return this.fromswitch;
     }
 
-    public TRANSACTIONS fROMSWITCH(String fROMSWITCH) {
-        this.setfROMSWITCH(fROMSWITCH);
+    public Transactions fromswitch(String fromswitch) {
+        this.setFromswitch(fromswitch);
         return this;
     }
 
-    public void setfROMSWITCH(String fROMSWITCH) {
-        this.fROMSWITCH = fROMSWITCH;
+    public void setFromswitch(String fromswitch) {
+        this.fromswitch = fromswitch;
     }
 
-    public String gettOCBS() {
-        return this.tOCBS;
+    public String getTocbs() {
+        return this.tocbs;
     }
 
-    public TRANSACTIONS tOCBS(String tOCBS) {
-        this.settOCBS(tOCBS);
+    public Transactions tocbs(String tocbs) {
+        this.setTocbs(tocbs);
         return this;
     }
 
-    public void settOCBS(String tOCBS) {
-        this.tOCBS = tOCBS;
+    public void setTocbs(String tocbs) {
+        this.tocbs = tocbs;
     }
 
-    public String getfROMCBS() {
-        return this.fROMCBS;
+    public String getFromcbs() {
+        return this.fromcbs;
     }
 
-    public TRANSACTIONS fROMCBS(String fROMCBS) {
-        this.setfROMCBS(fROMCBS);
+    public Transactions fromcbs(String fromcbs) {
+        this.setFromcbs(fromcbs);
         return this;
     }
 
-    public void setfROMCBS(String fROMCBS) {
-        this.fROMCBS = fROMCBS;
+    public void setFromcbs(String fromcbs) {
+        this.fromcbs = fromcbs;
     }
 
-    public Long getpOSTINGLEGS() {
-        return this.pOSTINGLEGS;
+    public Long getPostinglegs() {
+        return this.postinglegs;
     }
 
-    public TRANSACTIONS pOSTINGLEGS(Long pOSTINGLEGS) {
-        this.setpOSTINGLEGS(pOSTINGLEGS);
+    public Transactions postinglegs(Long postinglegs) {
+        this.setPostinglegs(postinglegs);
         return this;
     }
 
-    public void setpOSTINGLEGS(Long pOSTINGLEGS) {
-        this.pOSTINGLEGS = pOSTINGLEGS;
+    public void setPostinglegs(Long postinglegs) {
+        this.postinglegs = postinglegs;
     }
 
-    public String getcOMMISSIONTXNCODE() {
-        return this.cOMMISSIONTXNCODE;
+    public String getCommissiontxncode() {
+        return this.commissiontxncode;
     }
 
-    public TRANSACTIONS cOMMISSIONTXNCODE(String cOMMISSIONTXNCODE) {
-        this.setcOMMISSIONTXNCODE(cOMMISSIONTXNCODE);
+    public Transactions commissiontxncode(String commissiontxncode) {
+        this.setCommissiontxncode(commissiontxncode);
         return this;
     }
 
-    public void setcOMMISSIONTXNCODE(String cOMMISSIONTXNCODE) {
-        this.cOMMISSIONTXNCODE = cOMMISSIONTXNCODE;
+    public void setCommissiontxncode(String commissiontxncode) {
+        this.commissiontxncode = commissiontxncode;
     }
 
-    public String gethOSTREF() {
-        return this.hOSTREF;
+    public String getHostref() {
+        return this.hostref;
     }
 
-    public TRANSACTIONS hOSTREF(String hOSTREF) {
-        this.sethOSTREF(hOSTREF);
+    public Transactions hostref(String hostref) {
+        this.setHostref(hostref);
         return this;
     }
 
-    public void sethOSTREF(String hOSTREF) {
-        this.hOSTREF = hOSTREF;
+    public void setHostref(String hostref) {
+        this.hostref = hostref;
     }
 
-    public Long getrEQUESTCREATED() {
-        return this.rEQUESTCREATED;
+    public Long getRequestcreated() {
+        return this.requestcreated;
     }
 
-    public TRANSACTIONS rEQUESTCREATED(Long rEQUESTCREATED) {
-        this.setrEQUESTCREATED(rEQUESTCREATED);
+    public Transactions requestcreated(Long requestcreated) {
+        this.setRequestcreated(requestcreated);
         return this;
     }
 
-    public void setrEQUESTCREATED(Long rEQUESTCREATED) {
-        this.rEQUESTCREATED = rEQUESTCREATED;
+    public void setRequestcreated(Long requestcreated) {
+        this.requestcreated = requestcreated;
     }
 
-    public String getrEQUESTMESSAGE() {
-        return this.rEQUESTMESSAGE;
+    public String getRequestmessage() {
+        return this.requestmessage;
     }
 
-    public TRANSACTIONS rEQUESTMESSAGE(String rEQUESTMESSAGE) {
-        this.setrEQUESTMESSAGE(rEQUESTMESSAGE);
+    public Transactions requestmessage(String requestmessage) {
+        this.setRequestmessage(requestmessage);
         return this;
     }
 
-    public void setrEQUESTMESSAGE(String rEQUESTMESSAGE) {
-        this.rEQUESTMESSAGE = rEQUESTMESSAGE;
+    public void setRequestmessage(String requestmessage) {
+        this.requestmessage = requestmessage;
     }
 
-    public String getoUTGOINGBITMAPFLEX() {
-        return this.oUTGOINGBITMAPFLEX;
+    public String getOutgoingbitmapflex() {
+        return this.outgoingbitmapflex;
     }
 
-    public TRANSACTIONS oUTGOINGBITMAPFLEX(String oUTGOINGBITMAPFLEX) {
-        this.setoUTGOINGBITMAPFLEX(oUTGOINGBITMAPFLEX);
+    public Transactions outgoingbitmapflex(String outgoingbitmapflex) {
+        this.setOutgoingbitmapflex(outgoingbitmapflex);
         return this;
     }
 
-    public void setoUTGOINGBITMAPFLEX(String oUTGOINGBITMAPFLEX) {
-        this.oUTGOINGBITMAPFLEX = oUTGOINGBITMAPFLEX;
+    public void setOutgoingbitmapflex(String outgoingbitmapflex) {
+        this.outgoingbitmapflex = outgoingbitmapflex;
     }
 
-    public String getiNCOMINGBITMAPFLEX() {
-        return this.iNCOMINGBITMAPFLEX;
+    public String getIncomingbitmapflex() {
+        return this.incomingbitmapflex;
     }
 
-    public TRANSACTIONS iNCOMINGBITMAPFLEX(String iNCOMINGBITMAPFLEX) {
-        this.setiNCOMINGBITMAPFLEX(iNCOMINGBITMAPFLEX);
+    public Transactions incomingbitmapflex(String incomingbitmapflex) {
+        this.setIncomingbitmapflex(incomingbitmapflex);
         return this;
     }
 
-    public void setiNCOMINGBITMAPFLEX(String iNCOMINGBITMAPFLEX) {
-        this.iNCOMINGBITMAPFLEX = iNCOMINGBITMAPFLEX;
+    public void setIncomingbitmapflex(String incomingbitmapflex) {
+        this.incomingbitmapflex = incomingbitmapflex;
     }
 
-    public Long getrEQUESTSENT() {
-        return this.rEQUESTSENT;
+    public Long getRequestsent() {
+        return this.requestsent;
     }
 
-    public TRANSACTIONS rEQUESTSENT(Long rEQUESTSENT) {
-        this.setrEQUESTSENT(rEQUESTSENT);
+    public Transactions requestsent(Long requestsent) {
+        this.setRequestsent(requestsent);
         return this;
     }
 
-    public void setrEQUESTSENT(Long rEQUESTSENT) {
-        this.rEQUESTSENT = rEQUESTSENT;
+    public void setRequestsent(Long requestsent) {
+        this.requestsent = requestsent;
     }
 
-    public Long getmINICBS() {
-        return this.mINICBS;
+    public Long getMinicbs() {
+        return this.minicbs;
     }
 
-    public TRANSACTIONS mINICBS(Long mINICBS) {
-        this.setmINICBS(mINICBS);
+    public Transactions minicbs(Long minicbs) {
+        this.setMinicbs(minicbs);
         return this;
     }
 
-    public void setmINICBS(Long mINICBS) {
-        this.mINICBS = mINICBS;
+    public void setMinicbs(Long minicbs) {
+        this.minicbs = minicbs;
     }
 
-    public Long getrEVERSED() {
-        return this.rEVERSED;
+    public Long getReversed() {
+        return this.reversed;
     }
 
-    public TRANSACTIONS rEVERSED(Long rEVERSED) {
-        this.setrEVERSED(rEVERSED);
+    public Transactions reversed(Long reversed) {
+        this.setReversed(reversed);
         return this;
     }
 
-    public void setrEVERSED(Long rEVERSED) {
-        this.rEVERSED = rEVERSED;
+    public void setReversed(Long reversed) {
+        this.reversed = reversed;
     }
 
-    public Long getoFFLINESENTTOHOST() {
-        return this.oFFLINESENTTOHOST;
+    public Long getOfflinesenttohost() {
+        return this.offlinesenttohost;
     }
 
-    public TRANSACTIONS oFFLINESENTTOHOST(Long oFFLINESENTTOHOST) {
-        this.setoFFLINESENTTOHOST(oFFLINESENTTOHOST);
+    public Transactions offlinesenttohost(Long offlinesenttohost) {
+        this.setOfflinesenttohost(offlinesenttohost);
         return this;
     }
 
-    public void setoFFLINESENTTOHOST(Long oFFLINESENTTOHOST) {
-        this.oFFLINESENTTOHOST = oFFLINESENTTOHOST;
+    public void setOfflinesenttohost(Long offlinesenttohost) {
+        this.offlinesenttohost = offlinesenttohost;
     }
 
-    public String getoFFLINERESPONSE() {
-        return this.oFFLINERESPONSE;
+    public String getOfflineresponse() {
+        return this.offlineresponse;
     }
 
-    public TRANSACTIONS oFFLINERESPONSE(String oFFLINERESPONSE) {
-        this.setoFFLINERESPONSE(oFFLINERESPONSE);
+    public Transactions offlineresponse(String offlineresponse) {
+        this.setOfflineresponse(offlineresponse);
         return this;
     }
 
-    public void setoFFLINERESPONSE(String oFFLINERESPONSE) {
-        this.oFFLINERESPONSE = oFFLINERESPONSE;
+    public void setOfflineresponse(String offlineresponse) {
+        this.offlineresponse = offlineresponse;
     }
 
-    public String getsOURCELongERFACE() {
-        return this.sOURCELongERFACE;
+    public String getSourceLongerface() {
+        return this.sourceLongerface;
     }
 
-    public TRANSACTIONS sOURCELongERFACE(String sOURCELongERFACE) {
-        this.setsOURCELongERFACE(sOURCELongERFACE);
+    public Transactions sourceLongerface(String sourceLongerface) {
+        this.setSourceLongerface(sourceLongerface);
         return this;
     }
 
-    public void setsOURCELongERFACE(String sOURCELongERFACE) {
-        this.sOURCELongERFACE = sOURCELongERFACE;
+    public void setSourceLongerface(String sourceLongerface) {
+        this.sourceLongerface = sourceLongerface;
     }
 
-    public String getmTIRRN() {
-        return this.mTIRRN;
+    public String getMtirrn() {
+        return this.mtirrn;
     }
 
-    public TRANSACTIONS mTIRRN(String mTIRRN) {
-        this.setmTIRRN(mTIRRN);
+    public Transactions mtirrn(String mtirrn) {
+        this.setMtirrn(mtirrn);
         return this;
     }
 
-    public void setmTIRRN(String mTIRRN) {
-        this.mTIRRN = mTIRRN;
+    public void setMtirrn(String mtirrn) {
+        this.mtirrn = mtirrn;
     }
 
-    public String gethOSTRESPONSECODE() {
-        return this.hOSTRESPONSECODE;
+    public String getHostresponsecode() {
+        return this.hostresponsecode;
     }
 
-    public TRANSACTIONS hOSTRESPONSECODE(String hOSTRESPONSECODE) {
-        this.sethOSTRESPONSECODE(hOSTRESPONSECODE);
+    public Transactions hostresponsecode(String hostresponsecode) {
+        this.setHostresponsecode(hostresponsecode);
         return this;
     }
 
-    public void sethOSTRESPONSECODE(String hOSTRESPONSECODE) {
-        this.hOSTRESPONSECODE = hOSTRESPONSECODE;
+    public void setHostresponsecode(String hostresponsecode) {
+        this.hostresponsecode = hostresponsecode;
     }
 
-    public String getfIELD48() {
-        return this.fIELD48;
+    public String getField48() {
+        return this.field48;
     }
 
-    public TRANSACTIONS fIELD48(String fIELD48) {
-        this.setfIELD48(fIELD48);
+    public Transactions field48(String field48) {
+        this.setField48(field48);
         return this;
     }
 
-    public void setfIELD48(String fIELD48) {
-        this.fIELD48 = fIELD48;
+    public void setField48(String field48) {
+        this.field48 = field48;
     }
 
-    public String getsOURCE() {
-        return this.sOURCE;
+    public String getSource() {
+        return this.source;
     }
 
-    public TRANSACTIONS sOURCE(String sOURCE) {
-        this.setsOURCE(sOURCE);
+    public Transactions source(String source) {
+        this.setSource(source);
         return this;
     }
 
-    public void setsOURCE(String sOURCE) {
-        this.sOURCE = sOURCE;
+    public void setSource(String source) {
+        this.source = source;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -946,10 +946,10 @@ public class TRANSACTIONS implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof TRANSACTIONS)) {
+        if (!(o instanceof Transactions)) {
             return false;
         }
-        return getId() != null && getId().equals(((TRANSACTIONS) o).getId());
+        return getId() != null && getId().equals(((Transactions) o).getId());
     }
 
     @Override
@@ -961,62 +961,62 @@ public class TRANSACTIONS implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "TRANSACTIONS{" +
+        return "Transactions{" +
             "id=" + getId() +
-            ", pROCESSED=" + getpROCESSED() +
-            ", iNCOMINGBITMAP='" + getiNCOMINGBITMAP() + "'" +
-            ", oUTGOINGBITMAP='" + getoUTGOINGBITMAP() + "'" +
-            ", iNMESSAGE='" + getiNMESSAGE() + "'" +
-            ", mESSAGETOCBS='" + getmESSAGETOCBS() + "'" +
-            ", mESSAGEFROMCBS='" + getmESSAGEFROMCBS() + "'" +
-            ", cBSPROCESS=" + getcBSPROCESS() +
-            ", cBSONLINE=" + getcBSONLINE() +
-            ", cBSRESPONSE='" + getcBSRESPONSE() + "'" +
-            ", rESPONSEMESSAGE='" + getrESPONSEMESSAGE() + "'" +
-            ", rESPONSESENT=" + getrESPONSESENT() +
-            ", cHANNEL='" + getcHANNEL() + "'" +
-            ", oRIGINALDATA='" + getoRIGINALDATA() + "'" +
-            ", fIELD39RESP='" + getfIELD39RESP() + "'" +
-            ", nARRATION='" + getnARRATION() + "'" +
-            ", aUTHORISED=" + getaUTHORISED() +
-            ", bRANCHCODE='" + getbRANCHCODE() + "'" +
-            ", fIELD39ORIGINAL='" + getfIELD39ORIGINAL() + "'" +
-            ", mESSAGECLASS='" + getmESSAGECLASS() + "'" +
-            ", tXNCODE='" + gettXNCODE() + "'" +
-            ", cURRCODE='" + getcURRCODE() + "'" +
-            ", dEVICE='" + getdEVICE() + "'" +
-            ", bRANCH2='" + getbRANCH2() + "'" +
-            ", longERBRANCH=" + getLongERBRANCH() +
-            ", dATEX='" + getdATEX() + "'" +
-            ", tIMEX='" + gettIMEX() + "'" +
-            ", pOSTED=" + getpOSTED() +
-            ", aTTEMPTS=" + getaTTEMPTS() +
-            ", oRIGINALDATA2='" + getoRIGINALDATA2() + "'" +
-            ", cOMMISSION=" + getcOMMISSION() +
-            ", rESPONSECREATED=" + getrESPONSECREATED() +
-            ", oNLINE=" + getoNLINE() +
-            ", oRIGINALDATA3='" + getoRIGINALDATA3() + "'" +
-            ", tOSWITCH='" + gettOSWITCH() + "'" +
-            ", fROMSWITCH='" + getfROMSWITCH() + "'" +
-            ", tOCBS='" + gettOCBS() + "'" +
-            ", fROMCBS='" + getfROMCBS() + "'" +
-            ", pOSTINGLEGS=" + getpOSTINGLEGS() +
-            ", cOMMISSIONTXNCODE='" + getcOMMISSIONTXNCODE() + "'" +
-            ", hOSTREF='" + gethOSTREF() + "'" +
-            ", rEQUESTCREATED=" + getrEQUESTCREATED() +
-            ", rEQUESTMESSAGE='" + getrEQUESTMESSAGE() + "'" +
-            ", oUTGOINGBITMAPFLEX='" + getoUTGOINGBITMAPFLEX() + "'" +
-            ", iNCOMINGBITMAPFLEX='" + getiNCOMINGBITMAPFLEX() + "'" +
-            ", rEQUESTSENT=" + getrEQUESTSENT() +
-            ", mINICBS=" + getmINICBS() +
-            ", rEVERSED=" + getrEVERSED() +
-            ", oFFLINESENTTOHOST=" + getoFFLINESENTTOHOST() +
-            ", oFFLINERESPONSE='" + getoFFLINERESPONSE() + "'" +
-            ", sOURCELongERFACE='" + getsOURCELongERFACE() + "'" +
-            ", mTIRRN='" + getmTIRRN() + "'" +
-            ", hOSTRESPONSECODE='" + gethOSTRESPONSECODE() + "'" +
-            ", fIELD48='" + getfIELD48() + "'" +
-            ", sOURCE='" + getsOURCE() + "'" +
+            ", processed=" + getProcessed() +
+            ", incomingbitmap='" + getIncomingbitmap() + "'" +
+            ", outgoingbitmap='" + getOutgoingbitmap() + "'" +
+            ", inmessage='" + getInmessage() + "'" +
+            ", messagetocbs='" + getMessagetocbs() + "'" +
+            ", messagefromcbs='" + getMessagefromcbs() + "'" +
+            ", cbsprocess=" + getCbsprocess() +
+            ", cbsonline=" + getCbsonline() +
+            ", cbsresponse='" + getCbsresponse() + "'" +
+            ", responsemessage='" + getResponsemessage() + "'" +
+            ", responsesent=" + getResponsesent() +
+            ", channel='" + getChannel() + "'" +
+            ", originaldata='" + getOriginaldata() + "'" +
+            ", field39resp='" + getField39resp() + "'" +
+            ", narration='" + getNarration() + "'" +
+            ", authorised=" + getAuthorised() +
+            ", branchcode='" + getBranchcode() + "'" +
+            ", field39original='" + getField39original() + "'" +
+            ", messageclass='" + getMessageclass() + "'" +
+            ", txncode='" + getTxncode() + "'" +
+            ", currcode='" + getCurrcode() + "'" +
+            ", device='" + getDevice() + "'" +
+            ", branch2='" + getBranch2() + "'" +
+            ", longerbranch=" + getLongerbranch() +
+            ", datex='" + getDatex() + "'" +
+            ", timex='" + getTimex() + "'" +
+            ", posted=" + getPosted() +
+            ", attempts=" + getAttempts() +
+            ", originaldata2='" + getOriginaldata2() + "'" +
+            ", commission=" + getCommission() +
+            ", responsecreated=" + getResponsecreated() +
+            ", online=" + getOnline() +
+            ", originaldata3='" + getOriginaldata3() + "'" +
+            ", toswitch='" + getToswitch() + "'" +
+            ", fromswitch='" + getFromswitch() + "'" +
+            ", tocbs='" + getTocbs() + "'" +
+            ", fromcbs='" + getFromcbs() + "'" +
+            ", postinglegs=" + getPostinglegs() +
+            ", commissiontxncode='" + getCommissiontxncode() + "'" +
+            ", hostref='" + getHostref() + "'" +
+            ", requestcreated=" + getRequestcreated() +
+            ", requestmessage='" + getRequestmessage() + "'" +
+            ", outgoingbitmapflex='" + getOutgoingbitmapflex() + "'" +
+            ", incomingbitmapflex='" + getIncomingbitmapflex() + "'" +
+            ", requestsent=" + getRequestsent() +
+            ", minicbs=" + getMinicbs() +
+            ", reversed=" + getReversed() +
+            ", offlinesenttohost=" + getOfflinesenttohost() +
+            ", offlineresponse='" + getOfflineresponse() + "'" +
+            ", sourceLongerface='" + getSourceLongerface() + "'" +
+            ", mtirrn='" + getMtirrn() + "'" +
+            ", hostresponsecode='" + getHostresponsecode() + "'" +
+            ", field48='" + getField48() + "'" +
+            ", source='" + getSource() + "'" +
             "}";
     }
 }

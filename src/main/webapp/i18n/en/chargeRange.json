@@ -1,0 +1,37 @@
+{
+  "bbMobileBankingAdminApp": {
+    "chargeRange": {
+      "home": {
+        "title": "Charge Ranges",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Charge Range",
+        "createOrEditLabel": "Create or edit a Charge Range",
+        "notFound": "No Charge Ranges found"
+      },
+      "created": "A new Charge Range is created with identifier { param }",
+      "updated": "A Charge Range is updated with identifier { param }",
+      "deleted": "A Charge Range is deleted with identifier { param }",
+      "delete": {
+        "question": "Are you sure you want to delete Charge Range { id }?"
+      },
+      "detail": {
+        "title": "Charge Range"
+      },
+      "id": "ID",
+      "billerid": "Billerid",
+      "processingcode": "Processingcode",
+      "max": "Max",
+      "min": "Min",
+      "amount": "Amount",
+      "createdby": "Createdby",
+      "approvedby": "Approvedby",
+      "createdat": "Createdat",
+      "approvedon": "Approvedon",
+      "approved": "Approved",
+      "declined": "Declined",
+      "declinedby": "Declinedby",
+      "chargeid": "Chargeid",
+      "chargeid": "Chargeid"
+    }
+  }
+}

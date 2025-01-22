@@ -1,50 +1,50 @@
 package com.istl.app.domain;
 
-import static com.istl.app.domain.CHARGERANGESTestSamples.*;
-import static com.istl.app.domain.CHARGETestSamples.*;
-import static com.istl.app.domain.RANGETestSamples.*;
+import static com.istl.app.domain.ChargeRangeTestSamples.*;
+import static com.istl.app.domain.ChargeTestSamples.*;
+import static com.istl.app.domain.RangeTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.istl.app.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
 
-class CHARGETest {
+class ChargeTest {
 
     @Test
     void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(CHARGE.class);
-        CHARGE cHARGE1 = getCHARGESample1();
-        CHARGE cHARGE2 = new CHARGE();
-        assertThat(cHARGE1).isNotEqualTo(cHARGE2);
+        TestUtil.equalsVerifier(Charge.class);
+        Charge charge1 = getChargeSample1();
+        Charge charge2 = new Charge();
+        assertThat(charge1).isNotEqualTo(charge2);
 
-        cHARGE2.setId(cHARGE1.getId());
-        assertThat(cHARGE1).isEqualTo(cHARGE2);
+        charge2.setId(charge1.getId());
+        assertThat(charge1).isEqualTo(charge2);
 
-        cHARGE2 = getCHARGESample2();
-        assertThat(cHARGE1).isNotEqualTo(cHARGE2);
+        charge2 = getChargeSample2();
+        assertThat(charge1).isNotEqualTo(charge2);
     }
 
     @Test
-    void cHARGERANGESTest() {
-        CHARGE cHARGE = getCHARGERandomSampleGenerator();
-        CHARGERANGES cHARGERANGESBack = getCHARGERANGESRandomSampleGenerator();
+    void chargeRangeTest() {
+        Charge charge = getChargeRandomSampleGenerator();
+        ChargeRange chargeRangeBack = getChargeRangeRandomSampleGenerator();
 
-        cHARGE.setCHARGERANGES(cHARGERANGESBack);
-        assertThat(cHARGE.getCHARGERANGES()).isEqualTo(cHARGERANGESBack);
+        charge.setChargeRange(chargeRangeBack);
+        assertThat(charge.getChargeRange()).isEqualTo(chargeRangeBack);
 
-        cHARGE.cHARGERANGES(null);
-        assertThat(cHARGE.getCHARGERANGES()).isNull();
+        charge.chargeRange(null);
+        assertThat(charge.getChargeRange()).isNull();
     }
 
     @Test
-    void rANGETest() {
-        CHARGE cHARGE = getCHARGERandomSampleGenerator();
-        RANGE rANGEBack = getRANGERandomSampleGenerator();
+    void rangeTest() {
+        Charge charge = getChargeRandomSampleGenerator();
+        Range rangeBack = getRangeRandomSampleGenerator();
 
-        cHARGE.setRANGE(rANGEBack);
-        assertThat(cHARGE.getRANGE()).isEqualTo(rANGEBack);
+        charge.setRange(rangeBack);
+        assertThat(charge.getRange()).isEqualTo(rangeBack);
 
-        cHARGE.rANGE(null);
-        assertThat(cHARGE.getRANGE()).isNull();
+        charge.range(null);
+        assertThat(charge.getRange()).isNull();
     }
 }

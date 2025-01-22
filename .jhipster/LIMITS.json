@@ -1,104 +1,104 @@
 {
   "annotations": {
-    "changelogDate": "20250117142859"
+    "changelogDate": "20250121085656"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "tRANSACTIONTYPE",
+      "fieldName": "transactiontype",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pROCODE",
+      "fieldName": "procode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "6"
     },
     {
-      "fieldName": "cHANNEL",
+      "fieldName": "channel",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "30"
     },
     {
-      "fieldName": "tRANSACTIONLIMIT",
+      "fieldName": "transactionlimit",
       "fieldType": "Long",
       "fieldValidateRules": ["min", "max", "required"],
       "fieldValidateRulesMax": "10",
       "fieldValidateRulesMin": "1"
     },
     {
-      "fieldName": "dAILYLIMIT",
+      "fieldName": "dailylimit",
       "fieldType": "Long",
       "fieldValidateRules": ["min", "max"],
       "fieldValidateRulesMax": "10",
       "fieldValidateRulesMin": "1"
     },
     {
-      "fieldName": "rEGISTEREDBY",
+      "fieldName": "registeredby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "rEGISTEREDDATE",
+      "fieldName": "registereddate",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "7"
     },
     {
-      "fieldName": "aPPROVED",
+      "fieldName": "approved",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "2"
     },
     {
-      "fieldName": "aPPROVEDBY",
+      "fieldName": "approvedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aPPROVEDDATE",
+      "fieldName": "approveddate",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "7"
     },
     {
-      "fieldName": "uPDATEDBY",
+      "fieldName": "updatedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "uPDATEDDATE",
+      "fieldName": "updateddate",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "7"
     },
     {
-      "fieldName": "rEWORK",
+      "fieldName": "rework",
       "fieldType": "Long",
       "fieldValidateRules": ["min", "max"],
       "fieldValidateRulesMax": "10",
       "fieldValidateRulesMin": "1"
     },
     {
-      "fieldName": "rEWORKBY",
+      "fieldName": "reworkby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "sESSIONID",
+      "fieldName": "sessionid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     }
   ],
-  "name": "LIMITS",
+  "name": "Limits",
   "relationships": [],
   "searchEngine": "no"
 }

@@ -1,24 +1,24 @@
 package com.istl.app.domain;
 
-import static com.istl.app.domain.PINRESETHISTORYTestSamples.*;
+import static com.istl.app.domain.PinResetHistoryTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.istl.app.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
 
-class PINRESETHISTORYTest {
+class PinResetHistoryTest {
 
     @Test
     void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(PINRESETHISTORY.class);
-        PINRESETHISTORY pINRESETHISTORY1 = getPINRESETHISTORYSample1();
-        PINRESETHISTORY pINRESETHISTORY2 = new PINRESETHISTORY();
-        assertThat(pINRESETHISTORY1).isNotEqualTo(pINRESETHISTORY2);
+        TestUtil.equalsVerifier(PinResetHistory.class);
+        PinResetHistory pinResetHistory1 = getPinResetHistorySample1();
+        PinResetHistory pinResetHistory2 = new PinResetHistory();
+        assertThat(pinResetHistory1).isNotEqualTo(pinResetHistory2);
 
-        pINRESETHISTORY2.setId(pINRESETHISTORY1.getId());
-        assertThat(pINRESETHISTORY1).isEqualTo(pINRESETHISTORY2);
+        pinResetHistory2.setId(pinResetHistory1.getId());
+        assertThat(pinResetHistory1).isEqualTo(pinResetHistory2);
 
-        pINRESETHISTORY2 = getPINRESETHISTORYSample2();
-        assertThat(pINRESETHISTORY1).isNotEqualTo(pINRESETHISTORY2);
+        pinResetHistory2 = getPinResetHistorySample2();
+        assertThat(pinResetHistory1).isNotEqualTo(pinResetHistory2);
     }
 }

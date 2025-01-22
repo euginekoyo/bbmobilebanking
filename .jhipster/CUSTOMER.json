@@ -1,583 +1,583 @@
 {
   "annotations": {
-    "changelogDate": "20250117142857"
+    "changelogDate": "20250121085654"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "cUSTOMERNAME",
+      "fieldName": "customername",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "pHONENUMBER",
+      "fieldName": "phonenumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "12"
     },
     {
-      "fieldName": "cARDNUMBER",
+      "fieldName": "cardnumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "1000"
     },
     {
-      "fieldName": "aCCOUNTNUMBER",
+      "fieldName": "accountnumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "lANG",
+      "fieldName": "lang",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "10"
     },
     {
-      "fieldName": "pIN",
+      "fieldName": "pin",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "fIRSTLOGIN",
+      "fieldName": "firstlogin",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "1"
     },
     {
-      "fieldName": "aCTIVE",
+      "fieldName": "active",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "1"
     },
     {
-      "fieldName": "rEGISTERED",
+      "fieldName": "registered",
       "fieldType": "Long"
     },
     {
-      "fieldName": "cSTDELETE",
+      "fieldName": "cstdelete",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rEGDATE",
+      "fieldName": "regdate",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "aLERTENABLED",
+      "fieldName": "alertenabled",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rEMARK",
+      "fieldName": "remark",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "iMSI",
+      "fieldName": "imsi",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "pARTIALLYREGISTERED",
+      "fieldName": "partiallyregistered",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "1"
     },
     {
-      "fieldName": "pARTIALDATE",
+      "fieldName": "partialdate",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "rEGISTERDATE",
+      "fieldName": "registerdate",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "aPPROVED",
+      "fieldName": "approved",
       "fieldType": "Double"
     },
     {
-      "fieldName": "aPPROVEDBY",
+      "fieldName": "approvedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aPPROVEDDATE",
+      "fieldName": "approveddate",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "dECLINED",
+      "fieldName": "declined",
       "fieldType": "Double"
     },
     {
-      "fieldName": "dECLINEDBY",
+      "fieldName": "declinedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "dECLINEDDATE",
+      "fieldName": "declineddate",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "cHECKERREMARKS",
+      "fieldName": "checkerremarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "pOSTALADDRESS",
+      "fieldName": "postaladdress",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "rESIDENCE",
+      "fieldName": "residence",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "dOB",
+      "fieldName": "dob",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "cREATEDBY",
+      "fieldName": "createdby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "eMAILADDRESS",
+      "fieldName": "emailaddress",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "iDENTIFICATIONID",
+      "fieldName": "identificationid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aDDACCOUNT",
+      "fieldName": "addaccount",
       "fieldType": "Double"
     },
     {
-      "fieldName": "aCLINKINGINSTITUTION",
+      "fieldName": "aclinkinginstitution",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "dEACTIVATED",
+      "fieldName": "deactivated",
       "fieldType": "Double"
     },
     {
-      "fieldName": "dEACTIVATEDBY",
+      "fieldName": "deactivatedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "dEACTIVATEDON",
+      "fieldName": "deactivatedon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "pHONENOCHANGED",
+      "fieldName": "phonenochanged",
       "fieldType": "Double"
     },
     {
-      "fieldName": "pHONENOCHANGEDBY",
+      "fieldName": "phonenochangedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pHONENOCHANGEDON",
+      "fieldName": "phonenochangedon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "oRIGINALPHONENO",
+      "fieldName": "originalphoneno",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "nEWPHONENO",
+      "fieldName": "newphoneno",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "rESET",
+      "fieldName": "reset",
       "fieldType": "Double"
     },
     {
-      "fieldName": "rESETINGINSTITUTION",
+      "fieldName": "resetinginstitution",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pINRESETREMARK",
+      "fieldName": "pinresetremark",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "rESETBY",
+      "fieldName": "resetby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "rESETON",
+      "fieldName": "reseton",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "uNBLOCKINGINSTITUTION",
+      "fieldName": "unblockinginstitution",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pINBLOCK",
+      "fieldName": "pinblock",
       "fieldType": "Double"
     },
     {
-      "fieldName": "pINBLOCKBY",
+      "fieldName": "pinblockby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pINBLOCKREMARKS",
+      "fieldName": "pinblockremarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "bLOCKINGINSTITUTION",
+      "fieldName": "blockinginstitution",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pINBLOCKON",
+      "fieldName": "pinblockon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "aPPROVEDON",
+      "fieldName": "approvedon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "pINUNBLOCKBY",
+      "fieldName": "pinunblockby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "lOGGEDIN",
+      "fieldName": "loggedin",
       "fieldType": "Long"
     },
     {
-      "fieldName": "tRIALS",
+      "fieldName": "trials",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "iDTYPE",
+      "fieldName": "idtype",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "iDNUMBER",
+      "fieldName": "idnumber",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "gENDER",
+      "fieldName": "gender",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "1"
     },
     {
-      "fieldName": "cIF",
+      "fieldName": "cif",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "dATEOFBIRTH",
+      "fieldName": "dateofbirth",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "rEMARKS",
+      "fieldName": "remarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "rESETIMSI",
+      "fieldName": "resetimsi",
       "fieldType": "Double"
     },
     {
-      "fieldName": "iMSIRESETBY",
+      "fieldName": "imsiresetby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "fIRSTNAME",
+      "fieldName": "firstname",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "sECONDNAME",
+      "fieldName": "secondname",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "lASTNAME",
+      "fieldName": "lastname",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "pINBLOCKTIME",
+      "fieldName": "pinblocktime",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "7"
     },
     {
-      "fieldName": "cUSTOMERSTATUS",
+      "fieldName": "customerstatus",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "uSERNAME",
+      "fieldName": "username",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "2000"
     },
     {
-      "fieldName": "pASSWORD",
+      "fieldName": "password",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "3900"
     },
     {
-      "fieldName": "dEVICEID",
+      "fieldName": "deviceid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "cHANNEL",
+      "fieldName": "channel",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pASSRESET",
+      "fieldName": "passreset",
       "fieldType": "Double"
     },
     {
-      "fieldName": "pASSRESETBY",
+      "fieldName": "passresetby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pASSRESETON",
+      "fieldName": "passreseton",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "pASSBLOCK",
+      "fieldName": "passblock",
       "fieldType": "Double"
     },
     {
-      "fieldName": "pASSBLOCKBY",
+      "fieldName": "passblockby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pASSBLOCKON",
+      "fieldName": "passblockon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "pINMARKBLOCK",
+      "fieldName": "pinmarkblock",
       "fieldType": "Double"
     },
     {
-      "fieldName": "pASSMARKBLOCK",
+      "fieldName": "passmarkblock",
       "fieldType": "Double"
     },
     {
-      "fieldName": "pASSRESETREMARKS",
+      "fieldName": "passresetremarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pASSBLOCKREMARKS",
+      "fieldName": "passblockremarks",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pASSUNBLOCKBY",
+      "fieldName": "passunblockby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pASSTRIALS",
+      "fieldName": "passtrials",
       "fieldType": "Double"
     },
     {
-      "fieldName": "aPPACTIVE",
+      "fieldName": "appactive",
       "fieldType": "Long"
     },
     {
-      "fieldName": "lASTLOGIN",
+      "fieldName": "lastlogin",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "32"
     },
     {
-      "fieldName": "aPPMARKEDDISABLE",
+      "fieldName": "appmarkeddisable",
       "fieldType": "Double"
     },
     {
-      "fieldName": "dISABLEBY",
+      "fieldName": "disableby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aPPROVEDISABLEBY",
+      "fieldName": "approvedisableby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aPPMARKEDENABLE",
+      "fieldName": "appmarkedenable",
       "fieldType": "Double"
     },
     {
-      "fieldName": "eNABLEBY",
+      "fieldName": "enableby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aPPROVEDENABLEBY",
+      "fieldName": "approvedenableby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "mARKEDDEACTIVATE",
+      "fieldName": "markeddeactivate",
       "fieldType": "Double"
     },
     {
-      "fieldName": "aPPFIRSTLOGIN",
+      "fieldName": "appfirstlogin",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "5"
     },
     {
-      "fieldName": "aTMTRIALS",
+      "fieldName": "atmtrials",
       "fieldType": "Double"
     },
     {
-      "fieldName": "sHORCUTS",
+      "fieldName": "shorcuts",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "1000"
     },
     {
-      "fieldName": "mARKEDACTIVATE",
+      "fieldName": "markedactivate",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "tOWN",
+      "fieldName": "town",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aPPROVEDDISABLEON",
+      "fieldName": "approveddisableon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "dISABLEDON",
+      "fieldName": "disabledon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "rESETAPPROVEON",
+      "fieldName": "resetapproveon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "dELETEDBY",
+      "fieldName": "deletedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "qUESTIONSASKED",
+      "fieldName": "questionsasked",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "qUESTIONSTRIALS",
+      "fieldName": "questionstrials",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "qUESTIONSANSWERED",
+      "fieldName": "questionsanswered",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "vALIDOTP",
+      "fieldName": "validotp",
       "fieldType": "Double"
     },
     {
-      "fieldName": "aCTIVATEDBY",
+      "fieldName": "activatedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "aCTIVATEDON",
+      "fieldName": "activatedon",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "bRANCHCODE",
+      "fieldName": "branchcode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     }
   ],
-  "name": "CUSTOMER",
+  "name": "Customer",
   "relationships": [],
   "searchEngine": "no"
 }

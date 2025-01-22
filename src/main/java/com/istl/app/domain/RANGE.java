@@ -10,13 +10,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A RANGE.
+ * A Range.
  */
 @Entity
 @Table(name = "range")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class RANGE implements Serializable {
+public class Range implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,34 +26,34 @@ public class RANGE implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "r_angefrom")
-    private Long rANGEFROM;
+    @Column(name = "rangefrom")
+    private Long rangefrom;
 
-    @Column(name = "r_angeto")
-    private Long rANGETO;
+    @Column(name = "rangeto")
+    private Long rangeto;
 
-    @Column(name = "a_mount")
-    private Double aMOUNT;
-
-    @Size(max = 50)
-    @Column(name = "t_xntype", length = 50)
-    private String tXNTYPE;
+    @Column(name = "amount")
+    private Double amount;
 
     @Size(max = 50)
-    @Column(name = "t_xncode", length = 50)
-    private String tXNCODE;
-
-    @Column(name = "c_hargeid")
-    private Long cHARGEID;
+    @Column(name = "txntype", length = 50)
+    private String txntype;
 
     @Size(max = 50)
-    @Column(name = "c_hannel", length = 50)
-    private String cHANNEL;
+    @Column(name = "txncode", length = 50)
+    private String txncode;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "rANGE")
+    @Column(name = "chargeid")
+    private Long chargeid;
+
+    @Size(max = 50)
+    @Column(name = "channel", length = 50)
+    private String channel;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "range")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "cHARGERANGES", "rANGE" }, allowSetters = true)
-    private Set<CHARGE> cHARGEIDS = new HashSet<>();
+    @JsonIgnoreProperties(value = { "chargeRange", "range" }, allowSetters = true)
+    private Set<Charge> chargeids = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -61,7 +61,7 @@ public class RANGE implements Serializable {
         return this.id;
     }
 
-    public RANGE id(Long id) {
+    public Range id(Long id) {
         this.setId(id);
         return this;
     }
@@ -70,125 +70,125 @@ public class RANGE implements Serializable {
         this.id = id;
     }
 
-    public Long getrANGEFROM() {
-        return this.rANGEFROM;
+    public Long getRangefrom() {
+        return this.rangefrom;
     }
 
-    public RANGE rANGEFROM(Long rANGEFROM) {
-        this.setrANGEFROM(rANGEFROM);
+    public Range rangefrom(Long rangefrom) {
+        this.setRangefrom(rangefrom);
         return this;
     }
 
-    public void setrANGEFROM(Long rANGEFROM) {
-        this.rANGEFROM = rANGEFROM;
+    public void setRangefrom(Long rangefrom) {
+        this.rangefrom = rangefrom;
     }
 
-    public Long getrANGETO() {
-        return this.rANGETO;
+    public Long getRangeto() {
+        return this.rangeto;
     }
 
-    public RANGE rANGETO(Long rANGETO) {
-        this.setrANGETO(rANGETO);
+    public Range rangeto(Long rangeto) {
+        this.setRangeto(rangeto);
         return this;
     }
 
-    public void setrANGETO(Long rANGETO) {
-        this.rANGETO = rANGETO;
+    public void setRangeto(Long rangeto) {
+        this.rangeto = rangeto;
     }
 
-    public Double getaMOUNT() {
-        return this.aMOUNT;
+    public Double getAmount() {
+        return this.amount;
     }
 
-    public RANGE aMOUNT(Double aMOUNT) {
-        this.setaMOUNT(aMOUNT);
+    public Range amount(Double amount) {
+        this.setAmount(amount);
         return this;
     }
 
-    public void setaMOUNT(Double aMOUNT) {
-        this.aMOUNT = aMOUNT;
+    public void setAmount(Double amount) {
+        this.amount = amount;
     }
 
-    public String gettXNTYPE() {
-        return this.tXNTYPE;
+    public String getTxntype() {
+        return this.txntype;
     }
 
-    public RANGE tXNTYPE(String tXNTYPE) {
-        this.settXNTYPE(tXNTYPE);
+    public Range txntype(String txntype) {
+        this.setTxntype(txntype);
         return this;
     }
 
-    public void settXNTYPE(String tXNTYPE) {
-        this.tXNTYPE = tXNTYPE;
+    public void setTxntype(String txntype) {
+        this.txntype = txntype;
     }
 
-    public String gettXNCODE() {
-        return this.tXNCODE;
+    public String getTxncode() {
+        return this.txncode;
     }
 
-    public RANGE tXNCODE(String tXNCODE) {
-        this.settXNCODE(tXNCODE);
+    public Range txncode(String txncode) {
+        this.setTxncode(txncode);
         return this;
     }
 
-    public void settXNCODE(String tXNCODE) {
-        this.tXNCODE = tXNCODE;
+    public void setTxncode(String txncode) {
+        this.txncode = txncode;
     }
 
-    public Long getcHARGEID() {
-        return this.cHARGEID;
+    public Long getChargeid() {
+        return this.chargeid;
     }
 
-    public RANGE cHARGEID(Long cHARGEID) {
-        this.setcHARGEID(cHARGEID);
+    public Range chargeid(Long chargeid) {
+        this.setChargeid(chargeid);
         return this;
     }
 
-    public void setcHARGEID(Long cHARGEID) {
-        this.cHARGEID = cHARGEID;
+    public void setChargeid(Long chargeid) {
+        this.chargeid = chargeid;
     }
 
-    public String getcHANNEL() {
-        return this.cHANNEL;
+    public String getChannel() {
+        return this.channel;
     }
 
-    public RANGE cHANNEL(String cHANNEL) {
-        this.setcHANNEL(cHANNEL);
+    public Range channel(String channel) {
+        this.setChannel(channel);
         return this;
     }
 
-    public void setcHANNEL(String cHANNEL) {
-        this.cHANNEL = cHANNEL;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
-    public Set<CHARGE> getCHARGEIDS() {
-        return this.cHARGEIDS;
+    public Set<Charge> getChargeids() {
+        return this.chargeids;
     }
 
-    public void setCHARGEIDS(Set<CHARGE> cHARGES) {
-        if (this.cHARGEIDS != null) {
-            this.cHARGEIDS.forEach(i -> i.setRANGE(null));
+    public void setChargeids(Set<Charge> charges) {
+        if (this.chargeids != null) {
+            this.chargeids.forEach(i -> i.setRange(null));
         }
-        if (cHARGES != null) {
-            cHARGES.forEach(i -> i.setRANGE(this));
+        if (charges != null) {
+            charges.forEach(i -> i.setRange(this));
         }
-        this.cHARGEIDS = cHARGES;
+        this.chargeids = charges;
     }
 
-    public RANGE cHARGEIDS(Set<CHARGE> cHARGES) {
-        this.setCHARGEIDS(cHARGES);
+    public Range chargeids(Set<Charge> charges) {
+        this.setChargeids(charges);
         return this;
     }
 
-    public RANGE addCHARGEID(CHARGE cHARGE) {
-        this.cHARGEIDS.add(cHARGE);
-        cHARGE.setRANGE(this);
+    public Range addChargeid(Charge charge) {
+        this.chargeids.add(charge);
+        charge.setRange(this);
         return this;
     }
 
-    public RANGE removeCHARGEID(CHARGE cHARGE) {
-        this.cHARGEIDS.remove(cHARGE);
-        cHARGE.setRANGE(null);
+    public Range removeChargeid(Charge charge) {
+        this.chargeids.remove(charge);
+        charge.setRange(null);
         return this;
     }
 
@@ -199,10 +199,10 @@ public class RANGE implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof RANGE)) {
+        if (!(o instanceof Range)) {
             return false;
         }
-        return getId() != null && getId().equals(((RANGE) o).getId());
+        return getId() != null && getId().equals(((Range) o).getId());
     }
 
     @Override
@@ -214,15 +214,15 @@ public class RANGE implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "RANGE{" +
+        return "Range{" +
             "id=" + getId() +
-            ", rANGEFROM=" + getrANGEFROM() +
-            ", rANGETO=" + getrANGETO() +
-            ", aMOUNT=" + getaMOUNT() +
-            ", tXNTYPE='" + gettXNTYPE() + "'" +
-            ", tXNCODE='" + gettXNCODE() + "'" +
-            ", cHARGEID=" + getcHARGEID() +
-            ", cHANNEL='" + getcHANNEL() + "'" +
+            ", rangefrom=" + getRangefrom() +
+            ", rangeto=" + getRangeto() +
+            ", amount=" + getAmount() +
+            ", txntype='" + getTxntype() + "'" +
+            ", txncode='" + getTxncode() + "'" +
+            ", chargeid=" + getChargeid() +
+            ", channel='" + getChannel() + "'" +
             "}";
     }
 }

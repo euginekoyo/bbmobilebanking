@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.BRANCHES;
-import com.istl.app.repository.BRANCHESRepository;
+import com.istl.app.domain.Branches;
+import com.istl.app.repository.BranchesRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,241 +20,241 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.BRANCHES}.
+ * REST controller for managing {@link com.istl.app.domain.Branches}.
  */
 @RestController
 @RequestMapping("/api/branches")
 @Transactional
-public class BRANCHESResource {
+public class BranchesResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(BRANCHESResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BranchesResource.class);
 
-    private static final String ENTITY_NAME = "bRANCHES";
+    private static final String ENTITY_NAME = "branches";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final BRANCHESRepository bRANCHESRepository;
+    private final BranchesRepository branchesRepository;
 
-    public BRANCHESResource(BRANCHESRepository bRANCHESRepository) {
-        this.bRANCHESRepository = bRANCHESRepository;
+    public BranchesResource(BranchesRepository branchesRepository) {
+        this.branchesRepository = branchesRepository;
     }
 
     /**
-     * {@code POST  /branches} : Create a new bRANCHES.
+     * {@code POST  /branches} : Create a new branches.
      *
-     * @param bRANCHES the bRANCHES to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new bRANCHES, or with status {@code 400 (Bad Request)} if the bRANCHES has already an ID.
+     * @param branches the branches to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new branches, or with status {@code 400 (Bad Request)} if the branches has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<BRANCHES> createBRANCHES(@Valid @RequestBody BRANCHES bRANCHES) throws URISyntaxException {
-        LOG.debug("REST request to save BRANCHES : {}", bRANCHES);
-        if (bRANCHES.getId() != null) {
-            throw new BadRequestAlertException("A new bRANCHES cannot already have an ID", ENTITY_NAME, "idexists");
+    public ResponseEntity<Branches> createBranches(@Valid @RequestBody Branches branches) throws URISyntaxException {
+        LOG.debug("REST request to save Branches : {}", branches);
+        if (branches.getId() != null) {
+            throw new BadRequestAlertException("A new branches cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        bRANCHES = bRANCHESRepository.save(bRANCHES);
-        return ResponseEntity.created(new URI("/api/branches/" + bRANCHES.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, bRANCHES.getId().toString()))
-            .body(bRANCHES);
+        branches = branchesRepository.save(branches);
+        return ResponseEntity.created(new URI("/api/branches/" + branches.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, branches.getId().toString()))
+            .body(branches);
     }
 
     /**
-     * {@code PUT  /branches/:id} : Updates an existing bRANCHES.
+     * {@code PUT  /branches/:id} : Updates an existing branches.
      *
-     * @param id the id of the bRANCHES to save.
-     * @param bRANCHES the bRANCHES to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated bRANCHES,
-     * or with status {@code 400 (Bad Request)} if the bRANCHES is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the bRANCHES couldn't be updated.
+     * @param id the id of the branches to save.
+     * @param branches the branches to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated branches,
+     * or with status {@code 400 (Bad Request)} if the branches is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the branches couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<BRANCHES> updateBRANCHES(
+    public ResponseEntity<Branches> updateBranches(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody BRANCHES bRANCHES
+        @Valid @RequestBody Branches branches
     ) throws URISyntaxException {
-        LOG.debug("REST request to update BRANCHES : {}, {}", id, bRANCHES);
-        if (bRANCHES.getId() == null) {
+        LOG.debug("REST request to update Branches : {}, {}", id, branches);
+        if (branches.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, bRANCHES.getId())) {
+        if (!Objects.equals(id, branches.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!bRANCHESRepository.existsById(id)) {
+        if (!branchesRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        bRANCHES = bRANCHESRepository.save(bRANCHES);
+        branches = branchesRepository.save(branches);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, bRANCHES.getId().toString()))
-            .body(bRANCHES);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, branches.getId().toString()))
+            .body(branches);
     }
 
     /**
-     * {@code PATCH  /branches/:id} : Partial updates given fields of an existing bRANCHES, field will ignore if it is null
+     * {@code PATCH  /branches/:id} : Partial updates given fields of an existing branches, field will ignore if it is null
      *
-     * @param id the id of the bRANCHES to save.
-     * @param bRANCHES the bRANCHES to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated bRANCHES,
-     * or with status {@code 400 (Bad Request)} if the bRANCHES is not valid,
-     * or with status {@code 404 (Not Found)} if the bRANCHES is not found,
-     * or with status {@code 500 (Internal Server Error)} if the bRANCHES couldn't be updated.
+     * @param id the id of the branches to save.
+     * @param branches the branches to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated branches,
+     * or with status {@code 400 (Bad Request)} if the branches is not valid,
+     * or with status {@code 404 (Not Found)} if the branches is not found,
+     * or with status {@code 500 (Internal Server Error)} if the branches couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<BRANCHES> partialUpdateBRANCHES(
+    public ResponseEntity<Branches> partialUpdateBranches(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody BRANCHES bRANCHES
+        @NotNull @RequestBody Branches branches
     ) throws URISyntaxException {
-        LOG.debug("REST request to partial update BRANCHES partially : {}, {}", id, bRANCHES);
-        if (bRANCHES.getId() == null) {
+        LOG.debug("REST request to partial update Branches partially : {}, {}", id, branches);
+        if (branches.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, bRANCHES.getId())) {
+        if (!Objects.equals(id, branches.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!bRANCHESRepository.existsById(id)) {
+        if (!branchesRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<BRANCHES> result = bRANCHESRepository
-            .findById(bRANCHES.getId())
-            .map(existingBRANCHES -> {
-                if (bRANCHES.getbRANCHNAME() != null) {
-                    existingBRANCHES.setbRANCHNAME(bRANCHES.getbRANCHNAME());
+        Optional<Branches> result = branchesRepository
+            .findById(branches.getId())
+            .map(existingBranches -> {
+                if (branches.getBranchname() != null) {
+                    existingBranches.setBranchname(branches.getBranchname());
                 }
-                if (bRANCHES.getbRANCHCODE() != null) {
-                    existingBRANCHES.setbRANCHCODE(bRANCHES.getbRANCHCODE());
+                if (branches.getBranchcode() != null) {
+                    existingBranches.setBranchcode(branches.getBranchcode());
                 }
-                if (bRANCHES.getaPPROVED() != null) {
-                    existingBRANCHES.setaPPROVED(bRANCHES.getaPPROVED());
+                if (branches.getApproved() != null) {
+                    existingBranches.setApproved(branches.getApproved());
                 }
-                if (bRANCHES.geteMAIL() != null) {
-                    existingBRANCHES.seteMAIL(bRANCHES.geteMAIL());
+                if (branches.getEmail() != null) {
+                    existingBranches.setEmail(branches.getEmail());
                 }
-                if (bRANCHES.getaDDRESS() != null) {
-                    existingBRANCHES.setaDDRESS(bRANCHES.getaDDRESS());
+                if (branches.getAddress() != null) {
+                    existingBranches.setAddress(branches.getAddress());
                 }
-                if (bRANCHES.getpHONE() != null) {
-                    existingBRANCHES.setpHONE(bRANCHES.getpHONE());
+                if (branches.getPhone() != null) {
+                    existingBranches.setPhone(branches.getPhone());
                 }
-                if (bRANCHES.getlOCATION() != null) {
-                    existingBRANCHES.setlOCATION(bRANCHES.getlOCATION());
+                if (branches.getLocation() != null) {
+                    existingBranches.setLocation(branches.getLocation());
                 }
-                if (bRANCHES.getcONTACTPERSON() != null) {
-                    existingBRANCHES.setcONTACTPERSON(bRANCHES.getcONTACTPERSON());
+                if (branches.getContactperson() != null) {
+                    existingBranches.setContactperson(branches.getContactperson());
                 }
-                if (bRANCHES.getrEMARKS() != null) {
-                    existingBRANCHES.setrEMARKS(bRANCHES.getrEMARKS());
+                if (branches.getRemarks() != null) {
+                    existingBranches.setRemarks(branches.getRemarks());
                 }
-                if (bRANCHES.getcREATEDBY() != null) {
-                    existingBRANCHES.setcREATEDBY(bRANCHES.getcREATEDBY());
+                if (branches.getCreatedby() != null) {
+                    existingBranches.setCreatedby(branches.getCreatedby());
                 }
-                if (bRANCHES.getcREATEDON() != null) {
-                    existingBRANCHES.setcREATEDON(bRANCHES.getcREATEDON());
+                if (branches.getCreatedon() != null) {
+                    existingBranches.setCreatedon(branches.getCreatedon());
                 }
-                if (bRANCHES.getaPPROVEDBY() != null) {
-                    existingBRANCHES.setaPPROVEDBY(bRANCHES.getaPPROVEDBY());
+                if (branches.getApprovedby() != null) {
+                    existingBranches.setApprovedby(branches.getApprovedby());
                 }
-                if (bRANCHES.getaPPROVEDON() != null) {
-                    existingBRANCHES.setaPPROVEDON(bRANCHES.getaPPROVEDON());
+                if (branches.getApprovedon() != null) {
+                    existingBranches.setApprovedon(branches.getApprovedon());
                 }
-                if (bRANCHES.getcHECKERREMARKS() != null) {
-                    existingBRANCHES.setcHECKERREMARKS(bRANCHES.getcHECKERREMARKS());
+                if (branches.getCheckerremarks() != null) {
+                    existingBranches.setCheckerremarks(branches.getCheckerremarks());
                 }
-                if (bRANCHES.getdELETEDBY() != null) {
-                    existingBRANCHES.setdELETEDBY(bRANCHES.getdELETEDBY());
+                if (branches.getDeletedby() != null) {
+                    existingBranches.setDeletedby(branches.getDeletedby());
                 }
-                if (bRANCHES.getdELETEDON() != null) {
-                    existingBRANCHES.setdELETEDON(bRANCHES.getdELETEDON());
+                if (branches.getDeletedon() != null) {
+                    existingBranches.setDeletedon(branches.getDeletedon());
                 }
-                if (bRANCHES.getdELETEREMARKS() != null) {
-                    existingBRANCHES.setdELETEREMARKS(bRANCHES.getdELETEREMARKS());
+                if (branches.getDeleteremarks() != null) {
+                    existingBranches.setDeleteremarks(branches.getDeleteremarks());
                 }
-                if (bRANCHES.getdELETED() != null) {
-                    existingBRANCHES.setdELETED(bRANCHES.getdELETED());
+                if (branches.getDeleted() != null) {
+                    existingBranches.setDeleted(branches.getDeleted());
                 }
-                if (bRANCHES.getdECLINED() != null) {
-                    existingBRANCHES.setdECLINED(bRANCHES.getdECLINED());
+                if (branches.getDeclined() != null) {
+                    existingBranches.setDeclined(branches.getDeclined());
                 }
-                if (bRANCHES.getdECLINEDDON() != null) {
-                    existingBRANCHES.setdECLINEDDON(bRANCHES.getdECLINEDDON());
+                if (branches.getDeclineddon() != null) {
+                    existingBranches.setDeclineddon(branches.getDeclineddon());
                 }
-                if (bRANCHES.getdECLINEDBY() != null) {
-                    existingBRANCHES.setdECLINEDBY(bRANCHES.getdECLINEDBY());
+                if (branches.getDeclinedby() != null) {
+                    existingBranches.setDeclinedby(branches.getDeclinedby());
                 }
-                if (bRANCHES.getsESSIONID() != null) {
-                    existingBRANCHES.setsESSIONID(bRANCHES.getsESSIONID());
+                if (branches.getSessionid() != null) {
+                    existingBranches.setSessionid(branches.getSessionid());
                 }
-                if (bRANCHES.getrEWORKED() != null) {
-                    existingBRANCHES.setrEWORKED(bRANCHES.getrEWORKED());
+                if (branches.getReworked() != null) {
+                    existingBranches.setReworked(branches.getReworked());
                 }
-                if (bRANCHES.getrEWORKEDBY() != null) {
-                    existingBRANCHES.setrEWORKEDBY(bRANCHES.getrEWORKEDBY());
+                if (branches.getReworkedby() != null) {
+                    existingBranches.setReworkedby(branches.getReworkedby());
                 }
-                if (bRANCHES.getrEWORKEDON() != null) {
-                    existingBRANCHES.setrEWORKEDON(bRANCHES.getrEWORKEDON());
+                if (branches.getReworkedon() != null) {
+                    existingBranches.setReworkedon(branches.getReworkedon());
                 }
-                if (bRANCHES.getdISTRICT() != null) {
-                    existingBRANCHES.setdISTRICT(bRANCHES.getdISTRICT());
+                if (branches.getDistrict() != null) {
+                    existingBranches.setDistrict(branches.getDistrict());
                 }
-                if (bRANCHES.getrEGION() != null) {
-                    existingBRANCHES.setrEGION(bRANCHES.getrEGION());
+                if (branches.getRegion() != null) {
+                    existingBranches.setRegion(branches.getRegion());
                 }
-                if (bRANCHES.getrEGIONNAME() != null) {
-                    existingBRANCHES.setrEGIONNAME(bRANCHES.getrEGIONNAME());
+                if (branches.getRegionname() != null) {
+                    existingBranches.setRegionname(branches.getRegionname());
                 }
-                if (bRANCHES.getrEPORTING() != null) {
-                    existingBRANCHES.setrEPORTING(bRANCHES.getrEPORTING());
+                if (branches.getReporting() != null) {
+                    existingBranches.setReporting(branches.getReporting());
                 }
 
-                return existingBRANCHES;
+                return existingBranches;
             })
-            .map(bRANCHESRepository::save);
+            .map(branchesRepository::save);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, bRANCHES.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, branches.getId().toString())
         );
     }
 
     /**
-     * {@code GET  /branches} : get all the bRANCHES.
+     * {@code GET  /branches} : get all the branches.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of bRANCHES in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of branches in body.
      */
     @GetMapping("")
-    public List<BRANCHES> getAllBRANCHES() {
-        LOG.debug("REST request to get all BRANCHES");
-        return bRANCHESRepository.findAll();
+    public List<Branches> getAllBranches() {
+        LOG.debug("REST request to get all Branches");
+        return branchesRepository.findAll();
     }
 
     /**
-     * {@code GET  /branches/:id} : get the "id" bRANCHES.
+     * {@code GET  /branches/:id} : get the "id" branches.
      *
-     * @param id the id of the bRANCHES to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the bRANCHES, or with status {@code 404 (Not Found)}.
+     * @param id the id of the branches to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the branches, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<BRANCHES> getBRANCHES(@PathVariable("id") Long id) {
-        LOG.debug("REST request to get BRANCHES : {}", id);
-        Optional<BRANCHES> bRANCHES = bRANCHESRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(bRANCHES);
+    public ResponseEntity<Branches> getBranches(@PathVariable("id") Long id) {
+        LOG.debug("REST request to get Branches : {}", id);
+        Optional<Branches> branches = branchesRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(branches);
     }
 
     /**
-     * {@code DELETE  /branches/:id} : delete the "id" bRANCHES.
+     * {@code DELETE  /branches/:id} : delete the "id" branches.
      *
-     * @param id the id of the bRANCHES to delete.
+     * @param id the id of the branches to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBRANCHES(@PathVariable("id") Long id) {
-        LOG.debug("REST request to delete BRANCHES : {}", id);
-        bRANCHESRepository.deleteById(id);
+    public ResponseEntity<Void> deleteBranches(@PathVariable("id") Long id) {
+        LOG.debug("REST request to delete Branches : {}", id);
+        branchesRepository.deleteById(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();

@@ -1,33 +1,33 @@
 {
   "bbMobileBankingAdminApp": {
-    "pINRESETHISTORY": {
+    "pinResetHistory": {
       "home": {
-        "title": "PINRESETHISTORIES",
+        "title": "Pin Reset Histories",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new PINRESETHISTORY",
-        "createOrEditLabel": "Create or edit a PINRESETHISTORY",
-        "notFound": "No PINRESETHISTORIES found"
+        "createLabel": "Create a new Pin Reset History",
+        "createOrEditLabel": "Create or edit a Pin Reset History",
+        "notFound": "No Pin Reset Histories found"
       },
-      "created": "A new PINRESETHISTORY is created with identifier {{ param }}",
-      "updated": "A PINRESETHISTORY is updated with identifier {{ param }}",
-      "deleted": "A PINRESETHISTORY is deleted with identifier {{ param }}",
+      "created": "A new Pin Reset History is created with identifier { param }",
+      "updated": "A Pin Reset History is updated with identifier { param }",
+      "deleted": "A Pin Reset History is deleted with identifier { param }",
       "delete": {
-        "question": "Are you sure you want to delete PINRESETHISTORY {{ id }}?"
+        "question": "Are you sure you want to delete Pin Reset History { id }?"
       },
       "detail": {
-        "title": "PINRESETHISTORY"
+        "title": "Pin Reset History"
       },
       "id": "ID",
-      "pHONENUMBER": "P HONENUMBER",
-      "cUSTOMERNAME": "C USTOMERNAME",
-      "pINBLOCKEDON": "P INBLOCKEDON",
-      "pINBLOCKREMARKS": "P INBLOCKREMARKS",
-      "pINRESETBY": "P INRESETBY",
-      "pINRESETON": "P INRESETON",
-      "pINRESETAPPROVEDBY": "P INRESETAPPROVEDBY",
-      "pINRESETAPPROVEDON": "P INRESETAPPROVEDON",
-      "pINRESETREMARKS": "P INRESETREMARKS",
-      "bRANCHCODE": "B RANCHCODE"
+      "phonenumber": "Phonenumber",
+      "customername": "Customername",
+      "pinblockedon": "Pinblockedon",
+      "pinblockremarks": "Pinblockremarks",
+      "pinresetby": "Pinresetby",
+      "pinreseton": "Pinreseton",
+      "pinresetapprovedby": "Pinresetapprovedby",
+      "pinresetapprovedon": "Pinresetapprovedon",
+      "pinresetremarks": "Pinresetremarks",
+      "branchcode": "Branchcode"
     }
   }
 }

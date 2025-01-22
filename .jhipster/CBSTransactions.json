@@ -1,119 +1,122 @@
 {
-  "annotations": {},
+  "annotations": {
+    "changelogDate": "20250121084337"
+  },
   "applications": "*",
   "entityTableName": "cbs_transactions",
   "fields": [
     {
-      "fieldName": "mESSAGEID",
+      "fieldName": "messageid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "14"
     },
     {
-      "fieldName": "cHANNELCODE",
+      "fieldName": "channelcode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4"
     },
     {
-      "fieldName": "mESSAGETYPE",
+      "fieldName": "messagetype",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "3"
     },
     {
-      "fieldName": "tRANSCURRENCY",
+      "fieldName": "transcurrency",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "3"
     },
     {
-      "fieldName": "dEBTORSNAME",
+      "fieldName": "debtorsname",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "dEBTORSACCOUNTID",
+      "fieldName": "debtorsaccountid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "14"
     },
     {
-      "fieldName": "dEBTORSPHONE",
+      "fieldName": "debtorsphone",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "14"
     },
     {
-      "fieldName": "cREDITORSNAME",
+      "fieldName": "creditorsname",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "cREDITORSACCOUNTID",
+      "fieldName": "creditorsaccountid",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "14"
     },
     {
-      "fieldName": "cREDITORSPHONE",
+      "fieldName": "creditorsphone",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "14"
     },
     {
-      "fieldName": "nARRATION",
+      "fieldName": "narration",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "eXTERNALREFERENCE",
+      "fieldName": "externalreference",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "40"
     },
     {
-      "fieldName": "cBSREFERENCE",
+      "fieldName": "cbsreference",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "40"
     },
     {
-      "fieldName": "cBSSTATUS",
+      "fieldName": "cbsstatus",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "10"
     },
     {
-      "fieldName": "cBSSTATUSDESC",
+      "fieldName": "cbsstatusdesc",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "rEQUESTInstantTIME",
+      "fieldName": "requestInstanttime",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "rEQUESTJSON",
+      "fieldName": "requestjson",
       "fieldType": "String"
     },
     {
-      "fieldName": "cBSREQUESTXML",
+      "fieldName": "cbsrequestxml",
       "fieldType": "String"
     },
     {
-      "fieldName": "cBSRESPONSEXML",
+      "fieldName": "cbsresponsexml",
       "fieldType": "String"
     },
     {
-      "fieldName": "aMOUNT",
+      "fieldName": "amount",
       "fieldType": "Double"
     }
   ],
   "name": "CBSTransactions",
-  "relationships": []
+  "relationships": [],
+  "searchEngine": "no"
 }

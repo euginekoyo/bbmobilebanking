@@ -1,67 +1,67 @@
 {
   "annotations": {
-    "changelogDate": "20250117142855"
+    "changelogDate": "20250121085652"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "tXNTYPE",
+      "fieldName": "txntype",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength", "required"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "fEEMODE",
+      "fieldName": "feemode",
       "fieldType": "Long"
     },
     {
-      "fieldName": "aMOUNT",
+      "fieldName": "amount",
       "fieldType": "Long"
     },
     {
-      "fieldName": "dATECREATED",
+      "fieldName": "datecreated",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "cREATEDBY",
+      "fieldName": "createdby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "aPPROVED",
+      "fieldName": "approved",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "aPPROVEDBY",
+      "fieldName": "approvedby",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "cHANNEL",
+      "fieldName": "channel",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "tXNCODE",
+      "fieldName": "txncode",
       "fieldType": "Long"
     },
     {
-      "fieldName": "dESCRIPTION",
+      "fieldName": "description",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "64"
     },
     {
-      "fieldName": "aPPROVEDDATE",
+      "fieldName": "approveddate",
       "fieldType": "Instant"
     }
   ],
-  "name": "CHARGE",
+  "name": "Charge",
   "relationships": [],
   "searchEngine": "no"
 }

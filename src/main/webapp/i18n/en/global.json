@@ -1,6 +1,6 @@
 {
   "global": {
-    "title": "BbMobileBankingAdmin",
+    "title": "BB Mobile Banking Admin",
     "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
     "menu": {
       "home": "Home",
@@ -8,22 +8,24 @@
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "billers": "BILLERS",
-        "branches": "BRANCHES",
-        "channels": "CHANNELS",
-        "charge": "CHARGE",
-        "chargeranges": "CHARGERANGES",
-        "customer": "CUSTOMER",
-        "customeraccount": "CUSTOMERACCOUNT",
-        "limits": "LIMITS",
-        "linkedaccounts": "LINKEDACCOUNTS",
-        "messagessms": "MESSAGESSMS",
-        "messagetemplates": "MESSAGETEMPLATES",
-        "pinresethistory": "PINRESETHISTORY",
-        "range": "RANGE",
-        "requests": "REQUESTS",
-        "servicemanagement": "SERVICEMANAGEMENT",
-        "transactions": "TRANSACTIONS"
+        "cbsTransactions": "CBS Transactions",
+        "spsIncomingTransactions": "SPS Incoming Transactions",
+        "spsOutgoingTransactions": "SPS Outgoing Transactions",
+        "spsParticipatingCodes": "SPS Participating Codes",
+        "billers": "Billers",
+        "branches": "Branches",
+        "channels": "Channels",
+        "charge": "Charge",
+        "chargeRange": "Charge Range",
+        "customer": "Customer",
+        "customerAccount": "Customer Account",
+        "limits": "Limits",
+        "messagesSms": "Messages Sms",
+        "messageTemplate": "Message Template",
+        "pinResetHistory": "Pin Reset History",
+        "range": "Range",
+        "serviceManagement": "Service Management",
+        "transactions": "Transactions"
       },
       "account": {
         "main": "Account",
@@ -101,7 +103,7 @@
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "Showing {{first}} - {{second}} of {{total}} items."
+    "item-count": "Showing { first } - { second } of { total } items."
   },
   "entity": {
     "action": {
@@ -114,7 +116,7 @@
       "open": "Open",
       "save": "Save",
       "view": "View",
-      "show": "Show {{otherEntity}}"
+      "show": "Show { otherEntity }"
     },
     "detail": {
       "field": "Field",
@@ -125,13 +127,13 @@
     },
     "validation": {
       "required": "This field is required.",
-      "minlength": "This field is required to be at least {{ min }} characters.",
-      "maxlength": "This field cannot be longer than {{ max }} characters.",
-      "min": "This field should be at least {{ min }}.",
-      "max": "This field cannot be more than {{ max }}.",
-      "minbytes": "This field should be at least {{ min }} bytes.",
-      "maxbytes": "This field cannot be more than {{ max }} bytes.",
-      "pattern": "This field should follow pattern for {{ pattern }}.",
+      "minlength": "This field is required to be at least { min } characters.",
+      "maxlength": "This field cannot be longer than { max } characters.",
+      "min": "This field should be at least { min }.",
+      "max": "This field cannot be more than { max }.",
+      "minbytes": "This field should be at least { min } bytes.",
+      "maxbytes": "This field cannot be more than { max } bytes.",
+      "pattern": "This field should follow pattern for { pattern }.",
       "number": "This field should be a number.",
       "datetimelocal": "This field should be a date and time.",
       "patternLogin": "This field can only contain letters, digits and e-mail addresses."
@@ -146,18 +148,18 @@
     "internalServerError": "Internal server error",
     "server.not.reachable": "Server not reachable",
     "url.not.found": "Not found",
-    "NotNull": "Field {{ fieldName }} cannot be empty!",
-    "Size": "Field {{ fieldName }} does not meet min/max size requirements!",
+    "NotNull": "Field { fieldName } cannot be empty!",
+    "Size": "Field { fieldName } does not meet min/max size requirements!",
     "userexists": "Login name already used!",
     "emailexists": "Email is already in use!",
-    "idexists": "A new {{ entityName }} cannot already have an ID",
+    "idexists": "A new { entityName } cannot already have an ID",
     "idnull": "Invalid ID",
     "idinvalid": "Invalid ID",
     "idnotfound": "ID cannot be found",
     "file": {
       "could.not.extract": "Could not extract file",
-      "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
+      "not.image": "File was expected to be an image but was found to be \"{ fileType }\""
     }
   },
-  "footer": "This is your footer"
+  "footer": "Bushra Bank 2025"
 }

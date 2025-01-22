@@ -8,13 +8,13 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
- * A CUSTOMER.
+ * A Customer.
  */
 @Entity
 @Table(name = "customer")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-public class CUSTOMER implements Serializable {
+public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -25,401 +25,401 @@ public class CUSTOMER implements Serializable {
     private Long id;
 
     @Size(max = 200)
-    @Column(name = "c_ustomername", length = 200)
-    private String cUSTOMERNAME;
+    @Column(name = "customername", length = 200)
+    private String customername;
 
     @NotNull
     @Size(max = 12)
-    @Column(name = "p_honenumber", length = 12, nullable = false)
-    private String pHONENUMBER;
+    @Column(name = "phonenumber", length = 12, nullable = false)
+    private String phonenumber;
 
     @Size(max = 1000)
-    @Column(name = "c_ardnumber", length = 1000)
-    private String cARDNUMBER;
+    @Column(name = "cardnumber", length = 1000)
+    private String cardnumber;
 
     @NotNull
     @Size(max = 20)
-    @Column(name = "a_ccountnumber", length = 20, nullable = false)
-    private String aCCOUNTNUMBER;
+    @Column(name = "accountnumber", length = 20, nullable = false)
+    private String accountnumber;
 
     @Size(max = 10)
-    @Column(name = "l_ang", length = 10)
-    private String lANG;
+    @Column(name = "lang", length = 10)
+    private String lang;
 
     @Size(max = 200)
-    @Column(name = "p_in", length = 200)
-    private String pIN;
+    @Column(name = "pin", length = 200)
+    private String pin;
 
     @Size(max = 1)
-    @Column(name = "f_irstlogin", length = 1)
-    private String fIRSTLOGIN;
+    @Column(name = "firstlogin", length = 1)
+    private String firstlogin;
 
     @Size(max = 1)
-    @Column(name = "a_ctive", length = 1)
-    private String aCTIVE;
+    @Column(name = "active", length = 1)
+    private String active;
 
-    @Column(name = "r_egistered")
-    private Long rEGISTERED;
+    @Column(name = "registered")
+    private Long registered;
 
-    @Column(name = "c_stdelete")
-    private Long cSTDELETE;
+    @Column(name = "cstdelete")
+    private Long cstdelete;
 
-    @Column(name = "r_egdate")
-    private Instant rEGDATE;
+    @Column(name = "regdate")
+    private Instant regdate;
 
-    @Column(name = "a_lertenabled")
-    private Long aLERTENABLED;
-
-    @Size(max = 200)
-    @Column(name = "r_emark", length = 200)
-    private String rEMARK;
+    @Column(name = "alertenabled")
+    private Long alertenabled;
 
     @Size(max = 200)
-    @Column(name = "i_msi", length = 200)
-    private String iMSI;
+    @Column(name = "remark", length = 200)
+    private String remark;
+
+    @Size(max = 200)
+    @Column(name = "imsi", length = 200)
+    private String imsi;
 
     @Size(max = 1)
-    @Column(name = "p_artiallyregistered", length = 1)
-    private String pARTIALLYREGISTERED;
+    @Column(name = "partiallyregistered", length = 1)
+    private String partiallyregistered;
 
-    @Column(name = "p_artialdate")
-    private Instant pARTIALDATE;
+    @Column(name = "partialdate")
+    private Instant partialdate;
 
-    @Column(name = "r_egisterdate")
-    private Instant rEGISTERDATE;
+    @Column(name = "registerdate")
+    private Instant registerdate;
 
-    @Column(name = "a_pproved")
-    private Double aPPROVED;
-
-    @Size(max = 50)
-    @Column(name = "a_pprovedby", length = 50)
-    private String aPPROVEDBY;
-
-    @Column(name = "a_pproveddate")
-    private Instant aPPROVEDDATE;
-
-    @Column(name = "d_eclined")
-    private Double dECLINED;
+    @Column(name = "approved")
+    private Double approved;
 
     @Size(max = 50)
-    @Column(name = "d_eclinedby", length = 50)
-    private String dECLINEDBY;
+    @Column(name = "approvedby", length = 50)
+    private String approvedby;
 
-    @Column(name = "d_eclineddate")
-    private Instant dECLINEDDATE;
+    @Column(name = "approveddate")
+    private Instant approveddate;
+
+    @Column(name = "declined")
+    private Double declined;
+
+    @Size(max = 50)
+    @Column(name = "declinedby", length = 50)
+    private String declinedby;
+
+    @Column(name = "declineddate")
+    private Instant declineddate;
 
     @Size(max = 200)
-    @Column(name = "c_heckerremarks", length = 200)
-    private String cHECKERREMARKS;
+    @Column(name = "checkerremarks", length = 200)
+    private String checkerremarks;
 
     @Size(max = 50)
-    @Column(name = "p_ostaladdress", length = 50)
-    private String pOSTALADDRESS;
+    @Column(name = "postaladdress", length = 50)
+    private String postaladdress;
 
     @Size(max = 50)
-    @Column(name = "r_esidence", length = 50)
-    private String rESIDENCE;
+    @Column(name = "residence", length = 50)
+    private String residence;
 
-    @Column(name = "d_ob")
-    private Instant dOB;
-
-    @Size(max = 50)
-    @Column(name = "c_reatedby", length = 50)
-    private String cREATEDBY;
+    @Column(name = "dob")
+    private Instant dob;
 
     @Size(max = 50)
-    @Column(name = "e_mailaddress", length = 50)
-    private String eMAILADDRESS;
+    @Column(name = "createdby", length = 50)
+    private String createdby;
 
     @Size(max = 50)
-    @Column(name = "i_dentificationid", length = 50)
-    private String iDENTIFICATIONID;
-
-    @Column(name = "a_ddaccount")
-    private Double aDDACCOUNT;
+    @Column(name = "emailaddress", length = 50)
+    private String emailaddress;
 
     @Size(max = 50)
-    @Column(name = "a_clinkinginstitution", length = 50)
-    private String aCLINKINGINSTITUTION;
+    @Column(name = "identificationid", length = 50)
+    private String identificationid;
 
-    @Column(name = "d_eactivated")
-    private Double dEACTIVATED;
-
-    @Size(max = 50)
-    @Column(name = "d_eactivatedby", length = 50)
-    private String dEACTIVATEDBY;
-
-    @Column(name = "d_eactivatedon")
-    private Instant dEACTIVATEDON;
-
-    @Column(name = "p_honenochanged")
-    private Double pHONENOCHANGED;
+    @Column(name = "addaccount")
+    private Double addaccount;
 
     @Size(max = 50)
-    @Column(name = "p_honenochangedby", length = 50)
-    private String pHONENOCHANGEDBY;
+    @Column(name = "aclinkinginstitution", length = 50)
+    private String aclinkinginstitution;
 
-    @Column(name = "p_honenochangedon")
-    private Instant pHONENOCHANGEDON;
+    @Column(name = "deactivated")
+    private Double deactivated;
+
+    @Size(max = 50)
+    @Column(name = "deactivatedby", length = 50)
+    private String deactivatedby;
+
+    @Column(name = "deactivatedon")
+    private Instant deactivatedon;
+
+    @Column(name = "phonenochanged")
+    private Double phonenochanged;
+
+    @Size(max = 50)
+    @Column(name = "phonenochangedby", length = 50)
+    private String phonenochangedby;
+
+    @Column(name = "phonenochangedon")
+    private Instant phonenochangedon;
 
     @Size(max = 20)
-    @Column(name = "o_riginalphoneno", length = 20)
-    private String oRIGINALPHONENO;
+    @Column(name = "originalphoneno", length = 20)
+    private String originalphoneno;
 
     @Size(max = 20)
-    @Column(name = "n_ewphoneno", length = 20)
-    private String nEWPHONENO;
+    @Column(name = "newphoneno", length = 20)
+    private String newphoneno;
 
-    @Column(name = "r_eset")
-    private Double rESET;
-
-    @Size(max = 50)
-    @Column(name = "r_esetinginstitution", length = 50)
-    private String rESETINGINSTITUTION;
+    @Column(name = "reset")
+    private Double reset;
 
     @Size(max = 50)
-    @Column(name = "p_inresetremark", length = 50)
-    private String pINRESETREMARK;
+    @Column(name = "resetinginstitution", length = 50)
+    private String resetinginstitution;
 
     @Size(max = 50)
-    @Column(name = "r_esetby", length = 50)
-    private String rESETBY;
-
-    @Column(name = "r_eseton")
-    private Instant rESETON;
+    @Column(name = "pinresetremark", length = 50)
+    private String pinresetremark;
 
     @Size(max = 50)
-    @Column(name = "u_nblockinginstitution", length = 50)
-    private String uNBLOCKINGINSTITUTION;
+    @Column(name = "resetby", length = 50)
+    private String resetby;
 
-    @Column(name = "p_inblock")
-    private Double pINBLOCK;
+    @Column(name = "reseton")
+    private Instant reseton;
 
     @Size(max = 50)
-    @Column(name = "p_inblockby", length = 50)
-    private String pINBLOCKBY;
+    @Column(name = "unblockinginstitution", length = 50)
+    private String unblockinginstitution;
+
+    @Column(name = "pinblock")
+    private Double pinblock;
+
+    @Size(max = 50)
+    @Column(name = "pinblockby", length = 50)
+    private String pinblockby;
 
     @Size(max = 200)
-    @Column(name = "p_inblockremarks", length = 200)
-    private String pINBLOCKREMARKS;
+    @Column(name = "pinblockremarks", length = 200)
+    private String pinblockremarks;
 
     @Size(max = 50)
-    @Column(name = "b_lockinginstitution", length = 50)
-    private String bLOCKINGINSTITUTION;
+    @Column(name = "blockinginstitution", length = 50)
+    private String blockinginstitution;
 
-    @Column(name = "p_inblockon")
-    private Instant pINBLOCKON;
+    @Column(name = "pinblockon")
+    private Instant pinblockon;
 
-    @Column(name = "a_pprovedon")
-    private Instant aPPROVEDON;
-
-    @Size(max = 50)
-    @Column(name = "p_inunblockby", length = 50)
-    private String pINUNBLOCKBY;
-
-    @Column(name = "l_oggedin")
-    private Long lOGGEDIN;
+    @Column(name = "approvedon")
+    private Instant approvedon;
 
     @Size(max = 50)
-    @Column(name = "t_rials", length = 50)
-    private String tRIALS;
+    @Column(name = "pinunblockby", length = 50)
+    private String pinunblockby;
+
+    @Column(name = "loggedin")
+    private Long loggedin;
+
+    @Size(max = 50)
+    @Column(name = "trials", length = 50)
+    private String trials;
 
     @Size(max = 20)
-    @Column(name = "i_dtype", length = 20)
-    private String iDTYPE;
+    @Column(name = "idtype", length = 20)
+    private String idtype;
 
     @Size(max = 20)
-    @Column(name = "i_dnumber", length = 20)
-    private String iDNUMBER;
+    @Column(name = "idnumber", length = 20)
+    private String idnumber;
 
     @Size(max = 1)
-    @Column(name = "g_ender", length = 1)
-    private String gENDER;
+    @Column(name = "gender", length = 1)
+    private String gender;
 
     @Size(max = 20)
-    @Column(name = "c_if", length = 20)
-    private String cIF;
+    @Column(name = "cif", length = 20)
+    private String cif;
 
-    @Column(name = "d_ateofbirth")
-    private Instant dATEOFBIRTH;
+    @Column(name = "dateofbirth")
+    private Instant dateofbirth;
 
     @Size(max = 200)
-    @Column(name = "r_emarks", length = 200)
-    private String rEMARKS;
+    @Column(name = "remarks", length = 200)
+    private String remarks;
 
-    @Column(name = "r_esetimsi")
-    private Double rESETIMSI;
+    @Column(name = "resetimsi")
+    private Double resetimsi;
 
     @Size(max = 50)
-    @Column(name = "i_msiresetby", length = 50)
-    private String iMSIRESETBY;
+    @Column(name = "imsiresetby", length = 50)
+    private String imsiresetby;
 
     @Size(max = 200)
-    @Column(name = "f_irstname", length = 200)
-    private String fIRSTNAME;
+    @Column(name = "firstname", length = 200)
+    private String firstname;
 
     @Size(max = 200)
-    @Column(name = "s_econdname", length = 200)
-    private String sECONDNAME;
+    @Column(name = "secondname", length = 200)
+    private String secondname;
 
     @Size(max = 200)
-    @Column(name = "l_astname", length = 200)
-    private String lASTNAME;
+    @Column(name = "lastname", length = 200)
+    private String lastname;
 
     @Size(max = 7)
-    @Column(name = "p_inblocktime", length = 7)
-    private String pINBLOCKTIME;
+    @Column(name = "pinblocktime", length = 7)
+    private String pinblocktime;
 
     @Size(max = 50)
-    @Column(name = "c_ustomerstatus", length = 50)
-    private String cUSTOMERSTATUS;
+    @Column(name = "customerstatus", length = 50)
+    private String customerstatus;
 
     @Size(max = 2000)
-    @Column(name = "u_sername", length = 2000)
-    private String uSERNAME;
+    @Column(name = "username", length = 2000)
+    private String username;
 
     @Size(max = 3900)
-    @Column(name = "p_assword", length = 3900)
-    private String pASSWORD;
+    @Column(name = "password", length = 3900)
+    private String password;
 
     @Size(max = 50)
-    @Column(name = "d_eviceid", length = 50)
-    private String dEVICEID;
+    @Column(name = "deviceid", length = 50)
+    private String deviceid;
 
     @Size(max = 50)
-    @Column(name = "c_hannel", length = 50)
-    private String cHANNEL;
+    @Column(name = "channel", length = 50)
+    private String channel;
 
-    @Column(name = "p_assreset")
-    private Double pASSRESET;
-
-    @Size(max = 50)
-    @Column(name = "p_assresetby", length = 50)
-    private String pASSRESETBY;
-
-    @Column(name = "p_assreseton")
-    private Instant pASSRESETON;
-
-    @Column(name = "p_assblock")
-    private Double pASSBLOCK;
+    @Column(name = "passreset")
+    private Double passreset;
 
     @Size(max = 50)
-    @Column(name = "p_assblockby", length = 50)
-    private String pASSBLOCKBY;
+    @Column(name = "passresetby", length = 50)
+    private String passresetby;
 
-    @Column(name = "p_assblockon")
-    private Instant pASSBLOCKON;
+    @Column(name = "passreseton")
+    private Instant passreseton;
 
-    @Column(name = "p_inmarkblock")
-    private Double pINMARKBLOCK;
-
-    @Column(name = "p_assmarkblock")
-    private Double pASSMARKBLOCK;
+    @Column(name = "passblock")
+    private Double passblock;
 
     @Size(max = 50)
-    @Column(name = "p_assresetremarks", length = 50)
-    private String pASSRESETREMARKS;
+    @Column(name = "passblockby", length = 50)
+    private String passblockby;
+
+    @Column(name = "passblockon")
+    private Instant passblockon;
+
+    @Column(name = "pinmarkblock")
+    private Double pinmarkblock;
+
+    @Column(name = "passmarkblock")
+    private Double passmarkblock;
 
     @Size(max = 50)
-    @Column(name = "p_assblockremarks", length = 50)
-    private String pASSBLOCKREMARKS;
+    @Column(name = "passresetremarks", length = 50)
+    private String passresetremarks;
 
     @Size(max = 50)
-    @Column(name = "p_assunblockby", length = 50)
-    private String pASSUNBLOCKBY;
+    @Column(name = "passblockremarks", length = 50)
+    private String passblockremarks;
 
-    @Column(name = "p_asstrials")
-    private Double pASSTRIALS;
+    @Size(max = 50)
+    @Column(name = "passunblockby", length = 50)
+    private String passunblockby;
 
-    @Column(name = "a_ppactive")
-    private Long aPPACTIVE;
+    @Column(name = "passtrials")
+    private Double passtrials;
+
+    @Column(name = "appactive")
+    private Long appactive;
 
     @Size(max = 32)
-    @Column(name = "l_astlogin", length = 32)
-    private String lASTLOGIN;
+    @Column(name = "lastlogin", length = 32)
+    private String lastlogin;
 
-    @Column(name = "a_ppmarkeddisable")
-    private Double aPPMARKEDDISABLE;
-
-    @Size(max = 50)
-    @Column(name = "d_isableby", length = 50)
-    private String dISABLEBY;
+    @Column(name = "appmarkeddisable")
+    private Double appmarkeddisable;
 
     @Size(max = 50)
-    @Column(name = "a_pprovedisableby", length = 50)
-    private String aPPROVEDISABLEBY;
-
-    @Column(name = "a_ppmarkedenable")
-    private Double aPPMARKEDENABLE;
+    @Column(name = "disableby", length = 50)
+    private String disableby;
 
     @Size(max = 50)
-    @Column(name = "e_nableby", length = 50)
-    private String eNABLEBY;
+    @Column(name = "approvedisableby", length = 50)
+    private String approvedisableby;
+
+    @Column(name = "appmarkedenable")
+    private Double appmarkedenable;
 
     @Size(max = 50)
-    @Column(name = "a_pprovedenableby", length = 50)
-    private String aPPROVEDENABLEBY;
+    @Column(name = "enableby", length = 50)
+    private String enableby;
 
-    @Column(name = "m_arkeddeactivate")
-    private Double mARKEDDEACTIVATE;
+    @Size(max = 50)
+    @Column(name = "approvedenableby", length = 50)
+    private String approvedenableby;
+
+    @Column(name = "markeddeactivate")
+    private Double markeddeactivate;
 
     @Size(max = 5)
-    @Column(name = "a_ppfirstlogin", length = 5)
-    private String aPPFIRSTLOGIN;
+    @Column(name = "appfirstlogin", length = 5)
+    private String appfirstlogin;
 
-    @Column(name = "a_tmtrials")
-    private Double aTMTRIALS;
+    @Column(name = "atmtrials")
+    private Double atmtrials;
 
     @Size(max = 1000)
-    @Column(name = "s_horcuts", length = 1000)
-    private String sHORCUTS;
+    @Column(name = "shorcuts", length = 1000)
+    private String shorcuts;
 
     @Size(max = 50)
-    @Column(name = "m_arkedactivate", length = 50)
-    private String mARKEDACTIVATE;
+    @Column(name = "markedactivate", length = 50)
+    private String markedactivate;
 
     @Size(max = 50)
-    @Column(name = "t_own", length = 50)
-    private String tOWN;
+    @Column(name = "town", length = 50)
+    private String town;
 
-    @Column(name = "a_pproveddisableon")
-    private Instant aPPROVEDDISABLEON;
+    @Column(name = "approveddisableon")
+    private Instant approveddisableon;
 
-    @Column(name = "d_isabledon")
-    private Instant dISABLEDON;
+    @Column(name = "disabledon")
+    private Instant disabledon;
 
-    @Column(name = "r_esetapproveon")
-    private Instant rESETAPPROVEON;
-
-    @Size(max = 50)
-    @Column(name = "d_eletedby", length = 50)
-    private String dELETEDBY;
+    @Column(name = "resetapproveon")
+    private Instant resetapproveon;
 
     @Size(max = 50)
-    @Column(name = "q_uestionsasked", length = 50)
-    private String qUESTIONSASKED;
+    @Column(name = "deletedby", length = 50)
+    private String deletedby;
 
     @Size(max = 50)
-    @Column(name = "q_uestionstrials", length = 50)
-    private String qUESTIONSTRIALS;
+    @Column(name = "questionsasked", length = 50)
+    private String questionsasked;
 
     @Size(max = 50)
-    @Column(name = "q_uestionsanswered", length = 50)
-    private String qUESTIONSANSWERED;
-
-    @Column(name = "v_alidotp")
-    private Double vALIDOTP;
+    @Column(name = "questionstrials", length = 50)
+    private String questionstrials;
 
     @Size(max = 50)
-    @Column(name = "a_ctivatedby", length = 50)
-    private String aCTIVATEDBY;
+    @Column(name = "questionsanswered", length = 50)
+    private String questionsanswered;
 
-    @Column(name = "a_ctivatedon")
-    private Instant aCTIVATEDON;
+    @Column(name = "validotp")
+    private Double validotp;
 
     @Size(max = 50)
-    @Column(name = "b_ranchcode", length = 50)
-    private String bRANCHCODE;
+    @Column(name = "activatedby", length = 50)
+    private String activatedby;
+
+    @Column(name = "activatedon")
+    private Instant activatedon;
+
+    @Size(max = 50)
+    @Column(name = "branchcode", length = 50)
+    private String branchcode;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -427,7 +427,7 @@ public class CUSTOMER implements Serializable {
         return this.id;
     }
 
-    public CUSTOMER id(Long id) {
+    public Customer id(Long id) {
         this.setId(id);
         return this;
     }
@@ -436,1421 +436,1421 @@ public class CUSTOMER implements Serializable {
         this.id = id;
     }
 
-    public String getcUSTOMERNAME() {
-        return this.cUSTOMERNAME;
+    public String getCustomername() {
+        return this.customername;
     }
 
-    public CUSTOMER cUSTOMERNAME(String cUSTOMERNAME) {
-        this.setcUSTOMERNAME(cUSTOMERNAME);
+    public Customer customername(String customername) {
+        this.setCustomername(customername);
         return this;
     }
 
-    public void setcUSTOMERNAME(String cUSTOMERNAME) {
-        this.cUSTOMERNAME = cUSTOMERNAME;
+    public void setCustomername(String customername) {
+        this.customername = customername;
     }
 
-    public String getpHONENUMBER() {
-        return this.pHONENUMBER;
+    public String getPhonenumber() {
+        return this.phonenumber;
     }
 
-    public CUSTOMER pHONENUMBER(String pHONENUMBER) {
-        this.setpHONENUMBER(pHONENUMBER);
+    public Customer phonenumber(String phonenumber) {
+        this.setPhonenumber(phonenumber);
         return this;
     }
 
-    public void setpHONENUMBER(String pHONENUMBER) {
-        this.pHONENUMBER = pHONENUMBER;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
-    public String getcARDNUMBER() {
-        return this.cARDNUMBER;
+    public String getCardnumber() {
+        return this.cardnumber;
     }
 
-    public CUSTOMER cARDNUMBER(String cARDNUMBER) {
-        this.setcARDNUMBER(cARDNUMBER);
+    public Customer cardnumber(String cardnumber) {
+        this.setCardnumber(cardnumber);
         return this;
     }
 
-    public void setcARDNUMBER(String cARDNUMBER) {
-        this.cARDNUMBER = cARDNUMBER;
+    public void setCardnumber(String cardnumber) {
+        this.cardnumber = cardnumber;
     }
 
-    public String getaCCOUNTNUMBER() {
-        return this.aCCOUNTNUMBER;
+    public String getAccountnumber() {
+        return this.accountnumber;
     }
 
-    public CUSTOMER aCCOUNTNUMBER(String aCCOUNTNUMBER) {
-        this.setaCCOUNTNUMBER(aCCOUNTNUMBER);
+    public Customer accountnumber(String accountnumber) {
+        this.setAccountnumber(accountnumber);
         return this;
     }
 
-    public void setaCCOUNTNUMBER(String aCCOUNTNUMBER) {
-        this.aCCOUNTNUMBER = aCCOUNTNUMBER;
+    public void setAccountnumber(String accountnumber) {
+        this.accountnumber = accountnumber;
     }
 
-    public String getlANG() {
-        return this.lANG;
+    public String getLang() {
+        return this.lang;
     }
 
-    public CUSTOMER lANG(String lANG) {
-        this.setlANG(lANG);
+    public Customer lang(String lang) {
+        this.setLang(lang);
         return this;
     }
 
-    public void setlANG(String lANG) {
-        this.lANG = lANG;
+    public void setLang(String lang) {
+        this.lang = lang;
     }
 
-    public String getpIN() {
-        return this.pIN;
+    public String getPin() {
+        return this.pin;
     }
 
-    public CUSTOMER pIN(String pIN) {
-        this.setpIN(pIN);
+    public Customer pin(String pin) {
+        this.setPin(pin);
         return this;
     }
 
-    public void setpIN(String pIN) {
-        this.pIN = pIN;
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
-    public String getfIRSTLOGIN() {
-        return this.fIRSTLOGIN;
+    public String getFirstlogin() {
+        return this.firstlogin;
     }
 
-    public CUSTOMER fIRSTLOGIN(String fIRSTLOGIN) {
-        this.setfIRSTLOGIN(fIRSTLOGIN);
+    public Customer firstlogin(String firstlogin) {
+        this.setFirstlogin(firstlogin);
         return this;
     }
 
-    public void setfIRSTLOGIN(String fIRSTLOGIN) {
-        this.fIRSTLOGIN = fIRSTLOGIN;
+    public void setFirstlogin(String firstlogin) {
+        this.firstlogin = firstlogin;
     }
 
-    public String getaCTIVE() {
-        return this.aCTIVE;
+    public String getActive() {
+        return this.active;
     }
 
-    public CUSTOMER aCTIVE(String aCTIVE) {
-        this.setaCTIVE(aCTIVE);
+    public Customer active(String active) {
+        this.setActive(active);
         return this;
     }
 
-    public void setaCTIVE(String aCTIVE) {
-        this.aCTIVE = aCTIVE;
+    public void setActive(String active) {
+        this.active = active;
     }
 
-    public Long getrEGISTERED() {
-        return this.rEGISTERED;
+    public Long getRegistered() {
+        return this.registered;
     }
 
-    public CUSTOMER rEGISTERED(Long rEGISTERED) {
-        this.setrEGISTERED(rEGISTERED);
+    public Customer registered(Long registered) {
+        this.setRegistered(registered);
         return this;
     }
 
-    public void setrEGISTERED(Long rEGISTERED) {
-        this.rEGISTERED = rEGISTERED;
+    public void setRegistered(Long registered) {
+        this.registered = registered;
     }
 
-    public Long getcSTDELETE() {
-        return this.cSTDELETE;
+    public Long getCstdelete() {
+        return this.cstdelete;
     }
 
-    public CUSTOMER cSTDELETE(Long cSTDELETE) {
-        this.setcSTDELETE(cSTDELETE);
+    public Customer cstdelete(Long cstdelete) {
+        this.setCstdelete(cstdelete);
         return this;
     }
 
-    public void setcSTDELETE(Long cSTDELETE) {
-        this.cSTDELETE = cSTDELETE;
+    public void setCstdelete(Long cstdelete) {
+        this.cstdelete = cstdelete;
     }
 
-    public Instant getrEGDATE() {
-        return this.rEGDATE;
+    public Instant getRegdate() {
+        return this.regdate;
     }
 
-    public CUSTOMER rEGDATE(Instant rEGDATE) {
-        this.setrEGDATE(rEGDATE);
+    public Customer regdate(Instant regdate) {
+        this.setRegdate(regdate);
         return this;
     }
 
-    public void setrEGDATE(Instant rEGDATE) {
-        this.rEGDATE = rEGDATE;
+    public void setRegdate(Instant regdate) {
+        this.regdate = regdate;
     }
 
-    public Long getaLERTENABLED() {
-        return this.aLERTENABLED;
+    public Long getAlertenabled() {
+        return this.alertenabled;
     }
 
-    public CUSTOMER aLERTENABLED(Long aLERTENABLED) {
-        this.setaLERTENABLED(aLERTENABLED);
+    public Customer alertenabled(Long alertenabled) {
+        this.setAlertenabled(alertenabled);
         return this;
     }
 
-    public void setaLERTENABLED(Long aLERTENABLED) {
-        this.aLERTENABLED = aLERTENABLED;
+    public void setAlertenabled(Long alertenabled) {
+        this.alertenabled = alertenabled;
     }
 
-    public String getrEMARK() {
-        return this.rEMARK;
+    public String getRemark() {
+        return this.remark;
     }
 
-    public CUSTOMER rEMARK(String rEMARK) {
-        this.setrEMARK(rEMARK);
+    public Customer remark(String remark) {
+        this.setRemark(remark);
         return this;
     }
 
-    public void setrEMARK(String rEMARK) {
-        this.rEMARK = rEMARK;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
-    public String getiMSI() {
-        return this.iMSI;
+    public String getImsi() {
+        return this.imsi;
     }
 
-    public CUSTOMER iMSI(String iMSI) {
-        this.setiMSI(iMSI);
+    public Customer imsi(String imsi) {
+        this.setImsi(imsi);
         return this;
     }
 
-    public void setiMSI(String iMSI) {
-        this.iMSI = iMSI;
+    public void setImsi(String imsi) {
+        this.imsi = imsi;
     }
 
-    public String getpARTIALLYREGISTERED() {
-        return this.pARTIALLYREGISTERED;
+    public String getPartiallyregistered() {
+        return this.partiallyregistered;
     }
 
-    public CUSTOMER pARTIALLYREGISTERED(String pARTIALLYREGISTERED) {
-        this.setpARTIALLYREGISTERED(pARTIALLYREGISTERED);
+    public Customer partiallyregistered(String partiallyregistered) {
+        this.setPartiallyregistered(partiallyregistered);
         return this;
     }
 
-    public void setpARTIALLYREGISTERED(String pARTIALLYREGISTERED) {
-        this.pARTIALLYREGISTERED = pARTIALLYREGISTERED;
+    public void setPartiallyregistered(String partiallyregistered) {
+        this.partiallyregistered = partiallyregistered;
     }
 
-    public Instant getpARTIALDATE() {
-        return this.pARTIALDATE;
+    public Instant getPartialdate() {
+        return this.partialdate;
     }
 
-    public CUSTOMER pARTIALDATE(Instant pARTIALDATE) {
-        this.setpARTIALDATE(pARTIALDATE);
+    public Customer partialdate(Instant partialdate) {
+        this.setPartialdate(partialdate);
         return this;
     }
 
-    public void setpARTIALDATE(Instant pARTIALDATE) {
-        this.pARTIALDATE = pARTIALDATE;
+    public void setPartialdate(Instant partialdate) {
+        this.partialdate = partialdate;
     }
 
-    public Instant getrEGISTERDATE() {
-        return this.rEGISTERDATE;
+    public Instant getRegisterdate() {
+        return this.registerdate;
     }
 
-    public CUSTOMER rEGISTERDATE(Instant rEGISTERDATE) {
-        this.setrEGISTERDATE(rEGISTERDATE);
+    public Customer registerdate(Instant registerdate) {
+        this.setRegisterdate(registerdate);
         return this;
     }
 
-    public void setrEGISTERDATE(Instant rEGISTERDATE) {
-        this.rEGISTERDATE = rEGISTERDATE;
+    public void setRegisterdate(Instant registerdate) {
+        this.registerdate = registerdate;
     }
 
-    public Double getaPPROVED() {
-        return this.aPPROVED;
+    public Double getApproved() {
+        return this.approved;
     }
 
-    public CUSTOMER aPPROVED(Double aPPROVED) {
-        this.setaPPROVED(aPPROVED);
+    public Customer approved(Double approved) {
+        this.setApproved(approved);
         return this;
     }
 
-    public void setaPPROVED(Double aPPROVED) {
-        this.aPPROVED = aPPROVED;
+    public void setApproved(Double approved) {
+        this.approved = approved;
     }
 
-    public String getaPPROVEDBY() {
-        return this.aPPROVEDBY;
+    public String getApprovedby() {
+        return this.approvedby;
     }
 
-    public CUSTOMER aPPROVEDBY(String aPPROVEDBY) {
-        this.setaPPROVEDBY(aPPROVEDBY);
+    public Customer approvedby(String approvedby) {
+        this.setApprovedby(approvedby);
         return this;
     }
 
-    public void setaPPROVEDBY(String aPPROVEDBY) {
-        this.aPPROVEDBY = aPPROVEDBY;
+    public void setApprovedby(String approvedby) {
+        this.approvedby = approvedby;
     }
 
-    public Instant getaPPROVEDDATE() {
-        return this.aPPROVEDDATE;
+    public Instant getApproveddate() {
+        return this.approveddate;
     }
 
-    public CUSTOMER aPPROVEDDATE(Instant aPPROVEDDATE) {
-        this.setaPPROVEDDATE(aPPROVEDDATE);
+    public Customer approveddate(Instant approveddate) {
+        this.setApproveddate(approveddate);
         return this;
     }
 
-    public void setaPPROVEDDATE(Instant aPPROVEDDATE) {
-        this.aPPROVEDDATE = aPPROVEDDATE;
+    public void setApproveddate(Instant approveddate) {
+        this.approveddate = approveddate;
     }
 
-    public Double getdECLINED() {
-        return this.dECLINED;
+    public Double getDeclined() {
+        return this.declined;
     }
 
-    public CUSTOMER dECLINED(Double dECLINED) {
-        this.setdECLINED(dECLINED);
+    public Customer declined(Double declined) {
+        this.setDeclined(declined);
         return this;
     }
 
-    public void setdECLINED(Double dECLINED) {
-        this.dECLINED = dECLINED;
+    public void setDeclined(Double declined) {
+        this.declined = declined;
     }
 
-    public String getdECLINEDBY() {
-        return this.dECLINEDBY;
+    public String getDeclinedby() {
+        return this.declinedby;
     }
 
-    public CUSTOMER dECLINEDBY(String dECLINEDBY) {
-        this.setdECLINEDBY(dECLINEDBY);
+    public Customer declinedby(String declinedby) {
+        this.setDeclinedby(declinedby);
         return this;
     }
 
-    public void setdECLINEDBY(String dECLINEDBY) {
-        this.dECLINEDBY = dECLINEDBY;
+    public void setDeclinedby(String declinedby) {
+        this.declinedby = declinedby;
     }
 
-    public Instant getdECLINEDDATE() {
-        return this.dECLINEDDATE;
+    public Instant getDeclineddate() {
+        return this.declineddate;
     }
 
-    public CUSTOMER dECLINEDDATE(Instant dECLINEDDATE) {
-        this.setdECLINEDDATE(dECLINEDDATE);
+    public Customer declineddate(Instant declineddate) {
+        this.setDeclineddate(declineddate);
         return this;
     }
 
-    public void setdECLINEDDATE(Instant dECLINEDDATE) {
-        this.dECLINEDDATE = dECLINEDDATE;
+    public void setDeclineddate(Instant declineddate) {
+        this.declineddate = declineddate;
     }
 
-    public String getcHECKERREMARKS() {
-        return this.cHECKERREMARKS;
+    public String getCheckerremarks() {
+        return this.checkerremarks;
     }
 
-    public CUSTOMER cHECKERREMARKS(String cHECKERREMARKS) {
-        this.setcHECKERREMARKS(cHECKERREMARKS);
+    public Customer checkerremarks(String checkerremarks) {
+        this.setCheckerremarks(checkerremarks);
         return this;
     }
 
-    public void setcHECKERREMARKS(String cHECKERREMARKS) {
-        this.cHECKERREMARKS = cHECKERREMARKS;
+    public void setCheckerremarks(String checkerremarks) {
+        this.checkerremarks = checkerremarks;
     }
 
-    public String getpOSTALADDRESS() {
-        return this.pOSTALADDRESS;
+    public String getPostaladdress() {
+        return this.postaladdress;
     }
 
-    public CUSTOMER pOSTALADDRESS(String pOSTALADDRESS) {
-        this.setpOSTALADDRESS(pOSTALADDRESS);
+    public Customer postaladdress(String postaladdress) {
+        this.setPostaladdress(postaladdress);
         return this;
     }
 
-    public void setpOSTALADDRESS(String pOSTALADDRESS) {
-        this.pOSTALADDRESS = pOSTALADDRESS;
+    public void setPostaladdress(String postaladdress) {
+        this.postaladdress = postaladdress;
     }
 
-    public String getrESIDENCE() {
-        return this.rESIDENCE;
+    public String getResidence() {
+        return this.residence;
     }
 
-    public CUSTOMER rESIDENCE(String rESIDENCE) {
-        this.setrESIDENCE(rESIDENCE);
+    public Customer residence(String residence) {
+        this.setResidence(residence);
         return this;
     }
 
-    public void setrESIDENCE(String rESIDENCE) {
-        this.rESIDENCE = rESIDENCE;
+    public void setResidence(String residence) {
+        this.residence = residence;
     }
 
-    public Instant getdOB() {
-        return this.dOB;
+    public Instant getDob() {
+        return this.dob;
     }
 
-    public CUSTOMER dOB(Instant dOB) {
-        this.setdOB(dOB);
+    public Customer dob(Instant dob) {
+        this.setDob(dob);
         return this;
     }
 
-    public void setdOB(Instant dOB) {
-        this.dOB = dOB;
+    public void setDob(Instant dob) {
+        this.dob = dob;
     }
 
-    public String getcREATEDBY() {
-        return this.cREATEDBY;
+    public String getCreatedby() {
+        return this.createdby;
     }
 
-    public CUSTOMER cREATEDBY(String cREATEDBY) {
-        this.setcREATEDBY(cREATEDBY);
+    public Customer createdby(String createdby) {
+        this.setCreatedby(createdby);
         return this;
     }
 
-    public void setcREATEDBY(String cREATEDBY) {
-        this.cREATEDBY = cREATEDBY;
+    public void setCreatedby(String createdby) {
+        this.createdby = createdby;
     }
 
-    public String geteMAILADDRESS() {
-        return this.eMAILADDRESS;
+    public String getEmailaddress() {
+        return this.emailaddress;
     }
 
-    public CUSTOMER eMAILADDRESS(String eMAILADDRESS) {
-        this.seteMAILADDRESS(eMAILADDRESS);
+    public Customer emailaddress(String emailaddress) {
+        this.setEmailaddress(emailaddress);
         return this;
     }
 
-    public void seteMAILADDRESS(String eMAILADDRESS) {
-        this.eMAILADDRESS = eMAILADDRESS;
+    public void setEmailaddress(String emailaddress) {
+        this.emailaddress = emailaddress;
     }
 
-    public String getiDENTIFICATIONID() {
-        return this.iDENTIFICATIONID;
+    public String getIdentificationid() {
+        return this.identificationid;
     }
 
-    public CUSTOMER iDENTIFICATIONID(String iDENTIFICATIONID) {
-        this.setiDENTIFICATIONID(iDENTIFICATIONID);
+    public Customer identificationid(String identificationid) {
+        this.setIdentificationid(identificationid);
         return this;
     }
 
-    public void setiDENTIFICATIONID(String iDENTIFICATIONID) {
-        this.iDENTIFICATIONID = iDENTIFICATIONID;
+    public void setIdentificationid(String identificationid) {
+        this.identificationid = identificationid;
     }
 
-    public Double getaDDACCOUNT() {
-        return this.aDDACCOUNT;
+    public Double getAddaccount() {
+        return this.addaccount;
     }
 
-    public CUSTOMER aDDACCOUNT(Double aDDACCOUNT) {
-        this.setaDDACCOUNT(aDDACCOUNT);
+    public Customer addaccount(Double addaccount) {
+        this.setAddaccount(addaccount);
         return this;
     }
 
-    public void setaDDACCOUNT(Double aDDACCOUNT) {
-        this.aDDACCOUNT = aDDACCOUNT;
+    public void setAddaccount(Double addaccount) {
+        this.addaccount = addaccount;
     }
 
-    public String getaCLINKINGINSTITUTION() {
-        return this.aCLINKINGINSTITUTION;
+    public String getAclinkinginstitution() {
+        return this.aclinkinginstitution;
     }
 
-    public CUSTOMER aCLINKINGINSTITUTION(String aCLINKINGINSTITUTION) {
-        this.setaCLINKINGINSTITUTION(aCLINKINGINSTITUTION);
+    public Customer aclinkinginstitution(String aclinkinginstitution) {
+        this.setAclinkinginstitution(aclinkinginstitution);
         return this;
     }
 
-    public void setaCLINKINGINSTITUTION(String aCLINKINGINSTITUTION) {
-        this.aCLINKINGINSTITUTION = aCLINKINGINSTITUTION;
+    public void setAclinkinginstitution(String aclinkinginstitution) {
+        this.aclinkinginstitution = aclinkinginstitution;
     }
 
-    public Double getdEACTIVATED() {
-        return this.dEACTIVATED;
+    public Double getDeactivated() {
+        return this.deactivated;
     }
 
-    public CUSTOMER dEACTIVATED(Double dEACTIVATED) {
-        this.setdEACTIVATED(dEACTIVATED);
+    public Customer deactivated(Double deactivated) {
+        this.setDeactivated(deactivated);
         return this;
     }
 
-    public void setdEACTIVATED(Double dEACTIVATED) {
-        this.dEACTIVATED = dEACTIVATED;
+    public void setDeactivated(Double deactivated) {
+        this.deactivated = deactivated;
     }
 
-    public String getdEACTIVATEDBY() {
-        return this.dEACTIVATEDBY;
+    public String getDeactivatedby() {
+        return this.deactivatedby;
     }
 
-    public CUSTOMER dEACTIVATEDBY(String dEACTIVATEDBY) {
-        this.setdEACTIVATEDBY(dEACTIVATEDBY);
+    public Customer deactivatedby(String deactivatedby) {
+        this.setDeactivatedby(deactivatedby);
         return this;
     }
 
-    public void setdEACTIVATEDBY(String dEACTIVATEDBY) {
-        this.dEACTIVATEDBY = dEACTIVATEDBY;
+    public void setDeactivatedby(String deactivatedby) {
+        this.deactivatedby = deactivatedby;
     }
 
-    public Instant getdEACTIVATEDON() {
-        return this.dEACTIVATEDON;
+    public Instant getDeactivatedon() {
+        return this.deactivatedon;
     }
 
-    public CUSTOMER dEACTIVATEDON(Instant dEACTIVATEDON) {
-        this.setdEACTIVATEDON(dEACTIVATEDON);
+    public Customer deactivatedon(Instant deactivatedon) {
+        this.setDeactivatedon(deactivatedon);
         return this;
     }
 
-    public void setdEACTIVATEDON(Instant dEACTIVATEDON) {
-        this.dEACTIVATEDON = dEACTIVATEDON;
+    public void setDeactivatedon(Instant deactivatedon) {
+        this.deactivatedon = deactivatedon;
     }
 
-    public Double getpHONENOCHANGED() {
-        return this.pHONENOCHANGED;
+    public Double getPhonenochanged() {
+        return this.phonenochanged;
     }
 
-    public CUSTOMER pHONENOCHANGED(Double pHONENOCHANGED) {
-        this.setpHONENOCHANGED(pHONENOCHANGED);
+    public Customer phonenochanged(Double phonenochanged) {
+        this.setPhonenochanged(phonenochanged);
         return this;
     }
 
-    public void setpHONENOCHANGED(Double pHONENOCHANGED) {
-        this.pHONENOCHANGED = pHONENOCHANGED;
+    public void setPhonenochanged(Double phonenochanged) {
+        this.phonenochanged = phonenochanged;
     }
 
-    public String getpHONENOCHANGEDBY() {
-        return this.pHONENOCHANGEDBY;
+    public String getPhonenochangedby() {
+        return this.phonenochangedby;
     }
 
-    public CUSTOMER pHONENOCHANGEDBY(String pHONENOCHANGEDBY) {
-        this.setpHONENOCHANGEDBY(pHONENOCHANGEDBY);
+    public Customer phonenochangedby(String phonenochangedby) {
+        this.setPhonenochangedby(phonenochangedby);
         return this;
     }
 
-    public void setpHONENOCHANGEDBY(String pHONENOCHANGEDBY) {
-        this.pHONENOCHANGEDBY = pHONENOCHANGEDBY;
+    public void setPhonenochangedby(String phonenochangedby) {
+        this.phonenochangedby = phonenochangedby;
     }
 
-    public Instant getpHONENOCHANGEDON() {
-        return this.pHONENOCHANGEDON;
+    public Instant getPhonenochangedon() {
+        return this.phonenochangedon;
     }
 
-    public CUSTOMER pHONENOCHANGEDON(Instant pHONENOCHANGEDON) {
-        this.setpHONENOCHANGEDON(pHONENOCHANGEDON);
+    public Customer phonenochangedon(Instant phonenochangedon) {
+        this.setPhonenochangedon(phonenochangedon);
         return this;
     }
 
-    public void setpHONENOCHANGEDON(Instant pHONENOCHANGEDON) {
-        this.pHONENOCHANGEDON = pHONENOCHANGEDON;
+    public void setPhonenochangedon(Instant phonenochangedon) {
+        this.phonenochangedon = phonenochangedon;
     }
 
-    public String getoRIGINALPHONENO() {
-        return this.oRIGINALPHONENO;
+    public String getOriginalphoneno() {
+        return this.originalphoneno;
     }
 
-    public CUSTOMER oRIGINALPHONENO(String oRIGINALPHONENO) {
-        this.setoRIGINALPHONENO(oRIGINALPHONENO);
+    public Customer originalphoneno(String originalphoneno) {
+        this.setOriginalphoneno(originalphoneno);
         return this;
     }
 
-    public void setoRIGINALPHONENO(String oRIGINALPHONENO) {
-        this.oRIGINALPHONENO = oRIGINALPHONENO;
+    public void setOriginalphoneno(String originalphoneno) {
+        this.originalphoneno = originalphoneno;
     }
 
-    public String getnEWPHONENO() {
-        return this.nEWPHONENO;
+    public String getNewphoneno() {
+        return this.newphoneno;
     }
 
-    public CUSTOMER nEWPHONENO(String nEWPHONENO) {
-        this.setnEWPHONENO(nEWPHONENO);
+    public Customer newphoneno(String newphoneno) {
+        this.setNewphoneno(newphoneno);
         return this;
     }
 
-    public void setnEWPHONENO(String nEWPHONENO) {
-        this.nEWPHONENO = nEWPHONENO;
+    public void setNewphoneno(String newphoneno) {
+        this.newphoneno = newphoneno;
     }
 
-    public Double getrESET() {
-        return this.rESET;
+    public Double getReset() {
+        return this.reset;
     }
 
-    public CUSTOMER rESET(Double rESET) {
-        this.setrESET(rESET);
+    public Customer reset(Double reset) {
+        this.setReset(reset);
         return this;
     }
 
-    public void setrESET(Double rESET) {
-        this.rESET = rESET;
+    public void setReset(Double reset) {
+        this.reset = reset;
     }
 
-    public String getrESETINGINSTITUTION() {
-        return this.rESETINGINSTITUTION;
+    public String getResetinginstitution() {
+        return this.resetinginstitution;
     }
 
-    public CUSTOMER rESETINGINSTITUTION(String rESETINGINSTITUTION) {
-        this.setrESETINGINSTITUTION(rESETINGINSTITUTION);
+    public Customer resetinginstitution(String resetinginstitution) {
+        this.setResetinginstitution(resetinginstitution);
         return this;
     }
 
-    public void setrESETINGINSTITUTION(String rESETINGINSTITUTION) {
-        this.rESETINGINSTITUTION = rESETINGINSTITUTION;
+    public void setResetinginstitution(String resetinginstitution) {
+        this.resetinginstitution = resetinginstitution;
     }
 
-    public String getpINRESETREMARK() {
-        return this.pINRESETREMARK;
+    public String getPinresetremark() {
+        return this.pinresetremark;
     }
 
-    public CUSTOMER pINRESETREMARK(String pINRESETREMARK) {
-        this.setpINRESETREMARK(pINRESETREMARK);
+    public Customer pinresetremark(String pinresetremark) {
+        this.setPinresetremark(pinresetremark);
         return this;
     }
 
-    public void setpINRESETREMARK(String pINRESETREMARK) {
-        this.pINRESETREMARK = pINRESETREMARK;
+    public void setPinresetremark(String pinresetremark) {
+        this.pinresetremark = pinresetremark;
     }
 
-    public String getrESETBY() {
-        return this.rESETBY;
+    public String getResetby() {
+        return this.resetby;
     }
 
-    public CUSTOMER rESETBY(String rESETBY) {
-        this.setrESETBY(rESETBY);
+    public Customer resetby(String resetby) {
+        this.setResetby(resetby);
         return this;
     }
 
-    public void setrESETBY(String rESETBY) {
-        this.rESETBY = rESETBY;
+    public void setResetby(String resetby) {
+        this.resetby = resetby;
     }
 
-    public Instant getrESETON() {
-        return this.rESETON;
+    public Instant getReseton() {
+        return this.reseton;
     }
 
-    public CUSTOMER rESETON(Instant rESETON) {
-        this.setrESETON(rESETON);
+    public Customer reseton(Instant reseton) {
+        this.setReseton(reseton);
         return this;
     }
 
-    public void setrESETON(Instant rESETON) {
-        this.rESETON = rESETON;
+    public void setReseton(Instant reseton) {
+        this.reseton = reseton;
     }
 
-    public String getuNBLOCKINGINSTITUTION() {
-        return this.uNBLOCKINGINSTITUTION;
+    public String getUnblockinginstitution() {
+        return this.unblockinginstitution;
     }
 
-    public CUSTOMER uNBLOCKINGINSTITUTION(String uNBLOCKINGINSTITUTION) {
-        this.setuNBLOCKINGINSTITUTION(uNBLOCKINGINSTITUTION);
+    public Customer unblockinginstitution(String unblockinginstitution) {
+        this.setUnblockinginstitution(unblockinginstitution);
         return this;
     }
 
-    public void setuNBLOCKINGINSTITUTION(String uNBLOCKINGINSTITUTION) {
-        this.uNBLOCKINGINSTITUTION = uNBLOCKINGINSTITUTION;
+    public void setUnblockinginstitution(String unblockinginstitution) {
+        this.unblockinginstitution = unblockinginstitution;
     }
 
-    public Double getpINBLOCK() {
-        return this.pINBLOCK;
+    public Double getPinblock() {
+        return this.pinblock;
     }
 
-    public CUSTOMER pINBLOCK(Double pINBLOCK) {
-        this.setpINBLOCK(pINBLOCK);
+    public Customer pinblock(Double pinblock) {
+        this.setPinblock(pinblock);
         return this;
     }
 
-    public void setpINBLOCK(Double pINBLOCK) {
-        this.pINBLOCK = pINBLOCK;
+    public void setPinblock(Double pinblock) {
+        this.pinblock = pinblock;
     }
 
-    public String getpINBLOCKBY() {
-        return this.pINBLOCKBY;
+    public String getPinblockby() {
+        return this.pinblockby;
     }
 
-    public CUSTOMER pINBLOCKBY(String pINBLOCKBY) {
-        this.setpINBLOCKBY(pINBLOCKBY);
+    public Customer pinblockby(String pinblockby) {
+        this.setPinblockby(pinblockby);
         return this;
     }
 
-    public void setpINBLOCKBY(String pINBLOCKBY) {
-        this.pINBLOCKBY = pINBLOCKBY;
+    public void setPinblockby(String pinblockby) {
+        this.pinblockby = pinblockby;
     }
 
-    public String getpINBLOCKREMARKS() {
-        return this.pINBLOCKREMARKS;
+    public String getPinblockremarks() {
+        return this.pinblockremarks;
     }
 
-    public CUSTOMER pINBLOCKREMARKS(String pINBLOCKREMARKS) {
-        this.setpINBLOCKREMARKS(pINBLOCKREMARKS);
+    public Customer pinblockremarks(String pinblockremarks) {
+        this.setPinblockremarks(pinblockremarks);
         return this;
     }
 
-    public void setpINBLOCKREMARKS(String pINBLOCKREMARKS) {
-        this.pINBLOCKREMARKS = pINBLOCKREMARKS;
+    public void setPinblockremarks(String pinblockremarks) {
+        this.pinblockremarks = pinblockremarks;
     }
 
-    public String getbLOCKINGINSTITUTION() {
-        return this.bLOCKINGINSTITUTION;
+    public String getBlockinginstitution() {
+        return this.blockinginstitution;
     }
 
-    public CUSTOMER bLOCKINGINSTITUTION(String bLOCKINGINSTITUTION) {
-        this.setbLOCKINGINSTITUTION(bLOCKINGINSTITUTION);
+    public Customer blockinginstitution(String blockinginstitution) {
+        this.setBlockinginstitution(blockinginstitution);
         return this;
     }
 
-    public void setbLOCKINGINSTITUTION(String bLOCKINGINSTITUTION) {
-        this.bLOCKINGINSTITUTION = bLOCKINGINSTITUTION;
+    public void setBlockinginstitution(String blockinginstitution) {
+        this.blockinginstitution = blockinginstitution;
     }
 
-    public Instant getpINBLOCKON() {
-        return this.pINBLOCKON;
+    public Instant getPinblockon() {
+        return this.pinblockon;
     }
 
-    public CUSTOMER pINBLOCKON(Instant pINBLOCKON) {
-        this.setpINBLOCKON(pINBLOCKON);
+    public Customer pinblockon(Instant pinblockon) {
+        this.setPinblockon(pinblockon);
         return this;
     }
 
-    public void setpINBLOCKON(Instant pINBLOCKON) {
-        this.pINBLOCKON = pINBLOCKON;
+    public void setPinblockon(Instant pinblockon) {
+        this.pinblockon = pinblockon;
     }
 
-    public Instant getaPPROVEDON() {
-        return this.aPPROVEDON;
+    public Instant getApprovedon() {
+        return this.approvedon;
     }
 
-    public CUSTOMER aPPROVEDON(Instant aPPROVEDON) {
-        this.setaPPROVEDON(aPPROVEDON);
+    public Customer approvedon(Instant approvedon) {
+        this.setApprovedon(approvedon);
         return this;
     }
 
-    public void setaPPROVEDON(Instant aPPROVEDON) {
-        this.aPPROVEDON = aPPROVEDON;
+    public void setApprovedon(Instant approvedon) {
+        this.approvedon = approvedon;
     }
 
-    public String getpINUNBLOCKBY() {
-        return this.pINUNBLOCKBY;
+    public String getPinunblockby() {
+        return this.pinunblockby;
     }
 
-    public CUSTOMER pINUNBLOCKBY(String pINUNBLOCKBY) {
-        this.setpINUNBLOCKBY(pINUNBLOCKBY);
+    public Customer pinunblockby(String pinunblockby) {
+        this.setPinunblockby(pinunblockby);
         return this;
     }
 
-    public void setpINUNBLOCKBY(String pINUNBLOCKBY) {
-        this.pINUNBLOCKBY = pINUNBLOCKBY;
+    public void setPinunblockby(String pinunblockby) {
+        this.pinunblockby = pinunblockby;
     }
 
-    public Long getlOGGEDIN() {
-        return this.lOGGEDIN;
+    public Long getLoggedin() {
+        return this.loggedin;
     }
 
-    public CUSTOMER lOGGEDIN(Long lOGGEDIN) {
-        this.setlOGGEDIN(lOGGEDIN);
+    public Customer loggedin(Long loggedin) {
+        this.setLoggedin(loggedin);
         return this;
     }
 
-    public void setlOGGEDIN(Long lOGGEDIN) {
-        this.lOGGEDIN = lOGGEDIN;
+    public void setLoggedin(Long loggedin) {
+        this.loggedin = loggedin;
     }
 
-    public String gettRIALS() {
-        return this.tRIALS;
+    public String getTrials() {
+        return this.trials;
     }
 
-    public CUSTOMER tRIALS(String tRIALS) {
-        this.settRIALS(tRIALS);
+    public Customer trials(String trials) {
+        this.setTrials(trials);
         return this;
     }
 
-    public void settRIALS(String tRIALS) {
-        this.tRIALS = tRIALS;
+    public void setTrials(String trials) {
+        this.trials = trials;
     }
 
-    public String getiDTYPE() {
-        return this.iDTYPE;
+    public String getIdtype() {
+        return this.idtype;
     }
 
-    public CUSTOMER iDTYPE(String iDTYPE) {
-        this.setiDTYPE(iDTYPE);
+    public Customer idtype(String idtype) {
+        this.setIdtype(idtype);
         return this;
     }
 
-    public void setiDTYPE(String iDTYPE) {
-        this.iDTYPE = iDTYPE;
+    public void setIdtype(String idtype) {
+        this.idtype = idtype;
     }
 
-    public String getiDNUMBER() {
-        return this.iDNUMBER;
+    public String getIdnumber() {
+        return this.idnumber;
     }
 
-    public CUSTOMER iDNUMBER(String iDNUMBER) {
-        this.setiDNUMBER(iDNUMBER);
+    public Customer idnumber(String idnumber) {
+        this.setIdnumber(idnumber);
         return this;
     }
 
-    public void setiDNUMBER(String iDNUMBER) {
-        this.iDNUMBER = iDNUMBER;
+    public void setIdnumber(String idnumber) {
+        this.idnumber = idnumber;
     }
 
-    public String getgENDER() {
-        return this.gENDER;
+    public String getGender() {
+        return this.gender;
     }
 
-    public CUSTOMER gENDER(String gENDER) {
-        this.setgENDER(gENDER);
+    public Customer gender(String gender) {
+        this.setGender(gender);
         return this;
     }
 
-    public void setgENDER(String gENDER) {
-        this.gENDER = gENDER;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getcIF() {
-        return this.cIF;
+    public String getCif() {
+        return this.cif;
     }
 
-    public CUSTOMER cIF(String cIF) {
-        this.setcIF(cIF);
+    public Customer cif(String cif) {
+        this.setCif(cif);
         return this;
     }
 
-    public void setcIF(String cIF) {
-        this.cIF = cIF;
+    public void setCif(String cif) {
+        this.cif = cif;
     }
 
-    public Instant getdATEOFBIRTH() {
-        return this.dATEOFBIRTH;
+    public Instant getDateofbirth() {
+        return this.dateofbirth;
     }
 
-    public CUSTOMER dATEOFBIRTH(Instant dATEOFBIRTH) {
-        this.setdATEOFBIRTH(dATEOFBIRTH);
+    public Customer dateofbirth(Instant dateofbirth) {
+        this.setDateofbirth(dateofbirth);
         return this;
     }
 
-    public void setdATEOFBIRTH(Instant dATEOFBIRTH) {
-        this.dATEOFBIRTH = dATEOFBIRTH;
+    public void setDateofbirth(Instant dateofbirth) {
+        this.dateofbirth = dateofbirth;
     }
 
-    public String getrEMARKS() {
-        return this.rEMARKS;
+    public String getRemarks() {
+        return this.remarks;
     }
 
-    public CUSTOMER rEMARKS(String rEMARKS) {
-        this.setrEMARKS(rEMARKS);
+    public Customer remarks(String remarks) {
+        this.setRemarks(remarks);
         return this;
     }
 
-    public void setrEMARKS(String rEMARKS) {
-        this.rEMARKS = rEMARKS;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
-    public Double getrESETIMSI() {
-        return this.rESETIMSI;
+    public Double getResetimsi() {
+        return this.resetimsi;
     }
 
-    public CUSTOMER rESETIMSI(Double rESETIMSI) {
-        this.setrESETIMSI(rESETIMSI);
+    public Customer resetimsi(Double resetimsi) {
+        this.setResetimsi(resetimsi);
         return this;
     }
 
-    public void setrESETIMSI(Double rESETIMSI) {
-        this.rESETIMSI = rESETIMSI;
+    public void setResetimsi(Double resetimsi) {
+        this.resetimsi = resetimsi;
     }
 
-    public String getiMSIRESETBY() {
-        return this.iMSIRESETBY;
+    public String getImsiresetby() {
+        return this.imsiresetby;
     }
 
-    public CUSTOMER iMSIRESETBY(String iMSIRESETBY) {
-        this.setiMSIRESETBY(iMSIRESETBY);
+    public Customer imsiresetby(String imsiresetby) {
+        this.setImsiresetby(imsiresetby);
         return this;
     }
 
-    public void setiMSIRESETBY(String iMSIRESETBY) {
-        this.iMSIRESETBY = iMSIRESETBY;
+    public void setImsiresetby(String imsiresetby) {
+        this.imsiresetby = imsiresetby;
     }
 
-    public String getfIRSTNAME() {
-        return this.fIRSTNAME;
+    public String getFirstname() {
+        return this.firstname;
     }
 
-    public CUSTOMER fIRSTNAME(String fIRSTNAME) {
-        this.setfIRSTNAME(fIRSTNAME);
+    public Customer firstname(String firstname) {
+        this.setFirstname(firstname);
         return this;
     }
 
-    public void setfIRSTNAME(String fIRSTNAME) {
-        this.fIRSTNAME = fIRSTNAME;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getsECONDNAME() {
-        return this.sECONDNAME;
+    public String getSecondname() {
+        return this.secondname;
     }
 
-    public CUSTOMER sECONDNAME(String sECONDNAME) {
-        this.setsECONDNAME(sECONDNAME);
+    public Customer secondname(String secondname) {
+        this.setSecondname(secondname);
         return this;
     }
 
-    public void setsECONDNAME(String sECONDNAME) {
-        this.sECONDNAME = sECONDNAME;
+    public void setSecondname(String secondname) {
+        this.secondname = secondname;
     }
 
-    public String getlASTNAME() {
-        return this.lASTNAME;
+    public String getLastname() {
+        return this.lastname;
     }
 
-    public CUSTOMER lASTNAME(String lASTNAME) {
-        this.setlASTNAME(lASTNAME);
+    public Customer lastname(String lastname) {
+        this.setLastname(lastname);
         return this;
     }
 
-    public void setlASTNAME(String lASTNAME) {
-        this.lASTNAME = lASTNAME;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getpINBLOCKTIME() {
-        return this.pINBLOCKTIME;
+    public String getPinblocktime() {
+        return this.pinblocktime;
     }
 
-    public CUSTOMER pINBLOCKTIME(String pINBLOCKTIME) {
-        this.setpINBLOCKTIME(pINBLOCKTIME);
+    public Customer pinblocktime(String pinblocktime) {
+        this.setPinblocktime(pinblocktime);
         return this;
     }
 
-    public void setpINBLOCKTIME(String pINBLOCKTIME) {
-        this.pINBLOCKTIME = pINBLOCKTIME;
+    public void setPinblocktime(String pinblocktime) {
+        this.pinblocktime = pinblocktime;
     }
 
-    public String getcUSTOMERSTATUS() {
-        return this.cUSTOMERSTATUS;
+    public String getCustomerstatus() {
+        return this.customerstatus;
     }
 
-    public CUSTOMER cUSTOMERSTATUS(String cUSTOMERSTATUS) {
-        this.setcUSTOMERSTATUS(cUSTOMERSTATUS);
+    public Customer customerstatus(String customerstatus) {
+        this.setCustomerstatus(customerstatus);
         return this;
     }
 
-    public void setcUSTOMERSTATUS(String cUSTOMERSTATUS) {
-        this.cUSTOMERSTATUS = cUSTOMERSTATUS;
+    public void setCustomerstatus(String customerstatus) {
+        this.customerstatus = customerstatus;
     }
 
-    public String getuSERNAME() {
-        return this.uSERNAME;
+    public String getUsername() {
+        return this.username;
     }
 
-    public CUSTOMER uSERNAME(String uSERNAME) {
-        this.setuSERNAME(uSERNAME);
+    public Customer username(String username) {
+        this.setUsername(username);
         return this;
     }
 
-    public void setuSERNAME(String uSERNAME) {
-        this.uSERNAME = uSERNAME;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getpASSWORD() {
-        return this.pASSWORD;
+    public String getPassword() {
+        return this.password;
     }
 
-    public CUSTOMER pASSWORD(String pASSWORD) {
-        this.setpASSWORD(pASSWORD);
+    public Customer password(String password) {
+        this.setPassword(password);
         return this;
     }
 
-    public void setpASSWORD(String pASSWORD) {
-        this.pASSWORD = pASSWORD;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getdEVICEID() {
-        return this.dEVICEID;
+    public String getDeviceid() {
+        return this.deviceid;
     }
 
-    public CUSTOMER dEVICEID(String dEVICEID) {
-        this.setdEVICEID(dEVICEID);
+    public Customer deviceid(String deviceid) {
+        this.setDeviceid(deviceid);
         return this;
     }
 
-    public void setdEVICEID(String dEVICEID) {
-        this.dEVICEID = dEVICEID;
+    public void setDeviceid(String deviceid) {
+        this.deviceid = deviceid;
     }
 
-    public String getcHANNEL() {
-        return this.cHANNEL;
+    public String getChannel() {
+        return this.channel;
     }
 
-    public CUSTOMER cHANNEL(String cHANNEL) {
-        this.setcHANNEL(cHANNEL);
+    public Customer channel(String channel) {
+        this.setChannel(channel);
         return this;
     }
 
-    public void setcHANNEL(String cHANNEL) {
-        this.cHANNEL = cHANNEL;
+    public void setChannel(String channel) {
+        this.channel = channel;
     }
 
-    public Double getpASSRESET() {
-        return this.pASSRESET;
+    public Double getPassreset() {
+        return this.passreset;
     }
 
-    public CUSTOMER pASSRESET(Double pASSRESET) {
-        this.setpASSRESET(pASSRESET);
+    public Customer passreset(Double passreset) {
+        this.setPassreset(passreset);
         return this;
     }
 
-    public void setpASSRESET(Double pASSRESET) {
-        this.pASSRESET = pASSRESET;
+    public void setPassreset(Double passreset) {
+        this.passreset = passreset;
     }
 
-    public String getpASSRESETBY() {
-        return this.pASSRESETBY;
+    public String getPassresetby() {
+        return this.passresetby;
     }
 
-    public CUSTOMER pASSRESETBY(String pASSRESETBY) {
-        this.setpASSRESETBY(pASSRESETBY);
+    public Customer passresetby(String passresetby) {
+        this.setPassresetby(passresetby);
         return this;
     }
 
-    public void setpASSRESETBY(String pASSRESETBY) {
-        this.pASSRESETBY = pASSRESETBY;
+    public void setPassresetby(String passresetby) {
+        this.passresetby = passresetby;
     }
 
-    public Instant getpASSRESETON() {
-        return this.pASSRESETON;
+    public Instant getPassreseton() {
+        return this.passreseton;
     }
 
-    public CUSTOMER pASSRESETON(Instant pASSRESETON) {
-        this.setpASSRESETON(pASSRESETON);
+    public Customer passreseton(Instant passreseton) {
+        this.setPassreseton(passreseton);
         return this;
     }
 
-    public void setpASSRESETON(Instant pASSRESETON) {
-        this.pASSRESETON = pASSRESETON;
+    public void setPassreseton(Instant passreseton) {
+        this.passreseton = passreseton;
     }
 
-    public Double getpASSBLOCK() {
-        return this.pASSBLOCK;
+    public Double getPassblock() {
+        return this.passblock;
     }
 
-    public CUSTOMER pASSBLOCK(Double pASSBLOCK) {
-        this.setpASSBLOCK(pASSBLOCK);
+    public Customer passblock(Double passblock) {
+        this.setPassblock(passblock);
         return this;
     }
 
-    public void setpASSBLOCK(Double pASSBLOCK) {
-        this.pASSBLOCK = pASSBLOCK;
+    public void setPassblock(Double passblock) {
+        this.passblock = passblock;
     }
 
-    public String getpASSBLOCKBY() {
-        return this.pASSBLOCKBY;
+    public String getPassblockby() {
+        return this.passblockby;
     }
 
-    public CUSTOMER pASSBLOCKBY(String pASSBLOCKBY) {
-        this.setpASSBLOCKBY(pASSBLOCKBY);
+    public Customer passblockby(String passblockby) {
+        this.setPassblockby(passblockby);
         return this;
     }
 
-    public void setpASSBLOCKBY(String pASSBLOCKBY) {
-        this.pASSBLOCKBY = pASSBLOCKBY;
+    public void setPassblockby(String passblockby) {
+        this.passblockby = passblockby;
     }
 
-    public Instant getpASSBLOCKON() {
-        return this.pASSBLOCKON;
+    public Instant getPassblockon() {
+        return this.passblockon;
     }
 
-    public CUSTOMER pASSBLOCKON(Instant pASSBLOCKON) {
-        this.setpASSBLOCKON(pASSBLOCKON);
+    public Customer passblockon(Instant passblockon) {
+        this.setPassblockon(passblockon);
         return this;
     }
 
-    public void setpASSBLOCKON(Instant pASSBLOCKON) {
-        this.pASSBLOCKON = pASSBLOCKON;
+    public void setPassblockon(Instant passblockon) {
+        this.passblockon = passblockon;
     }
 
-    public Double getpINMARKBLOCK() {
-        return this.pINMARKBLOCK;
+    public Double getPinmarkblock() {
+        return this.pinmarkblock;
     }
 
-    public CUSTOMER pINMARKBLOCK(Double pINMARKBLOCK) {
-        this.setpINMARKBLOCK(pINMARKBLOCK);
+    public Customer pinmarkblock(Double pinmarkblock) {
+        this.setPinmarkblock(pinmarkblock);
         return this;
     }
 
-    public void setpINMARKBLOCK(Double pINMARKBLOCK) {
-        this.pINMARKBLOCK = pINMARKBLOCK;
+    public void setPinmarkblock(Double pinmarkblock) {
+        this.pinmarkblock = pinmarkblock;
     }
 
-    public Double getpASSMARKBLOCK() {
-        return this.pASSMARKBLOCK;
+    public Double getPassmarkblock() {
+        return this.passmarkblock;
     }
 
-    public CUSTOMER pASSMARKBLOCK(Double pASSMARKBLOCK) {
-        this.setpASSMARKBLOCK(pASSMARKBLOCK);
+    public Customer passmarkblock(Double passmarkblock) {
+        this.setPassmarkblock(passmarkblock);
         return this;
     }
 
-    public void setpASSMARKBLOCK(Double pASSMARKBLOCK) {
-        this.pASSMARKBLOCK = pASSMARKBLOCK;
+    public void setPassmarkblock(Double passmarkblock) {
+        this.passmarkblock = passmarkblock;
     }
 
-    public String getpASSRESETREMARKS() {
-        return this.pASSRESETREMARKS;
+    public String getPassresetremarks() {
+        return this.passresetremarks;
     }
 
-    public CUSTOMER pASSRESETREMARKS(String pASSRESETREMARKS) {
-        this.setpASSRESETREMARKS(pASSRESETREMARKS);
+    public Customer passresetremarks(String passresetremarks) {
+        this.setPassresetremarks(passresetremarks);
         return this;
     }
 
-    public void setpASSRESETREMARKS(String pASSRESETREMARKS) {
-        this.pASSRESETREMARKS = pASSRESETREMARKS;
+    public void setPassresetremarks(String passresetremarks) {
+        this.passresetremarks = passresetremarks;
     }
 
-    public String getpASSBLOCKREMARKS() {
-        return this.pASSBLOCKREMARKS;
+    public String getPassblockremarks() {
+        return this.passblockremarks;
     }
 
-    public CUSTOMER pASSBLOCKREMARKS(String pASSBLOCKREMARKS) {
-        this.setpASSBLOCKREMARKS(pASSBLOCKREMARKS);
+    public Customer passblockremarks(String passblockremarks) {
+        this.setPassblockremarks(passblockremarks);
         return this;
     }
 
-    public void setpASSBLOCKREMARKS(String pASSBLOCKREMARKS) {
-        this.pASSBLOCKREMARKS = pASSBLOCKREMARKS;
+    public void setPassblockremarks(String passblockremarks) {
+        this.passblockremarks = passblockremarks;
     }
 
-    public String getpASSUNBLOCKBY() {
-        return this.pASSUNBLOCKBY;
+    public String getPassunblockby() {
+        return this.passunblockby;
     }
 
-    public CUSTOMER pASSUNBLOCKBY(String pASSUNBLOCKBY) {
-        this.setpASSUNBLOCKBY(pASSUNBLOCKBY);
+    public Customer passunblockby(String passunblockby) {
+        this.setPassunblockby(passunblockby);
         return this;
     }
 
-    public void setpASSUNBLOCKBY(String pASSUNBLOCKBY) {
-        this.pASSUNBLOCKBY = pASSUNBLOCKBY;
+    public void setPassunblockby(String passunblockby) {
+        this.passunblockby = passunblockby;
     }
 
-    public Double getpASSTRIALS() {
-        return this.pASSTRIALS;
+    public Double getPasstrials() {
+        return this.passtrials;
     }
 
-    public CUSTOMER pASSTRIALS(Double pASSTRIALS) {
-        this.setpASSTRIALS(pASSTRIALS);
+    public Customer passtrials(Double passtrials) {
+        this.setPasstrials(passtrials);
         return this;
     }
 
-    public void setpASSTRIALS(Double pASSTRIALS) {
-        this.pASSTRIALS = pASSTRIALS;
+    public void setPasstrials(Double passtrials) {
+        this.passtrials = passtrials;
     }
 
-    public Long getaPPACTIVE() {
-        return this.aPPACTIVE;
+    public Long getAppactive() {
+        return this.appactive;
     }
 
-    public CUSTOMER aPPACTIVE(Long aPPACTIVE) {
-        this.setaPPACTIVE(aPPACTIVE);
+    public Customer appactive(Long appactive) {
+        this.setAppactive(appactive);
         return this;
     }
 
-    public void setaPPACTIVE(Long aPPACTIVE) {
-        this.aPPACTIVE = aPPACTIVE;
+    public void setAppactive(Long appactive) {
+        this.appactive = appactive;
     }
 
-    public String getlASTLOGIN() {
-        return this.lASTLOGIN;
+    public String getLastlogin() {
+        return this.lastlogin;
     }
 
-    public CUSTOMER lASTLOGIN(String lASTLOGIN) {
-        this.setlASTLOGIN(lASTLOGIN);
+    public Customer lastlogin(String lastlogin) {
+        this.setLastlogin(lastlogin);
         return this;
     }
 
-    public void setlASTLOGIN(String lASTLOGIN) {
-        this.lASTLOGIN = lASTLOGIN;
+    public void setLastlogin(String lastlogin) {
+        this.lastlogin = lastlogin;
     }
 
-    public Double getaPPMARKEDDISABLE() {
-        return this.aPPMARKEDDISABLE;
+    public Double getAppmarkeddisable() {
+        return this.appmarkeddisable;
     }
 
-    public CUSTOMER aPPMARKEDDISABLE(Double aPPMARKEDDISABLE) {
-        this.setaPPMARKEDDISABLE(aPPMARKEDDISABLE);
+    public Customer appmarkeddisable(Double appmarkeddisable) {
+        this.setAppmarkeddisable(appmarkeddisable);
         return this;
     }
 
-    public void setaPPMARKEDDISABLE(Double aPPMARKEDDISABLE) {
-        this.aPPMARKEDDISABLE = aPPMARKEDDISABLE;
+    public void setAppmarkeddisable(Double appmarkeddisable) {
+        this.appmarkeddisable = appmarkeddisable;
     }
 
-    public String getdISABLEBY() {
-        return this.dISABLEBY;
+    public String getDisableby() {
+        return this.disableby;
     }
 
-    public CUSTOMER dISABLEBY(String dISABLEBY) {
-        this.setdISABLEBY(dISABLEBY);
+    public Customer disableby(String disableby) {
+        this.setDisableby(disableby);
         return this;
     }
 
-    public void setdISABLEBY(String dISABLEBY) {
-        this.dISABLEBY = dISABLEBY;
+    public void setDisableby(String disableby) {
+        this.disableby = disableby;
     }
 
-    public String getaPPROVEDISABLEBY() {
-        return this.aPPROVEDISABLEBY;
+    public String getApprovedisableby() {
+        return this.approvedisableby;
     }
 
-    public CUSTOMER aPPROVEDISABLEBY(String aPPROVEDISABLEBY) {
-        this.setaPPROVEDISABLEBY(aPPROVEDISABLEBY);
+    public Customer approvedisableby(String approvedisableby) {
+        this.setApprovedisableby(approvedisableby);
         return this;
     }
 
-    public void setaPPROVEDISABLEBY(String aPPROVEDISABLEBY) {
-        this.aPPROVEDISABLEBY = aPPROVEDISABLEBY;
+    public void setApprovedisableby(String approvedisableby) {
+        this.approvedisableby = approvedisableby;
     }
 
-    public Double getaPPMARKEDENABLE() {
-        return this.aPPMARKEDENABLE;
+    public Double getAppmarkedenable() {
+        return this.appmarkedenable;
     }
 
-    public CUSTOMER aPPMARKEDENABLE(Double aPPMARKEDENABLE) {
-        this.setaPPMARKEDENABLE(aPPMARKEDENABLE);
+    public Customer appmarkedenable(Double appmarkedenable) {
+        this.setAppmarkedenable(appmarkedenable);
         return this;
     }
 
-    public void setaPPMARKEDENABLE(Double aPPMARKEDENABLE) {
-        this.aPPMARKEDENABLE = aPPMARKEDENABLE;
+    public void setAppmarkedenable(Double appmarkedenable) {
+        this.appmarkedenable = appmarkedenable;
     }
 
-    public String geteNABLEBY() {
-        return this.eNABLEBY;
+    public String getEnableby() {
+        return this.enableby;
     }
 
-    public CUSTOMER eNABLEBY(String eNABLEBY) {
-        this.seteNABLEBY(eNABLEBY);
+    public Customer enableby(String enableby) {
+        this.setEnableby(enableby);
         return this;
     }
 
-    public void seteNABLEBY(String eNABLEBY) {
-        this.eNABLEBY = eNABLEBY;
+    public void setEnableby(String enableby) {
+        this.enableby = enableby;
     }
 
-    public String getaPPROVEDENABLEBY() {
-        return this.aPPROVEDENABLEBY;
+    public String getApprovedenableby() {
+        return this.approvedenableby;
     }
 
-    public CUSTOMER aPPROVEDENABLEBY(String aPPROVEDENABLEBY) {
-        this.setaPPROVEDENABLEBY(aPPROVEDENABLEBY);
+    public Customer approvedenableby(String approvedenableby) {
+        this.setApprovedenableby(approvedenableby);
         return this;
     }
 
-    public void setaPPROVEDENABLEBY(String aPPROVEDENABLEBY) {
-        this.aPPROVEDENABLEBY = aPPROVEDENABLEBY;
+    public void setApprovedenableby(String approvedenableby) {
+        this.approvedenableby = approvedenableby;
     }
 
-    public Double getmARKEDDEACTIVATE() {
-        return this.mARKEDDEACTIVATE;
+    public Double getMarkeddeactivate() {
+        return this.markeddeactivate;
     }
 
-    public CUSTOMER mARKEDDEACTIVATE(Double mARKEDDEACTIVATE) {
-        this.setmARKEDDEACTIVATE(mARKEDDEACTIVATE);
+    public Customer markeddeactivate(Double markeddeactivate) {
+        this.setMarkeddeactivate(markeddeactivate);
         return this;
     }
 
-    public void setmARKEDDEACTIVATE(Double mARKEDDEACTIVATE) {
-        this.mARKEDDEACTIVATE = mARKEDDEACTIVATE;
+    public void setMarkeddeactivate(Double markeddeactivate) {
+        this.markeddeactivate = markeddeactivate;
     }
 
-    public String getaPPFIRSTLOGIN() {
-        return this.aPPFIRSTLOGIN;
+    public String getAppfirstlogin() {
+        return this.appfirstlogin;
     }
 
-    public CUSTOMER aPPFIRSTLOGIN(String aPPFIRSTLOGIN) {
-        this.setaPPFIRSTLOGIN(aPPFIRSTLOGIN);
+    public Customer appfirstlogin(String appfirstlogin) {
+        this.setAppfirstlogin(appfirstlogin);
         return this;
     }
 
-    public void setaPPFIRSTLOGIN(String aPPFIRSTLOGIN) {
-        this.aPPFIRSTLOGIN = aPPFIRSTLOGIN;
+    public void setAppfirstlogin(String appfirstlogin) {
+        this.appfirstlogin = appfirstlogin;
     }
 
-    public Double getaTMTRIALS() {
-        return this.aTMTRIALS;
+    public Double getAtmtrials() {
+        return this.atmtrials;
     }
 
-    public CUSTOMER aTMTRIALS(Double aTMTRIALS) {
-        this.setaTMTRIALS(aTMTRIALS);
+    public Customer atmtrials(Double atmtrials) {
+        this.setAtmtrials(atmtrials);
         return this;
     }
 
-    public void setaTMTRIALS(Double aTMTRIALS) {
-        this.aTMTRIALS = aTMTRIALS;
+    public void setAtmtrials(Double atmtrials) {
+        this.atmtrials = atmtrials;
     }
 
-    public String getsHORCUTS() {
-        return this.sHORCUTS;
+    public String getShorcuts() {
+        return this.shorcuts;
     }
 
-    public CUSTOMER sHORCUTS(String sHORCUTS) {
-        this.setsHORCUTS(sHORCUTS);
+    public Customer shorcuts(String shorcuts) {
+        this.setShorcuts(shorcuts);
         return this;
     }
 
-    public void setsHORCUTS(String sHORCUTS) {
-        this.sHORCUTS = sHORCUTS;
+    public void setShorcuts(String shorcuts) {
+        this.shorcuts = shorcuts;
     }
 
-    public String getmARKEDACTIVATE() {
-        return this.mARKEDACTIVATE;
+    public String getMarkedactivate() {
+        return this.markedactivate;
     }
 
-    public CUSTOMER mARKEDACTIVATE(String mARKEDACTIVATE) {
-        this.setmARKEDACTIVATE(mARKEDACTIVATE);
+    public Customer markedactivate(String markedactivate) {
+        this.setMarkedactivate(markedactivate);
         return this;
     }
 
-    public void setmARKEDACTIVATE(String mARKEDACTIVATE) {
-        this.mARKEDACTIVATE = mARKEDACTIVATE;
+    public void setMarkedactivate(String markedactivate) {
+        this.markedactivate = markedactivate;
     }
 
-    public String gettOWN() {
-        return this.tOWN;
+    public String getTown() {
+        return this.town;
     }
 
-    public CUSTOMER tOWN(String tOWN) {
-        this.settOWN(tOWN);
+    public Customer town(String town) {
+        this.setTown(town);
         return this;
     }
 
-    public void settOWN(String tOWN) {
-        this.tOWN = tOWN;
+    public void setTown(String town) {
+        this.town = town;
     }
 
-    public Instant getaPPROVEDDISABLEON() {
-        return this.aPPROVEDDISABLEON;
+    public Instant getApproveddisableon() {
+        return this.approveddisableon;
     }
 
-    public CUSTOMER aPPROVEDDISABLEON(Instant aPPROVEDDISABLEON) {
-        this.setaPPROVEDDISABLEON(aPPROVEDDISABLEON);
+    public Customer approveddisableon(Instant approveddisableon) {
+        this.setApproveddisableon(approveddisableon);
         return this;
     }
 
-    public void setaPPROVEDDISABLEON(Instant aPPROVEDDISABLEON) {
-        this.aPPROVEDDISABLEON = aPPROVEDDISABLEON;
+    public void setApproveddisableon(Instant approveddisableon) {
+        this.approveddisableon = approveddisableon;
     }
 
-    public Instant getdISABLEDON() {
-        return this.dISABLEDON;
+    public Instant getDisabledon() {
+        return this.disabledon;
     }
 
-    public CUSTOMER dISABLEDON(Instant dISABLEDON) {
-        this.setdISABLEDON(dISABLEDON);
+    public Customer disabledon(Instant disabledon) {
+        this.setDisabledon(disabledon);
         return this;
     }
 
-    public void setdISABLEDON(Instant dISABLEDON) {
-        this.dISABLEDON = dISABLEDON;
+    public void setDisabledon(Instant disabledon) {
+        this.disabledon = disabledon;
     }
 
-    public Instant getrESETAPPROVEON() {
-        return this.rESETAPPROVEON;
+    public Instant getResetapproveon() {
+        return this.resetapproveon;
     }
 
-    public CUSTOMER rESETAPPROVEON(Instant rESETAPPROVEON) {
-        this.setrESETAPPROVEON(rESETAPPROVEON);
+    public Customer resetapproveon(Instant resetapproveon) {
+        this.setResetapproveon(resetapproveon);
         return this;
     }
 
-    public void setrESETAPPROVEON(Instant rESETAPPROVEON) {
-        this.rESETAPPROVEON = rESETAPPROVEON;
+    public void setResetapproveon(Instant resetapproveon) {
+        this.resetapproveon = resetapproveon;
     }
 
-    public String getdELETEDBY() {
-        return this.dELETEDBY;
+    public String getDeletedby() {
+        return this.deletedby;
     }
 
-    public CUSTOMER dELETEDBY(String dELETEDBY) {
-        this.setdELETEDBY(dELETEDBY);
+    public Customer deletedby(String deletedby) {
+        this.setDeletedby(deletedby);
         return this;
     }
 
-    public void setdELETEDBY(String dELETEDBY) {
-        this.dELETEDBY = dELETEDBY;
+    public void setDeletedby(String deletedby) {
+        this.deletedby = deletedby;
     }
 
-    public String getqUESTIONSASKED() {
-        return this.qUESTIONSASKED;
+    public String getQuestionsasked() {
+        return this.questionsasked;
     }
 
-    public CUSTOMER qUESTIONSASKED(String qUESTIONSASKED) {
-        this.setqUESTIONSASKED(qUESTIONSASKED);
+    public Customer questionsasked(String questionsasked) {
+        this.setQuestionsasked(questionsasked);
         return this;
     }
 
-    public void setqUESTIONSASKED(String qUESTIONSASKED) {
-        this.qUESTIONSASKED = qUESTIONSASKED;
+    public void setQuestionsasked(String questionsasked) {
+        this.questionsasked = questionsasked;
     }
 
-    public String getqUESTIONSTRIALS() {
-        return this.qUESTIONSTRIALS;
+    public String getQuestionstrials() {
+        return this.questionstrials;
     }
 
-    public CUSTOMER qUESTIONSTRIALS(String qUESTIONSTRIALS) {
-        this.setqUESTIONSTRIALS(qUESTIONSTRIALS);
+    public Customer questionstrials(String questionstrials) {
+        this.setQuestionstrials(questionstrials);
         return this;
     }
 
-    public void setqUESTIONSTRIALS(String qUESTIONSTRIALS) {
-        this.qUESTIONSTRIALS = qUESTIONSTRIALS;
+    public void setQuestionstrials(String questionstrials) {
+        this.questionstrials = questionstrials;
     }
 
-    public String getqUESTIONSANSWERED() {
-        return this.qUESTIONSANSWERED;
+    public String getQuestionsanswered() {
+        return this.questionsanswered;
     }
 
-    public CUSTOMER qUESTIONSANSWERED(String qUESTIONSANSWERED) {
-        this.setqUESTIONSANSWERED(qUESTIONSANSWERED);
+    public Customer questionsanswered(String questionsanswered) {
+        this.setQuestionsanswered(questionsanswered);
         return this;
     }
 
-    public void setqUESTIONSANSWERED(String qUESTIONSANSWERED) {
-        this.qUESTIONSANSWERED = qUESTIONSANSWERED;
+    public void setQuestionsanswered(String questionsanswered) {
+        this.questionsanswered = questionsanswered;
     }
 
-    public Double getvALIDOTP() {
-        return this.vALIDOTP;
+    public Double getValidotp() {
+        return this.validotp;
     }
 
-    public CUSTOMER vALIDOTP(Double vALIDOTP) {
-        this.setvALIDOTP(vALIDOTP);
+    public Customer validotp(Double validotp) {
+        this.setValidotp(validotp);
         return this;
     }
 
-    public void setvALIDOTP(Double vALIDOTP) {
-        this.vALIDOTP = vALIDOTP;
+    public void setValidotp(Double validotp) {
+        this.validotp = validotp;
     }
 
-    public String getaCTIVATEDBY() {
-        return this.aCTIVATEDBY;
+    public String getActivatedby() {
+        return this.activatedby;
     }
 
-    public CUSTOMER aCTIVATEDBY(String aCTIVATEDBY) {
-        this.setaCTIVATEDBY(aCTIVATEDBY);
+    public Customer activatedby(String activatedby) {
+        this.setActivatedby(activatedby);
         return this;
     }
 
-    public void setaCTIVATEDBY(String aCTIVATEDBY) {
-        this.aCTIVATEDBY = aCTIVATEDBY;
+    public void setActivatedby(String activatedby) {
+        this.activatedby = activatedby;
     }
 
-    public Instant getaCTIVATEDON() {
-        return this.aCTIVATEDON;
+    public Instant getActivatedon() {
+        return this.activatedon;
     }
 
-    public CUSTOMER aCTIVATEDON(Instant aCTIVATEDON) {
-        this.setaCTIVATEDON(aCTIVATEDON);
+    public Customer activatedon(Instant activatedon) {
+        this.setActivatedon(activatedon);
         return this;
     }
 
-    public void setaCTIVATEDON(Instant aCTIVATEDON) {
-        this.aCTIVATEDON = aCTIVATEDON;
+    public void setActivatedon(Instant activatedon) {
+        this.activatedon = activatedon;
     }
 
-    public String getbRANCHCODE() {
-        return this.bRANCHCODE;
+    public String getBranchcode() {
+        return this.branchcode;
     }
 
-    public CUSTOMER bRANCHCODE(String bRANCHCODE) {
-        this.setbRANCHCODE(bRANCHCODE);
+    public Customer branchcode(String branchcode) {
+        this.setBranchcode(branchcode);
         return this;
     }
 
-    public void setbRANCHCODE(String bRANCHCODE) {
-        this.bRANCHCODE = bRANCHCODE;
+    public void setBranchcode(String branchcode) {
+        this.branchcode = branchcode;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -1860,10 +1860,10 @@ public class CUSTOMER implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof CUSTOMER)) {
+        if (!(o instanceof Customer)) {
             return false;
         }
-        return getId() != null && getId().equals(((CUSTOMER) o).getId());
+        return getId() != null && getId().equals(((Customer) o).getId());
     }
 
     @Override
@@ -1875,117 +1875,117 @@ public class CUSTOMER implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "CUSTOMER{" +
+        return "Customer{" +
             "id=" + getId() +
-            ", cUSTOMERNAME='" + getcUSTOMERNAME() + "'" +
-            ", pHONENUMBER='" + getpHONENUMBER() + "'" +
-            ", cARDNUMBER='" + getcARDNUMBER() + "'" +
-            ", aCCOUNTNUMBER='" + getaCCOUNTNUMBER() + "'" +
-            ", lANG='" + getlANG() + "'" +
-            ", pIN='" + getpIN() + "'" +
-            ", fIRSTLOGIN='" + getfIRSTLOGIN() + "'" +
-            ", aCTIVE='" + getaCTIVE() + "'" +
-            ", rEGISTERED=" + getrEGISTERED() +
-            ", cSTDELETE=" + getcSTDELETE() +
-            ", rEGDATE='" + getrEGDATE() + "'" +
-            ", aLERTENABLED=" + getaLERTENABLED() +
-            ", rEMARK='" + getrEMARK() + "'" +
-            ", iMSI='" + getiMSI() + "'" +
-            ", pARTIALLYREGISTERED='" + getpARTIALLYREGISTERED() + "'" +
-            ", pARTIALDATE='" + getpARTIALDATE() + "'" +
-            ", rEGISTERDATE='" + getrEGISTERDATE() + "'" +
-            ", aPPROVED=" + getaPPROVED() +
-            ", aPPROVEDBY='" + getaPPROVEDBY() + "'" +
-            ", aPPROVEDDATE='" + getaPPROVEDDATE() + "'" +
-            ", dECLINED=" + getdECLINED() +
-            ", dECLINEDBY='" + getdECLINEDBY() + "'" +
-            ", dECLINEDDATE='" + getdECLINEDDATE() + "'" +
-            ", cHECKERREMARKS='" + getcHECKERREMARKS() + "'" +
-            ", pOSTALADDRESS='" + getpOSTALADDRESS() + "'" +
-            ", rESIDENCE='" + getrESIDENCE() + "'" +
-            ", dOB='" + getdOB() + "'" +
-            ", cREATEDBY='" + getcREATEDBY() + "'" +
-            ", eMAILADDRESS='" + geteMAILADDRESS() + "'" +
-            ", iDENTIFICATIONID='" + getiDENTIFICATIONID() + "'" +
-            ", aDDACCOUNT=" + getaDDACCOUNT() +
-            ", aCLINKINGINSTITUTION='" + getaCLINKINGINSTITUTION() + "'" +
-            ", dEACTIVATED=" + getdEACTIVATED() +
-            ", dEACTIVATEDBY='" + getdEACTIVATEDBY() + "'" +
-            ", dEACTIVATEDON='" + getdEACTIVATEDON() + "'" +
-            ", pHONENOCHANGED=" + getpHONENOCHANGED() +
-            ", pHONENOCHANGEDBY='" + getpHONENOCHANGEDBY() + "'" +
-            ", pHONENOCHANGEDON='" + getpHONENOCHANGEDON() + "'" +
-            ", oRIGINALPHONENO='" + getoRIGINALPHONENO() + "'" +
-            ", nEWPHONENO='" + getnEWPHONENO() + "'" +
-            ", rESET=" + getrESET() +
-            ", rESETINGINSTITUTION='" + getrESETINGINSTITUTION() + "'" +
-            ", pINRESETREMARK='" + getpINRESETREMARK() + "'" +
-            ", rESETBY='" + getrESETBY() + "'" +
-            ", rESETON='" + getrESETON() + "'" +
-            ", uNBLOCKINGINSTITUTION='" + getuNBLOCKINGINSTITUTION() + "'" +
-            ", pINBLOCK=" + getpINBLOCK() +
-            ", pINBLOCKBY='" + getpINBLOCKBY() + "'" +
-            ", pINBLOCKREMARKS='" + getpINBLOCKREMARKS() + "'" +
-            ", bLOCKINGINSTITUTION='" + getbLOCKINGINSTITUTION() + "'" +
-            ", pINBLOCKON='" + getpINBLOCKON() + "'" +
-            ", aPPROVEDON='" + getaPPROVEDON() + "'" +
-            ", pINUNBLOCKBY='" + getpINUNBLOCKBY() + "'" +
-            ", lOGGEDIN=" + getlOGGEDIN() +
-            ", tRIALS='" + gettRIALS() + "'" +
-            ", iDTYPE='" + getiDTYPE() + "'" +
-            ", iDNUMBER='" + getiDNUMBER() + "'" +
-            ", gENDER='" + getgENDER() + "'" +
-            ", cIF='" + getcIF() + "'" +
-            ", dATEOFBIRTH='" + getdATEOFBIRTH() + "'" +
-            ", rEMARKS='" + getrEMARKS() + "'" +
-            ", rESETIMSI=" + getrESETIMSI() +
-            ", iMSIRESETBY='" + getiMSIRESETBY() + "'" +
-            ", fIRSTNAME='" + getfIRSTNAME() + "'" +
-            ", sECONDNAME='" + getsECONDNAME() + "'" +
-            ", lASTNAME='" + getlASTNAME() + "'" +
-            ", pINBLOCKTIME='" + getpINBLOCKTIME() + "'" +
-            ", cUSTOMERSTATUS='" + getcUSTOMERSTATUS() + "'" +
-            ", uSERNAME='" + getuSERNAME() + "'" +
-            ", pASSWORD='" + getpASSWORD() + "'" +
-            ", dEVICEID='" + getdEVICEID() + "'" +
-            ", cHANNEL='" + getcHANNEL() + "'" +
-            ", pASSRESET=" + getpASSRESET() +
-            ", pASSRESETBY='" + getpASSRESETBY() + "'" +
-            ", pASSRESETON='" + getpASSRESETON() + "'" +
-            ", pASSBLOCK=" + getpASSBLOCK() +
-            ", pASSBLOCKBY='" + getpASSBLOCKBY() + "'" +
-            ", pASSBLOCKON='" + getpASSBLOCKON() + "'" +
-            ", pINMARKBLOCK=" + getpINMARKBLOCK() +
-            ", pASSMARKBLOCK=" + getpASSMARKBLOCK() +
-            ", pASSRESETREMARKS='" + getpASSRESETREMARKS() + "'" +
-            ", pASSBLOCKREMARKS='" + getpASSBLOCKREMARKS() + "'" +
-            ", pASSUNBLOCKBY='" + getpASSUNBLOCKBY() + "'" +
-            ", pASSTRIALS=" + getpASSTRIALS() +
-            ", aPPACTIVE=" + getaPPACTIVE() +
-            ", lASTLOGIN='" + getlASTLOGIN() + "'" +
-            ", aPPMARKEDDISABLE=" + getaPPMARKEDDISABLE() +
-            ", dISABLEBY='" + getdISABLEBY() + "'" +
-            ", aPPROVEDISABLEBY='" + getaPPROVEDISABLEBY() + "'" +
-            ", aPPMARKEDENABLE=" + getaPPMARKEDENABLE() +
-            ", eNABLEBY='" + geteNABLEBY() + "'" +
-            ", aPPROVEDENABLEBY='" + getaPPROVEDENABLEBY() + "'" +
-            ", mARKEDDEACTIVATE=" + getmARKEDDEACTIVATE() +
-            ", aPPFIRSTLOGIN='" + getaPPFIRSTLOGIN() + "'" +
-            ", aTMTRIALS=" + getaTMTRIALS() +
-            ", sHORCUTS='" + getsHORCUTS() + "'" +
-            ", mARKEDACTIVATE='" + getmARKEDACTIVATE() + "'" +
-            ", tOWN='" + gettOWN() + "'" +
-            ", aPPROVEDDISABLEON='" + getaPPROVEDDISABLEON() + "'" +
-            ", dISABLEDON='" + getdISABLEDON() + "'" +
-            ", rESETAPPROVEON='" + getrESETAPPROVEON() + "'" +
-            ", dELETEDBY='" + getdELETEDBY() + "'" +
-            ", qUESTIONSASKED='" + getqUESTIONSASKED() + "'" +
-            ", qUESTIONSTRIALS='" + getqUESTIONSTRIALS() + "'" +
-            ", qUESTIONSANSWERED='" + getqUESTIONSANSWERED() + "'" +
-            ", vALIDOTP=" + getvALIDOTP() +
-            ", aCTIVATEDBY='" + getaCTIVATEDBY() + "'" +
-            ", aCTIVATEDON='" + getaCTIVATEDON() + "'" +
-            ", bRANCHCODE='" + getbRANCHCODE() + "'" +
+            ", customername='" + getCustomername() + "'" +
+            ", phonenumber='" + getPhonenumber() + "'" +
+            ", cardnumber='" + getCardnumber() + "'" +
+            ", accountnumber='" + getAccountnumber() + "'" +
+            ", lang='" + getLang() + "'" +
+            ", pin='" + getPin() + "'" +
+            ", firstlogin='" + getFirstlogin() + "'" +
+            ", active='" + getActive() + "'" +
+            ", registered=" + getRegistered() +
+            ", cstdelete=" + getCstdelete() +
+            ", regdate='" + getRegdate() + "'" +
+            ", alertenabled=" + getAlertenabled() +
+            ", remark='" + getRemark() + "'" +
+            ", imsi='" + getImsi() + "'" +
+            ", partiallyregistered='" + getPartiallyregistered() + "'" +
+            ", partialdate='" + getPartialdate() + "'" +
+            ", registerdate='" + getRegisterdate() + "'" +
+            ", approved=" + getApproved() +
+            ", approvedby='" + getApprovedby() + "'" +
+            ", approveddate='" + getApproveddate() + "'" +
+            ", declined=" + getDeclined() +
+            ", declinedby='" + getDeclinedby() + "'" +
+            ", declineddate='" + getDeclineddate() + "'" +
+            ", checkerremarks='" + getCheckerremarks() + "'" +
+            ", postaladdress='" + getPostaladdress() + "'" +
+            ", residence='" + getResidence() + "'" +
+            ", dob='" + getDob() + "'" +
+            ", createdby='" + getCreatedby() + "'" +
+            ", emailaddress='" + getEmailaddress() + "'" +
+            ", identificationid='" + getIdentificationid() + "'" +
+            ", addaccount=" + getAddaccount() +
+            ", aclinkinginstitution='" + getAclinkinginstitution() + "'" +
+            ", deactivated=" + getDeactivated() +
+            ", deactivatedby='" + getDeactivatedby() + "'" +
+            ", deactivatedon='" + getDeactivatedon() + "'" +
+            ", phonenochanged=" + getPhonenochanged() +
+            ", phonenochangedby='" + getPhonenochangedby() + "'" +
+            ", phonenochangedon='" + getPhonenochangedon() + "'" +
+            ", originalphoneno='" + getOriginalphoneno() + "'" +
+            ", newphoneno='" + getNewphoneno() + "'" +
+            ", reset=" + getReset() +
+            ", resetinginstitution='" + getResetinginstitution() + "'" +
+            ", pinresetremark='" + getPinresetremark() + "'" +
+            ", resetby='" + getResetby() + "'" +
+            ", reseton='" + getReseton() + "'" +
+            ", unblockinginstitution='" + getUnblockinginstitution() + "'" +
+            ", pinblock=" + getPinblock() +
+            ", pinblockby='" + getPinblockby() + "'" +
+            ", pinblockremarks='" + getPinblockremarks() + "'" +
+            ", blockinginstitution='" + getBlockinginstitution() + "'" +
+            ", pinblockon='" + getPinblockon() + "'" +
+            ", approvedon='" + getApprovedon() + "'" +
+            ", pinunblockby='" + getPinunblockby() + "'" +
+            ", loggedin=" + getLoggedin() +
+            ", trials='" + getTrials() + "'" +
+            ", idtype='" + getIdtype() + "'" +
+            ", idnumber='" + getIdnumber() + "'" +
+            ", gender='" + getGender() + "'" +
+            ", cif='" + getCif() + "'" +
+            ", dateofbirth='" + getDateofbirth() + "'" +
+            ", remarks='" + getRemarks() + "'" +
+            ", resetimsi=" + getResetimsi() +
+            ", imsiresetby='" + getImsiresetby() + "'" +
+            ", firstname='" + getFirstname() + "'" +
+            ", secondname='" + getSecondname() + "'" +
+            ", lastname='" + getLastname() + "'" +
+            ", pinblocktime='" + getPinblocktime() + "'" +
+            ", customerstatus='" + getCustomerstatus() + "'" +
+            ", username='" + getUsername() + "'" +
+            ", password='" + getPassword() + "'" +
+            ", deviceid='" + getDeviceid() + "'" +
+            ", channel='" + getChannel() + "'" +
+            ", passreset=" + getPassreset() +
+            ", passresetby='" + getPassresetby() + "'" +
+            ", passreseton='" + getPassreseton() + "'" +
+            ", passblock=" + getPassblock() +
+            ", passblockby='" + getPassblockby() + "'" +
+            ", passblockon='" + getPassblockon() + "'" +
+            ", pinmarkblock=" + getPinmarkblock() +
+            ", passmarkblock=" + getPassmarkblock() +
+            ", passresetremarks='" + getPassresetremarks() + "'" +
+            ", passblockremarks='" + getPassblockremarks() + "'" +
+            ", passunblockby='" + getPassunblockby() + "'" +
+            ", passtrials=" + getPasstrials() +
+            ", appactive=" + getAppactive() +
+            ", lastlogin='" + getLastlogin() + "'" +
+            ", appmarkeddisable=" + getAppmarkeddisable() +
+            ", disableby='" + getDisableby() + "'" +
+            ", approvedisableby='" + getApprovedisableby() + "'" +
+            ", appmarkedenable=" + getAppmarkedenable() +
+            ", enableby='" + getEnableby() + "'" +
+            ", approvedenableby='" + getApprovedenableby() + "'" +
+            ", markeddeactivate=" + getMarkeddeactivate() +
+            ", appfirstlogin='" + getAppfirstlogin() + "'" +
+            ", atmtrials=" + getAtmtrials() +
+            ", shorcuts='" + getShorcuts() + "'" +
+            ", markedactivate='" + getMarkedactivate() + "'" +
+            ", town='" + getTown() + "'" +
+            ", approveddisableon='" + getApproveddisableon() + "'" +
+            ", disabledon='" + getDisabledon() + "'" +
+            ", resetapproveon='" + getResetapproveon() + "'" +
+            ", deletedby='" + getDeletedby() + "'" +
+            ", questionsasked='" + getQuestionsasked() + "'" +
+            ", questionstrials='" + getQuestionstrials() + "'" +
+            ", questionsanswered='" + getQuestionsanswered() + "'" +
+            ", validotp=" + getValidotp() +
+            ", activatedby='" + getActivatedby() + "'" +
+            ", activatedon='" + getActivatedon() + "'" +
+            ", branchcode='" + getBranchcode() + "'" +
             "}";
     }
 }

@@ -1,49 +1,49 @@
 {
   "annotations": {
-    "changelogDate": "20250117142904"
+    "changelogDate": "20250121085700"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "rANGEFROM",
+      "fieldName": "rangefrom",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rANGETO",
+      "fieldName": "rangeto",
       "fieldType": "Long"
     },
     {
-      "fieldName": "aMOUNT",
+      "fieldName": "amount",
       "fieldType": "Double"
     },
     {
-      "fieldName": "tXNTYPE",
+      "fieldName": "txntype",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "tXNCODE",
+      "fieldName": "txncode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "cHARGEID",
+      "fieldName": "chargeid",
       "fieldType": "Long"
     },
     {
-      "fieldName": "cHANNEL",
+      "fieldName": "channel",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     }
   ],
-  "name": "RANGE",
+  "name": "Range",
   "relationships": [
     {
-      "otherEntityName": "cHARGE",
-      "relationshipName": "cHARGEID",
+      "otherEntityName": "charge",
+      "relationshipName": "chargeid",
       "relationshipSide": "left",
       "relationshipType": "one-to-many"
     }

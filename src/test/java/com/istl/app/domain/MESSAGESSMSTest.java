@@ -1,24 +1,24 @@
 package com.istl.app.domain;
 
-import static com.istl.app.domain.MESSAGESSMSTestSamples.*;
+import static com.istl.app.domain.MessagesSmsTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.istl.app.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
 
-class MESSAGESSMSTest {
+class MessagesSmsTest {
 
     @Test
     void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(MESSAGESSMS.class);
-        MESSAGESSMS mESSAGESSMS1 = getMESSAGESSMSSample1();
-        MESSAGESSMS mESSAGESSMS2 = new MESSAGESSMS();
-        assertThat(mESSAGESSMS1).isNotEqualTo(mESSAGESSMS2);
+        TestUtil.equalsVerifier(MessagesSms.class);
+        MessagesSms messagesSms1 = getMessagesSmsSample1();
+        MessagesSms messagesSms2 = new MessagesSms();
+        assertThat(messagesSms1).isNotEqualTo(messagesSms2);
 
-        mESSAGESSMS2.setId(mESSAGESSMS1.getId());
-        assertThat(mESSAGESSMS1).isEqualTo(mESSAGESSMS2);
+        messagesSms2.setId(messagesSms1.getId());
+        assertThat(messagesSms1).isEqualTo(messagesSms2);
 
-        mESSAGESSMS2 = getMESSAGESSMSSample2();
-        assertThat(mESSAGESSMS1).isNotEqualTo(mESSAGESSMS2);
+        messagesSms2 = getMessagesSmsSample2();
+        assertThat(messagesSms1).isNotEqualTo(messagesSms2);
     }
 }

@@ -1,299 +1,299 @@
 {
   "annotations": {
-    "changelogDate": "20250117142907"
+    "changelogDate": "20250121085702"
   },
   "applications": "*",
   "fields": [
     {
-      "fieldName": "pROCESSED",
+      "fieldName": "processed",
       "fieldType": "Long"
     },
     {
-      "fieldName": "iNCOMINGBITMAP",
+      "fieldName": "incomingbitmap",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "oUTGOINGBITMAP",
+      "fieldName": "outgoingbitmap",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "iNMESSAGE",
+      "fieldName": "inmessage",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "mESSAGETOCBS",
+      "fieldName": "messagetocbs",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "mESSAGEFROMCBS",
+      "fieldName": "messagefromcbs",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "cBSPROCESS",
+      "fieldName": "cbsprocess",
       "fieldType": "Long"
     },
     {
-      "fieldName": "cBSONLINE",
+      "fieldName": "cbsonline",
       "fieldType": "Long"
     },
     {
-      "fieldName": "cBSRESPONSE",
+      "fieldName": "cbsresponse",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "500"
     },
     {
-      "fieldName": "rESPONSEMESSAGE",
+      "fieldName": "responsemessage",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "rESPONSESENT",
+      "fieldName": "responsesent",
       "fieldType": "Long"
     },
     {
-      "fieldName": "cHANNEL",
+      "fieldName": "channel",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "oRIGINALDATA",
+      "fieldName": "originaldata",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "fIELD39RESP",
+      "fieldName": "field39resp",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "nARRATION",
+      "fieldName": "narration",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "aUTHORISED",
+      "fieldName": "authorised",
       "fieldType": "Long"
     },
     {
-      "fieldName": "bRANCHCODE",
+      "fieldName": "branchcode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "30"
     },
     {
-      "fieldName": "fIELD39ORIGINAL",
+      "fieldName": "field39original",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "mESSAGECLASS",
+      "fieldName": "messageclass",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "10"
     },
     {
-      "fieldName": "tXNCODE",
+      "fieldName": "txncode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "10"
     },
     {
-      "fieldName": "cURRCODE",
+      "fieldName": "currcode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "5"
     },
     {
-      "fieldName": "dEVICE",
+      "fieldName": "device",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "20"
     },
     {
-      "fieldName": "bRANCH2",
+      "fieldName": "branch2",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "30"
     },
     {
-      "fieldName": "longERBRANCH",
+      "fieldName": "longerbranch",
       "fieldType": "Long"
     },
     {
-      "fieldName": "dATEX",
+      "fieldName": "datex",
       "fieldType": "Instant"
     },
     {
-      "fieldName": "tIMEX",
+      "fieldName": "timex",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "50"
     },
     {
-      "fieldName": "pOSTED",
+      "fieldName": "posted",
       "fieldType": "Long"
     },
     {
-      "fieldName": "aTTEMPTS",
+      "fieldName": "attempts",
       "fieldType": "Long"
     },
     {
-      "fieldName": "oRIGINALDATA2",
+      "fieldName": "originaldata2",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "cOMMISSION",
+      "fieldName": "commission",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rESPONSECREATED",
+      "fieldName": "responsecreated",
       "fieldType": "Long"
     },
     {
-      "fieldName": "oNLINE",
+      "fieldName": "online",
       "fieldType": "Long"
     },
     {
-      "fieldName": "oRIGINALDATA3",
+      "fieldName": "originaldata3",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "100"
     },
     {
-      "fieldName": "tOSWITCH",
+      "fieldName": "toswitch",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "15"
     },
     {
-      "fieldName": "fROMSWITCH",
+      "fieldName": "fromswitch",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "15"
     },
     {
-      "fieldName": "tOCBS",
+      "fieldName": "tocbs",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "15"
     },
     {
-      "fieldName": "fROMCBS",
+      "fieldName": "fromcbs",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "15"
     },
     {
-      "fieldName": "pOSTINGLEGS",
+      "fieldName": "postinglegs",
       "fieldType": "Long"
     },
     {
-      "fieldName": "cOMMISSIONTXNCODE",
+      "fieldName": "commissiontxncode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "10"
     },
     {
-      "fieldName": "hOSTREF",
+      "fieldName": "hostref",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "30"
     },
     {
-      "fieldName": "rEQUESTCREATED",
+      "fieldName": "requestcreated",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rEQUESTMESSAGE",
+      "fieldName": "requestmessage",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "4000"
     },
     {
-      "fieldName": "oUTGOINGBITMAPFLEX",
+      "fieldName": "outgoingbitmapflex",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "iNCOMINGBITMAPFLEX",
+      "fieldName": "incomingbitmapflex",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "rEQUESTSENT",
+      "fieldName": "requestsent",
       "fieldType": "Long"
     },
     {
-      "fieldName": "mINICBS",
+      "fieldName": "minicbs",
       "fieldType": "Long"
     },
     {
-      "fieldName": "rEVERSED",
+      "fieldName": "reversed",
       "fieldType": "Long"
     },
     {
-      "fieldName": "oFFLINESENTTOHOST",
+      "fieldName": "offlinesenttohost",
       "fieldType": "Long"
     },
     {
-      "fieldName": "oFFLINERESPONSE",
+      "fieldName": "offlineresponse",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "sOURCELongERFACE",
+      "fieldName": "sourceLongerface",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "40"
     },
     {
-      "fieldName": "mTIRRN",
+      "fieldName": "mtirrn",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "hOSTRESPONSECODE",
+      "fieldName": "hostresponsecode",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "200"
     },
     {
-      "fieldName": "fIELD48",
+      "fieldName": "field48",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     },
     {
-      "fieldName": "sOURCE",
+      "fieldName": "source",
       "fieldType": "String",
       "fieldValidateRules": ["maxlength"],
       "fieldValidateRulesMaxlength": "150"
     }
   ],
-  "name": "TRANSACTIONS",
+  "name": "Transactions",
   "relationships": [],
   "searchEngine": "no"
 }

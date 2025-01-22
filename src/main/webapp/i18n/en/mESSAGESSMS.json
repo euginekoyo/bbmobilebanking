@@ -1,48 +1,48 @@
 {
   "bbMobileBankingAdminApp": {
-    "mESSAGESSMS": {
+    "messagesSms": {
       "home": {
-        "title": "MESSAGESSMS",
+        "title": "Messages Sms",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new MESSAGESSMS",
-        "createOrEditLabel": "Create or edit a MESSAGESSMS",
-        "notFound": "No MESSAGESSMS found"
+        "createLabel": "Create a new Messages Sms",
+        "createOrEditLabel": "Create or edit a Messages Sms",
+        "notFound": "No Messages Sms found"
       },
-      "created": "A new MESSAGESSMS is created with identifier {{ param }}",
-      "updated": "A MESSAGESSMS is updated with identifier {{ param }}",
-      "deleted": "A MESSAGESSMS is deleted with identifier {{ param }}",
+      "created": "A new Messages Sms is created with identifier { param }",
+      "updated": "A Messages Sms is updated with identifier { param }",
+      "deleted": "A Messages Sms is deleted with identifier { param }",
       "delete": {
-        "question": "Are you sure you want to delete MESSAGESSMS {{ id }}?"
+        "question": "Are you sure you want to delete Messages Sms { id }?"
       },
       "detail": {
-        "title": "MESSAGESSMS"
+        "title": "Messages Sms"
       },
       "id": "ID",
-      "tRNDATETIME": "T RNDATETIME",
-      "pHONENUMBER": "P HONENUMBER",
-      "tRANSACTIONNO": "T RANSACTIONNO",
-      "aCCOUNTNUMBER": "A CCOUNTNUMBER",
-      "mESSAGE": "M ESSAGE",
-      "cHANNEL": "C HANNEL",
-      "tRIALS": "T RIALS",
-      "pRIORITY": "P RIORITY",
-      "rESPONSECODE": "R ESPONSECODE",
-      "rESPONSEMSG": "R ESPONSEMSG",
-      "sENT": "S ENT",
-      "dELIVERED": "D ELIVERED",
-      "tXNTYPE": "T XNTYPE",
-      "eRROREXCEPTION": "E RROREXCEPTION",
-      "dATECREATED": "D ATECREATED",
-      "dATESENT": "D ATESENT",
-      "rTPSREQTIME": "R TPSREQTIME",
-      "fXGENERATED": "F XGENERATED",
-      "tAXPROCESSED": "T AXPROCESSED",
-      "bATCHNUMBER": "B ATCHNUMBER",
-      "bATCHNUMBERTAX": "B ATCHNUMBERTAX",
-      "rESPONSETIME": "R ESPONSETIME",
-      "pDUSEQID": "P DUSEQID",
-      "rEMARKS": "R EMARKS",
-      "rESENDBY": "R ESENDBY"
+      "trndatetime": "Trndatetime",
+      "phonenumber": "Phonenumber",
+      "transactionno": "Transactionno",
+      "accountnumber": "Accountnumber",
+      "message": "Message",
+      "channel": "Channel",
+      "trials": "Trials",
+      "priority": "Priority",
+      "responsecode": "Responsecode",
+      "responsemsg": "Responsemsg",
+      "sent": "Sent",
+      "delivered": "Delivered",
+      "txntype": "Txntype",
+      "errorexception": "Errorexception",
+      "datecreated": "Datecreated",
+      "datesent": "Datesent",
+      "rtpsreqtime": "Rtpsreqtime",
+      "fxgenerated": "Fxgenerated",
+      "taxprocessed": "Taxprocessed",
+      "batchnumber": "Batchnumber",
+      "batchnumbertax": "Batchnumbertax",
+      "responsetime": "Responsetime",
+      "pduseqid": "Pduseqid",
+      "remarks": "Remarks",
+      "resendby": "Resendby"
     }
   }
 }

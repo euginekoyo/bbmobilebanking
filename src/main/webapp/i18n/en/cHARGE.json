@@ -1,36 +1,36 @@
 {
   "bbMobileBankingAdminApp": {
-    "cHARGE": {
+    "charge": {
       "home": {
-        "title": "CHARGES",
+        "title": "Charges",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new CHARGE",
-        "createOrEditLabel": "Create or edit a CHARGE",
-        "notFound": "No CHARGES found"
+        "createLabel": "Create a new Charge",
+        "createOrEditLabel": "Create or edit a Charge",
+        "notFound": "No Charges found"
       },
-      "created": "A new CHARGE is created with identifier {{ param }}",
-      "updated": "A CHARGE is updated with identifier {{ param }}",
-      "deleted": "A CHARGE is deleted with identifier {{ param }}",
+      "created": "A new Charge is created with identifier { param }",
+      "updated": "A Charge is updated with identifier { param }",
+      "deleted": "A Charge is deleted with identifier { param }",
       "delete": {
-        "question": "Are you sure you want to delete CHARGE {{ id }}?"
+        "question": "Are you sure you want to delete Charge { id }?"
       },
       "detail": {
-        "title": "CHARGE"
+        "title": "Charge"
       },
       "id": "ID",
-      "tXNTYPE": "T XNTYPE",
-      "fEEMODE": "F EEMODE",
-      "aMOUNT": "A MOUNT",
-      "dATECREATED": "D ATECREATED",
-      "cREATEDBY": "C REATEDBY",
-      "aPPROVED": "A PPROVED",
-      "aPPROVEDBY": "A PPROVEDBY",
-      "cHANNEL": "C HANNEL",
-      "tXNCODE": "T XNCODE",
-      "dESCRIPTION": "D ESCRIPTION",
-      "aPPROVEDDATE": "A PPROVEDDATE",
-      "cHARGERANGES": "C HARGERANGES",
-      "rANGE": "R ANGE"
+      "txntype": "Txntype",
+      "feemode": "Feemode",
+      "amount": "Amount",
+      "datecreated": "Datecreated",
+      "createdby": "Createdby",
+      "approved": "Approved",
+      "approvedby": "Approvedby",
+      "channel": "Channel",
+      "txncode": "Txncode",
+      "description": "Description",
+      "approveddate": "Approveddate",
+      "chargeRange": "Charge Range",
+      "range": "Range"
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.PINRESETHISTORY;
-import com.istl.app.repository.PINRESETHISTORYRepository;
+import com.istl.app.domain.PinResetHistory;
+import com.istl.app.repository.PinResetHistoryRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,185 +20,185 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.PINRESETHISTORY}.
+ * REST controller for managing {@link com.istl.app.domain.PinResetHistory}.
  */
 @RestController
-@RequestMapping("/api/pinresethistories")
+@RequestMapping("/api/pin-reset-histories")
 @Transactional
-public class PINRESETHISTORYResource {
+public class PinResetHistoryResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PINRESETHISTORYResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PinResetHistoryResource.class);
 
-    private static final String ENTITY_NAME = "pINRESETHISTORY";
+    private static final String ENTITY_NAME = "pinResetHistory";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
-    private final PINRESETHISTORYRepository pINRESETHISTORYRepository;
+    private final PinResetHistoryRepository pinResetHistoryRepository;
 
-    public PINRESETHISTORYResource(PINRESETHISTORYRepository pINRESETHISTORYRepository) {
-        this.pINRESETHISTORYRepository = pINRESETHISTORYRepository;
+    public PinResetHistoryResource(PinResetHistoryRepository pinResetHistoryRepository) {
+        this.pinResetHistoryRepository = pinResetHistoryRepository;
     }
 
     /**
-     * {@code POST  /pinresethistories} : Create a new pINRESETHISTORY.
+     * {@code POST  /pin-reset-histories} : Create a new pinResetHistory.
      *
-     * @param pINRESETHISTORY the pINRESETHISTORY to create.
-     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new pINRESETHISTORY, or with status {@code 400 (Bad Request)} if the pINRESETHISTORY has already an ID.
+     * @param pinResetHistory the pinResetHistory to create.
+     * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new pinResetHistory, or with status {@code 400 (Bad Request)} if the pinResetHistory has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("")
-    public ResponseEntity<PINRESETHISTORY> createPINRESETHISTORY(@Valid @RequestBody PINRESETHISTORY pINRESETHISTORY)
+    public ResponseEntity<PinResetHistory> createPinResetHistory(@Valid @RequestBody PinResetHistory pinResetHistory)
         throws URISyntaxException {
-        LOG.debug("REST request to save PINRESETHISTORY : {}", pINRESETHISTORY);
-        if (pINRESETHISTORY.getId() != null) {
-            throw new BadRequestAlertException("A new pINRESETHISTORY cannot already have an ID", ENTITY_NAME, "idexists");
+        LOG.debug("REST request to save PinResetHistory : {}", pinResetHistory);
+        if (pinResetHistory.getId() != null) {
+            throw new BadRequestAlertException("A new pinResetHistory cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        pINRESETHISTORY = pINRESETHISTORYRepository.save(pINRESETHISTORY);
-        return ResponseEntity.created(new URI("/api/pinresethistories/" + pINRESETHISTORY.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, pINRESETHISTORY.getId().toString()))
-            .body(pINRESETHISTORY);
+        pinResetHistory = pinResetHistoryRepository.save(pinResetHistory);
+        return ResponseEntity.created(new URI("/api/pin-reset-histories/" + pinResetHistory.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, pinResetHistory.getId().toString()))
+            .body(pinResetHistory);
     }
 
     /**
-     * {@code PUT  /pinresethistories/:id} : Updates an existing pINRESETHISTORY.
+     * {@code PUT  /pin-reset-histories/:id} : Updates an existing pinResetHistory.
      *
-     * @param id the id of the pINRESETHISTORY to save.
-     * @param pINRESETHISTORY the pINRESETHISTORY to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated pINRESETHISTORY,
-     * or with status {@code 400 (Bad Request)} if the pINRESETHISTORY is not valid,
-     * or with status {@code 500 (Internal Server Error)} if the pINRESETHISTORY couldn't be updated.
+     * @param id the id of the pinResetHistory to save.
+     * @param pinResetHistory the pinResetHistory to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated pinResetHistory,
+     * or with status {@code 400 (Bad Request)} if the pinResetHistory is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the pinResetHistory couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/{id}")
-    public ResponseEntity<PINRESETHISTORY> updatePINRESETHISTORY(
+    public ResponseEntity<PinResetHistory> updatePinResetHistory(
         @PathVariable(value = "id", required = false) final Long id,
-        @Valid @RequestBody PINRESETHISTORY pINRESETHISTORY
+        @Valid @RequestBody PinResetHistory pinResetHistory
     ) throws URISyntaxException {
-        LOG.debug("REST request to update PINRESETHISTORY : {}, {}", id, pINRESETHISTORY);
-        if (pINRESETHISTORY.getId() == null) {
+        LOG.debug("REST request to update PinResetHistory : {}, {}", id, pinResetHistory);
+        if (pinResetHistory.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, pINRESETHISTORY.getId())) {
+        if (!Objects.equals(id, pinResetHistory.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!pINRESETHISTORYRepository.existsById(id)) {
+        if (!pinResetHistoryRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        pINRESETHISTORY = pINRESETHISTORYRepository.save(pINRESETHISTORY);
+        pinResetHistory = pinResetHistoryRepository.save(pinResetHistory);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, pINRESETHISTORY.getId().toString()))
-            .body(pINRESETHISTORY);
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, pinResetHistory.getId().toString()))
+            .body(pinResetHistory);
     }
 
     /**
-     * {@code PATCH  /pinresethistories/:id} : Partial updates given fields of an existing pINRESETHISTORY, field will ignore if it is null
+     * {@code PATCH  /pin-reset-histories/:id} : Partial updates given fields of an existing pinResetHistory, field will ignore if it is null
      *
-     * @param id the id of the pINRESETHISTORY to save.
-     * @param pINRESETHISTORY the pINRESETHISTORY to update.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated pINRESETHISTORY,
-     * or with status {@code 400 (Bad Request)} if the pINRESETHISTORY is not valid,
-     * or with status {@code 404 (Not Found)} if the pINRESETHISTORY is not found,
-     * or with status {@code 500 (Internal Server Error)} if the pINRESETHISTORY couldn't be updated.
+     * @param id the id of the pinResetHistory to save.
+     * @param pinResetHistory the pinResetHistory to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated pinResetHistory,
+     * or with status {@code 400 (Bad Request)} if the pinResetHistory is not valid,
+     * or with status {@code 404 (Not Found)} if the pinResetHistory is not found,
+     * or with status {@code 500 (Internal Server Error)} if the pinResetHistory couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<PINRESETHISTORY> partialUpdatePINRESETHISTORY(
+    public ResponseEntity<PinResetHistory> partialUpdatePinResetHistory(
         @PathVariable(value = "id", required = false) final Long id,
-        @NotNull @RequestBody PINRESETHISTORY pINRESETHISTORY
+        @NotNull @RequestBody PinResetHistory pinResetHistory
     ) throws URISyntaxException {
-        LOG.debug("REST request to partial update PINRESETHISTORY partially : {}, {}", id, pINRESETHISTORY);
-        if (pINRESETHISTORY.getId() == null) {
+        LOG.debug("REST request to partial update PinResetHistory partially : {}, {}", id, pinResetHistory);
+        if (pinResetHistory.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        if (!Objects.equals(id, pINRESETHISTORY.getId())) {
+        if (!Objects.equals(id, pinResetHistory.getId())) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
         }
 
-        if (!pINRESETHISTORYRepository.existsById(id)) {
+        if (!pinResetHistoryRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
         }
 
-        Optional<PINRESETHISTORY> result = pINRESETHISTORYRepository
-            .findById(pINRESETHISTORY.getId())
-            .map(existingPINRESETHISTORY -> {
-                if (pINRESETHISTORY.getpHONENUMBER() != null) {
-                    existingPINRESETHISTORY.setpHONENUMBER(pINRESETHISTORY.getpHONENUMBER());
+        Optional<PinResetHistory> result = pinResetHistoryRepository
+            .findById(pinResetHistory.getId())
+            .map(existingPinResetHistory -> {
+                if (pinResetHistory.getPhonenumber() != null) {
+                    existingPinResetHistory.setPhonenumber(pinResetHistory.getPhonenumber());
                 }
-                if (pINRESETHISTORY.getcUSTOMERNAME() != null) {
-                    existingPINRESETHISTORY.setcUSTOMERNAME(pINRESETHISTORY.getcUSTOMERNAME());
+                if (pinResetHistory.getCustomername() != null) {
+                    existingPinResetHistory.setCustomername(pinResetHistory.getCustomername());
                 }
-                if (pINRESETHISTORY.getpINBLOCKEDON() != null) {
-                    existingPINRESETHISTORY.setpINBLOCKEDON(pINRESETHISTORY.getpINBLOCKEDON());
+                if (pinResetHistory.getPinblockedon() != null) {
+                    existingPinResetHistory.setPinblockedon(pinResetHistory.getPinblockedon());
                 }
-                if (pINRESETHISTORY.getpINBLOCKREMARKS() != null) {
-                    existingPINRESETHISTORY.setpINBLOCKREMARKS(pINRESETHISTORY.getpINBLOCKREMARKS());
+                if (pinResetHistory.getPinblockremarks() != null) {
+                    existingPinResetHistory.setPinblockremarks(pinResetHistory.getPinblockremarks());
                 }
-                if (pINRESETHISTORY.getpINRESETBY() != null) {
-                    existingPINRESETHISTORY.setpINRESETBY(pINRESETHISTORY.getpINRESETBY());
+                if (pinResetHistory.getPinresetby() != null) {
+                    existingPinResetHistory.setPinresetby(pinResetHistory.getPinresetby());
                 }
-                if (pINRESETHISTORY.getpINRESETON() != null) {
-                    existingPINRESETHISTORY.setpINRESETON(pINRESETHISTORY.getpINRESETON());
+                if (pinResetHistory.getPinreseton() != null) {
+                    existingPinResetHistory.setPinreseton(pinResetHistory.getPinreseton());
                 }
-                if (pINRESETHISTORY.getpINRESETAPPROVEDBY() != null) {
-                    existingPINRESETHISTORY.setpINRESETAPPROVEDBY(pINRESETHISTORY.getpINRESETAPPROVEDBY());
+                if (pinResetHistory.getPinresetapprovedby() != null) {
+                    existingPinResetHistory.setPinresetapprovedby(pinResetHistory.getPinresetapprovedby());
                 }
-                if (pINRESETHISTORY.getpINRESETAPPROVEDON() != null) {
-                    existingPINRESETHISTORY.setpINRESETAPPROVEDON(pINRESETHISTORY.getpINRESETAPPROVEDON());
+                if (pinResetHistory.getPinresetapprovedon() != null) {
+                    existingPinResetHistory.setPinresetapprovedon(pinResetHistory.getPinresetapprovedon());
                 }
-                if (pINRESETHISTORY.getpINRESETREMARKS() != null) {
-                    existingPINRESETHISTORY.setpINRESETREMARKS(pINRESETHISTORY.getpINRESETREMARKS());
+                if (pinResetHistory.getPinresetremarks() != null) {
+                    existingPinResetHistory.setPinresetremarks(pinResetHistory.getPinresetremarks());
                 }
-                if (pINRESETHISTORY.getbRANCHCODE() != null) {
-                    existingPINRESETHISTORY.setbRANCHCODE(pINRESETHISTORY.getbRANCHCODE());
+                if (pinResetHistory.getBranchcode() != null) {
+                    existingPinResetHistory.setBranchcode(pinResetHistory.getBranchcode());
                 }
 
-                return existingPINRESETHISTORY;
+                return existingPinResetHistory;
             })
-            .map(pINRESETHISTORYRepository::save);
+            .map(pinResetHistoryRepository::save);
 
         return ResponseUtil.wrapOrNotFound(
             result,
-            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, pINRESETHISTORY.getId().toString())
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, pinResetHistory.getId().toString())
         );
     }
 
     /**
-     * {@code GET  /pinresethistories} : get all the pINRESETHISTORIES.
+     * {@code GET  /pin-reset-histories} : get all the pinResetHistories.
      *
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of pINRESETHISTORIES in body.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of pinResetHistories in body.
      */
     @GetMapping("")
-    public List<PINRESETHISTORY> getAllPINRESETHISTORIES() {
-        LOG.debug("REST request to get all PINRESETHISTORIES");
-        return pINRESETHISTORYRepository.findAll();
+    public List<PinResetHistory> getAllPinResetHistories() {
+        LOG.debug("REST request to get all PinResetHistories");
+        return pinResetHistoryRepository.findAll();
     }
 
     /**
-     * {@code GET  /pinresethistories/:id} : get the "id" pINRESETHISTORY.
+     * {@code GET  /pin-reset-histories/:id} : get the "id" pinResetHistory.
      *
-     * @param id the id of the pINRESETHISTORY to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the pINRESETHISTORY, or with status {@code 404 (Not Found)}.
+     * @param id the id of the pinResetHistory to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the pinResetHistory, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/{id}")
-    public ResponseEntity<PINRESETHISTORY> getPINRESETHISTORY(@PathVariable("id") Long id) {
-        LOG.debug("REST request to get PINRESETHISTORY : {}", id);
-        Optional<PINRESETHISTORY> pINRESETHISTORY = pINRESETHISTORYRepository.findById(id);
-        return ResponseUtil.wrapOrNotFound(pINRESETHISTORY);
+    public ResponseEntity<PinResetHistory> getPinResetHistory(@PathVariable("id") Long id) {
+        LOG.debug("REST request to get PinResetHistory : {}", id);
+        Optional<PinResetHistory> pinResetHistory = pinResetHistoryRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(pinResetHistory);
     }
 
     /**
-     * {@code DELETE  /pinresethistories/:id} : delete the "id" pINRESETHISTORY.
+     * {@code DELETE  /pin-reset-histories/:id} : delete the "id" pinResetHistory.
      *
-     * @param id the id of the pINRESETHISTORY to delete.
+     * @param id the id of the pinResetHistory to delete.
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePINRESETHISTORY(@PathVariable("id") Long id) {
-        LOG.debug("REST request to delete PINRESETHISTORY : {}", id);
-        pINRESETHISTORYRepository.deleteById(id);
+    public ResponseEntity<Void> deletePinResetHistory(@PathVariable("id") Long id) {
+        LOG.debug("REST request to delete PinResetHistory : {}", id);
+        pinResetHistoryRepository.deleteById(id);
         return ResponseEntity.noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();

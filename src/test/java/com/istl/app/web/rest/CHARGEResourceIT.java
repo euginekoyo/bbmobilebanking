@@ -1,6 +1,6 @@
 package com.istl.app.web.rest;
 
-import static com.istl.app.domain.CHARGEAsserts.*;
+import static com.istl.app.domain.ChargeAsserts.*;
 import static com.istl.app.web.rest.TestUtil.createUpdateProxyForBean;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.hasItem;
@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.CHARGE;
-import com.istl.app.repository.CHARGERepository;
+import com.istl.app.domain.Charge;
+import com.istl.app.repository.ChargeRepository;
 import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -27,45 +27,45 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Integration tests for the {@link CHARGEResource} REST controller.
+ * Integration tests for the {@link ChargeResource} REST controller.
  */
 @IntegrationTest
 @AutoConfigureMockMvc
 @WithMockUser
-class CHARGEResourceIT {
+class ChargeResourceIT {
 
-    private static final String DEFAULT_T_XNTYPE = "AAAAAAAAAA";
-    private static final String UPDATED_T_XNTYPE = "BBBBBBBBBB";
+    private static final String DEFAULT_TXNTYPE = "AAAAAAAAAA";
+    private static final String UPDATED_TXNTYPE = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_F_EEMODE = 1L;
-    private static final Long UPDATED_F_EEMODE = 2L;
+    private static final Long DEFAULT_FEEMODE = 1L;
+    private static final Long UPDATED_FEEMODE = 2L;
 
-    private static final Long DEFAULT_A_MOUNT = 1L;
-    private static final Long UPDATED_A_MOUNT = 2L;
+    private static final Long DEFAULT_AMOUNT = 1L;
+    private static final Long UPDATED_AMOUNT = 2L;
 
-    private static final Instant DEFAULT_D_ATECREATED = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_D_ATECREATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_DATECREATED = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_DATECREATED = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final String DEFAULT_C_REATEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_C_REATEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_CREATEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_CREATEDBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_A_PPROVED = "AAAAAAAAAA";
-    private static final String UPDATED_A_PPROVED = "BBBBBBBBBB";
+    private static final String DEFAULT_APPROVED = "AAAAAAAAAA";
+    private static final String UPDATED_APPROVED = "BBBBBBBBBB";
 
-    private static final String DEFAULT_A_PPROVEDBY = "AAAAAAAAAA";
-    private static final String UPDATED_A_PPROVEDBY = "BBBBBBBBBB";
+    private static final String DEFAULT_APPROVEDBY = "AAAAAAAAAA";
+    private static final String UPDATED_APPROVEDBY = "BBBBBBBBBB";
 
-    private static final String DEFAULT_C_HANNEL = "AAAAAAAAAA";
-    private static final String UPDATED_C_HANNEL = "BBBBBBBBBB";
+    private static final String DEFAULT_CHANNEL = "AAAAAAAAAA";
+    private static final String UPDATED_CHANNEL = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_T_XNCODE = 1L;
-    private static final Long UPDATED_T_XNCODE = 2L;
+    private static final Long DEFAULT_TXNCODE = 1L;
+    private static final Long UPDATED_TXNCODE = 2L;
 
-    private static final String DEFAULT_D_ESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_D_ESCRIPTION = "BBBBBBBBBB";
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final Instant DEFAULT_A_PPROVEDDATE = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_A_PPROVEDDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_APPROVEDDATE = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_APPROVEDDATE = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final String ENTITY_API_URL = "/api/charges";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -77,17 +77,17 @@ class CHARGEResourceIT {
     private ObjectMapper om;
 
     @Autowired
-    private CHARGERepository cHARGERepository;
+    private ChargeRepository chargeRepository;
 
     @Autowired
     private EntityManager em;
 
     @Autowired
-    private MockMvc restCHARGEMockMvc;
+    private MockMvc restChargeMockMvc;
 
-    private CHARGE cHARGE;
+    private Charge charge;
 
-    private CHARGE insertedCHARGE;
+    private Charge insertedCharge;
 
     /**
      * Create an entity for this test.
@@ -95,19 +95,19 @@ class CHARGEResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CHARGE createEntity() {
-        return new CHARGE()
-            .tXNTYPE(DEFAULT_T_XNTYPE)
-            .fEEMODE(DEFAULT_F_EEMODE)
-            .aMOUNT(DEFAULT_A_MOUNT)
-            .dATECREATED(DEFAULT_D_ATECREATED)
-            .cREATEDBY(DEFAULT_C_REATEDBY)
-            .aPPROVED(DEFAULT_A_PPROVED)
-            .aPPROVEDBY(DEFAULT_A_PPROVEDBY)
-            .cHANNEL(DEFAULT_C_HANNEL)
-            .tXNCODE(DEFAULT_T_XNCODE)
-            .dESCRIPTION(DEFAULT_D_ESCRIPTION)
-            .aPPROVEDDATE(DEFAULT_A_PPROVEDDATE);
+    public static Charge createEntity() {
+        return new Charge()
+            .txntype(DEFAULT_TXNTYPE)
+            .feemode(DEFAULT_FEEMODE)
+            .amount(DEFAULT_AMOUNT)
+            .datecreated(DEFAULT_DATECREATED)
+            .createdby(DEFAULT_CREATEDBY)
+            .approved(DEFAULT_APPROVED)
+            .approvedby(DEFAULT_APPROVEDBY)
+            .channel(DEFAULT_CHANNEL)
+            .txncode(DEFAULT_TXNCODE)
+            .description(DEFAULT_DESCRIPTION)
+            .approveddate(DEFAULT_APPROVEDDATE);
     }
 
     /**
@@ -116,84 +116,84 @@ class CHARGEResourceIT {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static CHARGE createUpdatedEntity() {
-        return new CHARGE()
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .fEEMODE(UPDATED_F_EEMODE)
-            .aMOUNT(UPDATED_A_MOUNT)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .tXNCODE(UPDATED_T_XNCODE)
-            .dESCRIPTION(UPDATED_D_ESCRIPTION)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE);
+    public static Charge createUpdatedEntity() {
+        return new Charge()
+            .txntype(UPDATED_TXNTYPE)
+            .feemode(UPDATED_FEEMODE)
+            .amount(UPDATED_AMOUNT)
+            .datecreated(UPDATED_DATECREATED)
+            .createdby(UPDATED_CREATEDBY)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .channel(UPDATED_CHANNEL)
+            .txncode(UPDATED_TXNCODE)
+            .description(UPDATED_DESCRIPTION)
+            .approveddate(UPDATED_APPROVEDDATE);
     }
 
     @BeforeEach
     public void initTest() {
-        cHARGE = createEntity();
+        charge = createEntity();
     }
 
     @AfterEach
     public void cleanup() {
-        if (insertedCHARGE != null) {
-            cHARGERepository.delete(insertedCHARGE);
-            insertedCHARGE = null;
+        if (insertedCharge != null) {
+            chargeRepository.delete(insertedCharge);
+            insertedCharge = null;
         }
     }
 
     @Test
     @Transactional
-    void createCHARGE() throws Exception {
+    void createCharge() throws Exception {
         long databaseSizeBeforeCreate = getRepositoryCount();
-        // Create the CHARGE
-        var returnedCHARGE = om.readValue(
-            restCHARGEMockMvc
-                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cHARGE)))
+        // Create the Charge
+        var returnedCharge = om.readValue(
+            restChargeMockMvc
+                .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(charge)))
                 .andExpect(status().isCreated())
                 .andReturn()
                 .getResponse()
                 .getContentAsString(),
-            CHARGE.class
+            Charge.class
         );
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
         assertIncrementedRepositoryCount(databaseSizeBeforeCreate);
-        assertCHARGEUpdatableFieldsEquals(returnedCHARGE, getPersistedCHARGE(returnedCHARGE));
+        assertChargeUpdatableFieldsEquals(returnedCharge, getPersistedCharge(returnedCharge));
 
-        insertedCHARGE = returnedCHARGE;
+        insertedCharge = returnedCharge;
     }
 
     @Test
     @Transactional
-    void createCHARGEWithExistingId() throws Exception {
-        // Create the CHARGE with an existing ID
-        cHARGE.setId(1L);
+    void createChargeWithExistingId() throws Exception {
+        // Create the Charge with an existing ID
+        charge.setId(1L);
 
         long databaseSizeBeforeCreate = getRepositoryCount();
 
         // An entity with an existing ID cannot be created, so this API call must fail
-        restCHARGEMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cHARGE)))
+        restChargeMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(charge)))
             .andExpect(status().isBadRequest());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
         assertSameRepositoryCount(databaseSizeBeforeCreate);
     }
 
     @Test
     @Transactional
-    void checktXNTYPEIsRequired() throws Exception {
+    void checkTxntypeIsRequired() throws Exception {
         long databaseSizeBeforeTest = getRepositoryCount();
         // set the field null
-        cHARGE.settXNTYPE(null);
+        charge.setTxntype(null);
 
-        // Create the CHARGE, which fails.
+        // Create the Charge, which fails.
 
-        restCHARGEMockMvc
-            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cHARGE)))
+        restChargeMockMvc
+            .perform(post(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(charge)))
             .andExpect(status().isBadRequest());
 
         assertSameRepositoryCount(databaseSizeBeforeTest);
@@ -201,283 +201,284 @@ class CHARGEResourceIT {
 
     @Test
     @Transactional
-    void getAllCHARGES() throws Exception {
+    void getAllCharges() throws Exception {
         // Initialize the database
-        insertedCHARGE = cHARGERepository.saveAndFlush(cHARGE);
+        insertedCharge = chargeRepository.saveAndFlush(charge);
 
-        // Get all the cHARGEList
-        restCHARGEMockMvc
+        // Get all the chargeList
+        restChargeMockMvc
             .perform(get(ENTITY_API_URL + "?sort=id,desc"))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.[*].id").value(hasItem(cHARGE.getId().intValue())))
-            .andExpect(jsonPath("$.[*].tXNTYPE").value(hasItem(DEFAULT_T_XNTYPE)))
-            .andExpect(jsonPath("$.[*].fEEMODE").value(hasItem(DEFAULT_F_EEMODE.intValue())))
-            .andExpect(jsonPath("$.[*].aMOUNT").value(hasItem(DEFAULT_A_MOUNT.intValue())))
-            .andExpect(jsonPath("$.[*].dATECREATED").value(hasItem(DEFAULT_D_ATECREATED.toString())))
-            .andExpect(jsonPath("$.[*].cREATEDBY").value(hasItem(DEFAULT_C_REATEDBY)))
-            .andExpect(jsonPath("$.[*].aPPROVED").value(hasItem(DEFAULT_A_PPROVED)))
-            .andExpect(jsonPath("$.[*].aPPROVEDBY").value(hasItem(DEFAULT_A_PPROVEDBY)))
-            .andExpect(jsonPath("$.[*].cHANNEL").value(hasItem(DEFAULT_C_HANNEL)))
-            .andExpect(jsonPath("$.[*].tXNCODE").value(hasItem(DEFAULT_T_XNCODE.intValue())))
-            .andExpect(jsonPath("$.[*].dESCRIPTION").value(hasItem(DEFAULT_D_ESCRIPTION)))
-            .andExpect(jsonPath("$.[*].aPPROVEDDATE").value(hasItem(DEFAULT_A_PPROVEDDATE.toString())));
+            .andExpect(jsonPath("$.[*].id").value(hasItem(charge.getId().intValue())))
+            .andExpect(jsonPath("$.[*].txntype").value(hasItem(DEFAULT_TXNTYPE)))
+            .andExpect(jsonPath("$.[*].feemode").value(hasItem(DEFAULT_FEEMODE.intValue())))
+            .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.intValue())))
+            .andExpect(jsonPath("$.[*].datecreated").value(hasItem(DEFAULT_DATECREATED.toString())))
+            .andExpect(jsonPath("$.[*].createdby").value(hasItem(DEFAULT_CREATEDBY)))
+            .andExpect(jsonPath("$.[*].approved").value(hasItem(DEFAULT_APPROVED)))
+            .andExpect(jsonPath("$.[*].approvedby").value(hasItem(DEFAULT_APPROVEDBY)))
+            .andExpect(jsonPath("$.[*].channel").value(hasItem(DEFAULT_CHANNEL)))
+            .andExpect(jsonPath("$.[*].txncode").value(hasItem(DEFAULT_TXNCODE.intValue())))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)))
+            .andExpect(jsonPath("$.[*].approveddate").value(hasItem(DEFAULT_APPROVEDDATE.toString())));
     }
 
     @Test
     @Transactional
-    void getCHARGE() throws Exception {
+    void getCharge() throws Exception {
         // Initialize the database
-        insertedCHARGE = cHARGERepository.saveAndFlush(cHARGE);
+        insertedCharge = chargeRepository.saveAndFlush(charge);
 
-        // Get the cHARGE
-        restCHARGEMockMvc
-            .perform(get(ENTITY_API_URL_ID, cHARGE.getId()))
+        // Get the charge
+        restChargeMockMvc
+            .perform(get(ENTITY_API_URL_ID, charge.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
-            .andExpect(jsonPath("$.id").value(cHARGE.getId().intValue()))
-            .andExpect(jsonPath("$.tXNTYPE").value(DEFAULT_T_XNTYPE))
-            .andExpect(jsonPath("$.fEEMODE").value(DEFAULT_F_EEMODE.intValue()))
-            .andExpect(jsonPath("$.aMOUNT").value(DEFAULT_A_MOUNT.intValue()))
-            .andExpect(jsonPath("$.dATECREATED").value(DEFAULT_D_ATECREATED.toString()))
-            .andExpect(jsonPath("$.cREATEDBY").value(DEFAULT_C_REATEDBY))
-            .andExpect(jsonPath("$.aPPROVED").value(DEFAULT_A_PPROVED))
-            .andExpect(jsonPath("$.aPPROVEDBY").value(DEFAULT_A_PPROVEDBY))
-            .andExpect(jsonPath("$.cHANNEL").value(DEFAULT_C_HANNEL))
-            .andExpect(jsonPath("$.tXNCODE").value(DEFAULT_T_XNCODE.intValue()))
-            .andExpect(jsonPath("$.dESCRIPTION").value(DEFAULT_D_ESCRIPTION))
-            .andExpect(jsonPath("$.aPPROVEDDATE").value(DEFAULT_A_PPROVEDDATE.toString()));
+            .andExpect(jsonPath("$.id").value(charge.getId().intValue()))
+            .andExpect(jsonPath("$.txntype").value(DEFAULT_TXNTYPE))
+            .andExpect(jsonPath("$.feemode").value(DEFAULT_FEEMODE.intValue()))
+            .andExpect(jsonPath("$.amount").value(DEFAULT_AMOUNT.intValue()))
+            .andExpect(jsonPath("$.datecreated").value(DEFAULT_DATECREATED.toString()))
+            .andExpect(jsonPath("$.createdby").value(DEFAULT_CREATEDBY))
+            .andExpect(jsonPath("$.approved").value(DEFAULT_APPROVED))
+            .andExpect(jsonPath("$.approvedby").value(DEFAULT_APPROVEDBY))
+            .andExpect(jsonPath("$.channel").value(DEFAULT_CHANNEL))
+            .andExpect(jsonPath("$.txncode").value(DEFAULT_TXNCODE.intValue()))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION))
+            .andExpect(jsonPath("$.approveddate").value(DEFAULT_APPROVEDDATE.toString()));
     }
 
     @Test
     @Transactional
-    void getNonExistingCHARGE() throws Exception {
-        // Get the cHARGE
-        restCHARGEMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
+    void getNonExistingCharge() throws Exception {
+        // Get the charge
+        restChargeMockMvc.perform(get(ENTITY_API_URL_ID, Long.MAX_VALUE)).andExpect(status().isNotFound());
     }
 
     @Test
     @Transactional
-    void putExistingCHARGE() throws Exception {
+    void putExistingCharge() throws Exception {
         // Initialize the database
-        insertedCHARGE = cHARGERepository.saveAndFlush(cHARGE);
+        insertedCharge = chargeRepository.saveAndFlush(charge);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the cHARGE
-        CHARGE updatedCHARGE = cHARGERepository.findById(cHARGE.getId()).orElseThrow();
-        // Disconnect from session so that the updates on updatedCHARGE are not directly saved in db
-        em.detach(updatedCHARGE);
-        updatedCHARGE
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .fEEMODE(UPDATED_F_EEMODE)
-            .aMOUNT(UPDATED_A_MOUNT)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .tXNCODE(UPDATED_T_XNCODE)
-            .dESCRIPTION(UPDATED_D_ESCRIPTION)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE);
+        // Update the charge
+        Charge updatedCharge = chargeRepository.findById(charge.getId()).orElseThrow();
+        // Disconnect from session so that the updates on updatedCharge are not directly saved in db
+        em.detach(updatedCharge);
+        updatedCharge
+            .txntype(UPDATED_TXNTYPE)
+            .feemode(UPDATED_FEEMODE)
+            .amount(UPDATED_AMOUNT)
+            .datecreated(UPDATED_DATECREATED)
+            .createdby(UPDATED_CREATEDBY)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .channel(UPDATED_CHANNEL)
+            .txncode(UPDATED_TXNCODE)
+            .description(UPDATED_DESCRIPTION)
+            .approveddate(UPDATED_APPROVEDDATE);
 
-        restCHARGEMockMvc
+        restChargeMockMvc
             .perform(
-                put(ENTITY_API_URL_ID, updatedCHARGE.getId())
+                put(ENTITY_API_URL_ID, updatedCharge.getId())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(updatedCHARGE))
+                    .content(om.writeValueAsBytes(updatedCharge))
             )
             .andExpect(status().isOk());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertPersistedCHARGEToMatchAllProperties(updatedCHARGE);
+        assertPersistedChargeToMatchAllProperties(updatedCharge);
     }
 
     @Test
     @Transactional
-    void putNonExistingCHARGE() throws Exception {
+    void putNonExistingCharge() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cHARGE.setId(longCount.incrementAndGet());
+        charge.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restCHARGEMockMvc
-            .perform(put(ENTITY_API_URL_ID, cHARGE.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cHARGE)))
+        restChargeMockMvc
+            .perform(put(ENTITY_API_URL_ID, charge.getId()).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(charge)))
             .andExpect(status().isBadRequest());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithIdMismatchCHARGE() throws Exception {
+    void putWithIdMismatchCharge() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cHARGE.setId(longCount.incrementAndGet());
+        charge.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restCHARGEMockMvc
+        restChargeMockMvc
             .perform(
                 put(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .content(om.writeValueAsBytes(cHARGE))
+                    .content(om.writeValueAsBytes(charge))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void putWithMissingIdPathParamCHARGE() throws Exception {
+    void putWithMissingIdPathParamCharge() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cHARGE.setId(longCount.incrementAndGet());
+        charge.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restCHARGEMockMvc
-            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(cHARGE)))
+        restChargeMockMvc
+            .perform(put(ENTITY_API_URL).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsBytes(charge)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void partialUpdateCHARGEWithPatch() throws Exception {
+    void partialUpdateChargeWithPatch() throws Exception {
         // Initialize the database
-        insertedCHARGE = cHARGERepository.saveAndFlush(cHARGE);
+        insertedCharge = chargeRepository.saveAndFlush(charge);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the cHARGE using partial update
-        CHARGE partialUpdatedCHARGE = new CHARGE();
-        partialUpdatedCHARGE.setId(cHARGE.getId());
+        // Update the charge using partial update
+        Charge partialUpdatedCharge = new Charge();
+        partialUpdatedCharge.setId(charge.getId());
 
-        partialUpdatedCHARGE
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .aMOUNT(UPDATED_A_MOUNT)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .dESCRIPTION(UPDATED_D_ESCRIPTION);
+        partialUpdatedCharge
+            .feemode(UPDATED_FEEMODE)
+            .amount(UPDATED_AMOUNT)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .channel(UPDATED_CHANNEL)
+            .txncode(UPDATED_TXNCODE)
+            .description(UPDATED_DESCRIPTION);
 
-        restCHARGEMockMvc
+        restChargeMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedCHARGE.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedCharge.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedCHARGE))
+                    .content(om.writeValueAsBytes(partialUpdatedCharge))
             )
             .andExpect(status().isOk());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertCHARGEUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedCHARGE, cHARGE), getPersistedCHARGE(cHARGE));
+        assertChargeUpdatableFieldsEquals(createUpdateProxyForBean(partialUpdatedCharge, charge), getPersistedCharge(charge));
     }
 
     @Test
     @Transactional
-    void fullUpdateCHARGEWithPatch() throws Exception {
+    void fullUpdateChargeWithPatch() throws Exception {
         // Initialize the database
-        insertedCHARGE = cHARGERepository.saveAndFlush(cHARGE);
+        insertedCharge = chargeRepository.saveAndFlush(charge);
 
         long databaseSizeBeforeUpdate = getRepositoryCount();
 
-        // Update the cHARGE using partial update
-        CHARGE partialUpdatedCHARGE = new CHARGE();
-        partialUpdatedCHARGE.setId(cHARGE.getId());
+        // Update the charge using partial update
+        Charge partialUpdatedCharge = new Charge();
+        partialUpdatedCharge.setId(charge.getId());
 
-        partialUpdatedCHARGE
-            .tXNTYPE(UPDATED_T_XNTYPE)
-            .fEEMODE(UPDATED_F_EEMODE)
-            .aMOUNT(UPDATED_A_MOUNT)
-            .dATECREATED(UPDATED_D_ATECREATED)
-            .cREATEDBY(UPDATED_C_REATEDBY)
-            .aPPROVED(UPDATED_A_PPROVED)
-            .aPPROVEDBY(UPDATED_A_PPROVEDBY)
-            .cHANNEL(UPDATED_C_HANNEL)
-            .tXNCODE(UPDATED_T_XNCODE)
-            .dESCRIPTION(UPDATED_D_ESCRIPTION)
-            .aPPROVEDDATE(UPDATED_A_PPROVEDDATE);
+        partialUpdatedCharge
+            .txntype(UPDATED_TXNTYPE)
+            .feemode(UPDATED_FEEMODE)
+            .amount(UPDATED_AMOUNT)
+            .datecreated(UPDATED_DATECREATED)
+            .createdby(UPDATED_CREATEDBY)
+            .approved(UPDATED_APPROVED)
+            .approvedby(UPDATED_APPROVEDBY)
+            .channel(UPDATED_CHANNEL)
+            .txncode(UPDATED_TXNCODE)
+            .description(UPDATED_DESCRIPTION)
+            .approveddate(UPDATED_APPROVEDDATE);
 
-        restCHARGEMockMvc
+        restChargeMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, partialUpdatedCHARGE.getId())
+                patch(ENTITY_API_URL_ID, partialUpdatedCharge.getId())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(partialUpdatedCHARGE))
+                    .content(om.writeValueAsBytes(partialUpdatedCharge))
             )
             .andExpect(status().isOk());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
 
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
-        assertCHARGEUpdatableFieldsEquals(partialUpdatedCHARGE, getPersistedCHARGE(partialUpdatedCHARGE));
+        assertChargeUpdatableFieldsEquals(partialUpdatedCharge, getPersistedCharge(partialUpdatedCharge));
     }
 
     @Test
     @Transactional
-    void patchNonExistingCHARGE() throws Exception {
+    void patchNonExistingCharge() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cHARGE.setId(longCount.incrementAndGet());
+        charge.setId(longCount.incrementAndGet());
 
         // If the entity doesn't have an ID, it will throw BadRequestAlertException
-        restCHARGEMockMvc
+        restChargeMockMvc
             .perform(
-                patch(ENTITY_API_URL_ID, cHARGE.getId()).contentType("application/merge-patch+json").content(om.writeValueAsBytes(cHARGE))
+                patch(ENTITY_API_URL_ID, charge.getId()).contentType("application/merge-patch+json").content(om.writeValueAsBytes(charge))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithIdMismatchCHARGE() throws Exception {
+    void patchWithIdMismatchCharge() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cHARGE.setId(longCount.incrementAndGet());
+        charge.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restCHARGEMockMvc
+        restChargeMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, longCount.incrementAndGet())
                     .contentType("application/merge-patch+json")
-                    .content(om.writeValueAsBytes(cHARGE))
+                    .content(om.writeValueAsBytes(charge))
             )
             .andExpect(status().isBadRequest());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void patchWithMissingIdPathParamCHARGE() throws Exception {
+    void patchWithMissingIdPathParamCharge() throws Exception {
         long databaseSizeBeforeUpdate = getRepositoryCount();
-        cHARGE.setId(longCount.incrementAndGet());
+        charge.setId(longCount.incrementAndGet());
 
         // If url ID doesn't match entity ID, it will throw BadRequestAlertException
-        restCHARGEMockMvc
-            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(cHARGE)))
+        restChargeMockMvc
+            .perform(patch(ENTITY_API_URL).contentType("application/merge-patch+json").content(om.writeValueAsBytes(charge)))
             .andExpect(status().isMethodNotAllowed());
 
-        // Validate the CHARGE in the database
+        // Validate the Charge in the database
         assertSameRepositoryCount(databaseSizeBeforeUpdate);
     }
 
     @Test
     @Transactional
-    void deleteCHARGE() throws Exception {
+    void deleteCharge() throws Exception {
         // Initialize the database
-        insertedCHARGE = cHARGERepository.saveAndFlush(cHARGE);
+        insertedCharge = chargeRepository.saveAndFlush(charge);
 
         long databaseSizeBeforeDelete = getRepositoryCount();
 
-        // Delete the cHARGE
-        restCHARGEMockMvc
-            .perform(delete(ENTITY_API_URL_ID, cHARGE.getId()).accept(MediaType.APPLICATION_JSON))
+        // Delete the charge
+        restChargeMockMvc
+            .perform(delete(ENTITY_API_URL_ID, charge.getId()).accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isNoContent());
 
         // Validate the database contains one less item
@@ -485,7 +486,7 @@ class CHARGEResourceIT {
     }
 
     protected long getRepositoryCount() {
-        return cHARGERepository.count();
+        return chargeRepository.count();
     }
 
     protected void assertIncrementedRepositoryCount(long countBefore) {
@@ -500,15 +501,15 @@ class CHARGEResourceIT {
         assertThat(countBefore).isEqualTo(getRepositoryCount());
     }
 
-    protected CHARGE getPersistedCHARGE(CHARGE cHARGE) {
-        return cHARGERepository.findById(cHARGE.getId()).orElseThrow();
+    protected Charge getPersistedCharge(Charge charge) {
+        return chargeRepository.findById(charge.getId()).orElseThrow();
     }
 
-    protected void assertPersistedCHARGEToMatchAllProperties(CHARGE expectedCHARGE) {
-        assertCHARGEAllPropertiesEquals(expectedCHARGE, getPersistedCHARGE(expectedCHARGE));
+    protected void assertPersistedChargeToMatchAllProperties(Charge expectedCharge) {
+        assertChargeAllPropertiesEquals(expectedCharge, getPersistedCharge(expectedCharge));
     }
 
-    protected void assertPersistedCHARGEToMatchUpdatableProperties(CHARGE expectedCHARGE) {
-        assertCHARGEAllUpdatablePropertiesEquals(expectedCHARGE, getPersistedCHARGE(expectedCHARGE));
+    protected void assertPersistedChargeToMatchUpdatableProperties(Charge expectedCharge) {
+        assertChargeAllUpdatablePropertiesEquals(expectedCharge, getPersistedCharge(expectedCharge));
     }
 }
