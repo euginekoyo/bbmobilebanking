@@ -1,21 +1,5 @@
 <template>
   <div>
-    <b-dropdown-item to="/cbs-transactions">
-      <font-awesome-icon icon="asterisk" />
-      <span v-text="t$('global.menu.entities.cbsTransactions')"></span>
-    </b-dropdown-item>
-    <b-dropdown-item to="/sps-incoming-transactions">
-      <font-awesome-icon icon="asterisk" />
-      <span v-text="t$('global.menu.entities.spsIncomingTransactions')"></span>
-    </b-dropdown-item>
-    <b-dropdown-item to="/sps-outgoing-transactions">
-      <font-awesome-icon icon="asterisk" />
-      <span v-text="t$('global.menu.entities.spsOutgoingTransactions')"></span>
-    </b-dropdown-item>
-    <b-dropdown-item to="/sps-participating-codes">
-      <font-awesome-icon icon="asterisk" />
-      <span v-text="t$('global.menu.entities.spsParticipatingCodes')"></span>
-    </b-dropdown-item>
     <b-dropdown-item to="/billers">
       <font-awesome-icon icon="asterisk" />
       <span v-text="t$('global.menu.entities.billers')"></span>
@@ -68,10 +52,7 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="t$('global.menu.entities.serviceManagement')"></span>
     </b-dropdown-item>
-    <b-dropdown-item to="/transactions">
-      <font-awesome-icon icon="asterisk" />
-      <span v-text="t$('global.menu.entities.transactions')"></span>
-    </b-dropdown-item>
+
     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
   </div>
 </template>

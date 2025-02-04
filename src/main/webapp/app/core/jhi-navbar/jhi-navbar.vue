@@ -34,6 +34,27 @@
           <entities-menu></entities-menu>
           <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
         </b-nav-item-dropdown>
+
+        <b-nav-item-dropdown right id="txn-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
+          <template #button-content>
+            <span class="navbar-dropdown-menu">
+              <font-awesome-icon icon="th-list" />
+              <span class="no-bold" v-text="t$('global.menu.entities.txn')"></span>
+            </span>
+          </template>
+          <txn-menu></txn-menu>
+        </b-nav-item-dropdown>
+
+        <b-nav-item-dropdown right id="recon-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
+          <template #button-content>
+            <span class="navbar-dropdown-menu">
+              <font-awesome-icon icon="th-list" />
+              <span class="no-bold" v-text="t$('global.menu.entities.recon')"></span>
+            </span>
+          </template>
+          <recon-menu></recon-menu>
+        </b-nav-item-dropdown>
+
         <b-nav-item-dropdown
           right
           id="admin-menu"

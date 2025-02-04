@@ -5,6 +5,8 @@ import type LoginService from '@/account/login.service';
 import type AccountService from '@/account/account.service';
 import languages from '@/shared/config/languages';
 import EntitiesMenu from '@/entities/entities-menu.vue';
+import TxnMenu from '@/entities/txn-menu.vue';
+import ReconMenu from '@/entities/recon-menu.vue';
 
 import { useStore } from '@/store';
 
@@ -13,6 +15,8 @@ export default defineComponent({
   name: 'JhiNavbar',
   components: {
     'entities-menu': EntitiesMenu,
+    'recon-menu': ReconMenu,
+    'txn-menu': TxnMenu,
   },
   setup() {
     const loginService = inject<LoginService>('loginService');
