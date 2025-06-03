@@ -38,9 +38,33 @@ export default defineComponent({
       ...dateFormat,
       alertService,
       charge,
-
+      chargeService,
       previousState,
       t$: useI18n().t,
     };
+  },
+  methods: {
+    approve(): void {
+      this.chargeService()
+        .approve(this.charge)
+        .then(param => {
+          this.previousState();
+          this.alertService.showInfo(this.t$('bbMobileBankingAdminApp.charge.updated', { param: param.id }));
+        })
+        .catch(error => {
+          this.alertService.showHttpError(error.response);
+        });
+    },
+    reject(): void {
+      this.chargeService()
+        .reject(this.charge)
+        .then(param => {
+          this.previousState();
+          this.alertService.showInfo(this.t$('bbMobileBankingAdminApp.charge.updated', { param: param.id }));
+        })
+        .catch(error => {
+          this.alertService.showHttpError(error.response);
+        });
+    },
   },
 });

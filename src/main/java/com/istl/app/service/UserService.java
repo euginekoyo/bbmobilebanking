@@ -1,10 +1,10 @@
 package com.istl.app.service;
 
 import com.istl.app.config.Constants;
-import com.istl.app.domain.Authority;
-import com.istl.app.domain.User;
-import com.istl.app.repository.AuthorityRepository;
-import com.istl.app.repository.UserRepository;
+import com.istl.app.domain.mobileapp.Authority;
+import com.istl.app.domain.mobileapp.User;
+import com.istl.app.repository.mobileapp.AuthorityRepository;
+import com.istl.app.repository.mobileapp.UserRepository;
 import com.istl.app.security.AuthoritiesConstants;
 import com.istl.app.security.SecurityUtils;
 import com.istl.app.service.dto.AdminUserDTO;

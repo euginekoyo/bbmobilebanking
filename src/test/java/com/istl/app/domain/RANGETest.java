@@ -4,6 +4,8 @@ import static com.istl.app.domain.ChargeTestSamples.*;
 import static com.istl.app.domain.RangeTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.istl.app.domain.mobileapp.Charge;
+import com.istl.app.domain.mobileapp.Range;
 import com.istl.app.web.rest.TestUtil;
 import java.util.HashSet;
 import java.util.Set;

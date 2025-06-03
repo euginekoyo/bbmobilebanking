@@ -17,6 +17,7 @@ export default defineComponent({
 
     const route = useRoute();
     const router = useRouter();
+    const isSaving = ref(false);
 
     const previousState = () => router.go(-1);
     const branches: Ref<IBranches> = ref({});
@@ -38,9 +39,39 @@ export default defineComponent({
       ...dateFormat,
       alertService,
       branches,
-
+      branchesService,
       previousState,
+      isSaving,
       t$: useI18n().t,
     };
+  },
+  created(): void {},
+  methods: {
+    approve(): void {
+      this.branchesService()
+        .approve(this.branches)
+        .then(param => {
+          this.isSaving = false;
+          this.previousState();
+          this.alertService.showInfo(this.t$('bbMobileBankingAdminApp.branches.updated', { param: param.id }));
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService.showHttpError(error.response);
+        });
+    },
+    reject(): void {
+      this.branchesService()
+        .reject(this.branches)
+        .then(param => {
+          this.isSaving = false;
+          this.previousState();
+          this.alertService.showInfo(this.t$('bbMobileBankingAdminApp.branches.updated', { param: param.id }));
+        })
+        .catch(error => {
+          this.isSaving = false;
+          this.alertService.showHttpError(error.response);
+        });
+    },
   },
 });

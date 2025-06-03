@@ -82,4 +82,30 @@ export default class LimitsService {
         });
     });
   }
+
+  public approve(entity: ILimits): Promise<ILimits> {
+    return new Promise<ILimits>((resolve, reject) => {
+      axios
+        .patch(`${baseApiUrl}/approve/${entity.id}`, entity)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public reject(entity: ILimits): Promise<ILimits> {
+    return new Promise<ILimits>((resolve, reject) => {
+      axios
+        .patch(`${baseApiUrl}/reject/${entity.id}`, entity)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }

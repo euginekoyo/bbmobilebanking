@@ -7,7 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="t$('bbMobileBankingAdminApp.cBSTransactions.home.refreshListLabel')"></span>
         </button>
-        <router-link :to="{ name: 'CBSTransactionsCreate' }" custom v-slot="{ navigate }">
+        <!-- <router-link :to="{ name: 'CBSTransactionsCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -17,7 +17,7 @@
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span v-text="t$('bbMobileBankingAdminApp.cBSTransactions.home.createLabel')"></span>
           </button>
-        </router-link>
+        </router-link> -->
       </div>
     </h2>
     <br />
@@ -45,9 +45,6 @@
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.cBSTransactions.cbsstatus')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.cBSTransactions.cbsstatusdesc')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.cBSTransactions.requestInstanttime')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.cBSTransactions.requestjson')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.cBSTransactions.cbsrequestxml')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.cBSTransactions.cbsresponsexml')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.cBSTransactions.amount')"></span></th>
             <th scope="row"></th>
           </tr>
@@ -75,9 +72,6 @@
             <td>{{ cBSTransactions.cbsstatus }}</td>
             <td>{{ cBSTransactions.cbsstatusdesc }}</td>
             <td>{{ formatDateShort(cBSTransactions.requestInstanttime) || '' }}</td>
-            <td>{{ cBSTransactions.requestjson }}</td>
-            <td>{{ cBSTransactions.cbsrequestxml }}</td>
-            <td>{{ cBSTransactions.cbsresponsexml }}</td>
             <td>{{ cBSTransactions.amount }}</td>
             <td class="text-right">
               <div class="btn-group">
@@ -91,7 +85,7 @@
                     <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>
                   </button>
                 </router-link>
-                <router-link
+                <!-- <router-link
                   :to="{ name: 'CBSTransactionsEdit', params: { cBSTransactionsId: cBSTransactions.id } }"
                   custom
                   v-slot="{ navigate }"
@@ -100,8 +94,8 @@
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="t$('entity.action.edit')"></span>
                   </button>
-                </router-link>
-                <b-button
+                </router-link> -->
+                <!-- <b-button
                   @click="prepareRemove(cBSTransactions)"
                   variant="danger"
                   class="btn btn-sm"
@@ -110,7 +104,7 @@
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
                   <span class="d-none d-md-inline" v-text="t$('entity.action.delete')"></span>
-                </b-button>
+                </b-button> -->
               </div>
             </td>
           </tr>

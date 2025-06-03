@@ -4,6 +4,7 @@
     "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
     "menu": {
       "home": "Home",
+      "dashboard": "Dashboard",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Mobile Banking Config",
@@ -27,7 +28,8 @@
         "pinResetHistory": "Pin Reset History",
         "range": "Range",
         "serviceManagement": "Service Management",
-        "transactions": "Transactions"
+        "transactions": "Transactions",
+        "notification": "Notification"
       },
       "account": {
         "main": "Account",
@@ -117,6 +119,11 @@
       "edit": "Edit",
       "open": "Open",
       "save": "Save",
+      "approve": "Approve",
+      "reject": "Reject",
+      "resend": "Resend",
+      "unlock": "Unlock Customer",
+      "complete": "Complete",
       "view": "View",
       "show": "Show { otherEntity }"
     },

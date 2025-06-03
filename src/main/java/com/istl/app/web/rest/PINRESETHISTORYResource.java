@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.PinResetHistory;
-import com.istl.app.repository.PinResetHistoryRepository;
+import com.istl.app.domain.mobileapp.PinResetHistory;
+import com.istl.app.repository.mobileapp.PinResetHistoryRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,7 +20,7 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.PinResetHistory}.
+ * REST controller for managing {@link com.istl.app.domain.mobileapp.PinResetHistory}.
  */
 @RestController
 @RequestMapping("/api/pin-reset-histories")

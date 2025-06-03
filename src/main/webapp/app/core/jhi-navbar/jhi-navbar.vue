@@ -24,10 +24,16 @@
             <span v-text="t$('global.menu.home')"></span>
           </span>
         </b-nav-item>
+        <b-nav-item to="/dashboard" v-if="authenticated" exact>
+          <span>
+            <font-awesome-icon icon="pie-chart" />
+            <span v-text="t$('global.menu.dashboard')"></span>
+          </span>
+        </b-nav-item>
         <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <template #button-content>
             <span class="navbar-dropdown-menu">
-              <font-awesome-icon icon="th-list" />
+              <font-awesome-icon icon="university" />
               <span class="no-bold" v-text="t$('global.menu.entities.main')"></span>
             </span>
           </template>
@@ -38,7 +44,7 @@
         <b-nav-item-dropdown right id="txn-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <template #button-content>
             <span class="navbar-dropdown-menu">
-              <font-awesome-icon icon="th-list" />
+              <font-awesome-icon icon="binoculars" />
               <span class="no-bold" v-text="t$('global.menu.entities.txn')"></span>
             </span>
           </template>
@@ -48,7 +54,7 @@
         <b-nav-item-dropdown right id="recon-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
           <template #button-content>
             <span class="navbar-dropdown-menu">
-              <font-awesome-icon icon="th-list" />
+              <font-awesome-icon icon="list-alt" />
               <span class="no-bold" v-text="t$('global.menu.entities.recon')"></span>
             </span>
           </template>
@@ -159,11 +165,12 @@
     ========================================================================== */
 .navbar-version {
   font-size: 0.65em;
-  color: #ccc;
+  color: #fffefe;
 }
 
 .jh-navbar {
-  background-color: #353d47;
+  background-color: #18164d;
+  /* background-color: #353d47; */
   padding: 0.2em 1em;
 }
 
@@ -177,7 +184,7 @@
 .jh-navbar .dropdown-item.active,
 .jh-navbar .dropdown-item.active:focus,
 .jh-navbar .dropdown-item.active:hover {
-  background-color: #353d47;
+  background-color: #18164d;
 }
 
 .jh-navbar .dropdown-toggle::after {
@@ -198,7 +205,7 @@
 }
 
 .jh-navbar .jh-navbar-toggler {
-  color: #ccc;
+  color: #ffffff;
   font-size: 1.5em;
   padding: 10px;
 }
@@ -221,7 +228,7 @@
 
 .navbar-title {
   display: inline-block;
-  color: white;
+  color: rgb(255, 254, 254);
 }
 
 /* ==========================================================================
@@ -243,7 +250,7 @@
   background: url('/content/images/bushralogo.png') no-repeat center center;
   background-size: contain;
   width: 100%;
-  filter: drop-shadow(0 0 0.05rem white);
+  filter: drop-shadow(0 0 0.05rem rgb(255, 255, 255));
   margin: 0 5px;
 }
 </style>

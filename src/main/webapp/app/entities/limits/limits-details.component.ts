@@ -35,9 +35,35 @@ export default defineComponent({
     return {
       alertService,
       limits,
-
+      limitsService,
       previousState,
       t$: useI18n().t,
     };
+  },
+
+  methods: {
+    approve(): void {
+      this.limitsService()
+        .approve(this.limits)
+        .then(param => {
+          this.previousState();
+          this.alertService.showInfo(this.t$('bbMobileBankingAdminApp.limits.updated', { param: param.id }));
+        })
+        .catch(error => {
+          this.alertService.showHttpError(error.response);
+        });
+    },
+
+    reject(): void {
+      this.limitsService()
+        .reject(this.limits)
+        .then(param => {
+          this.previousState();
+          this.alertService.showInfo(this.t$('bbMobileBankingAdminApp.limits.updated', { param: param.id }));
+        })
+        .catch(error => {
+          this.alertService.showHttpError(error.response);
+        });
+    },
   },
 });

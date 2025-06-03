@@ -1,5 +1,6 @@
 package com.istl.app.domain;
 
+import com.istl.app.domain.mobileapp.Authority;
 import java.util.UUID;
 
 public class AuthorityTestSamples {

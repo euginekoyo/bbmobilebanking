@@ -3,6 +3,7 @@ import {
   BBadge,
   BButton,
   BCollapse,
+  BCard,
   BDropdown,
   BDropdownItem,
   BForm,
@@ -31,6 +32,7 @@ export function initBootstrapVue(vue) {
   vue.use(ToastPlugin);
 
   vue.component('b-badge', BBadge);
+  vue.component('b-card', BCard);
   vue.component('b-dropdown', BDropdown);
   vue.component('b-dropdown-item', BDropdownItem);
   vue.component('b-link', BLink);

@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.Limits;
-import com.istl.app.repository.LimitsRepository;
+import com.istl.app.domain.mobileapp.Limits;
+import com.istl.app.repository.mobileapp.LimitsRepository;
 import jakarta.persistence.EntityManager;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;

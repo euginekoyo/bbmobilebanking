@@ -1,5 +1,9 @@
 <template>
   <div>
+    <b-dropdown-item to="/customer">
+      <font-awesome-icon icon="asterisk" />
+      <span v-text="t$('global.menu.entities.customer')"></span>
+    </b-dropdown-item>
     <b-dropdown-item to="/billers">
       <font-awesome-icon icon="asterisk" />
       <span v-text="t$('global.menu.entities.billers')"></span>
@@ -19,14 +23,6 @@
     <b-dropdown-item to="/charge-range">
       <font-awesome-icon icon="asterisk" />
       <span v-text="t$('global.menu.entities.chargeRange')"></span>
-    </b-dropdown-item>
-    <b-dropdown-item to="/customer">
-      <font-awesome-icon icon="asterisk" />
-      <span v-text="t$('global.menu.entities.customer')"></span>
-    </b-dropdown-item>
-    <b-dropdown-item to="/customer-account">
-      <font-awesome-icon icon="asterisk" />
-      <span v-text="t$('global.menu.entities.customerAccount')"></span>
     </b-dropdown-item>
     <b-dropdown-item to="/limits">
       <font-awesome-icon icon="asterisk" />
@@ -52,7 +48,10 @@
       <font-awesome-icon icon="asterisk" />
       <span v-text="t$('global.menu.entities.serviceManagement')"></span>
     </b-dropdown-item>
-
+    <b-dropdown-item to="/notification">
+      <font-awesome-icon icon="asterisk" />
+      <span v-text="t$('global.menu.entities.notification')"></span>
+    </b-dropdown-item>
     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
   </div>
 </template>

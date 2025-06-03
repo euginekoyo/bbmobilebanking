@@ -37,13 +37,6 @@
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.approved')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.approvedby')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.approveddate')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.chargableproductid')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.nonchargableproductid')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.usdbillercollectionaccount')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.enableduplicatecheck')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.remarks')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.sessionid')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.reworkby')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.status')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.active')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.billers.rework')"></span></th>
@@ -63,13 +56,6 @@
             <td>{{ billers.approved }}</td>
             <td>{{ billers.approvedby }}</td>
             <td>{{ formatDateShort(billers.approveddate) || '' }}</td>
-            <td>{{ billers.chargableproductid }}</td>
-            <td>{{ billers.nonchargableproductid }}</td>
-            <td>{{ billers.usdbillercollectionaccount }}</td>
-            <td>{{ billers.enableduplicatecheck }}</td>
-            <td>{{ billers.remarks }}</td>
-            <td>{{ billers.sessionid }}</td>
-            <td>{{ billers.reworkby }}</td>
             <td>{{ billers.status }}</td>
             <td>{{ billers.active }}</td>
             <td>{{ billers.rework }}</td>

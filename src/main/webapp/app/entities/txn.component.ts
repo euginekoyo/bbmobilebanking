@@ -1,7 +1,8 @@
 import { defineComponent, provide } from 'vue';
 
-import TransactionsService from './transactions/transactions.service';
 import UserService from '@/entities/user/user.service';
+import MobileAppTransactions from './mobile-app-transactions/mobile-app-transactions.service';
+
 // jhipster-needle-add-entity-service-to-entities-component-import - JHipster will import entities services here
 
 export default defineComponent({
@@ -9,7 +10,8 @@ export default defineComponent({
   name: 'Txn',
   setup() {
     provide('userService', () => new UserService());
-    provide('transactionsService', () => new TransactionsService());
+    provide('mobileAppTransactions', () => new MobileAppTransactions());
+
     // jhipster-needle-add-entity-service-to-entities-component - JHipster will import entities services here
   },
 });

@@ -7,7 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="t$('bbMobileBankingAdminApp.sPSIncomingTransactions.home.refreshListLabel')"></span>
         </button>
-        <router-link :to="{ name: 'SPSIncomingTransactionsCreate' }" custom v-slot="{ navigate }">
+        <!-- <router-link :to="{ name: 'SPSIncomingTransactionsCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -17,7 +17,7 @@
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span v-text="t$('bbMobileBankingAdminApp.sPSIncomingTransactions.home.createLabel')"></span>
           </button>
-        </router-link>
+        </router-link> -->
       </div>
     </h2>
     <br />
@@ -54,9 +54,6 @@
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSIncomingTransactions.cbsstatusdesc')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSIncomingTransactions.requestInstanttime')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSIncomingTransactions.isomessagetype')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSIncomingTransactions.requestjson')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSIncomingTransactions.spsrequestxml')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSIncomingTransactions.spsresponsexml')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSIncomingTransactions.amount')"></span></th>
             <th scope="row"></th>
           </tr>
@@ -94,9 +91,6 @@
             <td>{{ sPSIncomingTransactions.cbsstatusdesc }}</td>
             <td>{{ formatDateShort(sPSIncomingTransactions.requestInstanttime) || '' }}</td>
             <td>{{ sPSIncomingTransactions.isomessagetype }}</td>
-            <td>{{ sPSIncomingTransactions.requestjson }}</td>
-            <td>{{ sPSIncomingTransactions.spsrequestxml }}</td>
-            <td>{{ sPSIncomingTransactions.spsresponsexml }}</td>
             <td>{{ sPSIncomingTransactions.amount }}</td>
             <td class="text-right">
               <div class="btn-group">
@@ -110,7 +104,7 @@
                     <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>
                   </button>
                 </router-link>
-                <router-link
+                <!-- <router-link
                   :to="{ name: 'SPSIncomingTransactionsEdit', params: { sPSIncomingTransactionsId: sPSIncomingTransactions.id } }"
                   custom
                   v-slot="{ navigate }"
@@ -119,8 +113,8 @@
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="t$('entity.action.edit')"></span>
                   </button>
-                </router-link>
-                <b-button
+                </router-link> -->
+                <!-- <b-button
                   @click="prepareRemove(sPSIncomingTransactions)"
                   variant="danger"
                   class="btn btn-sm"
@@ -129,7 +123,7 @@
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
                   <span class="d-none d-md-inline" v-text="t$('entity.action.delete')"></span>
-                </b-button>
+                </b-button> -->
               </div>
             </td>
           </tr>

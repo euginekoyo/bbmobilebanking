@@ -1,6 +1,7 @@
 import { createRouter as createVueRouter, createWebHistory } from 'vue-router';
 
 const Home = () => import('@/core/home/home.vue');
+const Dashboard = () => import('@/core/dashboard/home.vue');
 const Error = () => import('@/core/error/error.vue');
 import account from '@/router/account';
 import admin from '@/router/admin';
@@ -15,6 +16,11 @@ export const createRouter = () =>
         path: '/',
         name: 'Home',
         component: Home,
+      },
+      {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: Dashboard,
       },
       {
         path: '/forbidden',

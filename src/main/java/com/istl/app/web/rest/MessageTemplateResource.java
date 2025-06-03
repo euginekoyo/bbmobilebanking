@@ -1,12 +1,13 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.MessageTemplate;
-import com.istl.app.repository.MessageTemplateRepository;
+import com.istl.app.domain.mobileapp.MessageTemplate;
+import com.istl.app.repository.mobileapp.MessageTemplateRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,7 +21,7 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.MessageTemplate}.
+ * REST controller for managing {@link com.istl.app.domain.mobileapp.MessageTemplate}.
  */
 @RestController
 @RequestMapping("/api/message-templates")
@@ -54,6 +55,9 @@ public class MessageTemplateResource {
         if (messageTemplate.getId() != null) {
             throw new BadRequestAlertException("A new messageTemplate cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        messageTemplate.setCreatedon(Instant.now());
+
         messageTemplate = messageTemplateRepository.save(messageTemplate);
         return ResponseEntity.created(new URI("/api/message-templates/" + messageTemplate.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, messageTemplate.getId().toString()))

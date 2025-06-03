@@ -1,6 +1,6 @@
 package com.istl.app.service;
 
-import com.istl.app.domain.User;
+import com.istl.app.domain.mobileapp.User;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import java.nio.charset.StandardCharsets;

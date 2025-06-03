@@ -1,6 +1,6 @@
 package com.istl.app.service.dto;
 
-import com.istl.app.domain.User;
+import com.istl.app.domain.mobileapp.User;
 import java.io.Serializable;
 import java.util.Objects;
 

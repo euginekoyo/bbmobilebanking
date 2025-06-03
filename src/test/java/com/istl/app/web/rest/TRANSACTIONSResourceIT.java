@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.Transactions;
-import com.istl.app.repository.TransactionsRepository;
+import com.istl.app.domain.mobileapp.Transactions;
+import com.istl.app.repository.mobileapp.TransactionsRepository;
 import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

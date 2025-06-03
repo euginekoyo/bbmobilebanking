@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.PinResetHistory;
-import com.istl.app.repository.PinResetHistoryRepository;
+import com.istl.app.domain.mobileapp.PinResetHistory;
+import com.istl.app.repository.mobileapp.PinResetHistoryRepository;
 import jakarta.persistence.EntityManager;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;

@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.Authority;
-import com.istl.app.repository.AuthorityRepository;
+import com.istl.app.domain.mobileapp.Authority;
+import com.istl.app.repository.mobileapp.AuthorityRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import java.net.URI;
@@ -19,7 +19,7 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.Authority}.
+ * REST controller for managing {@link Authority}.
  */
 @RestController
 @RequestMapping("/api/authorities")

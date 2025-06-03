@@ -1,12 +1,13 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.Billers;
-import com.istl.app.repository.BillersRepository;
+import com.istl.app.domain.mobileapp.Billers;
+import com.istl.app.repository.mobileapp.BillersRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,13 +15,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.Billers}.
+ * REST controller for managing {@link Billers}.
  */
 @RestController
 @RequestMapping("/api/billers")
@@ -53,6 +56,19 @@ public class BillersResource {
         if (billers.getId() != null) {
             throw new BadRequestAlertException("A new billers cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        billers.setDatecreated(Instant.now());
+        billers.setCreatedby(currentPrincipalName);
+
+        billers.setApproved(0L);
+        billers.setApprovedby(billers.getApprovedby());
+        billers.setApproveddate(billers.getApproveddate());
+        billers.setActive(0L);
+        billers.setStatus(0L);
+
         billers = billersRepository.save(billers);
         return ResponseEntity.created(new URI("/api/billers/" + billers.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, billers.getId().toString()))
@@ -177,6 +193,92 @@ public class BillersResource {
                 if (billers.getRework() != null) {
                     existingBillers.setRework(billers.getRework());
                 }
+
+                return existingBillers;
+            })
+            .map(billersRepository::save);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, billers.getId().toString())
+        );
+    }
+
+    @PatchMapping(value = "/approve/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Billers> approveUpdateBillers(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody Billers billers
+    ) throws URISyntaxException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        LOG.debug("REST request to partial update Billers partially : {}, {}", id, billers);
+        if (billers.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, billers.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!billersRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Billers> result = billersRepository
+            .findById(billers.getId())
+            .map(existingBillers -> {
+                existingBillers.setApproved(1L);
+
+                existingBillers.setApprovedby(currentPrincipalName);
+
+                existingBillers.setApproveddate(Instant.now());
+
+                existingBillers.setActive(1L);
+
+                existingBillers.setStatus(1L);
+
+                return existingBillers;
+            })
+            .map(billersRepository::save);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, billers.getId().toString())
+        );
+    }
+
+    @PatchMapping(value = "/reject/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Billers> rejectUpdateBillers(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody Billers billers
+    ) throws URISyntaxException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        LOG.debug("REST request to partial update Billers partially : {}, {}", id, billers);
+        if (billers.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, billers.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!billersRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Billers> result = billersRepository
+            .findById(billers.getId())
+            .map(existingBillers -> {
+                existingBillers.setApproved(2L);
+
+                existingBillers.setApprovedby(currentPrincipalName);
+
+                existingBillers.setApproveddate(Instant.now());
+
+                existingBillers.setActive(2L);
+
+                existingBillers.setStatus(2L);
 
                 return existingBillers;
             })

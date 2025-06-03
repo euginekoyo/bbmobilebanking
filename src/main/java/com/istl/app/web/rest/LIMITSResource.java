@@ -1,12 +1,13 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.Limits;
-import com.istl.app.repository.LimitsRepository;
+import com.istl.app.domain.mobileapp.Limits;
+import com.istl.app.repository.mobileapp.LimitsRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,13 +15,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.Limits}.
+ * REST controller for managing {@link com.istl.app.domain.mobileapp.Limits}.
  */
 @RestController
 @RequestMapping("/api/limits")
@@ -53,6 +56,14 @@ public class LimitsResource {
         if (limits.getId() != null) {
             throw new BadRequestAlertException("A new limits cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        limits.setRegisteredby(currentPrincipalName);
+        limits.setRegistereddate(Instant.now().toString());
+        limits.setApproved("0");
+
         limits = limitsRepository.save(limits);
         return ResponseEntity.created(new URI("/api/limits/" + limits.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, limits.getId().toString()))
@@ -168,6 +179,92 @@ public class LimitsResource {
                 if (limits.getSessionid() != null) {
                     existingLimits.setSessionid(limits.getSessionid());
                 }
+
+                return existingLimits;
+            })
+            .map(limitsRepository::save);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, limits.getId().toString())
+        );
+    }
+
+    @PatchMapping(value = "/approve/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Limits> approveUpdateLimits(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody Limits limits
+    ) throws URISyntaxException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        LOG.debug("REST request to partial update Limits partially : {}, {}", id, limits);
+        if (limits.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, limits.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!limitsRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Limits> result = limitsRepository
+            .findById(limits.getId())
+            .map(existingLimits -> {
+                existingLimits.setApproved("1");
+
+                existingLimits.setApprovedby(currentPrincipalName);
+
+                existingLimits.setApproveddate(Instant.now().toString());
+
+                existingLimits.setUpdatedby(currentPrincipalName);
+
+                existingLimits.setUpdateddate(Instant.now().toString());
+
+                return existingLimits;
+            })
+            .map(limitsRepository::save);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, limits.getId().toString())
+        );
+    }
+
+    @PatchMapping(value = "/reject/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Limits> rejectUpdateLimits(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody Limits limits
+    ) throws URISyntaxException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        LOG.debug("REST request to partial update Limits partially : {}, {}", id, limits);
+        if (limits.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, limits.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!limitsRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Limits> result = limitsRepository
+            .findById(limits.getId())
+            .map(existingLimits -> {
+                existingLimits.setApproved("2");
+
+                existingLimits.setApprovedby(currentPrincipalName);
+
+                existingLimits.setApproveddate(Instant.now().toString());
+
+                existingLimits.setUpdatedby(currentPrincipalName);
+
+                existingLimits.setUpdateddate(Instant.now().toString());
 
                 return existingLimits;
             })

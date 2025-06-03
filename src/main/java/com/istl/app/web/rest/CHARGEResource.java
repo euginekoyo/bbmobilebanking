@@ -1,12 +1,13 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.Charge;
-import com.istl.app.repository.ChargeRepository;
+import com.istl.app.domain.mobileapp.Charge;
+import com.istl.app.repository.mobileapp.ChargeRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,13 +15,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.Charge}.
+ * REST controller for managing {@link Charge}.
  */
 @RestController
 @RequestMapping("/api/charges")
@@ -53,6 +56,16 @@ public class ChargeResource {
         if (charge.getId() != null) {
             throw new BadRequestAlertException("A new charge cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        charge.setDatecreated(Instant.now());
+
+        charge.setCreatedby(currentPrincipalName);
+
+        charge.setApproved("0");
+
         charge = chargeRepository.save(charge);
         return ResponseEntity.created(new URI("/api/charges/" + charge.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, charge.getId().toString()))
@@ -156,6 +169,84 @@ public class ChargeResource {
                 if (charge.getApproveddate() != null) {
                     existingCharge.setApproveddate(charge.getApproveddate());
                 }
+
+                return existingCharge;
+            })
+            .map(chargeRepository::save);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, charge.getId().toString())
+        );
+    }
+
+    @PatchMapping(value = "/reject/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Charge> rejectUpdateCharge(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody Charge charge
+    ) throws URISyntaxException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        LOG.debug("REST request to partial update Charge partially : {}, {}", id, charge);
+        if (charge.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, charge.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!chargeRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Charge> result = chargeRepository
+            .findById(charge.getId())
+            .map(existingCharge -> {
+                existingCharge.setApproved("2");
+
+                existingCharge.setApprovedby(currentPrincipalName);
+
+                existingCharge.setApproveddate(Instant.now());
+
+                return existingCharge;
+            })
+            .map(chargeRepository::save);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, charge.getId().toString())
+        );
+    }
+
+    @PatchMapping(value = "/approve/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Charge> approveUpdateCharge(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody Charge charge
+    ) throws URISyntaxException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        LOG.debug("REST request to partial update Charge partially : {}, {}", id, charge);
+        if (charge.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, charge.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!chargeRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Charge> result = chargeRepository
+            .findById(charge.getId())
+            .map(existingCharge -> {
+                existingCharge.setApproved("1");
+
+                existingCharge.setApprovedby(currentPrincipalName);
+
+                existingCharge.setApproveddate(Instant.now());
 
                 return existingCharge;
             })

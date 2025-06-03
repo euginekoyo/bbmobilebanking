@@ -82,4 +82,30 @@ export default class ChargeService {
         });
     });
   }
+
+  public approve(entity: ICharge): Promise<ICharge> {
+    return new Promise<ICharge>((resolve, reject) => {
+      axios
+        .patch(`${baseApiUrl}/approve}/${entity.id}`, entity)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public reject(entity: ICharge): Promise<ICharge> {
+    return new Promise<ICharge>((resolve, reject) => {
+      axios
+        .patch(`${baseApiUrl}/reject/${entity.id}`, entity)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }

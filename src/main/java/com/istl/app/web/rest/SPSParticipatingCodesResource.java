@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.SPSParticipatingCodes;
-import com.istl.app.repository.SPSParticipatingCodesRepository;
+import com.istl.app.domain.middleware.SPSParticipatingCodes;
+import com.istl.app.repository.middleware.SPSParticipatingCodesRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,7 +20,7 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.SPSParticipatingCodes}.
+ * REST controller for managing {@link com.istl.app.domain.middleware.SPSParticipatingCodes}.
  */
 @RestController
 @RequestMapping("/api/sps-participating-codes")

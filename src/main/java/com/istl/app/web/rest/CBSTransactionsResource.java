@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.CBSTransactions;
-import com.istl.app.repository.CBSTransactionsRepository;
+import com.istl.app.domain.middleware.CBSTransactions;
+import com.istl.app.repository.middleware.CBSTransactionsRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -14,17 +14,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.CBSTransactions}.
+ * REST controller for managing {@link CBSTransactions}.
  */
 @RestController
 @RequestMapping("/api/cbs-transactions")
 @Transactional
+@EnableTransactionManagement
 public class CBSTransactionsResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(CBSTransactionsResource.class);

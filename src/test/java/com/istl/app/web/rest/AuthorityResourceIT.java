@@ -8,8 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.Authority;
-import com.istl.app.repository.AuthorityRepository;
+import com.istl.app.domain.mobileapp.Authority;
+import com.istl.app.repository.mobileapp.AuthorityRepository;
 import jakarta.persistence.EntityManager;
 import java.util.UUID;
 import org.junit.jupiter.api.AfterEach;

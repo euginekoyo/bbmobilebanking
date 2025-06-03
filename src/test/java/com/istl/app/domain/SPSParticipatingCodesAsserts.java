@@ -2,6 +2,8 @@ package com.istl.app.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.istl.app.domain.middleware.SPSParticipatingCodes;
+
 public class SPSParticipatingCodesAsserts {
 
     /**

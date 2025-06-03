@@ -75,6 +75,12 @@ const Transactions = () => import('@/entities/transactions/transactions.vue');
 const TransactionsUpdate = () => import('@/entities/transactions/transactions-update.vue');
 const TransactionsDetails = () => import('@/entities/transactions/transactions-details.vue');
 
+const MobileAppTransactions = () => import('@/entities/mobile-app-transactions/mobile-app-transactions.vue');
+const MobileAppTransactionsUpdate = () => import('@/entities/mobile-app-transactions/mobile-app-transactions-update.vue');
+const MobileAppTransactionsDetails = () => import('@/entities/mobile-app-transactions/mobile-app-transactions-details.vue');
+
+const Notification = () => import('@/entities/notification/notification.vue');
+
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default {
@@ -511,6 +517,36 @@ export default {
       path: 'transactions/:transactionsId/view',
       name: 'TransactionsView',
       component: TransactionsDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'mobile-app-transactions',
+      name: 'MobileAppTransactions',
+      component: MobileAppTransactions,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'mobile-app-transactions/new',
+      name: 'MobileAppTransactionsCreate',
+      component: MobileAppTransactionsUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'mobile-app-transactions/:mobile-app-transactionsId/edit',
+      name: 'MobileAppTransactionsEdit',
+      component: MobileAppTransactionsUpdate,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'mobile-app-transactions/:mobile-app-transactionsId/view',
+      name: 'MobileAppTransactionsView',
+      component: MobileAppTransactionsDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'notification',
+      name: 'Notification',
+      component: Notification,
       meta: { authorities: [Authority.USER] },
     },
     // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

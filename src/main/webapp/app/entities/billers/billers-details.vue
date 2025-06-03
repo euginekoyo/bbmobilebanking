@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-6">
       <div v-if="billers">
         <h2 class="jh-entity-heading" data-cy="billersDetailsHeading">
           <span v-text="t$('bbMobileBankingAdminApp.billers.detail.title')"></span> {{ billers.id }}
@@ -60,6 +60,13 @@
           <dd>
             <span>{{ billers.chargableproductid }}</span>
           </dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div v-if="billers">
+        <dl class="row jh-entity-details">
           <dt>
             <span v-text="t$('bbMobileBankingAdminApp.billers.nonchargableproductid')"></span>
           </dt>
@@ -115,15 +122,29 @@
             <span>{{ billers.rework }}</span>
           </dd>
         </dl>
-        <button type="submit" @click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.back')"></span>
-        </button>
-        <router-link v-if="billers.id" :to="{ name: 'BillersEdit', params: { billersId: billers.id } }" custom v-slot="{ navigate }">
-          <button @click="navigate" class="btn btn-primary">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.edit')"></span>
-          </button>
-        </router-link>
       </div>
+    </div>
+    <div class="col-3">
+      <button type="submit" @click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.back')"></span>
+      </button>
+    </div>
+    <div class="col-3">
+      <router-link v-if="billers.id" :to="{ name: 'BillersEdit', params: { billersId: billers.id } }" custom v-slot="{ navigate }">
+        <button @click="navigate" class="btn btn-primary">
+          <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.edit')"></span>
+        </button>
+      </router-link>
+    </div>
+    <div class="col-3" v-if="billers.approved == 0">
+      <button type="submit" id="save-entity" data-cy="entityCreateSaveButton" class="btn btn-success" v-on:click="approve()">
+        <font-awesome-icon icon="check"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.approve')"></span>
+      </button>
+    </div>
+    <div class="col-3" v-if="billers.approved == 0">
+      <button type="submit" id="save-entity" data-cy="entityCreateSaveButton" class="btn btn-danger" v-on:click="reject()">
+        <font-awesome-icon icon="times"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.reject')"></span>
+      </button>
     </div>
   </div>
 </template>

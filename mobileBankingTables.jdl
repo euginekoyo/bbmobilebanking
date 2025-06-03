@@ -99,6 +99,11 @@ entity ChargeRange {
 	chargeid Long required
  }
 
+entity Otps{
+
+}
+
+
 entity Customer {
     customername String maxlength(200),
     phonenumber String maxlength(12) required,
@@ -364,7 +369,7 @@ entity Transactions {
     field48 String maxlength(150),
     source String maxlength(150)
  }
- 
+
  entity SPSParticipatingCodes
 {
     biccode String maxlength(8),
@@ -467,8 +472,8 @@ entity CBSTransactions
     cbsresponsexml String,
     amount Double
 }
- 
- 
+
+
  relationship OneToMany {
 	ChargeRange{chargeid} to Charge
 }

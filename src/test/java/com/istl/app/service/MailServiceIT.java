@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*;
 
 import com.istl.app.IntegrationTest;
 import com.istl.app.config.Constants;
-import com.istl.app.domain.User;
+import com.istl.app.domain.mobileapp.User;
 import jakarta.mail.Multipart;
 import jakarta.mail.Session;
 import jakarta.mail.internet.MimeBodyPart;

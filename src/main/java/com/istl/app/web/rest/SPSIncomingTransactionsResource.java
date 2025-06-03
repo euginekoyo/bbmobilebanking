@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.SPSIncomingTransactions;
-import com.istl.app.repository.SPSIncomingTransactionsRepository;
+import com.istl.app.domain.middleware.SPSIncomingTransactions;
+import com.istl.app.repository.middleware.SPSIncomingTransactionsRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -14,17 +14,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.SPSIncomingTransactions}.
+ * REST controller for managing {@link SPSIncomingTransactions}.
  */
 @RestController
 @RequestMapping("/api/sps-incoming-transactions")
 @Transactional
+@EnableTransactionManagement
 public class SPSIncomingTransactionsResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(SPSIncomingTransactionsResource.class);
@@ -229,6 +231,7 @@ public class SPSIncomingTransactionsResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of sPSIncomingTransactions in body.
      */
     @GetMapping("")
+    @Transactional("mweTransactionManager")
     public List<SPSIncomingTransactions> getAllSPSIncomingTransactions() {
         LOG.debug("REST request to get all SPSIncomingTransactions");
         return sPSIncomingTransactionsRepository.findAll();

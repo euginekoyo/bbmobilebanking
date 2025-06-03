@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-dropdown-item to="/transactions">
+    <b-dropdown-item to="/mobile-app-transactions">
       <font-awesome-icon icon="asterisk" />
       <span v-text="t$('global.menu.entities.transactions')"></span>
     </b-dropdown-item>

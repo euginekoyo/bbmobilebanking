@@ -2,7 +2,7 @@
   "generator-jhipster": {
     "applicationType": "monolith",
     "authenticationType": "jwt",
-    "baseName": "bbMobileBankingAdmin",
+    "baseName": "Mobile Banking Admin Portal",
     "buildTool": "maven",
     "cacheProvider": "ehcache",
     "clientFramework": "vue",
@@ -31,13 +31,14 @@
       "PinResetHistory",
       "Range",
       "ServiceManagement",
-      "Transactions"
+      "Transactions",
+      "MobileAppTransactions"
     ],
     "feignClient": null,
     "jhipsterVersion": "8.8.0",
     "jwtSecretKey": "MTM3ZThjM2U4MTU3ODkwNjkwODk4OTQwZTcwNGJjNTA0YTYzNWZmNjQ2MTU3YmRmNzA5ZTYyNjliODBiNjcxYjY2YjRmZDdlM2I5N2IyOTY4NjgwYmEwYjBlYzIwYTlkZTE5OWU3MTkwMjBhZGFjNzVkZmMyOGFkMmFmMWU1OGY=",
     "languages": ["en"],
-    "lastLiquibaseTimestamp": 1737449822000,
+    "lastLiquibaseTimestamp": 1744942505000,
     "microfrontend": null,
     "microfrontends": [],
     "nativeLanguage": "en",

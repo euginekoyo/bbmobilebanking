@@ -10,7 +10,7 @@ import UserService from '@/entities/user/user.service';
 
 export default defineComponent({
   compatConfig: { MODE: 3 },
-  name: 'Recon',
+  name: 'ReconMenu',
   setup() {
     provide('userService', () => new UserService());
     provide('cBSTransactionsService', () => new CBSTransactionsService());

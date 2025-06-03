@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.Channels;
-import com.istl.app.repository.ChannelsRepository;
+import com.istl.app.domain.mobileapp.Channels;
+import com.istl.app.repository.mobileapp.ChannelsRepository;
 import jakarta.persistence.EntityManager;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;

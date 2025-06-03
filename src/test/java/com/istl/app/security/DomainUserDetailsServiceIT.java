@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.User;
-import com.istl.app.repository.UserRepository;
+import com.istl.app.domain.mobileapp.User;
+import com.istl.app.repository.mobileapp.UserRepository;
 import com.istl.app.service.UserService;
 import java.util.Locale;
 import org.apache.commons.lang3.RandomStringUtils;

@@ -1,8 +1,8 @@
 package com.istl.app.service.dto;
 
 import com.istl.app.config.Constants;
-import com.istl.app.domain.Authority;
-import com.istl.app.domain.User;
+import com.istl.app.domain.mobileapp.Authority;
+import com.istl.app.domain.mobileapp.User;
 import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;

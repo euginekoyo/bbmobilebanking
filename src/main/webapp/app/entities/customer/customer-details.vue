@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-4">
       <div v-if="customer">
         <h2 class="jh-entity-heading" data-cy="customerDetailsHeading">
           <span v-text="t$('bbMobileBankingAdminApp.customer.detail.title')"></span> {{ customer.id }}
@@ -234,36 +234,12 @@
           <dd>
             <span v-if="customer.phonenochangedon">{{ formatDateLong(customer.phonenochangedon) }}</span>
           </dd>
-          <dt>
-            <span v-text="t$('bbMobileBankingAdminApp.customer.originalphoneno')"></span>
-          </dt>
-          <dd>
-            <span>{{ customer.originalphoneno }}</span>
-          </dd>
-          <dt>
-            <span v-text="t$('bbMobileBankingAdminApp.customer.newphoneno')"></span>
-          </dt>
-          <dd>
-            <span>{{ customer.newphoneno }}</span>
-          </dd>
-          <dt>
-            <span v-text="t$('bbMobileBankingAdminApp.customer.reset')"></span>
-          </dt>
-          <dd>
-            <span>{{ customer.reset }}</span>
-          </dd>
-          <dt>
-            <span v-text="t$('bbMobileBankingAdminApp.customer.resetinginstitution')"></span>
-          </dt>
-          <dd>
-            <span>{{ customer.resetinginstitution }}</span>
-          </dd>
-          <dt>
-            <span v-text="t$('bbMobileBankingAdminApp.customer.pinresetremark')"></span>
-          </dt>
-          <dd>
-            <span>{{ customer.pinresetremark }}</span>
-          </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="col-4">
+      <div v-if="customer">
+        <dl class="row jh-entity-details">
           <dt>
             <span v-text="t$('bbMobileBankingAdminApp.customer.resetby')"></span>
           </dt>
@@ -486,6 +462,12 @@
           <dd>
             <span>{{ customer.passmarkblock }}</span>
           </dd>
+        </dl>
+      </div>
+    </div>
+    <div class="col-4">
+      <div v-if="customer">
+        <dl class="row jh-entity-details">
           <dt>
             <span v-text="t$('bbMobileBankingAdminApp.customer.passresetremarks')"></span>
           </dt>
@@ -503,6 +485,36 @@
           </dt>
           <dd>
             <span>{{ customer.passunblockby }}</span>
+          </dd>
+          <dt>
+            <span v-text="t$('bbMobileBankingAdminApp.customer.originalphoneno')"></span>
+          </dt>
+          <dd>
+            <span>{{ customer.originalphoneno }}</span>
+          </dd>
+          <dt>
+            <span v-text="t$('bbMobileBankingAdminApp.customer.newphoneno')"></span>
+          </dt>
+          <dd>
+            <span>{{ customer.newphoneno }}</span>
+          </dd>
+          <dt>
+            <span v-text="t$('bbMobileBankingAdminApp.customer.reset')"></span>
+          </dt>
+          <dd>
+            <span>{{ customer.reset }}</span>
+          </dd>
+          <dt>
+            <span v-text="t$('bbMobileBankingAdminApp.customer.resetinginstitution')"></span>
+          </dt>
+          <dd>
+            <span>{{ customer.resetinginstitution }}</span>
+          </dd>
+          <dt>
+            <span v-text="t$('bbMobileBankingAdminApp.customer.pinresetremark')"></span>
+          </dt>
+          <dd>
+            <span>{{ customer.pinresetremark }}</span>
           </dd>
           <dt>
             <span v-text="t$('bbMobileBankingAdminApp.customer.passtrials')"></span>
@@ -661,15 +673,24 @@
             <span>{{ customer.branchcode }}</span>
           </dd>
         </dl>
-        <button type="submit" @click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
-          <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.back')"></span>
-        </button>
-        <router-link v-if="customer.id" :to="{ name: 'CustomerEdit', params: { customerId: customer.id } }" custom v-slot="{ navigate }">
-          <button @click="navigate" class="btn btn-primary">
-            <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.edit')"></span>
-          </button>
-        </router-link>
       </div>
+    </div>
+    <div class="col-4">
+      <button type="submit" @click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <font-awesome-icon icon="arrow-left"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.back')"></span>
+      </button>
+    </div>
+    <div class="col-4">
+      <router-link v-if="customer.id" :to="{ name: 'CustomerEdit', params: { customerId: customer.id } }" custom v-slot="{ navigate }">
+        <button @click="navigate" class="btn btn-primary">
+          <font-awesome-icon icon="pencil-alt"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.edit')"></span>
+        </button>
+      </router-link>
+    </div>
+    <div class="col-4">
+      <button type="submit" id="save-entity" data-cy="entityCreateSaveButton" class="btn btn-success">
+        <font-awesome-icon icon="times"></font-awesome-icon>&nbsp;<span v-text="t$('entity.action.unlock')"></span>
+      </button>
     </div>
   </div>
 </template>

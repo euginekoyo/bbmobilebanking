@@ -52,66 +52,7 @@
               v-model.number="v$.amount.$model"
             />
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="t$('bbMobileBankingAdminApp.charge.datecreated')" for="charge-datecreated"></label>
-            <div class="d-flex">
-              <input
-                id="charge-datecreated"
-                data-cy="datecreated"
-                type="datetime-local"
-                class="form-control"
-                name="datecreated"
-                :class="{ valid: !v$.datecreated.$invalid, invalid: v$.datecreated.$invalid }"
-                :value="convertDateTimeFromServer(v$.datecreated.$model)"
-                @change="updateInstantField('datecreated', $event)"
-              />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="t$('bbMobileBankingAdminApp.charge.createdby')" for="charge-createdby"></label>
-            <input
-              type="text"
-              class="form-control"
-              name="createdby"
-              id="charge-createdby"
-              data-cy="createdby"
-              :class="{ valid: !v$.createdby.$invalid, invalid: v$.createdby.$invalid }"
-              v-model="v$.createdby.$model"
-            />
-            <div v-if="v$.createdby.$anyDirty && v$.createdby.$invalid">
-              <small class="form-text text-danger" v-for="error of v$.createdby.$errors" :key="error.$uid">{{ error.$message }}</small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="t$('bbMobileBankingAdminApp.charge.approved')" for="charge-approved"></label>
-            <input
-              type="text"
-              class="form-control"
-              name="approved"
-              id="charge-approved"
-              data-cy="approved"
-              :class="{ valid: !v$.approved.$invalid, invalid: v$.approved.$invalid }"
-              v-model="v$.approved.$model"
-            />
-            <div v-if="v$.approved.$anyDirty && v$.approved.$invalid">
-              <small class="form-text text-danger" v-for="error of v$.approved.$errors" :key="error.$uid">{{ error.$message }}</small>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="t$('bbMobileBankingAdminApp.charge.approvedby')" for="charge-approvedby"></label>
-            <input
-              type="text"
-              class="form-control"
-              name="approvedby"
-              id="charge-approvedby"
-              data-cy="approvedby"
-              :class="{ valid: !v$.approvedby.$invalid, invalid: v$.approvedby.$invalid }"
-              v-model="v$.approvedby.$model"
-            />
-            <div v-if="v$.approvedby.$anyDirty && v$.approvedby.$invalid">
-              <small class="form-text text-danger" v-for="error of v$.approvedby.$errors" :key="error.$uid">{{ error.$message }}</small>
-            </div>
-          </div>
+
           <div class="form-group">
             <label class="form-control-label" v-text="t$('bbMobileBankingAdminApp.charge.channel')" for="charge-channel"></label>
             <input
@@ -154,21 +95,7 @@
               <small class="form-text text-danger" v-for="error of v$.description.$errors" :key="error.$uid">{{ error.$message }}</small>
             </div>
           </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="t$('bbMobileBankingAdminApp.charge.approveddate')" for="charge-approveddate"></label>
-            <div class="d-flex">
-              <input
-                id="charge-approveddate"
-                data-cy="approveddate"
-                type="datetime-local"
-                class="form-control"
-                name="approveddate"
-                :class="{ valid: !v$.approveddate.$invalid, invalid: v$.approveddate.$invalid }"
-                :value="convertDateTimeFromServer(v$.approveddate.$model)"
-                @change="updateInstantField('approveddate', $event)"
-              />
-            </div>
-          </div>
+
           <div class="form-group">
             <label class="form-control-label" v-text="t$('bbMobileBankingAdminApp.charge.chargeRange')" for="charge-chargeRange"></label>
             <select class="form-control" id="charge-chargeRange" data-cy="chargeRange" name="chargeRange" v-model="charge.chargeRange">

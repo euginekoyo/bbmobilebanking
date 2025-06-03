@@ -7,7 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="t$('bbMobileBankingAdminApp.messagesSms.home.refreshListLabel')"></span>
         </button>
-        <router-link :to="{ name: 'MessagesSmsCreate' }" custom v-slot="{ navigate }">
+        <!-- <router-link :to="{ name: 'MessagesSmsCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -17,7 +17,7 @@
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span v-text="t$('bbMobileBankingAdminApp.messagesSms.home.createLabel')"></span>
           </button>
-        </router-link>
+        </router-link> -->
       </div>
     </h2>
     <br />
@@ -41,18 +41,6 @@
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.responsemsg')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.sent')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.delivered')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.txntype')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.errorexception')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.datecreated')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.datesent')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.rtpsreqtime')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.fxgenerated')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.taxprocessed')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.batchnumber')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.batchnumbertax')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.responsetime')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.pduseqid')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.remarks')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.messagesSms.resendby')"></span></th>
             <th scope="row"></th>
           </tr>
@@ -74,18 +62,6 @@
             <td>{{ messagesSms.responsemsg }}</td>
             <td>{{ messagesSms.sent }}</td>
             <td>{{ messagesSms.delivered }}</td>
-            <td>{{ messagesSms.txntype }}</td>
-            <td>{{ messagesSms.errorexception }}</td>
-            <td>{{ formatDateShort(messagesSms.datecreated) || '' }}</td>
-            <td>{{ messagesSms.datesent }}</td>
-            <td>{{ messagesSms.rtpsreqtime }}</td>
-            <td>{{ messagesSms.fxgenerated }}</td>
-            <td>{{ messagesSms.taxprocessed }}</td>
-            <td>{{ messagesSms.batchnumber }}</td>
-            <td>{{ messagesSms.batchnumbertax }}</td>
-            <td>{{ messagesSms.responsetime }}</td>
-            <td>{{ messagesSms.pduseqid }}</td>
-            <td>{{ messagesSms.remarks }}</td>
             <td>{{ messagesSms.resendby }}</td>
             <td class="text-right">
               <div class="btn-group">
@@ -95,13 +71,13 @@
                     <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>
                   </button>
                 </router-link>
-                <router-link :to="{ name: 'MessagesSmsEdit', params: { messagesSmsId: messagesSms.id } }" custom v-slot="{ navigate }">
+                <!-- <router-link :to="{ name: 'MessagesSmsEdit', params: { messagesSmsId: messagesSms.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="t$('entity.action.edit')"></span>
                   </button>
-                </router-link>
-                <b-button
+                </router-link> -->
+                <!-- <b-button
                   @click="prepareRemove(messagesSms)"
                   variant="danger"
                   class="btn btn-sm"
@@ -110,7 +86,7 @@
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
                   <span class="d-none d-md-inline" v-text="t$('entity.action.delete')"></span>
-                </b-button>
+                </b-button> -->
               </div>
             </td>
           </tr>

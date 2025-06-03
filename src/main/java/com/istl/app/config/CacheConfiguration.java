@@ -1,5 +1,11 @@
 package com.istl.app.config;
 
+import com.istl.app.domain.middleware.CBSTransactions;
+import com.istl.app.domain.middleware.SPSIncomingTransactions;
+import com.istl.app.domain.middleware.SPSOutgoingTransactions;
+import com.istl.app.domain.middleware.SPSParticipatingCodes;
+import com.istl.app.domain.mobileapp.*;
+import com.istl.app.repository.mobileapp.UserRepository;
 import java.time.Duration;
 import org.ehcache.config.builders.*;
 import org.ehcache.jsr107.Eh107Configuration;
@@ -45,31 +51,32 @@ public class CacheConfiguration {
     @Bean
     public JCacheManagerCustomizer cacheManagerCustomizer() {
         return cm -> {
-            createCache(cm, com.istl.app.repository.UserRepository.USERS_BY_LOGIN_CACHE);
-            createCache(cm, com.istl.app.repository.UserRepository.USERS_BY_EMAIL_CACHE);
-            createCache(cm, com.istl.app.domain.User.class.getName());
-            createCache(cm, com.istl.app.domain.Authority.class.getName());
-            createCache(cm, com.istl.app.domain.User.class.getName() + ".authorities");
-            createCache(cm, com.istl.app.domain.CBSTransactions.class.getName());
-            createCache(cm, com.istl.app.domain.SPSIncomingTransactions.class.getName());
-            createCache(cm, com.istl.app.domain.SPSOutgoingTransactions.class.getName());
-            createCache(cm, com.istl.app.domain.SPSParticipatingCodes.class.getName());
-            createCache(cm, com.istl.app.domain.Billers.class.getName());
-            createCache(cm, com.istl.app.domain.Branches.class.getName());
-            createCache(cm, com.istl.app.domain.Channels.class.getName());
-            createCache(cm, com.istl.app.domain.Charge.class.getName());
-            createCache(cm, com.istl.app.domain.ChargeRange.class.getName());
-            createCache(cm, com.istl.app.domain.ChargeRange.class.getName() + ".chargeids");
-            createCache(cm, com.istl.app.domain.Customer.class.getName());
-            createCache(cm, com.istl.app.domain.CustomerAccount.class.getName());
-            createCache(cm, com.istl.app.domain.Limits.class.getName());
-            createCache(cm, com.istl.app.domain.MessagesSms.class.getName());
-            createCache(cm, com.istl.app.domain.MessageTemplate.class.getName());
-            createCache(cm, com.istl.app.domain.PinResetHistory.class.getName());
-            createCache(cm, com.istl.app.domain.Range.class.getName());
-            createCache(cm, com.istl.app.domain.Range.class.getName() + ".chargeids");
-            createCache(cm, com.istl.app.domain.ServiceManagement.class.getName());
-            createCache(cm, com.istl.app.domain.Transactions.class.getName());
+            createCache(cm, UserRepository.USERS_BY_LOGIN_CACHE);
+            createCache(cm, UserRepository.USERS_BY_EMAIL_CACHE);
+            createCache(cm, User.class.getName());
+            createCache(cm, Authority.class.getName());
+            createCache(cm, User.class.getName() + ".authorities");
+            createCache(cm, CBSTransactions.class.getName());
+            createCache(cm, SPSIncomingTransactions.class.getName());
+            createCache(cm, SPSOutgoingTransactions.class.getName());
+            createCache(cm, SPSParticipatingCodes.class.getName());
+            createCache(cm, Billers.class.getName());
+            createCache(cm, Branches.class.getName());
+            createCache(cm, Channels.class.getName());
+            createCache(cm, Charge.class.getName());
+            createCache(cm, ChargeRange.class.getName());
+            createCache(cm, ChargeRange.class.getName() + ".chargeids");
+            createCache(cm, Customer.class.getName());
+            createCache(cm, CustomerAccount.class.getName());
+            createCache(cm, Limits.class.getName());
+            createCache(cm, MessagesSms.class.getName());
+            createCache(cm, MessageTemplate.class.getName());
+            createCache(cm, PinResetHistory.class.getName());
+            createCache(cm, Range.class.getName());
+            createCache(cm, Range.class.getName() + ".chargeids");
+            createCache(cm, ServiceManagement.class.getName());
+            createCache(cm, Transactions.class.getName());
+            createCache(cm, com.istl.app.domain.mobileapp.MobileAppTransactions.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

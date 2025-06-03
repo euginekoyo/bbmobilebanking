@@ -7,7 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.home.refreshListLabel')"></span>
         </button>
-        <router-link :to="{ name: 'SPSOutgoingTransactionsCreate' }" custom v-slot="{ navigate }">
+        <!-- <router-link :to="{ name: 'SPSOutgoingTransactionsCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -17,7 +17,7 @@
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.home.createLabel')"></span>
           </button>
-        </router-link>
+        </router-link> -->
       </div>
     </h2>
     <br />
@@ -54,9 +54,6 @@
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.cbsstatusdesc')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.requestInstanttime')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.isomessagetype')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.requestjson')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.spsrequestxml')"></span></th>
-            <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.spsresponsexml')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.amount')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.callbackstatus')"></span></th>
             <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.sPSOutgoingTransactions.callbackstatusdesc')"></span></th>
@@ -96,9 +93,6 @@
             <td>{{ sPSOutgoingTransactions.cbsstatusdesc }}</td>
             <td>{{ formatDateShort(sPSOutgoingTransactions.requestInstanttime) || '' }}</td>
             <td>{{ sPSOutgoingTransactions.isomessagetype }}</td>
-            <td>{{ sPSOutgoingTransactions.requestjson }}</td>
-            <td>{{ sPSOutgoingTransactions.spsrequestxml }}</td>
-            <td>{{ sPSOutgoingTransactions.spsresponsexml }}</td>
             <td>{{ sPSOutgoingTransactions.amount }}</td>
             <td>{{ sPSOutgoingTransactions.callbackstatus }}</td>
             <td>{{ sPSOutgoingTransactions.callbackstatusdesc }}</td>
@@ -114,7 +108,7 @@
                     <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>
                   </button>
                 </router-link>
-                <router-link
+                <!-- <router-link
                   :to="{ name: 'SPSOutgoingTransactionsEdit', params: { sPSOutgoingTransactionsId: sPSOutgoingTransactions.id } }"
                   custom
                   v-slot="{ navigate }"
@@ -123,8 +117,8 @@
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="t$('entity.action.edit')"></span>
                   </button>
-                </router-link>
-                <b-button
+                </router-link> -->
+                <!-- <b-button
                   @click="prepareRemove(sPSOutgoingTransactions)"
                   variant="danger"
                   class="btn btn-sm"
@@ -133,7 +127,7 @@
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
                   <span class="d-none d-md-inline" v-text="t$('entity.action.delete')"></span>
-                </b-button>
+                </b-button> -->
               </div>
             </td>
           </tr>

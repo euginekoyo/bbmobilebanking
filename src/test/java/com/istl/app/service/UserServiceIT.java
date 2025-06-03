@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.User;
-import com.istl.app.repository.UserRepository;
+import com.istl.app.domain.mobileapp.User;
+import com.istl.app.repository.mobileapp.UserRepository;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

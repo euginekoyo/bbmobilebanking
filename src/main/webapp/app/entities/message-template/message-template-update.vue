@@ -88,25 +88,6 @@
               <small class="form-text text-danger" v-for="error of v$.messagesomali.$errors" :key="error.$uid">{{ error.$message }}</small>
             </div>
           </div>
-          <div class="form-group">
-            <label
-              class="form-control-label"
-              v-text="t$('bbMobileBankingAdminApp.messageTemplate.createdon')"
-              for="message-template-createdon"
-            ></label>
-            <div class="d-flex">
-              <input
-                id="message-template-createdon"
-                data-cy="createdon"
-                type="datetime-local"
-                class="form-control"
-                name="createdon"
-                :class="{ valid: !v$.createdon.$invalid, invalid: v$.createdon.$invalid }"
-                :value="convertDateTimeFromServer(v$.createdon.$model)"
-                @change="updateInstantField('createdon', $event)"
-              />
-            </div>
-          </div>
         </div>
         <div>
           <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" @click="previousState()">

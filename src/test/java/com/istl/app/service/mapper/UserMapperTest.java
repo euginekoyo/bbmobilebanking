@@ -2,8 +2,8 @@ package com.istl.app.service.mapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.istl.app.domain.Authority;
-import com.istl.app.domain.User;
+import com.istl.app.domain.mobileapp.Authority;
+import com.istl.app.domain.mobileapp.User;
 import com.istl.app.security.AuthoritiesConstants;
 import com.istl.app.service.dto.AdminUserDTO;
 import com.istl.app.service.dto.UserDTO;

@@ -1,7 +1,7 @@
 package com.istl.app.service.mapper;
 
-import com.istl.app.domain.Authority;
-import com.istl.app.domain.User;
+import com.istl.app.domain.mobileapp.Authority;
+import com.istl.app.domain.mobileapp.User;
 import com.istl.app.service.dto.AdminUserDTO;
 import com.istl.app.service.dto.UserDTO;
 import java.util.*;

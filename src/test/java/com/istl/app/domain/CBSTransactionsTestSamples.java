@@ -1,5 +1,6 @@
 package com.istl.app.domain;
 
+import com.istl.app.domain.middleware.CBSTransactions;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;

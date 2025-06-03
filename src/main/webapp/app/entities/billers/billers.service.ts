@@ -82,4 +82,30 @@ export default class BillersService {
         });
     });
   }
+
+  public approve(entity: IBillers): Promise<IBillers> {
+    return new Promise<IBillers>((resolve, reject) => {
+      axios
+        .patch(`${baseApiUrl}/approve/${entity.id}`, entity)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public reject(entity: IBillers): Promise<IBillers> {
+    return new Promise<IBillers>((resolve, reject) => {
+      axios
+        .patch(`${baseApiUrl}/reject/${entity.id}`, entity)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }

@@ -1,12 +1,13 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.Branches;
-import com.istl.app.repository.BranchesRepository;
+import com.istl.app.domain.mobileapp.Branches;
+import com.istl.app.repository.mobileapp.BranchesRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,13 +15,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.Branches}.
+ * REST controller for managing {@link com.istl.app.domain.mobileapp.Branches}.
  */
 @RestController
 @RequestMapping("/api/branches")
@@ -53,6 +56,14 @@ public class BranchesResource {
         if (branches.getId() != null) {
             throw new BadRequestAlertException("A new branches cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        branches.createdon(Instant.now());
+        branches.approved(0L);
+        branches.createdby(currentPrincipalName);
+
         branches = branchesRepository.save(branches);
         return ResponseEntity.created(new URI("/api/branches/" + branches.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, branches.getId().toString()))
@@ -211,6 +222,97 @@ public class BranchesResource {
                     existingBranches.setReporting(branches.getReporting());
                 }
 
+                return existingBranches;
+            })
+            .map(branchesRepository::save);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, branches.getId().toString())
+        );
+    }
+
+    @PatchMapping(value = "/approve/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Branches> approveUpdateBranches(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody Branches branches
+    ) throws URISyntaxException {
+        LOG.debug("REST request to partial update Branches partially : {}, {}", id, branches);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        if (branches.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, branches.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!branchesRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Branches> result = branchesRepository
+            .findById(branches.getId())
+            .map(existingBranches -> {
+                if (branches.getApproved() != null) {
+                    existingBranches.setApproved(1L);
+                }
+                if (branches.getApprovedby() != null) {
+                    existingBranches.setApprovedby(currentPrincipalName);
+                }
+                if (branches.getApprovedon() != null) {
+                    existingBranches.setApprovedon(Instant.now().toString());
+                }
+                if (branches.getCheckerremarks() != null) {
+                    existingBranches.setCheckerremarks(branches.getCheckerremarks());
+                }
+
+                return existingBranches;
+            })
+            .map(branchesRepository::save);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, branches.getId().toString())
+        );
+    }
+
+    @PatchMapping(value = "/reject/{id}", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Branches> rejectUpdateBranches(
+        @PathVariable(value = "id", required = false) final Long id,
+        @NotNull @RequestBody Branches branches
+    ) throws URISyntaxException {
+        LOG.debug("REST request to partial update Branches partially : {}, {}", id, branches);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        if (branches.getId() == null) {
+            throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
+        }
+        if (!Objects.equals(id, branches.getId())) {
+            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+        }
+
+        if (!branchesRepository.existsById(id)) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "idnotfound");
+        }
+
+        Optional<Branches> result = branchesRepository
+            .findById(branches.getId())
+            .map(existingBranches -> {
+                if (branches.getApproved() != null) {
+                    existingBranches.setApproved(2L);
+                }
+                if (branches.getDeclined() != null) {
+                    existingBranches.setDeclined(0L);
+                }
+                if (branches.getDeclineddon() != null) {
+                    existingBranches.setDeclineddon(Instant.now().toString());
+                }
+                if (branches.getDeclinedby() != null) {
+                    existingBranches.setDeclinedby(currentPrincipalName);
+                }
                 return existingBranches;
             })
             .map(branchesRepository::save);

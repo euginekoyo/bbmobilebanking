@@ -82,4 +82,30 @@ export default class BranchesService {
         });
     });
   }
+
+  public approve(entity: IBranches): Promise<IBranches> {
+    return new Promise<IBranches>((resolve, reject) => {
+      axios
+        .patch(`${baseApiUrl}/approve/${entity.id}`, entity)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
+
+  public reject(entity: IBranches): Promise<IBranches> {
+    return new Promise<IBranches>((resolve, reject) => {
+      axios
+        .patch(`${baseApiUrl}/reject/${entity.id}`, entity)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          reject(err);
+        });
+    });
+  }
 }

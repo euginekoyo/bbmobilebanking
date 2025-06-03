@@ -1,7 +1,7 @@
 package com.istl.app.web.rest;
 
-import com.istl.app.domain.Channels;
-import com.istl.app.repository.ChannelsRepository;
+import com.istl.app.domain.mobileapp.Channels;
+import com.istl.app.repository.mobileapp.ChannelsRepository;
 import com.istl.app.web.rest.errors.BadRequestAlertException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -20,7 +20,7 @@ import tech.jhipster.web.util.HeaderUtil;
 import tech.jhipster.web.util.ResponseUtil;
 
 /**
- * REST controller for managing {@link com.istl.app.domain.Channels}.
+ * REST controller for managing {@link Channels}.
  */
 @RestController
 @RequestMapping("/api/channels")
@@ -53,6 +53,7 @@ public class ChannelsResource {
         if (channels.getId() != null) {
             throw new BadRequestAlertException("A new channels cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
         channels = channelsRepository.save(channels);
         return ResponseEntity.created(new URI("/api/channels/" + channels.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, channels.getId().toString()))

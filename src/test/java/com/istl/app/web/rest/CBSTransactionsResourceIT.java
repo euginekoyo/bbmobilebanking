@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.CBSTransactions;
-import com.istl.app.repository.CBSTransactionsRepository;
+import com.istl.app.domain.middleware.CBSTransactions;
+import com.istl.app.repository.middleware.CBSTransactionsRepository;
 import jakarta.persistence.EntityManager;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

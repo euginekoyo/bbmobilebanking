@@ -7,7 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="t$('bbMobileBankingAdminApp.serviceManagement.home.refreshListLabel')"></span>
         </button>
-        <router-link :to="{ name: 'ServiceManagementCreate' }" custom v-slot="{ navigate }">
+        <!-- <router-link :to="{ name: 'ServiceManagementCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -17,7 +17,7 @@
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span v-text="t$('bbMobileBankingAdminApp.serviceManagement.home.createLabel')"></span>
           </button>
-        </router-link>
+        </router-link> -->
       </div>
     </h2>
     <br />
@@ -81,7 +81,7 @@
                     <span class="d-none d-md-inline" v-text="t$('entity.action.view')"></span>
                   </button>
                 </router-link>
-                <router-link
+                <!-- <router-link
                   :to="{ name: 'ServiceManagementEdit', params: { serviceManagementId: serviceManagement.id } }"
                   custom
                   v-slot="{ navigate }"
@@ -90,8 +90,8 @@
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="t$('entity.action.edit')"></span>
                   </button>
-                </router-link>
-                <b-button
+                </router-link> -->
+                <!-- <b-button
                   @click="prepareRemove(serviceManagement)"
                   variant="danger"
                   class="btn btn-sm"
@@ -100,7 +100,7 @@
                 >
                   <font-awesome-icon icon="times"></font-awesome-icon>
                   <span class="d-none d-md-inline" v-text="t$('entity.action.delete')"></span>
-                </b-button>
+                </b-button> -->
               </div>
             </td>
           </tr>

@@ -1,8 +1,8 @@
 package com.istl.app.security;
 
-import com.istl.app.domain.Authority;
-import com.istl.app.domain.User;
-import com.istl.app.repository.UserRepository;
+import com.istl.app.domain.mobileapp.Authority;
+import com.istl.app.domain.mobileapp.User;
+import com.istl.app.repository.mobileapp.UserRepository;
 import java.util.*;
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator;
 import org.slf4j.Logger;
@@ -12,12 +12,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Authenticate a user from the database.
  */
 @Component("userDetailsService")
+@EnableTransactionManagement
 public class DomainUserDetailsService implements UserDetailsService {
 
     private static final Logger LOG = LoggerFactory.getLogger(DomainUserDetailsService.class);

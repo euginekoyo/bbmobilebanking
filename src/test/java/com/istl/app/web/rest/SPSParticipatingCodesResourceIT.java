@@ -9,8 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.istl.app.IntegrationTest;
-import com.istl.app.domain.SPSParticipatingCodes;
-import com.istl.app.repository.SPSParticipatingCodesRepository;
+import com.istl.app.domain.middleware.SPSParticipatingCodes;
+import com.istl.app.repository.middleware.SPSParticipatingCodesRepository;
 import jakarta.persistence.EntityManager;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;

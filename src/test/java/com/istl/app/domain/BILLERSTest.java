@@ -3,6 +3,7 @@ package com.istl.app.domain;
 import static com.istl.app.domain.BillersTestSamples.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.istl.app.domain.mobileapp.Billers;
 import com.istl.app.web.rest.TestUtil;
 import org.junit.jupiter.api.Test;
 

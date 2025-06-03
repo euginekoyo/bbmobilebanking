@@ -1,8 +1,8 @@
 package com.istl.app.web.rest;
 
 import com.istl.app.config.Constants;
-import com.istl.app.domain.User;
-import com.istl.app.repository.UserRepository;
+import com.istl.app.domain.mobileapp.User;
+import com.istl.app.repository.mobileapp.UserRepository;
 import com.istl.app.security.AuthoritiesConstants;
 import com.istl.app.service.MailService;
 import com.istl.app.service.UserService;
@@ -34,7 +34,7 @@ import tech.jhipster.web.util.ResponseUtil;
 /**
  * REST controller for managing users.
  * <p>
- * This class accesses the {@link com.istl.app.domain.User} entity, and needs to fetch its collection of authorities.
+ * This class accesses the {@link com.istl.app.domain.mobileapp.User} entity, and needs to fetch its collection of authorities.
  * <p>
  * For a normal use-case, it would be better to have an eager relationship between User and Authority,
  * and send everything to the client side: there would be no View Model and DTO, a lot less code, and an outer-join

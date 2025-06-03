@@ -16,11 +16,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tech.jhipster.config.JHipsterConstants;
 import tech.jhipster.config.h2.H2ConfigurationHelper;
 
-@Configuration
-@EnableJpaRepositories({ "com.istl.app.repository" })
-@EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
-@EnableTransactionManagement
-@EnableConfigurationProperties(H2ConsoleProperties.class)
+//@Configuration
+//@EnableJpaRepositories({ "com.istl.app.repository" })
+//@EnableJpaAuditing(auditorAwareRef = "springSecurityAuditorAware")
+//@EnableTransactionManagement
+//@EnableConfigurationProperties(H2ConsoleProperties.class)
 public class DatabaseConfiguration {
 
     private static final Logger LOG = LoggerFactory.getLogger(DatabaseConfiguration.class);

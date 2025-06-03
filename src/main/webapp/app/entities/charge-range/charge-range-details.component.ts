@@ -35,9 +35,34 @@ export default defineComponent({
     return {
       alertService,
       chargeRange,
-
+      chargeRangeService,
       previousState,
       t$: useI18n().t,
     };
+  },
+  methods: {
+    approve(): void {
+      this.chargeRangeService()
+        .approve(this.chargeRange)
+        .then(param => {
+          this.previousState();
+          this.alertService.showInfo(this.t$('bbMobileBankingAdminApp.chargeRange.updated', { param: param.id }));
+        })
+        .catch(error => {
+          this.alertService.showHttpError(error.response);
+        });
+    },
+
+    reject(): void {
+      this.chargeRangeService()
+        .reject(this.chargeRange)
+        .then(param => {
+          this.previousState();
+          this.alertService.showInfo(this.t$('bbMobileBankingAdminApp.chargeRange.updated', { param: param.id }));
+        })
+        .catch(error => {
+          this.alertService.showHttpError(error.response);
+        });
+    },
   },
 });
