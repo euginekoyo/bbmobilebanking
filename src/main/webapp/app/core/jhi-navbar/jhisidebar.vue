@@ -9,172 +9,771 @@
     <h3>Menu</h3>
     <div class="menu">
       <router-link to="/" class="button">
-        <span class="material-icons">home</span>
-        <span class="text">Home</span>
+        <span class="material-icons">account_circle</span>
+        <span class="text">{{ t$('global.menu.accountMod') }}</span>
       </router-link>
-      <router-link to="/about" class="button">
-        <span class="material-icons">description</span>
-        <span class="text">About</span>
-      </router-link>
-      <router-link to="/team" class="button">
-        <span class="material-icons">group</span>
-        <span class="text">Team</span>
-      </router-link>
-      <router-link to="/contact" class="button">
-        <span class="material-icons">email</span>
-        <span class="text">Contact</span>
-      </router-link>
-    </div>
 
-    <div class="flex"></div>
+      <!-- Customer Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button class="button menu-parent" @click="toggleSubmenu('customer')" :class="{ 'is-active': activeSubmenu === 'customer' }">
+          <span class="material-icons">person</span>
+          <span class="text">{{ t$('global.menu.customer') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
 
-    <div class="menu">
-      <router-link to="/settings" class="button">
-        <span class="material-icons">settings</span>
-        <span class="text">Settings</span>
-      </router-link>
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'customer' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">visibility</span>
+            <span class="text">View Customer Details</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">verified_user</span>
+            <span class="text">Complete KYC</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">refresh</span>
+            <span class="text">Customer Resets</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">block</span>
+            <span class="text">Block Customer</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">lock_open</span>
+            <span class="text">Unblock Customer</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">check_circle</span>
+            <span class="text">Approve Unblock Customer</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">close</span>
+            <span class="text">Close Customer Profile</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">done_all</span>
+            <span class="text">Approve Close Profile</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">error</span>
+            <span class="text">Failed Registration</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">devices</span>
+            <span class="text">Approve Customer Device</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">info</span>
+            <span class="text">Customer Details</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Account Opening Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button
+          class="button menu-parent"
+          @click="toggleSubmenu('account-opening')"
+          :class="{ 'is-active': activeSubmenu === 'account-opening' }"
+        >
+          <span class="material-icons">account_balance</span>
+          <span class="text">{{ t$('global.menu.accountOpening') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'account-opening' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">add_circle</span>
+            <span class="text">New Account</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">pending</span>
+            <span class="text">Pending Applications</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">check_circle</span>
+            <span class="text">Approved Accounts</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">cancel</span>
+            <span class="text">Rejected Applications</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Agency Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button class="button menu-parent" @click="toggleSubmenu('agency')" :class="{ 'is-active': activeSubmenu === 'agency' }">
+          <span class="material-icons">business</span>
+          <span class="text">{{ t$('global.menu.agency') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'agency' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">store</span>
+            <span class="text">View Agencies</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">add_business</span>
+            <span class="text">Add New Agency</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">location_on</span>
+            <span class="text">Agency Locations</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">assessment</span>
+            <span class="text">Performance Reports</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Agency Management Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button
+          class="button menu-parent"
+          @click="toggleSubmenu('agency-management')"
+          :class="{ 'is-active': activeSubmenu === 'agency-management' }"
+        >
+          <span class="material-icons">manage_accounts</span>
+          <span class="text">{{ t$('global.menu.agencyMgnt') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'agency-management' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">supervisor_account</span>
+            <span class="text">Agency Staff</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">settings</span>
+            <span class="text">Agency Settings</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">monetization_on</span>
+            <span class="text">Commission Management</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">schedule</span>
+            <span class="text">Working Hours</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Registration Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button
+          class="button menu-parent"
+          @click="toggleSubmenu('registration')"
+          :class="{ 'is-active': activeSubmenu === 'registration' }"
+        >
+          <span class="material-icons">how_to_reg</span>
+          <span class="text">{{ t$('global.menu.registration') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'registration' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">person_add</span>
+            <span class="text">New Registration</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">list_alt</span>
+            <span class="text">Registration Queue</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">verified</span>
+            <span class="text">Verified Registrations</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">history</span>
+            <span class="text">Registration History</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Alerts Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button class="button menu-parent" @click="toggleSubmenu('alerts')" :class="{ 'is-active': activeSubmenu === 'alerts' }">
+          <span class="material-icons">notifications</span>
+          <span class="text">{{ t$('global.menu.alerts') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'alerts' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">notification_important</span>
+            <span class="text">Active Alerts</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">add_alert</span>
+            <span class="text">Create Alert</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">history</span>
+            <span class="text">Alert History</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">tune</span>
+            <span class="text">Alert Settings</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Bulk Operations Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button class="button menu-parent" @click="toggleSubmenu('bulk')" :class="{ 'is-active': activeSubmenu === 'bulk' }">
+          <span class="material-icons">upload_file</span>
+          <span class="text">{{ t$('global.menu.bulk') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'bulk' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">cloud_upload</span>
+            <span class="text">Bulk Upload</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">download</span>
+            <span class="text">Download Template</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">playlist_add_check</span>
+            <span class="text">Validation Results</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">sync</span>
+            <span class="text">Processing Status</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Institution Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button class="button menu-parent" @click="toggleSubmenu('institution')" :class="{ 'is-active': activeSubmenu === 'institution' }">
+          <span class="material-icons">domain</span>
+          <span class="text">{{ t$('global.menu.institution') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'institution' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">corporate_fare</span>
+            <span class="text">Institution Profile</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">account_balance</span>
+            <span class="text">Branch Management</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">policy</span>
+            <span class="text">Policies & Rules</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">security</span>
+            <span class="text">Security Settings</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Limit Management Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button
+          class="button menu-parent"
+          @click="toggleSubmenu('limit-management')"
+          :class="{ 'is-active': activeSubmenu === 'limit-management' }"
+        >
+          <span class="material-icons">trending_up</span>
+          <span class="text">{{ t$('global.menu.limitMgnt') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'limit-management' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">account_balance_wallet</span>
+            <span class="text">Transaction Limits</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">credit_card</span>
+            <span class="text">Card Limits</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">schedule</span>
+            <span class="text">Daily Limits</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">settings</span>
+            <span class="text">Limit Configuration</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- User Management Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button
+          class="button menu-parent"
+          @click="toggleSubmenu('user-management')"
+          :class="{ 'is-active': activeSubmenu === 'user-management' }"
+        >
+          <span class="material-icons">group</span>
+          <span class="text">{{ t$('global.menu.userMgnt') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'user-management' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">person_add</span>
+            <span class="text">Add User</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">people</span>
+            <span class="text">User List</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">admin_panel_settings</span>
+            <span class="text">Roles & Permissions</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">login</span>
+            <span class="text">Active Sessions</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- System Management Menu with Collapsible Submenu -->
+      <div class="menu-item-group">
+        <button
+          class="button menu-parent"
+          @click="toggleSubmenu('system-management')"
+          :class="{ 'is-active': activeSubmenu === 'system-management' }"
+        >
+          <span class="material-icons">dns</span>
+          <span class="text">{{ t$('global.menu.systemMgnt') }}</span>
+          <span class="material-icons expand-icon">expand_more</span>
+        </button>
+
+        <div class="submenu" :class="{ 'is-open': activeSubmenu === 'system-management' }">
+          <a href="#" class="submenu-item">
+            <span class="material-icons">settings</span>
+            <span class="text">System Configuration</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">backup</span>
+            <span class="text">Backup & Restore</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">bug_report</span>
+            <span class="text">System Logs</span>
+          </a>
+          <a href="#" class="submenu-item">
+            <span class="material-icons">monitor_heart</span>
+            <span class="text">System Health</span>
+          </a>
+        </div>
+      </div>
     </div>
   </aside>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-// import logoURL from '../assets/logo.png'
+import { ref, onMounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 
-const is_expanded = ref(localStorage.getItem('is_expanded') === 'true');
+const emit = defineEmits(['toggle']);
+
+const { t } = useI18n();
+const t$ = t;
+
+const is_expanded = ref(false);
+const activeSubmenu = ref(null);
 
 const ToggleMenu = () => {
   is_expanded.value = !is_expanded.value;
-  localStorage.setItem('is_expanded', is_expanded.value);
+  emit('toggle', is_expanded.value);
+
+  // Close all submenus when collapsing sidebar
+  if (!is_expanded.value) {
+    activeSubmenu.value = null;
+  }
 };
+
+const toggleSubmenu = submenuName => {
+  // Only allow submenu interaction when sidebar is expanded
+  if (!is_expanded.value) {
+    // If sidebar is collapsed, expand it first
+    is_expanded.value = true;
+    emit('toggle', is_expanded.value);
+    // Set a small delay to allow sidebar expansion animation
+    setTimeout(() => {
+      activeSubmenu.value = activeSubmenu.value === submenuName ? null : submenuName;
+    }, 100);
+  } else {
+    activeSubmenu.value = activeSubmenu.value === submenuName ? null : submenuName;
+  }
+};
+
+onMounted(() => {
+  is_expanded.value = false;
+});
 </script>
 
 <style lang="scss" scoped>
 :root {
-  --dark: #1e2a38;
-  --dark-alt: #2c3e50;
-  --light: #b0bec5;
-  --primary: #2196f3;
-  --grey: #78909c;
-  --sidebar-width: 220px;
+  --dark: #0f0f23;
+  --dark-alt: #090911;
+  --dark-accent: #061026;
+  --light: #f8fafc;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-light: #a5b4fc;
+  --secondary: #ec4899;
+  --accent: #06b6d4;
+  --grey: #94a3b8;
+  --grey-dark: #64748b;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --sidebar-width: 280px;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --glow: 0 0 20px rgba(99, 102, 241, 0.3);
 }
 
 aside {
   display: flex;
   flex-direction: column;
-  background: black;
-  margin-top: 100px;
+  background: linear-gradient(135deg, #7674b9 0%, #1f1d63 50%, #1f1d46 100%);
+  backdrop-filter: blur(20px);
+  border-right: 2px solid var(--border-color);
+  box-shadow:
+    8px 0 32px rgba(0, 0, 0, 0.4),
+    inset -1px 0 0 rgba(255, 255, 255, 0.05);
   color: var(--light);
-  width: 60px;
-  min-height: 100vh;
-  padding: 1rem;
-  transition: width 0.3s ease-in-out;
+  width: 80px;
+  margin-top: 70px;
+  height: calc(100vh - 70px);
+  padding: 1.5rem 0.75rem;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
+  overflow: hidden;
 
-  .flex {
-    flex: 1 1 0%;
-  }
-
-  .logo {
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: center;
-
-    img {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.03) 50%, rgba(6, 182, 212, 0.05) 100%);
+    z-index: -1;
   }
 
   .menu-toggle-wrap {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+    position: relative;
 
     .menu-toggle {
-      background: transparent;
-      border: none;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.2);
       cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 4px;
-      transition: all 0.2s ease-in-out;
+      padding: 0.75rem;
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: left 0.5s ease;
+      }
 
       .material-icons {
-        font-size: 1.5rem;
-        color: var(--light);
-        transition: 0.2s ease-out;
+        font-size: 1.6rem;
+        color: var(--primary-light);
+        transition: all 0.3s ease;
+        display: block;
       }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.05);
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.1) 100%);
+        border-color: var(--primary);
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: var(--glow);
+
+        &::before {
+          left: 100%;
+        }
 
         .material-icons {
           color: var(--primary);
+          transform: rotateY(180deg);
         }
       }
 
       &:focus {
         outline: none;
-        box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.5);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+      }
+
+      &:active {
+        transform: translateY(0) scale(0.98);
       }
     }
   }
 
-  h3,
-  .button .text {
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-  }
-
   h3 {
+    font-size: 0.75rem;
     color: var(--grey);
-    font-size: 0.9rem;
-    margin: 0.5rem 0;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.15rem;
+    margin: 0 1.5rem 1.5rem;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+    font-weight: 700;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 1px;
+    }
   }
 
   .menu {
-    margin: 0 -1rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+    overflow-y: auto;
+    max-height: calc(100vh - 300px);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .menu-item-group {
+      margin: 0 0.25rem;
+    }
 
     .button {
       display: flex;
       align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
       text-decoration: none;
-      padding: 0.75rem 1.25rem;
-      transition: all 0.2s ease-in-out;
+      padding: 1rem 1.25rem;
+      color: var(--light);
+      border-radius: 16px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      margin: 0 0.25rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      width: calc(100% - 0.5rem);
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: -1;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+        border-radius: 50%;
+        z-index: -1;
+      }
 
       .material-icons {
-        font-size: 1.2rem;
-        color: var(--light);
-        width: 20px;
+        font-size: 1.4rem;
+        color: inherit;
+        min-width: 24px;
         text-align: center;
-        transition: 0.2s ease-in-out;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 1;
       }
 
       .text {
-        color: var(--light);
         font-size: 0.95rem;
-        transition: 0.2s ease-in-out;
+        opacity: 0;
+        white-space: nowrap;
+        transition: all 0.4s ease;
+        font-weight: 600;
+        position: relative;
+        z-index: 1;
+        flex: 1;
+        text-align: left;
+      }
+
+      .expand-icon {
+        font-size: 1.2rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+        transform: rotate(0deg);
+        margin-left: auto;
+      }
+
+      &.menu-parent {
+        &.is-active {
+          .expand-icon {
+            transform: rotate(180deg);
+          }
+        }
       }
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: rgba(255, 255, 255, 0.04);
+        color: var(--light);
+        transform: translateX(8px) scale(1.02);
+        box-shadow:
+          0 8px 25px rgba(0, 0, 0, 0.15),
+          0 0 20px rgba(99, 102, 241, 0.1);
 
-        .material-icons,
-        .text {
-          color: var(--primary);
+        &::before {
+          width: 6px;
+        }
+
+        &::after {
+          width: 100px;
+          height: 100px;
+        }
+
+        .material-icons {
+          color: var(--primary-light);
+          transform: scale(1.15) rotate(5deg);
         }
       }
 
       &.router-link-exact-active {
-        background-color: var(--primary);
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+        color: white;
+        box-shadow:
+          0 8px 25px rgba(99, 102, 241, 0.4),
+          0 0 30px rgba(99, 102, 241, 0.3);
+        transform: translateX(4px);
+
         .material-icons,
         .text {
-          color: #ffffff;
+          color: white;
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        &::before {
+          width: 100%;
+        }
+
+        &:hover {
+          transform: translateX(8px) scale(1.02);
+          box-shadow:
+            0 12px 35px rgba(99, 102, 241, 0.5),
+            0 0 40px rgba(99, 102, 241, 0.4);
+        }
+      }
+    }
+
+    .submenu {
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      margin: 0.25rem 0.5rem 0.5rem;
+      backdrop-filter: blur(10px);
+
+      &.is-open {
+        max-height: 500px;
+        padding: 0.5rem 0;
+      }
+
+      .submenu-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        color: var(--grey);
+        text-decoration: none;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        margin: 0 0.5rem;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 0;
+          height: 100%;
+          background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+          transition: width 0.3s ease;
+          z-index: -1;
+        }
+
+        .material-icons {
+          font-size: 1.1rem;
+          opacity: 0.7;
+          transition: all 0.3s ease;
+        }
+
+        .text {
+          opacity: 1;
+          font-weight: 500;
+        }
+
+        &:hover {
+          color: var(--light);
+          background-color: rgba(255, 255, 255, 0.05);
+          transform: translateX(4px);
+
+          &::before {
+            width: 4px;
+          }
+
+          .material-icons {
+            opacity: 1;
+            color: var(--primary-light);
+            transform: scale(1.1);
+          }
         }
       }
     }
@@ -182,30 +781,73 @@ aside {
 
   &.is-expanded {
     width: var(--sidebar-width);
-
-    .menu-toggle-wrap {
-      .menu-toggle {
-        transform: rotate(-180deg);
-      }
-    }
+    padding: 1.5rem 1rem;
 
     h3,
-    .button .text {
+    .button .text,
+    .button .expand-icon {
       opacity: 1;
     }
 
-    .button {
+    .menu-toggle {
       .material-icons {
-        margin-right: 0.75rem;
+        transform: rotate(180deg);
       }
+    }
+
+    .menu {
+      gap: 0.75rem;
     }
   }
 
   @media (max-width: 1024px) {
-    width: 60px;
+    width: 70px;
+
     &.is-expanded {
-      width: 200px;
+      width: 240px;
     }
   }
+
+  @media (max-width: 768px) {
+    transform: translateX(-100%);
+    width: 70px;
+
+    &.is-expanded {
+      transform: translateX(0);
+      width: 100vw;
+      max-width: 320px;
+      height: 100vh;
+      margin-top: 0;
+    }
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+aside {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+  }
+}
+
+.router-link-exact-active {
+  animation: pulse 2s ease-in-out infinite;
 }
 </style>

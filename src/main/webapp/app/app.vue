@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <ribbon></ribbon>
-    <div id="app-header">
+    <div id="app-header " class="sticky-top">
       <jhi-navbar @toggle-sidebar="toggleSidebar"></jhi-navbar>
     </div>
-    <div class="nav-bar">
-      <jhi-sidebar :visible="sidebarVisible"></jhi-sidebar>
-    </div>
+    <ribbon></ribbon>
+
     <div class="container-fluid rounded-lg">
-      <div class="card jh-card">
+      <div class="nav-bar" v-if="authenticated">
+        <jhi-sidebar :visible="sidebarVisible"></jhi-sidebar>
+      </div>
+      <div class="card jh-card ml-5">
         <router-view></router-view>
       </div>
 
