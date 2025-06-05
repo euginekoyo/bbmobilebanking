@@ -5,6 +5,18 @@
     "menu": {
       "home": "Home",
       "dashboard": "Dashboard",
+      "Account": "Account Module",
+      "Customer": "Customer Management",
+      "AccountOpening": "Account Opening",
+      "Agency": "Agency Devices",
+      "AgencyMgnt": "Agency management",
+      "Registration": "Registration Module",
+      "Alerts": "Alert module",
+      "bulk": "Bulk Transactions",
+      "institution": "Institution Module",
+      "limitMgnt": "Limits Management",
+      "UserMgnt": "User Management",
+      "systemMgnt": "System Management",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Mobile Banking Config",
@@ -74,8 +86,8 @@
           "suffix": ", you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\")."
         },
         "register": {
-          "noaccount": "You don't have an account yet?",
-          "link": "Register a new account"
+          "noaccount": "Don't have an account?",
+          "link": "Register here"
         }
       },
       "error": {

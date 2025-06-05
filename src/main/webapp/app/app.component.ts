@@ -1,13 +1,10 @@
-import { defineComponent, provide } from 'vue';
+import { defineComponent, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import Ribbon from '@/core/ribbon/ribbon.vue';
-import JhiFooter from '@/core/jhi-footer/jhi-footer.vue';
 import JhiNavbar from '@/core/jhi-navbar/jhi-navbar.vue';
+import JhiSidebar from '@/core/jhi-navbar/jhisidebar.vue';
+import JhiFooter from '@/core/jhi-footer/jhi-footer.vue';
+import Ribbon from '@/core/ribbon/ribbon.vue';
 import LoginForm from '@/account/login-form/login-form.vue';
-
-import { useAlertService } from '@/shared/alert/alert.service';
-
-import '@/shared/config/dayjs';
 
 export default defineComponent({
   compatConfig: { MODE: 3 },
@@ -15,13 +12,25 @@ export default defineComponent({
   components: {
     ribbon: Ribbon,
     'jhi-navbar': JhiNavbar,
-    'login-form': LoginForm,
+    'jhi-sidebar': JhiSidebar,
     'jhi-footer': JhiFooter,
+    'login-form': LoginForm,
   },
   setup() {
-    provide('alertService', useAlertService());
+    const sidebarVisible = ref(false);
+
+    const toggleSidebar = () => {
+      sidebarVisible.value = !sidebarVisible.value;
+    };
+
+    const closeSidebar = () => {
+      sidebarVisible.value = false;
+    };
 
     return {
+      sidebarVisible,
+      toggleSidebar,
+      closeSidebar, // Add this missing method
       t$: useI18n().t,
     };
   },

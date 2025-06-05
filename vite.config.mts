@@ -55,7 +55,7 @@ const config = defineConfig({
       ['/api', '/management', '/v3/api-docs', '/h2-console'].map(res => [
         res,
         {
-          target: 'http://localhost:8080',
+          target: 'http://localhost:8995',
         },
       ]),
     ),

@@ -7,7 +7,6 @@ import languages from '@/shared/config/languages';
 import EntitiesMenu from '@/entities/entities-menu.vue';
 import TxnMenu from '@/entities/txn-menu.vue';
 import ReconMenu from '@/entities/recon-menu.vue';
-
 import { useStore } from '@/store';
 
 export default defineComponent({
@@ -18,7 +17,8 @@ export default defineComponent({
     'recon-menu': ReconMenu,
     'txn-menu': TxnMenu,
   },
-  setup() {
+  emits: ['toggle-sidebar'],
+  setup(props, { emit }) {
     const loginService = inject<LoginService>('loginService');
     const accountService = inject<AccountService>('accountService');
     const currentLanguage = inject('currentLanguage', () => computed(() => navigator.language ?? 'en'), true);
@@ -45,7 +45,7 @@ export default defineComponent({
     const subIsActive = (input: string | string[]) => {
       const paths = Array.isArray(input) ? input : [input];
       return paths.some(path => {
-        return router.currentRoute.value.path.indexOf(path) === 0; // current path starts with this path string
+        return router.currentRoute.value.path.indexOf(path) === 0;
       });
     };
 
