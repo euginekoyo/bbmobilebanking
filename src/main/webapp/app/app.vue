@@ -1,16 +1,18 @@
 <template>
   <div id="app">
     <div id="app-header " class="sticky-top">
-      <jhi-navbar @toggle-sidebar="toggleSidebar"></jhi-navbar>
+      <jhi-navbar></jhi-navbar>
     </div>
-    <ribbon></ribbon>
+    <div class="nav-bar">
+      <jhi-sidebar v-if="authenticated" :visible="sidebarVisible" @toggle="handleSidebarToggle"></jhi-sidebar>
+    </div>
 
     <div class="container-fluid rounded-lg">
-      <div class="nav-bar" v-if="authenticated">
-        <jhi-sidebar :visible="sidebarVisible"></jhi-sidebar>
-      </div>
+      <ribbon></ribbon>
       <div class="card jh-card ml-5">
-        <router-view></router-view>
+        <main :class="{ 'sidebar-open': sidebarVisible }">
+          <router-view></router-view>
+        </main>
       </div>
 
       <!-- Modern Login Modal -->
@@ -33,6 +35,20 @@
 .custom-login-modal {
   border-radius: 1.5rem !important;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+.app-layout {
+  display: flex;
+}
+
+.main-content {
+  flex-grow: 1;
+  transition: margin-left 0.3s ease;
+  margin-left: 60px; /* collapsed sidebar width */
+  padding: 1rem;
+}
+
+.sidebar-open {
+  margin-left: 250px; /* expanded sidebar width */
 }
 </style>
 

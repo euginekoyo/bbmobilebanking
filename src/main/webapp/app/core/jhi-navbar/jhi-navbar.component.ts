@@ -8,7 +8,6 @@ import EntitiesMenu from '@/entities/entities-menu.vue';
 import TxnMenu from '@/entities/txn-menu.vue';
 import ReconMenu from '@/entities/recon-menu.vue';
 import { useStore } from '@/store';
-
 export default defineComponent({
   compatConfig: { MODE: 3 },
   name: 'JhiNavbar',

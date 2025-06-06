@@ -1,5 +1,5 @@
 <template>
-  <b-navbar data-cy="navbar" toggleable="md" type="dark" class="jh-navbar sticky-top">
+  <b-navbar data-cy="navbar" toggleable="md" type="dark" class="jh-navbar sticky-top w-100">
     <b-navbar-brand class="logo rounded-pill" b-link to="/">
       <span class="logo-img"></span>
       <span v-text="t$('global.title')" class="navbar-title"></span>
