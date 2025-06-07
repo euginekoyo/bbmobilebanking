@@ -422,6 +422,16 @@ public class Customer implements Serializable {
     private String branchcode;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
+    @Transient // Not persisted in the database
+    private Double approveReset;
+
+    public Double getApproveReset() {
+        return approveReset;
+    }
+
+    public void setApproveReset(Double approveReset) {
+        this.approveReset = approveReset;
+    }
 
     public Long getId() {
         return this.id;

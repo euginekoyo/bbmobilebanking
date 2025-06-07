@@ -32,6 +32,7 @@
       "alertenabled": "Alertenabled",
       "remark": "Remark",
       "imsi": "Imsi",
+      "resets": "Reset Remark",
       "partiallyregistered": "Partiallyregistered",
       "partialdate": "Partialdate",
       "registerdate": "Registerdate",
