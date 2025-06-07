@@ -105,6 +105,9 @@
           "minlength": "Your confirmation password is required to be at least 4 characters.",
           "maxlength": "Your confirmation password cannot be longer than 50 characters."
         },
+        "block": "blocked",
+        "reset": "pin reset successful",
+        "approve": "Pin Reset Approval Successful",
         "email": {
           "required": "Your email is required.",
           "invalid": "Your email is invalid.",

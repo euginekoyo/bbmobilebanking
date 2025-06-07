@@ -59,6 +59,11 @@ const MessageTemplate = () => import('@/entities/message-template/message-templa
 const MessageTemplateUpdate = () => import('@/entities/message-template/message-template-update.vue');
 const MessageTemplateDetails = () => import('@/entities/message-template/message-template-details.vue');
 
+const BlockCustomer = () => import('@/entities/customer/blockCustomer/blockCustomer.vue');
+const UnBlockCustomer = () => import('@/entities/customer/blockCustomer/unBlockCustomer.vue');
+
+const PinRest = () => import('@/entities/customer/PinReset/pinRest.vue');
+const ApprovePinReset = () => import('@/entities/customer/PinReset/approvePinReset.vue');
 const PinResetHistory = () => import('@/entities/pin-reset-history/pin-reset-history.vue');
 const PinResetHistoryUpdate = () => import('@/entities/pin-reset-history/pin-reset-history-update.vue');
 const PinResetHistoryDetails = () => import('@/entities/pin-reset-history/pin-reset-history-details.vue');
@@ -421,6 +426,30 @@ export default {
       path: 'message-template/:messageTemplateId/view',
       name: 'MessageTemplateView',
       component: MessageTemplateDetails,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'reset-pin',
+      name: 'ResetPin',
+      component: PinRest,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'approve-pin-reset',
+      name: 'ApprovePinReset',
+      component: ApprovePinReset,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'block-customer',
+      name: 'BlockCustomer',
+      component: BlockCustomer,
+      meta: { authorities: [Authority.USER] },
+    },
+    {
+      path: 'unblock-customer',
+      name: 'UnBlockCustomer',
+      component: UnBlockCustomer,
       meta: { authorities: [Authority.USER] },
     },
     {

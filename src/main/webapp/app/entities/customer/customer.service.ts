@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import { type ICustomer } from '@/shared/model/customer.model';
 
 const baseApiUrl = 'api/customers';
@@ -78,6 +77,65 @@ export default class CustomerService {
           resolve(res.data);
         })
         .catch(err => {
+          reject(err);
+        });
+    });
+  }
+  public approveResetPin(id: number, remark: string, approvedBy: string): Promise<ICustomer> {
+    return new Promise<ICustomer>((resolve, reject) => {
+      const payload = {
+        id: id,
+        remark: remark,
+        approveReset: 1.0, // Trigger approval logic in the backend
+        approvedby: approvedBy,
+      };
+      console.log('Sending PATCH request to approve PIN reset with payload:', payload);
+      axios
+        .patch(`${baseApiUrl}/${id}`, payload)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.error('PATCH request failed:', err.response);
+          reject(err);
+        });
+    });
+  }
+  public resetPin(id: number, remark: string, resetBy: string): Promise<ICustomer> {
+    return new Promise<ICustomer>((resolve, reject) => {
+      const payload = {
+        id: id,
+        pinresetremark: remark,
+        resetby: resetBy,
+      };
+      console.log('Sending PATCH request with payload:', payload);
+      axios
+        .patch(`${baseApiUrl}/${id}`, payload)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.error('PATCH request failed:', err.response);
+          reject(err);
+        });
+    });
+  }
+
+  public confirmBlockCustomer(id: number, remark: string, blockBy: string): Promise<ICustomer> {
+    return new Promise<ICustomer>((resolve, reject) => {
+      const payload = {
+        id: id,
+        pinblockremarks: remark,
+        blockBy: blockBy,
+      };
+      console.log('Sending PATCH request with payload:', payload);
+      axios
+        .patch(`${baseApiUrl}/${id}`, payload)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.error('PATCH request failed:', err.response);
           reject(err);
         });
     });

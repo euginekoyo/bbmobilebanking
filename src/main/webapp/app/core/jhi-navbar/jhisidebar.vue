@@ -22,7 +22,7 @@
         </button>
 
         <div class="submenu" :class="{ 'is-open': activeSubmenu === 'customer' }">
-          <router-link to="customer" class="submenu-item">
+          <router-link to="#" class="submenu-item">
             <span class="material-icons">visibility</span>
             <span class="text">View Customer Details</span>
           </router-link>

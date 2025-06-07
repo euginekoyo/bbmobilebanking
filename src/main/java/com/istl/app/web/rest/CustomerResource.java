@@ -7,6 +7,9 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -123,6 +126,7 @@ public class CustomerResource {
         Optional<Customer> result = customerRepository
             .findById(customer.getId())
             .map(existingCustomer -> {
+                // Existing fields update logic
                 if (customer.getCustomername() != null) {
                     existingCustomer.setCustomername(customer.getCustomername());
                 }
@@ -449,6 +453,32 @@ public class CustomerResource {
                 }
                 if (customer.getBranchcode() != null) {
                     existingCustomer.setBranchcode(customer.getBranchcode());
+                }
+
+                // Custom logic for PIN reset
+                if (Boolean.TRUE.equals(customer.getPinresetremark())) { // Check if reset flag is true
+                    existingCustomer.setPinresetremark(null); // Reset PIN by setting it to null (or generate a new PIN)
+                    existingCustomer.setResetby(customer.getResetby() != null ? customer.getResetby() : "system"); // Set reset initiator
+                    if (customer.getPinresetremark() != null) {
+                        existingCustomer.setPinresetremark(customer.getPinresetremark()); // Update remark for PIN reset
+                    }
+                }
+
+                // Custom logic for approving PIN reset
+                if (customer.getApproveReset() != null && customer.getApproveReset() == 1.0) { // Assuming approveReset is Double
+                    existingCustomer.setApproved(1.0); // Mark as approved (assuming approved is Double)
+                    existingCustomer.setApprovedby(customer.getApprovedby() != null ? customer.getApprovedby() : "system");
+                    // Simplify the time conversion
+                    existingCustomer.setApprovedon(
+                        LocalDateTime.now(ZoneId.of("Africa/Nairobi")).atZone(ZoneId.of("Africa/Nairobi")).toInstant()
+                    );
+                    existingCustomer.setResetapproveon(
+                        LocalDateTime.now(ZoneId.of("Africa/Nairobi")).atZone(ZoneId.of("Africa/Nairobi")).toInstant()
+                    );
+                    if (customer.getPinresetremark() != null) {
+                        // Assuming pinresetpin is intended to be a remark or needs conversion
+                        existingCustomer.setPinresetremark(customer.getPinresetremark().toString()); // Convert to String if needed
+                    }
                 }
 
                 return existingCustomer;
