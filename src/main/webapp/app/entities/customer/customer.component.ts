@@ -55,23 +55,6 @@ export default defineComponent({
     };
 
     // Confirm block customer
-    const confirmBlockCustomer = async () => {
-      if (selectedCustomer.value) {
-        try {
-          const updatedCustomer = await customerService().blockCustomer(selectedCustomer.value.id);
-          alertService.showSuccess(t$('bbMobileBankingAdminApp.customer.blockSuccess').toString());
-          // Update the customer in the list to reflect the new blocked status
-          const index = customers.value.findIndex(c => c.id === selectedCustomer.value!.id);
-          if (index !== -1) {
-            customers.value[index] = updatedCustomer;
-          }
-          const modal = bootstrap.Modal.getInstance(document.getElementById('blockCustomerModal'));
-          modal?.hide();
-        } catch (error) {
-          alertService.showHttpError(error);
-        }
-      }
-    };
 
     // Open view customer modal
     const openViewModal = async (customer: ICustomer) => {
@@ -124,7 +107,6 @@ export default defineComponent({
       customers,
       selectedCustomer,
       openBlockModal,
-      confirmBlockCustomer,
       openViewModal,
     };
   },

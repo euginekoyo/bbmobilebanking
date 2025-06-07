@@ -80,10 +80,28 @@
             <span class="material-icons">devices</span>
             <span class="text">Approve Customer Device</span>
           </router-link>
-          <router-link to="/customer/details-alt" class="submenu-item">
-            <span class="material-icons">info</span>
-            <span class="text">Customer Details</span>
-          </router-link>
+          <div class="submenu-item-group">
+            <a
+              class="submenu-item submenu-parent"
+              @click="toggleSubSubmenu('customer-resets')"
+              :class="{ 'is-active': activeSubSubmenu === 'customer-resets' }"
+              :aria-expanded="activeSubSubmenu === 'customer-resets' ? 'true' : 'false'"
+            >
+              <span class="material-icons">refresh</span>
+              <span class="text">Customers Details</span>
+              <span class="material-icons expand-icon">expand_more</span>
+            </a>
+            <div class="sub-submenu w-75" :class="{ 'is-open': activeSubSubmenu === 'customer-resets' }">
+              <router-link to="#" class="sub-submenu-item">
+                <span class="material-icons">lock</span>
+                <span class="text">Reset PIN</span>
+              </router-link>
+              <router-link to="#" class="sub-submenu-item">
+                <span class="material-icons">vpn_key</span>
+                <span class="text">Approve PIN Reset</span>
+              </router-link>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -10,7 +10,7 @@
           <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.customer.customername')"></span></th>
           <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.customer.channel')"></span></th>
           <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.customer.customerstatus')"></span></th>
-          <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.customer.remark')"></span></th>
+          <th scope="row"><span v-text="t$('bbMobileBankingAdminApp.customer.resets')"></span></th>
           <th scope="row">Actions</th>
         </tr>
       </thead>
@@ -24,7 +24,7 @@
           <td>{{ customer.customername }}</td>
           <td>{{ customer.channel }}</td>
           <td>{{ customer.customerstatus === '1' ? 'Blocked' : 'Active' }}</td>
-          <td>{{ customer.remark }}</td>
+          <td>{{ customer.pinresetremark }}</td>
           <td>
             <button @click="openBlockModal(customer)" class="btn btn-primary w-100 mb-1" :disabled="customer.blocked === 1">Approve</button>
             <!--          <button @click="openViewModal(customer)" class="btn btn-info w-100">View</button>-->
@@ -38,21 +38,24 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="blockCustomerModalLabel">Enter Remark</h5>
+            <h5 class="modal-title" id="blockCustomerModalLabel">{{ modalTitle }}</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <p>
-              Are you sure you want to reset the PIN for <strong>{{ selectedCustomer?.customername }}</strong> (Customer ID:
+              Are you sure you want to {{ modalAction }} for <strong>{{ selectedCustomer?.customername }}</strong> (Customer ID:
               {{ selectedCustomer?.id }})?
             </p>
             <label>Enter Remarks*</label>
-            <b-form-input v-model="remark" placeholder="Enter your remarks here"></b-form-input>
+            <b-form-input v-model="remark" placeholder="Enter your remarks here" @input="handleRemarkInput"></b-form-input>
             <pre class="mt-3 mb-0"></pre>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-warning" @click="confirmResetPin">Confirm Reset</button>
+            <button type="button" class="btn btn-warning" :disabled="!isRemarkValid || isLoading" @click="approveResetPin">
+              <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span v-else>Confirm</span>
+            </button>
           </div>
         </div>
       </div>
@@ -113,6 +116,29 @@ th {
 .btn-info {
   background-color: #17a2b8;
   color: white;
+}
+.spinner-border {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-border 0.75s linear infinite;
+  animation: spinner-border 0.75s linear infinite;
+}
+
+@-webkit-keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
 <script lang="ts" src="../customer-update.component.ts"></script>

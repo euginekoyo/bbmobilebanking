@@ -21,6 +21,7 @@ export default defineComponent({
     const remark = ref<string>('');
     const remarkInputRef = ref<HTMLInputElement>();
     const isLoading = ref(false);
+    const modalInstance = ref<Modal | null>(null); // Store modal instance
 
     // Computed property to ensure reactivity
     const isRemarkValid = computed(() => {
@@ -68,8 +69,15 @@ export default defineComponent({
     const openBlockModal = (customer: ICustomer) => {
       selectedCustomer.value = customer;
       remark.value = ''; // Reset remark when opening modal
-      const modal = new Modal(document.getElementById('blockCustomerModal'));
-      modal.show();
+      if (!modalInstance.value) {
+        const modalElement = document.getElementById('blockCustomerModal');
+        if (modalElement) {
+          modalInstance.value = new Modal(modalElement);
+        } else {
+          console.error('Modal element not found:', 'blockCustomerModal');
+        }
+      }
+      modalInstance.value?.show();
 
       // Ensure input is properly initialized after modal opens
       setTimeout(() => {
@@ -82,68 +90,108 @@ export default defineComponent({
 
     const openViewModal = (customer: ICustomer) => {
       selectedCustomer.value = customer;
-      const modal = new Modal(document.getElementById('viewCustomerModal'));
-      modal.show();
+      const modalElement = document.getElementById('viewCustomerModal');
+      if (modalElement) {
+        new Modal(modalElement).show();
+      } else {
+        console.error('Modal element not found:', 'viewCustomerModal');
+      }
+    };
+
+    // Block customer
+    const confirmBlockCustomer = async () => {
+      if (!selectedCustomer.value || !modalInstance.value) return;
+
+      // Validate remark
+      if (!remark.value || remark.value.trim().length === 0) {
+        alertService.showError('Please enter a remark before blocking.');
+        return;
+      }
+
+      isLoading.value = true; // Start loading
+      try {
+        const updatedCustomer = await customerService().confirmBlockCustomer(
+          selectedCustomer.value.id,
+          remark.value.trim(),
+          'admin', // Replace with logged-in user ID or name
+        );
+        alertService.showSuccess(t$('bbMobileBankingAdminApp.customer.blockSuccess').toString());
+        // Update the customer in the list to reflect the new blocked status
+        const index = customers.value.findIndex(c => c.id === selectedCustomer.value!.id);
+        if (index !== -1) {
+          customers.value[index] = updatedCustomer;
+        }
+      } catch (error) {
+        alertService.showHttpError(error.response);
+      } finally {
+        isLoading.value = false; // Stop loading
+        modalInstance.value?.hide(); // Close modal
+        remark.value = ''; // Reset remark
+        fetchCustomers(); // Refresh customer list
+      }
     };
 
     // Reset PIN for customer
     const confirmResetPin = async () => {
-      if (!selectedCustomer.value) return;
+      if (!selectedCustomer.value || !modalInstance.value) return;
 
+      console.log('Starting confirmResetPin, isLoading:', isLoading.value); // Debug
+      isLoading.value = true; // Start loading
+      console.log('isLoading set to true:', isLoading.value); // Debug
       try {
         // Verify customer exists
         const customer = await customerService().find(selectedCustomer.value.id);
         if (!customer) {
           alertService.showError('Customer not found. Please refresh the list and try again.');
-          const modal = Modal.getInstance(document.getElementById('blockCustomerModal'));
-          modal?.hide();
-          return;
+          return; // Let finally handle modal close
         }
 
         // Add resetby for audit trail
         const resetBy = 'admin'; // Replace with actual logged-in user ID or name
         await customerService().resetPin(selectedCustomer.value.id, remark.value, resetBy);
         alertService.showSuccess(t$('global.messages.validate.reset').toString());
-
-        // Close modal
-        const modal = Modal.getInstance(document.getElementById('blockCustomerModal'));
-        modal?.hide();
-
-        // Refresh customer list
-        fetchCustomers();
       } catch (error) {
         alertService.showHttpError(error.response);
+      } finally {
+        console.log('Finally block, isLoading before reset:', isLoading.value); // Debug
+        isLoading.value = false; // Stop loading
+        console.log('isLoading set to false:', isLoading.value); // Debug
+        modalInstance.value?.hide(); // Close modal
+        remark.value = ''; // Reset remark
+        fetchCustomers(); // Refresh customer list
       }
     };
 
     const approveResetPin = async () => {
-      if (!selectedCustomer.value) return;
+      if (!selectedCustomer.value || !modalInstance.value) return;
 
       // Trim whitespace and check if remark is empty
       if (!remark.value || remark.value.trim().length === 0) {
         alertService.showError('Please enter a remark before approving.');
         return;
       }
-
+      console.log('Starting approveResetPin, isLoading:', isLoading.value); // Debug
+      isLoading.value = true;
+      console.log('isLoading set to true:', isLoading.value); // Debug
       try {
         const customer = await customerService().find(selectedCustomer.value.id);
         if (!customer) {
           alertService.showError('Customer not found. Please refresh the list and try again.');
-          const modal = Modal.getInstance(document.getElementById('blockCustomerModal'));
-          modal?.hide();
           return;
         }
 
         const approvedBy = 'admin';
         await customerService().approveResetPin(selectedCustomer.value.id, remark.value.trim(), approvedBy);
         alertService.showSuccess(t$('global.messages.validate.approve').toString());
-
-        const modal = Modal.getInstance(document.getElementById('blockCustomerModal'));
-        modal?.hide();
-
-        fetchCustomers();
       } catch (error) {
         alertService.showHttpError(error.response);
+      } finally {
+        console.log('Finally block, isLoading before reset:', isLoading.value); // Debug
+        isLoading.value = false;
+        console.log('isLoading set to false:', isLoading.value); // Debug
+        modalInstance.value?.hide();
+        remark.value = '';
+        fetchCustomers();
       }
     };
 
@@ -167,6 +215,7 @@ export default defineComponent({
       openViewModal,
       confirmResetPin,
       approveResetPin,
+      confirmBlockCustomer,
       handleRemarkInput,
       testRemark,
       formatDateShort,

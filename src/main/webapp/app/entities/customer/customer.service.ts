@@ -105,8 +105,28 @@ export default class CustomerService {
     return new Promise<ICustomer>((resolve, reject) => {
       const payload = {
         id: id,
-        remark: remark,
+        pinresetremark: remark,
         resetby: resetBy,
+      };
+      console.log('Sending PATCH request with payload:', payload);
+      axios
+        .patch(`${baseApiUrl}/${id}`, payload)
+        .then(res => {
+          resolve(res.data);
+        })
+        .catch(err => {
+          console.error('PATCH request failed:', err.response);
+          reject(err);
+        });
+    });
+  }
+
+  public confirmBlockCustomer(id: number, remark: string, blockBy: string): Promise<ICustomer> {
+    return new Promise<ICustomer>((resolve, reject) => {
+      const payload = {
+        id: id,
+        pinblockremarks: remark,
+        blockBy: blockBy,
       };
       console.log('Sending PATCH request with payload:', payload);
       axios

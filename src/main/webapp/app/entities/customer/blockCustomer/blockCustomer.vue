@@ -44,10 +44,14 @@
               Are you sure you want to block the customer <strong>{{ selectedCustomer?.customername }}</strong> (ID:
               {{ selectedCustomer?.id }})?
             </p>
+            <b-form-input v-model="remark" placeholder="Enter remark here"></b-form-input>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-warning" @click="confirmBlockCustomer">Confirm Block</button>
+            <button type="button" class="btn btn-warning" :disabled="!remark || isLoading" @click="confirmResetPin" :key="isLoading">
+              <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              <span v-else>Confirm</span>
+            </button>
           </div>
         </div>
       </div>
@@ -84,6 +88,29 @@
 </template>
 
 <style scoped>
+.spinner-border {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: spinner-border 0.75s linear infinite;
+  animation: spinner-border 0.75s linear infinite;
+}
+
+@-webkit-keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .table-responsive {
   width: 100%;
   overflow-x: auto;
@@ -115,4 +142,4 @@ th {
   color: white;
 }
 </style>
-<script lang="ts" src="../customer.component.ts"></script>
+<script lang="ts" src="../customer-update.component.ts"></script>

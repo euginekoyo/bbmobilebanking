@@ -456,11 +456,11 @@ public class CustomerResource {
                 }
 
                 // Custom logic for PIN reset
-                if (Boolean.TRUE.equals(customer.getReset())) { // Check if reset flag is true
-                    existingCustomer.setPin(null); // Reset PIN by setting it to null (or generate a new PIN)
+                if (Boolean.TRUE.equals(customer.getPinresetremark())) { // Check if reset flag is true
+                    existingCustomer.setPinresetremark(null); // Reset PIN by setting it to null (or generate a new PIN)
                     existingCustomer.setResetby(customer.getResetby() != null ? customer.getResetby() : "system"); // Set reset initiator
-                    if (customer.getRemark() != null) {
-                        existingCustomer.setRemark(customer.getRemark()); // Update remark for PIN reset
+                    if (customer.getPinresetremark() != null) {
+                        existingCustomer.setPinresetremark(customer.getPinresetremark()); // Update remark for PIN reset
                     }
                 }
 
