@@ -1,26 +1,33 @@
-import { type Ref, defineComponent, inject, onMounted, ref } from 'vue';
+import { defineComponent, inject, ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
-
+import { useRouter } from 'vue-router';
+import * as bootstrap from 'bootstrap';
+import { useDateFormat } from '@/shared/composables';
 import CustomerService from './customer.service';
 import { type ICustomer } from '@/shared/model/customer.model';
-import { useDateFormat } from '@/shared/composables';
 import { useAlertService } from '@/shared/alert/alert.service';
 
 export default defineComponent({
-  compatConfig: { MODE: 3 },
   name: 'Customer',
   setup() {
     const { t: t$ } = useI18n();
-    const dateFormat = useDateFormat();
     const customerService = inject('customerService', () => new CustomerService());
     const alertService = inject('alertService', () => useAlertService(), true);
-
-    const customers: Ref<ICustomer[]> = ref([]);
-
+    const router = useRouter();
+    const dateFormat = useDateFormat();
+    const customers = ref<ICustomer[]>([]);
+    const selectedCustomer = ref<ICustomer | null>(null);
     const isFetching = ref(false);
-
     const clear = () => {};
-
+    // Fetch customers
+    const loadCustomers = async () => {
+      try {
+        const result = await customerService().retrieve();
+        customers.value = result.data;
+      } catch (error) {
+        alertService.showHttpError(error);
+      }
+    };
     const retrieveCustomers = async () => {
       isFetching.value = true;
       try {
@@ -32,7 +39,6 @@ export default defineComponent({
         isFetching.value = false;
       }
     };
-
     const handleSyncList = () => {
       retrieveCustomers();
     };
@@ -41,6 +47,43 @@ export default defineComponent({
       await retrieveCustomers();
     });
 
+    // Open block customer modal
+    const openBlockModal = (customer: ICustomer) => {
+      selectedCustomer.value = customer;
+      const modal = new bootstrap.Modal(document.getElementById('blockCustomerModal'), {});
+      modal.show();
+    };
+
+    // Confirm block customer
+    const confirmBlockCustomer = async () => {
+      if (selectedCustomer.value) {
+        try {
+          const updatedCustomer = await customerService().blockCustomer(selectedCustomer.value.id);
+          alertService.showSuccess(t$('bbMobileBankingAdminApp.customer.blockSuccess').toString());
+          // Update the customer in the list to reflect the new blocked status
+          const index = customers.value.findIndex(c => c.id === selectedCustomer.value!.id);
+          if (index !== -1) {
+            customers.value[index] = updatedCustomer;
+          }
+          const modal = bootstrap.Modal.getInstance(document.getElementById('blockCustomerModal'));
+          modal?.hide();
+        } catch (error) {
+          alertService.showHttpError(error);
+        }
+      }
+    };
+
+    // Open view customer modal
+    const openViewModal = async (customer: ICustomer) => {
+      try {
+        const result = await customerService().find(customer.id);
+        selectedCustomer.value = result;
+        const modal = new bootstrap.Modal(document.getElementById('viewCustomerModal'), {});
+        modal.show();
+      } catch (error) {
+        alertService.showHttpError(error);
+      }
+    };
     const removeId: Ref<number> = ref(null);
     const removeEntity = ref<any>(null);
     const prepareRemove = (instance: ICustomer) => {
@@ -63,8 +106,11 @@ export default defineComponent({
       }
     };
 
+    // Load customers on component mount
+    loadCustomers();
+
     return {
-      customers,
+      t$,
       handleSyncList,
       isFetching,
       retrieveCustomers,
@@ -75,7 +121,11 @@ export default defineComponent({
       prepareRemove,
       closeDialog,
       removeCustomer,
-      t$,
+      customers,
+      selectedCustomer,
+      openBlockModal,
+      confirmBlockCustomer,
+      openViewModal,
     };
   },
 });

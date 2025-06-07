@@ -7,7 +7,7 @@
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="t$('bbMobileBankingAdminApp.pinResetHistory.home.refreshListLabel')"></span>
         </button>
-        <!-- <router-link :to="{ name: 'PinResetHistoryCreate' }" custom v-slot="{ navigate }">
+        <router-link :to="{ name: 'PinResetHistoryCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
             id="jh-create-entity"
@@ -17,7 +17,7 @@
             <font-awesome-icon icon="plus"></font-awesome-icon>
             <span v-text="t$('bbMobileBankingAdminApp.pinResetHistory.home.createLabel')"></span>
           </button>
-        </router-link> -->
+        </router-link>
       </div>
     </h2>
     <br />
